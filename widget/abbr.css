@@ -1,0 +1,12 @@
+.abbr {
+	cursor: help;
+}
+abbr.abbr {
+	border-bottom: 0;
+	text-decoration-line: underline;
+	text-decoration-style: dotted; /* Safari不可合并简写 */
+}
+.abbr-popup .oo-ui-popupWidget-body-padded {
+	margin: 1px 3px;
+	font-size: small;
+}

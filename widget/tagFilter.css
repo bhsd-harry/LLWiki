@@ -1,0 +1,11 @@
+.chronology, .filter {
+	display: inline-block; /* Safari */
+	white-space: nowrap;
+	line-height: 1.2;
+	color: #676767;
+	font-weight: bold;
+	font-size: small;
+	padding: 2px 4px;
+	margin-right: 0.5rem;
+	border-radius: 3px;
+}
