@@ -1,0 +1,89 @@
+/* 参考自https://mediawiki.org/wiki/Extension:SyntaxHighlight，按色调排序 */
+.hljs-literal,
+.hljs-number {
+	color: #a2f;
+}
+.hljs-regexp,
+.hljs-selector-pseudo {
+	color: #b68;
+}
+.hljs-subst { /* JS模板字符串 */
+	color: #b68;
+	font-weight: bold;
+}
+.hljs-string {
+	color: #ba2121;
+}
+.hljs-meta { /* JS的strict模式和CSS的!important */
+	color: #cb4b16;
+}
+.hljs-type { /* JS文档的参数类型 */
+	color: #b58900;
+	font-weight: normal;
+}
+.hljs-attribute { /* CSS属性 */
+	color: #b58900;
+	font-weight: bold;
+}
+.hljs-attr { /* JS对象键值 */
+	color: #7d9029;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-doctag,
+.hljs-name { /* name是什么？ */
+	color: #008000;
+	font-weight: bold;
+}
+.hljs-comment,
+.hljs-variable { /* JS文档参数名，与注释不作区分 */
+	color: #408080;
+	font-style: italic;
+	font-weight: normal;
+}
+.hljs-title, /* 声明的JS函数名 */
+.hljs-selector-attr {
+	color: #268bd2;
+}
+.hljs-selector-class,
+.hljs-built_in { /* JS内置变量、CSS内置函数 */
+	color: #00f;
+}
+.hljs-selector-id {
+	color: #00f;
+	font-weight: bold;
+}
+
+.hljs-color::after {
+	content: "⬤ "; /* Safari */
+	font-size: 0.75em;
+	vertical-align: text-bottom;
+	text-shadow: 0 0 1px #000;
+}
+
+pre.hljs {
+	padding: 2px;
+	border: 1px solid #888;
+	word-wrap: break-word;
+}
+.linenums ol {
+	margin: 0;
+	padding-left: 6.5ch; /* 支持4位数以内行号 */
+}
+@media only screen and (max-width:600px) { /* 窄屏隐藏行号 */
+	.linenums ol {
+		  padding-left: 0;
+		  list-style-type: none;
+	}
+}
+.linenums li {
+	margin-bottom: 0; /* 保证交错底色等宽 */
+	line-height: 1.5;
+}
+.linenums li:nth-child(2n) {
+	background-color: #eee;
+}
+.linenums li:empty::before {
+	content: ""; /* 撑行高 */
+	display: inline-block;
+}
