@@ -1,5 +1,5 @@
 # LLWiki
-Frontend Source Code for LLWiki (https://llwiki.org)
+Front End Source Code for LLWiki (https://llwiki.org)
 
 The repository owner (https://llwiki.org/zh/User:Bhsd) is one of the administrators of LLWiki and the main contributor to the archived files.
 
