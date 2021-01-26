@@ -1,0 +1,30 @@
+.member-symbol {
+	display: inline-block; /* 横向排列 */
+}
+.member-symbol img {
+	width: 20px !important;
+	height: auto !important;
+}
+.member-popup .oo-ui-popupWidget-body-padded {
+	margin: 1px 3px;
+	font-size: small;
+	text-align: center;
+}
+
+.member-symbol-image {
+	display: none;
+}
+.member-popup-image {
+	max-width: 80px;
+	max-height: 80px;
+	overflow: hidden;
+	margin-bottom: 5px;
+}
+.member-popup-image:empty {
+	margin-bottom: 0;
+}
+.member-popup-image img {
+	width: 100px;
+	height: auto;
+	margin-left: -10px;
+}

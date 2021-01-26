@@ -1,0 +1,34 @@
+.mw-parser-output {
+	--rin-color: #fee155;
+	--keke-color: #a0fff9;
+}
+[style*="color:#fee155"] {
+	color: var(--rin-color) !important;
+}
+[style*="background-color:#fee155"] {
+	background-color: var(--rin-color) !important;
+	color: #fff !important; /* 文字必须为白色 */
+}
+[style*="color:#a0fff9"] {
+	color: var(--keke-color) !important;
+}
+[style*="background-color:#a0fff9"] {
+	background-color: var(--keke-color) !important;
+	color: #fff !important;
+}
+div#mw-indicator-colorMod { /* 只作用于桌面版 */
+	cursor: pointer;
+	vertical-align: middle;
+	font-size: 22px;
+}
+.mw-parser-output .page-actions-menu__list-item {
+	display: none;
+}
+.colorMod-wrapper {
+	text-align: center;
+}
+.colorMod-wrapper > select { /* Safari和Firefox会自动添加右边框样式 */
+	font-size: 16px; /* 手机版需要 */
+	margin: 0 0.5em;
+	min-width: calc(2ch + 2em);
+}

@@ -1,0 +1,18 @@
+.sif-song-table {
+	text-align: center;
+}
+.sif-song-table .tabs-dropdown {
+	width: auto !important;
+	white-space: nowrap;
+}
+.sif-song-table .tabs-content {
+	border-radius: 0 0 8px 8px;
+	width: auto;
+	min-width: 100%;
+}
+.sif-song-table .tabs-dropdown ul {
+	padding: 0;
+}
+.sif-song-table .tabs-dropdown li:last-child {
+	border-radius: 0 0 8px 8px;
+}

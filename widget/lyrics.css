@@ -1,0 +1,95 @@
+.Lyrics_box {
+	display: flow-root;
+	max-width: 1080px;
+	white-space: pre-wrap;
+}
+.Lyrics_monospace {
+	font-family: Monaco, Menlo, Consolas, 'Liberation Mono', 'Courier New', sans-serif;
+}
+.Lyrics_box .reference {
+	font-family: Arial, Helvetica, sans-serif;
+	-webkit-text-fill-color: initial;
+	text-fill-color: initial;
+}
+.Lyrics_original, .Lyrics_translated {
+	width: calc(50% - 5px);
+	display: inline-table;
+}
+.Lyrics_original {
+	margin-right: 10px;
+}
+/* 结合JS实现窄屏适配 */
+.Lyrics_no_translation .Lyrics_original,
+.Lyrics_narrow .Lyrics_original,
+.Lyrics_narrow .Lyrics_translated {
+	width: 100%;
+	margin-right: 0;
+}
+/* 手机版初始折叠会造成js无法计算实际宽度 */
+@media only screen and (max-width:720px) {
+	.Lyrics_original, .Lyrics_translated {
+		width: 100%;
+		margin-right: 0;
+	}
+}
+.Lyrics_no_translation .Lyrics_translated {
+	display: none;
+}
+.Lyrics_has_ruby {
+	line-height: 2.1;
+}
+.Lyrics_has_ruby rt { /* 无法正确选中 */
+	-webkit-user-select: none; /* Safari */
+	user-select: none;
+}
+
+.Lyrics_gradient {
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-box-decoration-break: clone; /* Safari；只有Firefox支持slice且为默认 */
+	-webkit-text-fill-color: transparent;
+	text-fill-color: transparent;
+}
+.Lyrics_gradient ruby, .Lyrics_gradient rb, .Lyrics_gradient rt {
+	background: inherit; /* 只有Safari需要rb */
+}
+.Lyrics_tipsy .oo-ui-popupWidget-body-padded {
+	font-size: 0.8em;
+	margin: 5px 8px 4px;
+}
+
+.Lyrics_box ruby {
+	white-space: normal; /* Safari */
+}
+.Lyrics_box rt {
+	font-size: 0.8em;
+}
+.mw-collapsed + .Lyrics_box rt > span:first-child,
+.photrans-off {
+	font-size: 0;
+}
+.mw-collapsed + .Lyrics_box rb span {
+	letter-spacing: 0 !important;
+	margin-left: 0 !important;
+}
+.mw-collapsed + .Lyrics_box .photrans-off {
+	font-size: 1em;
+}
+.photrans-s {
+	visibility: hidden;
+	font-size: 1.25em;
+	white-space: pre-wrap;
+}
+.skin-minerva p + div > .photrans-button {
+	margin-top: -1em !important;
+}
+.photrans-button .mw-collapsed {
+	display: none; /* 移动版提前加载样式 */
+}
+
+.memberblock.mw-collapsed {
+	box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+}
+.memberblock a {
+	pointer-events: none;
+}
