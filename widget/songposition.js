@@ -14,7 +14,7 @@
         console.log('End setInterval: jQuery加载完毕，开始执行Widget:Songposition');
         const target = '.member-symbol',
             map = new Map(),
-            $label = $('<div>', {class: 'member-popup-image'}).wrap( '<div>' ).parent(),
+            $label = $('<div>', {html: '<div>'}),
             $body = $('body').on('mouseenter focus', target, function() {
             $label.children( 'div' ).html( map.get(this) );
         });
