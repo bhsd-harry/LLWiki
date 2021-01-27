@@ -1,0 +1,19 @@
+.as-song-container .oo-ui-comboBoxInputWidget {
+	width: 500px; /* 完整显示现最长的歌曲名称 */
+	max-width: 100%;
+	margin-right: 0;
+	display: block;
+}
+.as-song-container .indicator-clear {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 3em;
+	color: #000;
+}
+.as-song-container > div {
+	display: inline-block; /* 居中 */
+}
+.as-song-container .as-song {
+	display: none;
+}
