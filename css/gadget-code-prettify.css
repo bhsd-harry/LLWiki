@@ -31,7 +31,7 @@
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-doctag,
-.hljs-name { /* name是什么？ */
+.hljs-name { /* HTML的tag名称 */
 	color: #008000;
 	font-weight: bold;
 }
