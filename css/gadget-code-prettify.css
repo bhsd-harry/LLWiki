@@ -54,10 +54,12 @@
 	font-weight: bold;
 }
 
+.hljs-color {
+        vertical-align: text-bottom;
+}
 .hljs-color::after {
 	content: "⬤ "; /* Safari */
 	font-size: 0.75em;
-	vertical-align: text-bottom;
 	text-shadow: 0 0 1px #000;
 }
 
