@@ -7,12 +7,14 @@
 /* global mw */
 (() => {
     const main = ($content) => {
-        const $ele = $content.find( '.bgimage' );
+        const $ele = $content.find( '.bgimage' ),
+            $img = $ele.children( 'img' ).css('object-position', $ele.data( 'position' ));
         if ($ele.length === 0) { return; }
         console.log('Hook: wikipage.content, 开始添加背景图片');
-        $ele.children( 'img' ).css('object-position', $ele.data( 'position' ));
         $ele.closest('body, #Wikiplus-Quickedit-Preview-Output').append( $ele )
             .find( '#p-logo' ).css('visibility', $ele.data('logo') == 'off' ? 'hidden' : ''); // Wikiplus预览不隐藏logo
+        $img.on('load', () => { $ele.fadeIn( 'slow' ); });
+        if ($img.prop( 'complete' )) { $img.load(); }
     },
         timer = setInterval(() => {
         if (!window.jQuery) { return; }

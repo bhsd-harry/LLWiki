@@ -1,7 +1,5 @@
-.mw-parser-output .bgimage {
-	display: none;
-}
 .bgimage {
+	display: none;
 	position: fixed;
 	left: 0;
 	top: 0;
