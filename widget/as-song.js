@@ -12,21 +12,19 @@
         if ($container.length === 0) { return; }
         console.log('Hook: wikipage.content，开始添加AS歌曲下拉选单');
         $container.each(function() {
-            const $nodes = $(this).find( '.as-song' ),
-                names = [...$nodes].map(ele => $(ele).find( 'big' ).text()),
-                indices = Object.fromEntries( names.map((ele, i) => [ele, i]) ),
-                options = names.sort().map(ele => ({data: ele}));
-            let oldIndex;
+            const nodes = [...$(this).find( '.as-song' )],
+                map = Object.fromEntries( nodes.map(ele => [$(ele).find( 'big' ).text(), ele]) ),
+                options = Object.keys( map ).sort().map(ele => ({data: ele}));
+            let oldVal;
             mw.loader.using( 'oojs-ui-core' ).then(() => {
-                const select = new OO.ui.ComboBoxInputWidget({menu: {filterFromInput: true}, options})
-                    .on('change', () => {
-                    $nodes.eq( oldIndex ).css('display', '');
-                    oldIndex = indices[ select.getValue() ];
-                    $nodes.eq( oldIndex ).css('display', 'table');
+                const select = new OO.ui.ComboBoxInputWidget({ options,
+                    menu: {width: '100%', filterFromInput: true, filterMode: 'substring'} }).on('change', () => {
+                    $(map[ oldVal ]).hide(); // $(undefined).hide()不会报错
+                    oldVal = select.getValue();
+                    $(map[ oldVal ]).show();
                 });
-                select.$element.attr('lang', 'ja').prependTo( this );
-                $('<a>', {class: 'indicator-clear', html: '<i class="fas fa-backspace"></i>'})
-                    .appendTo( select.$element ).click(() => { select.setValue(''); });
+                select.$element.attr('lang', 'ja').prependTo( this )
+                    .append( $('<i>', {class: 'fas fa-backspace'}).click(() => { select.setValue(''); }) );
             });
         });
     },

@@ -63,18 +63,17 @@
 	text-shadow: 0 0 1px #000;
 }
 
-pre.hljs {
+pre.highlighted {
 	padding: 2px;
 	border: 1px solid #888;
 	word-wrap: break-word;
 }
 .linenums ol {
 	margin: 0;
-	padding-left: 6.5ch; /* 支持4位数以内行号 */
 }
-@media only screen and (max-width:600px) { /* 窄屏隐藏行号 */
+@media only screen and (max-width:720px) { /* 窄屏隐藏行号 */
 	.linenums ol {
-		  padding-left: 0;
+		  padding-left: 0 !important;
 		  list-style-type: none;
 	}
 }

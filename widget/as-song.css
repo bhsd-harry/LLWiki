@@ -4,12 +4,13 @@
 	margin-right: 0;
 	display: block;
 }
-.as-song-container .indicator-clear {
+.as-song-container .fa-backspace {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
 	right: 3em;
-	color: #000;
+	cursor: pointer;
+	line-height: 2; /* 更容易点击 */
 }
 .as-song-container > div {
 	display: inline-block; /* 居中 */

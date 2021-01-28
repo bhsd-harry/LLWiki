@@ -35,7 +35,8 @@ mw.hook( 'wikipage.content' ).add(function($content) {
             });
             var lines = $this.html().replace(/\n$/, '').split('\n');
             if (mw.config.get( 'wgNamespaceNumber' ) == 274) { lines = lines.slice(1, -1); } // 扔掉首尾的Wikitext注释
-            return $('<ol>', {html: lines.map(function(ele) { return $('<li>', {html: ele}); })});
+            return $('<ol>', {html: lines.map(function(ele) { return $('<li>', {html: ele}); })})
+                .css('padding-left', lines.length.toString().length + 2.5 + 'ch');
         });
         mw.hook( 'code.prettify' ).fire( $block );
         const $cssblock = $block.filter( '.css' ); // 对CSS代码添加指示色块
