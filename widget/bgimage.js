@@ -14,7 +14,7 @@
         $ele.closest('body, #Wikiplus-Quickedit-Preview-Output').append( $ele )
             .find( '#p-logo' ).css('visibility', $ele.data('logo') == 'off' ? 'hidden' : ''); // Wikiplus预览不隐藏logo
         $img.on('load', () => { $ele.fadeIn( 'slow' ); });
-        if ($img.prop( 'complete' )) { $img.load(); }
+        if ($img.prop( 'complete' )) { $img.trigger( 'load' ); }
     },
         timer = setInterval(() => {
         if (!window.jQuery) { return; }

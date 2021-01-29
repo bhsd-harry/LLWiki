@@ -1,0 +1,12 @@
+.countdownNode {
+	visibility: hidden; /* 占位 */
+}
+.counting > :first-child {
+	display: none;
+}
+.isBefore > :first-child {
+	display: initial;
+}
+.isBefore > :last-child {
+	display: none;
+}
