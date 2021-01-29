@@ -1,0 +1,10 @@
+.outerImage {
+	overflow-x: auto;
+}
+.outerImage > div {
+	overflow: hidden;
+}
+.outerImage img {
+	width: 100%;
+	height: 100%;
+}
