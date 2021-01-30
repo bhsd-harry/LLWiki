@@ -7,20 +7,17 @@
  * @EditedBy: https://zh.moegirl.org.nc/User:AnnAngela、https://llwiki.org/zh/User:Bhsd
  */
 "use strict";
-/*global moment, wgUCS*/
+/* global moment, wgUCS */
 const ns = mw.config.get( 'wgNamespaceNumber' ),
     pagename = mw.config.get( 'wgPageName' ),
     action = mw.config.get('wgAction');
 if ( (ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "submit"].includes(action) ) {
-    mw.messages.set( wgUCS({
-        'gadget-lc-error': '错误的签名时间！', 'gadget-lc-mm': '个月前', 'gadget-lc-tip': "原始时间戳："
-    }, {
-        'gadget-lc-error': '錯誤的簽名時間！', 'gadget-lc-mm': '個月前', 'gadget-lc-tip': "原始時間戳："
-    }) );
+    mw.messages.set( wgUCS({'gadget-lc-error': '错误的签名时间！', 'gadget-lc-mm': '个月前', 'gadget-lc-tip': "原始时间戳："},
+    {'gadget-lc-error': '錯誤的簽名時間！', 'gadget-lc-mm': '個月前', 'gadget-lc-tip': "原始時間戳："}) );
     // 合法的签名时间戳必须以CST为时区
     const regExp = /\d{4}年\d{1,2}月\d{1,2}日\s*(?:[(（]?(?:星期)?[一二三四五六日][)）]?)?\s*(\d\d:\d\d)?\s*[(（]CST[)）]/,
         weekdays = ['日', '一', '二', '三', '四', '五', '六'],
-        errorHTML = $('<span>', {class: "error", text: mw.msg( 'gadget-lc-error' )}),
+        $errorHTML = $('<span>', {class: "error", text: mw.msg( 'gadget-lc-error' )}),
         format = function(then, type, now) {
         if (type == "else") { return then.format( "YYYY年M月D日 " ) + '星期' + weekdays[ then.day() ]; }
         if (type == "HH:mm") {
@@ -40,18 +37,18 @@ if ( (ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "
     };
     mw.hook( 'wikipage.content' ).add(function($content) {
         const now = moment(), // 固定以页面内容生成的时间作为“当前”时点
-            comments = $content.find('p, dd').contents().filter(function() {
+            $comments = $content.find('p, dd').contents().filter(function() {
             return this.nodeType == 3 && regExp.test( this.textContent ); // 合法的时间戳总是text节点
         });
-        if (comments.length === 0) { return; }
+        if ($comments.length === 0) { return; }
         console.log('Hook: wikipage.content，开始替换签名时间');
-        comments.each(function() {
+        $comments.each(function() {
             const string = this.textContent.match( regExp ),
                 then = moment(string[0] + '00:00+08', 'YYYY-MM-DD HH:mm Z'), // 00:00是未输入时间时的默认值
                 node = this.splitText( string.index ),
-                $ele = $('<time>', { class: "LocalComments", title: mw.msg('gadget-lc-tip') + string[0],
+                $ele = $('<time>', { class: "LocalComments", 'data-title': mw.msg('gadget-lc-tip') + string[0],
                 // 无效的输入并不会让moment抛出错误，只会警告
-                html: then.isValid() && now.isAfter( then ) ? display(then, string[1], now) : errorHTML.clone() });
+                html: then.isValid() && now.isAfter( then ) ? display(then, string[1], now) : $errorHTML.clone() });
             node.splitText( string[0].length );
             node.replaceWith( $ele[0] );
         });
