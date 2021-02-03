@@ -1,4 +1,4 @@
-/* 参考自https://mediawiki.org/wiki/Extension:SyntaxHighlight，按色调排序 */
+/* 1. 语法高亮，参考自https://mediawiki.org/wiki/Extension:SyntaxHighlight，以下按色调排序 */
 .hljs-literal,
 .hljs-number {
 	color: #a2f;
@@ -53,31 +53,37 @@
 	color: #00f;
 	font-weight: bold;
 }
-
+/* 2. 标注颜色，仅支持16进制和rgb/rgba */
 .hljs-color {
-        vertical-align: text-bottom;
+	vertical-align: text-bottom;
 }
 .hljs-color::after {
 	content: "⬤ "; /* Safari */
 	font-size: 0.75em;
 	text-shadow: 0 0 1px #000;
 }
-
-pre.highlighted {
-	padding: 2px;
-	border: 1px solid #888;
-	word-wrap: break-word;
+/* 3. 代码块 */
+.highlighted {
+	padding: 1px 4px; /* 同<code> */
+}
+.skin-minerva .highlighted {
+	padding: 0.2em 0.5em; /* 同<code> */
+}
+.highlighted.linenums {
+	padding: 0;
+	border-color: #c8ccd1; /* 桌面版略微加深边框颜色以适应底色 */
 }
 .linenums ol {
-	margin: 0;
+	margin: 0; /* 仿照手机版移除margin，并由JS指定padding-left */
 }
 @media only screen and (max-width:720px) { /* 窄屏隐藏行号 */
 	.linenums ol {
-		  padding-left: 0 !important;
-		  list-style-type: none;
+		padding-left: 0 !important;
+		list-style-type: none; /* 仅供参考：萌百选择了list-style-position: inside; */
 	}
 }
 .linenums li {
+	padding: 0 4px;
 	margin-bottom: 0; /* 保证交错底色等宽 */
 	line-height: 1.5;
 }
