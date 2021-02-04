@@ -11,14 +11,14 @@
 const ns = mw.config.get( 'wgNamespaceNumber' ),
     pagename = mw.config.get( 'wgPageName' ),
     action = mw.config.get('wgAction');
-if ( (ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "submit"].includes(action) ) {
+if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "submit"].includes(action)) {
     // 1. 更新设置
     mw.gadgets = mw.gadgets || {};
     mw.gadgets.CommentsInLocalTime = $.extend( mw.storage.getObject( 'gadget-CommentsInLocalTime' ),
         mw.gadgets.CommentsInLocalTime ); // 注意优先级：用户JS优先
     const settings = mw.gadgets.CommentsInLocalTime,
-        lang = (settings.lang || [])[0], // 注意这是一个数组！提供一套默认的英文设置
-        isEn = lang == 'en',
+        lang = settings.lang, // 注意这是一个数组！提供一套默认的英文设置
+        isEn = lang == 'en', // lang会先自动转化为字符串再比较
         date = isEn ? 'ddd, ll' : settings.date,
         time = isEn ? 'LT' : settings.time,
         locale = isEn ? 'en' : settings.locale || '',
@@ -26,12 +26,14 @@ if ( (ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "
     // 2. 设置本地化消息
     mw.messages.set( $.extend( wgULS({ // 这些消息用于小工具设置
         'gadget-lc-label': '以本地时区显示签名时间戳', 'gadget-lc-time': '时间格式', 'gadget-lc-help': '请参考$1文档。',
-        'gadget-lc-lang': '语言', 'gadget-lc-en': '英语', 'gadget-lc-locale': '本地化语言',
-        'gadget-lc-plural': '英语单复数请使用PLURAL魔术字。', 'gadget-lc-bracket': '请使用$1防止字母转换为时间。'
+        'gadget-lc-lang': '使用预定义的时间格式', 'gadget-lc-en': '英语格式', 'gadget-lc-locale': '语言',
+        'gadget-lc-plural': '英语单复数请使用PLURAL魔术字，如$1。',
+        'gadget-lc-bracket': '请使用$1防止字母转换为时间。'
     }, {
         'gadget-lc-label': '以本地時區顯示簽名時間戳', 'gadget-lc-time': '時間格式', 'gadget-lc-help': '請參考$1文檔。',
-        'gadget-lc-lang': '語言', 'gadget-lc-en': '英語', 'gadget-lc-locale': '本地化語言',
-        'gadget-lc-plural': '英語單複數請使用PLURAL魔術字。', 'gadget-lc-bracket': '請使用$1防止字母轉換為時間。'
+        'gadget-lc-lang': '使用預定義的時間格式', 'gadget-lc-en': '英語格式', 'gadget-lc-locale': '語言',
+        'gadget-lc-plural': '英語單複數請使用PLURAL魔術字，如$1。',
+        'gadget-lc-bracket': '請使用$1防止字母轉換為時間。'
     }), wgUCS( // 这些消息用于页面内容
         {'gadget-lc-error': '错误的签名时间！', 'gadget-lc-m': '$1个月前', 'gadget-lc-tip': "原始时间戳："},
         {'gadget-lc-error': '錯誤的簽名時間！', 'gadget-lc-m': '$1個月前', 'gadget-lc-tip': "原始時間戳："}
@@ -41,23 +43,24 @@ if ( (ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "
     }, isEn ? { 'gadget-lc-today': '[Today]', 'gadget-lc-yesterday': '[Yesterday]',
         'gadget-lc-y': '$1 year{{PLURAL:$1||s}} ago', 'gadget-lc-m': '$1 month{{PLURAL:$1||s}} ago',
         'gadget-lc-d': '$1 day{{PLURAL:$1||s}} ago'
-    } : Object.fromEntries( Object.entries(i18n).filter(function(ele) { return ele[1]; })) ) ); // 移除空字符串
+    } : i18n) );
     // 3. 小工具设置
     const helpInfo = new OO.ui.HtmlSnippet( mw.msg('gadget-lc-help', $('<a>', { target: "_blank", text: 'moment.js',
         href: "//momentjscom.readthedocs.io/en/latest/moment/04-displaying/01-format/" }).prop( 'outerHTML' )) ),
-        helpI18n = new OO.ui.HtmlSnippet( mw.msg('gadget-lc-bracket', '<code>[]</code>'));
+        helpI18n = new OO.ui.HtmlSnippet( mw.msg('gadget-lc-bracket', '<code>[]</code>') ),
+        helpPlural = new OO.ui.HtmlSnippet( mw.msg('gadget-lc-plural', '<br><code>{{PLURAL:$1|day|days}}</code>') );
     mw.settingsDialog.addTab({name: 'CommentsInLocalTime', label: 'gadget-lc-label', items: [
-        {key: 'lang', type: 'CheckboxMultiselect', label: 'gadget-lc-lang', config: {value: isEn ? ['en'] : [],
+        {key: 'lang', type: 'CheckboxMultiselect', label: 'gadget-lc-lang', config: {value: lang,
             options: [{data: 'en', label: mw.msg('gadget-lc-en')}]}},
         {key: 'locale', type: 'Text', label: 'gadget-lc-locale', config: {value: locale, disabled: isEn}},
         {key: 'date', type: 'Text', label: 'gadget-lc-date', help: helpInfo, config: {value: date, disabled: isEn}},
         {key: 'time', type: 'Text', label: 'gadget-lc-time', help: helpInfo, config: {value: time, disabled: isEn}}
     ], fields: [{key: 'i18n', label: 'gadget-lc-i18n', items: [
-        {key: 'gadget-lc-y', type: 'Text', label: 'gadget-lc-yy', help: mw.msg('gadget-lc-plural'),
+        {key: 'gadget-lc-y', type: 'Text', label: 'gadget-lc-yy', help: helpPlural,
             config: {value: i18n['gadget-lc-y'], disabled: isEn}
-        }, {key: 'gadget-lc-m', type: 'Text', label: 'gadget-lc-mm', help: mw.msg('gadget-lc-plural'),
+        }, {key: 'gadget-lc-m', type: 'Text', label: 'gadget-lc-mm', help: helpPlural,
             config: {value: i18n['gadget-lc-m'], disabled: isEn}
-        }, {key: 'gadget-lc-d', type: 'Text', label: 'gadget-lc-dd', help: mw.msg('gadget-lc-plural'),
+        }, {key: 'gadget-lc-d', type: 'Text', label: 'gadget-lc-dd', help: helpPlural,
             config: {value: i18n['gadget-lc-d'], disabled: isEn}
         }, {key: 'gadget-lc-today', type: 'Text', label: 'gadget-lc-td', help: helpI18n,
             config: {value: i18n['gadget-lc-today'], disabled: isEn}
@@ -71,7 +74,7 @@ if ( (ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "
         const items = params.items,
             checkbox = items[0].widget;
         checkbox.on('change', function() { // 使用英语的设置组合
-            const disabled = checkbox.getValue().length;
+            const disabled = checkbox.value.length;
             items.slice(1).forEach(function(ele) { ele.widget.setDisabled( disabled ); });
             params.fields[0].items.forEach(function(ele) { ele.widget.setDisabled( disabled ); });
         });
