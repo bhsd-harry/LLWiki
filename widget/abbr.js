@@ -6,15 +6,14 @@
 "use strict";
 /* global mw, $ */
 (() => {
-    const timer = setInterval(() => {
-        if (!window.jQuery) { return; }
-        clearInterval(timer);
+    const main = () => {
         mw.widget = mw.widget || {};
         if (mw.widget.abbr) { return; }
-        console.log('End setInterval: jQuery加载完毕，开始执行Widget:Abbr');
         mw.loader.using(['oojs-ui-core', 'ext.gadget.site-lib']).then(() => {
-            mw.tipsy($('body'), '.abbr', {classes: ['abbr-popup'], anchor: false});
+            mw.tipsy($(document.body), '.abbr', {anchor: false});
         });
         mw.widget.abbr = true;
-    }, 500);
+    };
+    if (window.jQuery) { main(); }
+    else { window.addEventListener('jquery', main); }
 }) ();

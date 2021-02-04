@@ -6,16 +6,13 @@
 "use strict";
 /* global mw, $ */
 (() => {
-    const timer = setInterval(() => {
-        if (!window.jQuery) { return; }
-        clearInterval(timer);
+    const main = () => {
         mw.widget = mw.widget || {};
         if (mw.widget.songposition) { return; }
-        console.log('End setInterval: jQuery加载完毕，开始执行Widget:Songposition');
         const target = '.member-symbol',
             map = new Map(),
             $label = $('<div>', {html: '<div>'}),
-            $body = $('body').on('mouseenter focus', target, function() {
+            $body = $( document.body ).on('mouseenter focus', target, function() {
             $label.children( 'div' ).html( map.get(this) );
         });
         mw.hook( 'wikipage.content' ).add($content => { // 更新图片对应关系
@@ -24,8 +21,10 @@
             $content.find( target ).each(function() { map.set(this, $(this).next().find( 'img' )); });
         });
         mw.loader.using(['oojs-ui-core', 'ext.gadget.site-lib']).then(() => {
-            mw.tipsy($body, target, {classes: ['member-popup']}, $label);
+            mw.tipsy($body, target, {classes: ['member-popup', 'mw-tipsy']}, $label);
         });
         mw.widget.songposition = true;
-    }, 500);
+    };
+    if (window.jQuery) { main(); }
+    else { window.addEventListener('jquery', main); }
 }) ();

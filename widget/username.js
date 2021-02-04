@@ -4,17 +4,12 @@
  * @EditedBy: https://llwiki.org/zh/User:Bhsd
  */
 "use strict";
-/* global mw */
+/* global mw, $ */
 (() => {
     const main = () => {
         const username = mw.config.get( 'wgUserName' );
-        if (!username) { return; }
-        console.log('End setInterval: mediaWiki加载完毕，开始显示用户名');
-        document.querySelectorAll( '.mw-parser-output .username' ).forEach(ele => { ele.textContent = username; });
-    },
-        timer = setInterval(() => {
-        if (!window.mediaWiki) { return; }
-        clearInterval(timer);
-        main();
-    }, 100);
+        if (username) { $('.mw-parser-output .username').text( username ); }
+    };
+    if (window.jQuery) { main(); }
+    else { window.addEventListener('jquery', main); }
 }) ();
