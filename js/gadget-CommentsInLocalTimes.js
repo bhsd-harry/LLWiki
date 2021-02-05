@@ -23,17 +23,20 @@ if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "s
         time = isEn ? 'LT' : settings.time,
         locale = isEn ? 'en' : settings.locale || '',
         i18n = settings.i18n || {};
+    var tz = settings.timezone;
     // 2. 设置本地化消息
     mw.messages.set( $.extend( wgULS({ // 这些消息用于小工具设置
         'gadget-lc-label': '以本地时区显示签名时间戳', 'gadget-lc-time': '时间格式', 'gadget-lc-help': '请参考$1文档。',
         'gadget-lc-lang': '使用预定义的时间格式', 'gadget-lc-en': '英语格式', 'gadget-lc-locale': '语言',
-        'gadget-lc-plural': '英语单复数请使用PLURAL魔术字，如$1。',
-        'gadget-lc-bracket': '请使用$1防止字母转换为时间。'
+        'gadget-lc-plural': '英语单复数请使用PLURAL魔术字，如$1。', 'gadget-lc-tz': '显示时区',
+        'gadget-lc-bracket': '请使用$1防止字母转换为时间。', 'gadget-lc-tzhelp': '请使用IANA时区名称。',
+        'gadget-lc-tzerror': '错误的时区名称！当前显示为本地时区。'
     }, {
         'gadget-lc-label': '以本地時區顯示簽名時間戳', 'gadget-lc-time': '時間格式', 'gadget-lc-help': '請參考$1文檔。',
         'gadget-lc-lang': '使用預定義的時間格式', 'gadget-lc-en': '英語格式', 'gadget-lc-locale': '語言',
-        'gadget-lc-plural': '英語單複數請使用PLURAL魔術字，如$1。',
-        'gadget-lc-bracket': '請使用$1防止字母轉換為時間。'
+        'gadget-lc-plural': '英語單複數請使用PLURAL魔術字，如$1。', 'gadget-lc-tz': '顯示時區',
+        'gadget-lc-bracket': '請使用$1防止字母轉換為時間。', 'gadget-lc-tzhelp': '請使用IANA時區名稱。',
+        'gadget-lc-tzerror': '錯誤的時區名稱！當前顯示為本地時區。'
     }), wgUCS( // 这些消息用于页面内容
         {'gadget-lc-error': '错误的签名时间！', 'gadget-lc-m': '$1个月前', 'gadget-lc-tip': "原始时间戳："},
         {'gadget-lc-error': '錯誤的簽名時間！', 'gadget-lc-m': '$1個月前', 'gadget-lc-tip': "原始時間戳："}
@@ -44,12 +47,19 @@ if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "s
         'gadget-lc-y': '$1 year{{PLURAL:$1||s}} ago', 'gadget-lc-m': '$1 month{{PLURAL:$1||s}} ago',
         'gadget-lc-d': '$1 day{{PLURAL:$1||s}} ago'
     } : i18n) );
-    // 3. 小工具设置
+    // 3. 检查时区
+    try { Intl.DateTimeFormat('en-us', {timeZone: tz}); }
+    catch (error) {
+        tz = undefined;
+        mw.notify( mw.msg('gadget-lc-tzerror'), {type: 'error'} );
+    }
+    // 4. 小工具设置
     const helpInfo = new OO.ui.HtmlSnippet( mw.msg('gadget-lc-help', $('<a>', { target: "_blank", text: 'moment.js',
         href: "//momentjscom.readthedocs.io/en/latest/moment/04-displaying/01-format/" }).prop( 'outerHTML' )) ),
         helpI18n = new OO.ui.HtmlSnippet( mw.msg('gadget-lc-bracket', '<code>[]</code>') ),
         helpPlural = new OO.ui.HtmlSnippet( mw.msg('gadget-lc-plural', '<br><code>{{PLURAL:$1|day|days}}</code>') );
     mw.settingsDialog.addTab({name: 'CommentsInLocalTime', label: 'gadget-lc-label', items: [
+        {key: 'timezone', type: 'Text', label: 'gadget-lc-tz', help: mw.msg('gadget-lc-tzhelp'), config: {value: tz}},
         {key: 'lang', type: 'CheckboxMultiselect', label: 'gadget-lc-lang', config: {value: lang,
             options: [{data: 'en', label: mw.msg('gadget-lc-en')}]}},
         {key: 'locale', type: 'Text', label: 'gadget-lc-locale', config: {value: locale, disabled: isEn}},
@@ -72,34 +82,35 @@ if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "s
         if (params.name != 'CommentsInLocalTime') { return; }
         console.log('Hook: settings.dialog, 开始调整小工具设置 - CommentsInLocalTime');
         const items = params.items,
-            checkbox = items[0].widget;
+            checkbox = items[1].widget;
         checkbox.on('change', function() { // 使用英语的设置组合
             const disabled = checkbox.value.length;
-            items.slice(1).forEach(function(ele) { ele.widget.setDisabled( disabled ); });
+            items.slice(2).forEach(function(ele) { ele.widget.setDisabled( disabled ); });
             params.fields[0].items.forEach(function(ele) { ele.widget.setDisabled( disabled ); });
         });
     });
-    // 4. 主体程序：替代签名时间戳。合法的签名时间戳必须以CST为时区。
+    // 5. 主体程序：替代签名时间戳。合法的签名时间戳必须以CST为时区。
     const regExp = /\d{4}年\d{1,2}月\d{1,2}日\s*(?:[(（]?(?:星期)?[一二三四五六日][)）]?)?\s*(\d\d:\d\d)?\s*[(（]CST[)）]/,
         weekdays = ['日', '一', '二', '三', '四', '五', '六'],
         // 用户可以自定义日期格式，否则模拟中文格式（用户可能未安装）
-        format = function(then, now) {
-        const year = now.diff(then, 'year'),
-            month = year ? null : now.diff(then, 'month'),
-            day = year || month ? null : now.diff(then, 'day');
-        return (date || 'YYYY年M月D日 星期' + weekdays[ then.day() ]) + ' ([' +
-            (year ? mw.msg('gadget-lc-y', year) : month ? mw.msg('gadget-lc-m', month) : mw.msg('gadget-lc-d', day)) +
-            '])';
+        formatDate = function(then) { // 附带左半中括号[
+        return '[' + then.format(date || 'YYYY年M月D日 星期' + weekdays[ then.day() ]);
+    },
+        fromNow = function(then, now) { // 附带右半中括号]
+        const y = now.diff(then, 'year'),
+            m = y ? null : now.diff(then, 'month'),
+            d = y || m ? null : now.diff(then, 'day');
+        return ' (' + (y ? mw.msg('gadget-lc-y', y) : m ? mw.msg('gadget-lc-m', m) : mw.msg('gadget-lc-d', d)) + ')]';
     },
         display = function(then, withTime, now) { // 不使用moment.js自带的模糊时间方法fromNow
-        const utc = then.utcOffset() / 60,
-            // 这个参数对象依赖于then和now
-            params = { sameDay: mw.msg('gadget-lc-today'), lastDay: mw.msg('gadget-lc-yesterday'),
-            lastWeek: format(then, now), sameElse: format(then, now)
-        };
-        if (withTime) { $.each(params, function(key) { params[key] += ' ' + (time || 'HH:mm'); }); }
-        return then.locale( locale ).calendar(null, params) +
-            ' (UTC' + (utc === 0 ? '' : (utc > 0 ? '+' : '') + utc) + ')';
+        const date = new Date( then ),
+            dateString = date.toLocaleString('en-us', {timeZone: tz}),
+            utc = date.toLocaleString('en-us', {timeZone: tz, year: '2-digit', timeZoneName: 'short'}).slice(4),
+            // thenTz不是一个对应正确时间的moment对象，这里只用来提取给定时区的日期时间
+            thenTz = moment(dateString, 'MM/DD/YYYY HH:mm').locale( locale );
+        return then.calendar(null, {sameDay: mw.msg('gadget-lc-today'), lastDay: mw.msg('gadget-lc-yesterday'),
+            lastWeek: formatDate(thenTz) + fromNow(then, now), sameElse: formatDate(thenTz) + fromNow(then, now)}) +
+            (withTime ? ' ' + thenTz.format(time || 'HH:mm') : '') + ' (' + utc + ')';
     };
     mw.hook( 'wikipage.content' ).add(function($content) {
         const now = moment(), // 固定以页面内容生成的时间作为“当前”时点
@@ -110,7 +121,7 @@ if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "s
         console.log('Hook: wikipage.content，开始替换签名时间戳');
         $comments.each(function() {
             const string = this.textContent.match( regExp ),
-                then = moment(string[0] + '00:00+08', 'YYYY-MM-DD HH:mm Z'), // 00:00是未输入时间时的默认值
+                then = moment(string[0] + '00:00+08', 'YYYY-MM-DD HH:mm Z').locale(locale), // 00:00是未输入时间时的默认值
                 isValid = then.isValid() && now.isAfter( then ), // 无效的输入并不会让moment抛出错误，只会警告
                 node = this.splitText( string.index ),
                 $ele = $('<time>', { class: "LocalComments" + (isValid ? '' : ' error'),
