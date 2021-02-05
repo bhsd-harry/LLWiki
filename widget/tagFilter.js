@@ -3,25 +3,24 @@
  * @Author: https://llwiki.org/zh/User:Bhsd
  */
 "use strict";
-/* global mw */
+/* global mw, $ */
 (() => {
-    const main = ($content) => {
-        const $filter = $content.find( '.filter' );
-        if ($filter.length === 0) { return; }
-        console.log('Hook: wikipage.content, 开始添加年表标签筛选事件');
-        const $dl = $content.find('dl:has(.chronology)');
-        $filter.click(() => { // 由于jquery.makeCollapsible，不能delegate
-            $dl.filter( ':has(dd > :visible)' ).toggle( true );
-            $dl.not( ':has(dd > :visible)' ).toggle( false );
+    const detectCollapse = (mutations) => {
+        mutations.forEach(ele => {
+            const $target = $(ele.target);
+            if (!$target.is( 'dd > .mw-collapsible' )) { return; }
+            const $dl = $target.closest( 'dl' );
+            $dl.toggle( $dl.find( 'dd > :not(.mw-collapsed)' ).length > 0 );
         });
     },
-        timer = setInterval(() => {
-        if (!window.jQuery) { return; }
-        clearInterval(timer);
+        main = () => {
         mw.widget = mw.widget || {};
         if (mw.widget.tagFilter) { return; }
-        console.log('End setInterval: jQuery加载完毕，开始执行Widget:年表标签/筛选');
-        mw.hook( 'wikipage.content' ).add(main);
+        // 因为dl折叠需要在jquery.makeCollapsible执行完毕之后，这里借助MutationObserver判断正确时机
+        const observer = new MutationObserver( detectCollapse );
+        observer.observe( document.body, {attributes: true, subtree: true, attributeFilter: ['class']} );
         mw.widget.tagFilter = true;
-    }, 500);
+    };
+    if (window.jQuery) { main(); }
+    else { window.addEventListener('jquery', main); }
 }) ();

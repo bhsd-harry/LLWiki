@@ -8,4 +8,9 @@
 	padding: 2px 4px;
 	margin-right: 0.5rem;
 	border-radius: 3px;
+	transition: background-color ease-out 0.5s;
+}
+.filter.mw-collapsed {
+	display: initial !important;
+	background-color: #ccc !important;
 }
