@@ -62,9 +62,11 @@ if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "s
         {key: 'timezone', type: 'Text', label: 'gadget-lc-tz', help: mw.msg('gadget-lc-tzhelp'), config: {value: tz}},
         {key: 'lang', type: 'CheckboxMultiselect', label: 'gadget-lc-lang', config: {value: lang,
             options: [{data: 'en', label: mw.msg('gadget-lc-en')}]}},
-        {key: 'locale', type: 'Text', label: 'gadget-lc-locale', config: {value: locale, disabled: isEn}},
-        {key: 'date', type: 'Text', label: 'gadget-lc-date', help: helpInfo, config: {value: date, disabled: isEn}},
-        {key: 'time', type: 'Text', label: 'gadget-lc-time', help: helpInfo, config: {value: time, disabled: isEn}}
+        {key: 'locale', type: 'Text', label: 'gadget-lc-locale', config: {value: settings.locale, disabled: isEn}},
+        {key: 'date', type: 'Text', label: 'gadget-lc-date', help: helpInfo,
+            config: {value: settings.date, disabled: isEn}},
+        {key: 'time', type: 'Text', label: 'gadget-lc-time', help: helpInfo,
+            config: {value: settings.time, disabled: isEn}}
     ], fields: [{key: 'i18n', label: 'gadget-lc-i18n', items: [
         {key: 'gadget-lc-y', type: 'Text', label: 'gadget-lc-yy', help: helpPlural,
             config: {value: i18n['gadget-lc-y'], disabled: isEn}

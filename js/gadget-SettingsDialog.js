@@ -207,7 +207,7 @@ SettingsDialog.prototype.saveOptions = function(arg) {
         mw.notify(mw.msg( 'gadget-sd-notify' ), {type: 'success', tag: 'gadget-settings'});
     }) ();
 };
-SettingsDialog.static = {name: 'settingsDialog', tagName: 'div', title: mw.msg('gadget-sd-title'),
+SettingsDialog.static = {name: 'settingsDialog', tagName: 'div', title: mw.msg('gadget-sd-title'), escapable: true,
     actions: [{action: 'save', label: mw.msg('gadget-sd-save'), flags: ['primary', 'progressive']},
         {action: 'cancel', label: mw.msg('ooui-dialog-message-reject'), flags: 'safe'}]
 };
