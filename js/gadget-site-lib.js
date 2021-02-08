@@ -4,6 +4,7 @@
  */
 "use strict";
 /*global OO, wgULS*/
+window.dispatchEvent( new Event('jquery') );
 const pagename = mw.config.get('wgPageName'),
     revid = mw.config.get( 'wgRevisionId' ),
     wgUL = mw.config.get( 'wgUserLanguage' ), // 界面语言
@@ -41,18 +42,19 @@ mw.messages.set( wgULS({
 mw.pagenamee = function() { return mw.util.wikiUrlencode( pagename ); };
 /**
  * @Function: 添加手机版菜单项
- * @Parameter {Array} 形如{icon, text, href}或{icon, msg, href}的对象数组
+ * @Parameter {Array} 形如{icon, text, href, attr}或{icon, msg, href, attr}的对象数组
  * @Parameter {String} FontAwesome图标名称icon
  * @Parameter {String} 文字text（需手动繁简转换）
  * @Parameter {String} mw.messages的键值msg
  * @Parameter {String} 目标地址href
+ * @Parameter {Object} 外层<li>元素的属性
  * @Return {Array} 一组<li>元素
  */
 mw.addMobileLinks = function(links) {
     return links.map(function(ele) {
         return $('<a>', {href: ele.href, html: [ $('<i>', {class: "fa fa-" + (ele.icon || 'arrow-circle-right')}),
              $('<span>', {text: ele.text || mw.msg( ele.msg )})
-        ]}).wrap( '<li>' ).parent();
+        ]}).wrap( '<li>' ).parent().attr( ele.attr || {} );
     });
 };
 /**
@@ -238,8 +240,9 @@ mw.dialog = function(dialog, actions, $message, $title) {
  */
 mw.tipsy = function($container, target, params, $content) {
     const $label = $('<span>'),
-        // 这里不用PopupWidget自带的autoClose功能，因为效果很奇怪
-        popup = new OO.ui.PopupWidget( $.extend({$content: $content || $label, padded: true, width: null}, params) );
+        // 这里不用PopupWidget自带的autoClose功能，因为效果很奇怪；默认样式见mediawiki:gadget-site-styles.css
+        popup = new OO.ui.PopupWidget( $.extend({$content: $content || $label, padded: true, width: null,
+        classes: ['mw-tipsy']}, params) );
     if ($content) { $content.append( $label ); } // 没有title时，$label没有效果
     popup.$element.appendTo( 'body' );
     $container.on('mouseenter focus', target, function() {

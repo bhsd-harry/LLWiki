@@ -106,10 +106,10 @@ if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "s
     },
         display = function(then, withTime, now) { // 不使用moment.js自带的模糊时间方法fromNow
         const date = new Date( then ),
-            dateString = date.toLocaleString('en-us', {timeZone: tz}),
+            dateString = date.toLocaleString('ia', {timeZone: tz}),
             utc = date.toLocaleString('en-us', {timeZone: tz, year: '2-digit', timeZoneName: 'short'}).slice(4),
             // thenTz不是一个对应正确时间的moment对象，这里只用来提取给定时区的日期时间
-            thenTz = moment(dateString, 'MM/DD/YYYY HH:mm').locale( locale );
+            thenTz = moment(dateString, 'DD-MM-YYYY HH:mm').locale( locale );
         return then.calendar(null, {sameDay: mw.msg('gadget-lc-today'), lastDay: mw.msg('gadget-lc-yesterday'),
             lastWeek: formatDate(thenTz) + fromNow(then, now), sameElse: formatDate(thenTz) + fromNow(then, now)}) +
             (withTime ? ' ' + thenTz.format(time || 'HH:mm') : '') + ' (' + utc + ')';
