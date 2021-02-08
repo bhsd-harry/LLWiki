@@ -8,14 +8,13 @@
 /*global mw, $, moment, wgUCS*/
 (() => {
     let counter;
-    // 处理一个 .counting 节点，显示时间
-    const fromNow = function() {
+    const $num = $('<span>', {class: 'countdown-num'}),
+        fromNow = function() { // 处理一个 .counting 节点，显示时间
         const $ele = $(this),
-            now = moment(),
+            now = moment(), // now必须是一个新的moment对象
             then = moment( $ele.data('target') ), // 必需复制一个moment对象再进行操作
             isBefore = then.isBefore( now ),
             [early, late] = isBefore ? [then, now] : [now, then],
-            $num = $('<span>', {class: 'countdown-num'}),
             year = late.diff( early, 'year' ),
             month = late.diff( early.add(year, 'year'), 'month' ),
             day = year ? null : late.diff( early.add(month, 'month'), 'day' ),
@@ -45,25 +44,24 @@
                 if (then.isValid()) {
                     $ele.data('target', then).addClass( 'counting' )
                          // 以本地时间替换title，之后交给Widget:Abbr就好
-                        .attr('title', then.format( 'YYYY年MM月DD日HH:mm ([UTC]Z' ).slice(0, -3) + ')');
+                        .attr('title', then.format( 'llll ([UTC]Z' ).slice(0, -3) + ')');
                 }
                 else { $ele.toggleClass('error countdownNode').text( mw.msg('widget-cd-error') ); }
             });
             const $counting = $nodes.filter( '.counting' );
             if ($counting.length === 0) { return; }
-            console.log('Hook: wikipage.content，开始生成新增的倒计时');
+            console.log('Hook: wikipage.content，开始添加倒计时');
             run();
             $counting.removeClass( 'countdownNode' ); // 新节点至少要执行过一次run()后才能移除countdownNode类
             counter = counter || setInterval(run, 1000); // 防止重复setInterval
         });
     },
-        timer = setInterval(() => {
-        if (!window.jQuery) { return; }
-        clearInterval(timer);
+        handler = () => {
         mw.widget = mw.widget || {};
         if (mw.widget.countdown) { return; } // 不要和mw.countdown搞混
-        console.log('End setInterval: jQuery加载完毕，开始执行Widget:Countdown');
         mw.hook( 'wikipage.content' ).add( main );
         mw.widget.countdown = true;
-    }, 500);
+    };
+    if (window.jQuery) { handler(); }
+    else { window.addEventListener( 'jquery', handler ); }
 }) ();

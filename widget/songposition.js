@@ -21,7 +21,7 @@
             $content.find( target ).each(function() { map.set(this, $(this).next().find( 'img' )); });
         });
         mw.loader.using(['oojs-ui-core', 'ext.gadget.site-lib']).then(() => {
-            mw.tipsy($body, target, {classes: ['member-popup', 'mw-tipsy']}, $label);
+            mw.tipsy($body, target, {id: 'member-popup'}, $label);
         });
         mw.widget.songposition = true;
     };

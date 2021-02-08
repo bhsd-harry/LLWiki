@@ -7,9 +7,9 @@
 (() => {
     const detectCollapse = (mutations) => {
         mutations.forEach(ele => {
-            const $target = $(ele.target);
-            if (!$target.is( 'dd > .mw-collapsible' )) { return; }
-            const $dl = $target.closest( 'dl' );
+            const $target = $(ele.target),
+                $dl = $target.closest( 'dl' );
+            if (!$target.is( 'dd > .mw-collapsible:has( .chronology )' )) { return; }
             $dl.toggle( $dl.find( 'dd > :not(.mw-collapsed)' ).length > 0 );
         });
     },

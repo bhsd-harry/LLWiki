@@ -1,26 +1,33 @@
-.settingsDialog .oo-ui-window-frame {
+#settingsDialog .oo-ui-window-frame {
 	height: 100vh !important;
 }
-.settingsDialog .oo-ui-checkboxMultiselectInputWidget, .settingsDialog .oo-ui-fieldLayout-help {
+#settingsDialog .oo-ui-checkboxMultiselectInputWidget, #settingsDialog .oo-ui-fieldLayout-help {
 	padding-top: 0.28571429em;
 }
 /* popup形式的帮助信息 */
-.settingsDialog  .oo-ui-popupWidget-popup {
+#settingsDialog  .oo-ui-popupWidget-popup {
 	width: max-content !important;
 	max-width: 320px;
 }
-.settingsDialog .oo-ui-popupWidget-body-padded {
+#settingsDialog .oo-ui-popupWidget-body-padded {
 	margin: 0.2em 0.5em;
 	font-size: small;
 }
-.settingsDialog .oo-ui-fieldsetLayout {
+#settingsDialog .oo-ui-fieldsetLayout {
 	margin-top: 0.85714286em;
 }
-.panel-btns {
+#settingsDialog-btns {
 	text-align: center;
 	margin-top: 0.85714286em;
 }
-.skin-minerva .settingsDialog .oo-ui-processDialog-location {
+#settingsDialog-code {
+	text-align: left;
+	margin-top: 0.85714286em;
+}
+#settingsDialog-code pre {
+	margin-top: 0.28571429em;
+}
+.skin-minerva #settingsDialog .oo-ui-processDialog-location {
 	text-align: center;
 	margin-left: 0;
 }

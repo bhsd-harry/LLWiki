@@ -11,18 +11,18 @@
             $img = $ele.children( 'img' ).css('object-position', $ele.data( 'position' ));
         if ($ele.length === 0) { return; }
         console.log('Hook: wikipage.content, 开始添加背景图片');
+        // Wikiplus能预览到真实效果，且关闭Wikiplus时不会留下
         $ele.closest('body, #Wikiplus-Quickedit-Preview-Output').append( $ele )
             .find( '#p-logo' ).css('visibility', $ele.data('logo') == 'off' ? 'hidden' : ''); // Wikiplus预览不隐藏logo
         $img.on('load', () => { $ele.fadeIn( 'slow' ); });
         if ($img.prop( 'complete' )) { $img.trigger( 'load' ); }
     },
-        timer = setInterval(() => {
-        if (!window.jQuery) { return; }
-        clearInterval(timer);
+        handler = () => {
         mw.widget = mw.widget || {};
         if (mw.widget.bgimage || mw.config.get('skin') == 'minerva') { return; }
-        console.log('End setInterval: jQuery加载完毕，开始执行Widget:Bgimage');
         mw.hook( 'wikipage.content' ).add(main);
         mw.widget.bgimage = true;
-    }, 500);
+    };
+    if (window.jQuery) { handler(); }
+    else { window.addEventListener( 'jquery', handler ); }
 }) ();
