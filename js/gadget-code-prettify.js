@@ -23,6 +23,10 @@ mw.hook( 'wikipage.content' ).add(function($content) {
     if ($block.length === 0) { return; }
     console.log('Hook: wikipage.content, 开始执行语法高亮');
     const path = '//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js';
+    // polyfill，用于低版本维基站点，这里用了ES6语法
+    if (!mw.loader.getScript) {
+        mw.loader.getScript = (url) => $.get({url, dataType: 'script', cache: true});
+    }
     (window.hljs ? Promise.resolve() : mw.loader.getScript( path )).then(function() { // 不重复下载脚本
         $block.each(function() { hljs.highlightBlock( this ); }).addClass( 'highlighted' ).filter( '.linenums' )
             .html(function() { // 添加行号。这里不使用<table>排版，而是使用<ol>
