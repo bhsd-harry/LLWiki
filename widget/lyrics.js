@@ -17,19 +17,16 @@
         addCSS = ($content) => {
         // 考虑到快速编辑小工具的页内预览，members有增无减
         members = [...new Set([...members, ...$content.find( '.memberblock' ).map(function() {
-            return [...this.classList].filter(e => e.endsWith('-block')).toString().slice(0, -6);
+            return [...this.classList].filter(e => e.endsWith( '-block' )).toString().slice(0, -6);
         })])];
         style.textContent = members.map(ele => ['gradient', 'single'].map(type =>
             `.${ele}-block.mw-collapsed ~ .Lyrics_box .Lyrics_${type}:not(.${ele}-lyrics)`).join()
         ).join() + '{ -webkit-text-fill-color: #ddd; text-fill-color: #ddd; }';
     },
-        timer = setInterval(() => {
-        if (!window.jQuery) { return; }
-        clearInterval(timer);
+        main = () => {
         mw.widget = mw.widget || {};
         if (mw.widget.lyrics) { return; }
-        console.log('End setInterval: jQuery加载完毕，开始执行Widget:Lyrics');
-        const $body = $('body');
+        const $body = $(document.body);
         $(resize);
         mw.loader.using( 'mediawiki.util' ).then(() => {
             const windowResize = mw.util.debounce(200, resize);
@@ -41,10 +38,16 @@
             console.log('Hook: wikipage.content, 开始更新演唱者筛选样式表');
             addCSS($content);
         });
+        mw.hook( 'wikipage.collapsibleContent' ).add($content => {
+            console.log('Hook: wikipage.collapsibleContent, 移除演唱者标注的tabindex');
+            $content.filter( '.memberblock' ).removeAttr( 'tabindex' );
+        });
         mw.resizeLyrics = resize;
         mw.loader.using(['oojs-ui-core', 'ext.gadget.site-lib']).then(() => {
             mw.tipsy($body, '.Lyrics_single, .Lyrics_gradient', {classes: ['Lyrics_tipsy']});
         });
         mw.widget.lyrics = true;
-    }, 500);
+    };
+    if (window.jQuery) { main(); }
+    else { window.addEventListener('jquery', main); }
 }) ();

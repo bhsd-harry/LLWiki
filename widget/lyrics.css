@@ -53,6 +53,9 @@
 .Lyrics_gradient ruby, .Lyrics_gradient rb, .Lyrics_gradient rt {
 	background: inherit; /* 只有Safari需要rb */
 }
+.Lyrics_gradient:hover, .Lyrics_single:hover {
+	filter: drop-shadow(2px 2px #e8e8e8);
+}
 .Lyrics_tipsy .oo-ui-popupWidget-body-padded {
 	font-size: 0.8em;
 	margin: 5px 8px 4px;
@@ -87,6 +90,9 @@
 	display: none; /* 移动版提前加载样式 */
 }
 
+.memberblock, .Lyrics_gradient, .Lyrics_single {
+	transition: all ease-in-out 0.3s;
+}
 .memberblock.mw-collapsed {
 	box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
