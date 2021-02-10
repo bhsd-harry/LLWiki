@@ -7,9 +7,8 @@
 "use strict";
 /*global mw, $, moment, wgUCS*/
 (() => {
-    let counter;
-    const $num = $('<span>', {class: 'countdown-num'}),
-        fromNow = function() { // 处理一个 .counting 节点，显示时间
+    let counter, $num;
+    const fromNow = function() { // 处理一个 .counting 节点，显示时间
         const $ele = $(this),
             now = moment(), // now必须是一个新的moment对象
             then = moment( $ele.data('target') ), // 必需复制一个moment对象再进行操作
@@ -57,6 +56,7 @@
         });
     },
         handler = () => {
+        $num = $('<span>', {class: 'countdown-num'});
         mw.widget = mw.widget || {};
         if (mw.widget.countdown) { return; } // 不要和mw.countdown搞混
         mw.hook( 'wikipage.content' ).add( main );

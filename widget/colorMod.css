@@ -24,11 +24,14 @@ div#mw-indicator-colorMod { /* 只作用于桌面版 */
 .mw-parser-output .page-actions-menu__list-item {
 	display: none;
 }
-.colorMod-wrapper {
+#colorMod-wrapper {
 	text-align: center;
 }
-.colorMod-wrapper > select { /* Safari和Firefox会自动添加右边框样式 */
+#colorMod-wrapper select { /* Safari和Firefox会自动添加右边框样式 */
 	font-size: 16px; /* 手机版需要 */
 	margin: 0 0.5em;
 	min-width: calc(2ch + 2em);
+}
+#colorMod-wrapper span, [style*="color:#fee155"], [style*="color:#a0fff9"] {
+	transition: all linear 0.2s;
 }

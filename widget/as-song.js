@@ -28,13 +28,12 @@
             });
         });
     },
-        timer = setInterval(() => {
-        if (!window.jQuery) { return; }
-        clearInterval(timer);
+        handler = () => {
         mw.widget = mw.widget || {};
         if (mw.widget.asSong) { return; }
-        console.log('End setInterval: jQuery加载完毕，开始执行Widget:As-song');
         mw.hook( 'wikipage.content' ).add(main);
         mw.widget.asSong = true;
-    }, 500);
+    };
+    if (window.jQuery) { handler(); }
+    else { window.addEventListener('jquery', handler); }
 }) ();
