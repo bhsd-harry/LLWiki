@@ -5,10 +5,23 @@
 	width: auto !important;
 	white-space: nowrap;
 }
+.sif-song-table .tabs-label {
+	transition-delay: 0.3s;
+}
+.sif-song-table .tabs-label:hover {
+	transition-delay: 0s;
+}
 .sif-song-table .tabs-content {
 	border-radius: 0 0 8px 8px;
 	width: auto;
 	min-width: 100%;
+	left: 0;
+	transition: height linear 0.3s;
+	overflow: hidden;
+}
+.sif-song-table .tabs-dropdown:not(:hover) .tabs-content {
+	height: 0 !important;
+	border-bottom: none;
 }
 .sif-song-table .tabs-dropdown ul {
 	padding: 0;
