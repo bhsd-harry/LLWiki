@@ -12,7 +12,7 @@
         const target = '.member-symbol',
             map = new Map(),
             $label = $('<div>', {html: '<div>'}),
-            $body = $( document.body ).on('mouseenter focus', target, function() {
+            $body = $( '#bodyContent' ).on('mouseenter focus', target, function() {
             $label.children( 'div' ).html( map.get(this) );
         });
         mw.hook( 'wikipage.content' ).add($content => { // 更新图片对应关系

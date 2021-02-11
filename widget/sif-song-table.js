@@ -18,7 +18,7 @@
             const $this = $(this),
                 $menu = $this.children( '.tabs-content' );
             $this.css('width', $this.children( '.tabs-content' ).width());
-            $menu.css({height: $menu.height(), left: ''});
+            $menu.css('height', $menu.height());
         });
         $dropdown.find( 'li' ).not(function() {
             return $(this).closest( '.sif-song-table' ).find( `[data-${formatData( this )}]` ).length;
@@ -29,11 +29,13 @@
         if (mw.widget.sifSongTable) { return; }
         isMobile = mw.config.get('skin') == 'minerva';
         mw.hook( 'wikipage.content' ).add( main );
-        $(document.body).on('click', '.sif-song-table .tabs-content', function(e) {
+        $('#bodyContent').on('click', '.sif-song-table .tabs-content', function(e) {
             const option = e.target,
                 lvl = formatData( option );
-            $(this).prev().text( option.textContent ).closest( '.sif-song-table' ).find( '.sif-song-option' )
-                .text(function() { return this.dataset[lvl] || '/'; });
+            $(this).css('left', '-1000000px').prev().text( option.textContent ).closest( '.sif-song-table' )
+                .find( '.sif-song-option' ).text(function() { return this.dataset[lvl] || '/'; });
+        }).on(isMobile ? 'click' : 'mouseenter', '.sif-song-table .tabs-label', function() {
+            $(this).next().css('left', '');
         });
         mw.widget.sifSongTable = true;
     };

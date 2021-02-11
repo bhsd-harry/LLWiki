@@ -135,5 +135,5 @@ if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "s
         });
         mw.hook( 'local.comments' ).fire( $content );
     });
-    mw.tipsy($(document.body), '.LocalComments', {anchor: false}); // 尽量采取delegate的形式处理交互事件
+    mw.tipsy($('#bodyContent'), '.LocalComments', {anchor: false}); // 尽量采取delegate的形式处理交互事件
 }

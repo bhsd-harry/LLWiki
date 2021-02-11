@@ -25,10 +25,7 @@
             // 调色板对话框的文字提示
             $intro = $('<p>', {text: mw.msg( 'widget-cm-intro' )}),
             // 2. 准备核心元素、函数和事件
-            $wrapper = $('<div>', {id: 'colorMod-wrapper'}).on('change', 'select', function() {
-            const $this = $(this);
-            $this.next().css('color', $this.data( 'color' )[ this.value ]);
-        }),
+            $wrapper = $('<div>', {id: 'colorMod-wrapper'}),
             wrapperPool = {},
             // 这个函数用于生成调色板对话框的select，避免重复劳动。
             generateWrapper = (key, i) => {
@@ -37,7 +34,8 @@
             wrapperPool[key] = wrapperPool[key] || $('<div>', {html: [
                 mw.msg( `widget-cm-${key}` ), mw.msg('widget-cm-label'),
                 // value不能作为attr
-                $('<select>', {html: color.map((ele, i) => new Option(`${i * 5}%`, i))}).val(val).data('color', color),
+                $('<select>', {html: color.map((ele, i) => new Option(`${i * 5}%`, i))}).val( val )
+                    .change(function() { $(this).next().css('color', color[ this.value ]); }),
                 $('<span>', {text: '文字'}).css('color', color[val])
             ]});
             return wrapperPool[key];
@@ -51,12 +49,11 @@
             isMobile = mw.config.get('skin') == 'minerva',
             actions = [ {label: mw.msg( "ooui-dialog-message-reject" )},
             {label: mw.msg( "ooui-dialog-message-accept" ), flags: 'progressive'}
-        ];
-        // delegate事件
-        $( document.body ).on('click', '#mw-indicator-colorMod', () => {
+        ],
+            openDialog = () => {
             if (!dialog) {
                 dialog = new OO.ui.MessageDialog();
-                dialog.$element.on('click', '.oo-ui-actionWidget', function() {
+                dialog.$element.on('click', '.oo-ui-actionWidget', function() { // 采用delegate，避免反复添加事件
                     const $select = $wrapper.detach().find( 'select' ); // 防止再次打開時丟失事件
                     if (!$(this).hasClass( 'oo-ui-flaggedElement-progressive' )) { // 取消键
                         $select.val(i => mvals[i]).change(); // 还原选项
@@ -71,7 +68,8 @@
                 });
             }
             mw.dialog(dialog, actions, [$intro, $wrapper], mw.msg( 'widget-cm-dialog' ));
-        });
+        };
+        $('.mw-indicators').on('click', '#mw-indicator-colorMod', openDialog); // 桌面版比较麻烦，采用delegate
         // 3. 更新数据
         mw.hook( 'wikipage.content' ).add($content => {
             const $indicator = $content.find( '.mw-parser-output .page-actions-menu__list-item' );
@@ -80,7 +78,7 @@
             mkeys = Object.keys( $indicator.children( 'span' ).data() );
             // 手机版创建调色板按钮，需要防止二次创建
             if (isMobile && $('#page-actions > #mw-indicator-colorMod').length === 0) {
-                $indicator.attr('id', 'mw-indicator-colorMod').insertAfter( '#language-selector' )
+                $indicator.attr('id', 'mw-indicator-colorMod').insertAfter( '#language-selector' ).click( openDialog )
                     .children().wrapAll('<a>'); // Wikitext无法添加<a>元素，只能在这里用JS添加
             }
             // 根据localStorage调整初始颜色

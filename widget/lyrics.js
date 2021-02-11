@@ -26,7 +26,7 @@
         main = () => {
         mw.widget = mw.widget || {};
         if (mw.widget.lyrics) { return; }
-        const $body = $(document.body);
+        const $body = $('#bodyContent');
         $(resize);
         mw.loader.using( 'mediawiki.util' ).then(() => {
             const windowResize = mw.util.debounce(200, resize);

@@ -81,6 +81,15 @@ const $helpPage = $('<a>', {target: '_blank', text: mw.msg('gadget-sd-helptext')
     $helpPage.attr('href', mw.util.getUrl('Help:小工具/' + params.help));
     $element.prepend( $help ).append( $btns );
     $code.hide();
+},
+    openDialog = function(e) {
+    e.preventDefault();
+    const dialog = mw.settingsDialog,
+        content = dialog.content,
+        name = content.getCurrentTabPanelName(),
+        $element = content.getCurrentTabPanel().$element,
+        params = dialog.getObject( name );
+    dialog.open().opening.then(function() { buildForm(params, $element); });
 };
 function SettingsDialog() { // constructor只添加一个id，剩下的交给addTab方法逐一添加小工具
     SettingsDialog.super.call(this, {id: 'settingsDialog'});
@@ -116,12 +125,13 @@ SettingsDialog.prototype.addTab = function(params) {
     if (mw.config.get('skin') == 'minerva') {
         mw.hook( 'mobile.menu' ).add(function($menu) {
             console.log('Hook: mobile.menu, 开始添加小工具设置按钮');
-            mw.addMobileLinks([{icon: 'user-cog', msg: 'gadget-sd-title', attr: {id: 'ca-settingsDialog'}}])[0]
+            $(mw.addMobileLinks( [{icon: 'user-cog', msg: 'gadget-sd-title'}] )).click( openDialog )
                 .appendTo( $menu.find('ul:not(.hlist)').last() );
         });
     } else {
         mw.util.addPortletLink('p-cactions', '#', mw.msg('gadget-sd-title'), 'ca-settingsDialog',
             mw.msg('gadget-sd-tooltip'));
+        $('#ca-settingsDialog').click( openDialog );
     }
     ready = true;
 };
@@ -273,12 +283,3 @@ if (!mw.windowManager) {
     mw.windowManager.$element.appendTo( $body );
 }
 mw.windowManager.addWindows( [mw.settingsDialog] ); // 此时已经初始化
-$body.on('click', '#ca-settingsDialog', function(e) {
-    e.preventDefault();
-    const dialog = mw.settingsDialog,
-        content = dialog.content,
-        name = content.getCurrentTabPanelName(),
-        $element = content.getCurrentTabPanel().$element,
-        params = dialog.getObject( name );
-    dialog.open().opening.then(function() { buildForm(params, $element); });
-});
