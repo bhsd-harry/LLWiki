@@ -1,0 +1,23 @@
+.start-screen {
+	text-align: center;
+	position: sticky;
+	bottom: 3px;
+	white-space: nowrap;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch; /* mobile Safari */
+	scroll-snap-type: x mandatory; /* Safari无效 */
+}
+.start-screen a {
+	scroll-snap-align: start;
+	display: inline-block; /* Chrome和Edge */
+}
+.start-screen table {
+	display: inline-table;
+	margin: 0;
+	width: auto !important;
+}
+
+/* 提前加载FontAwesome部分CSS */
+.fa, .fab, .fad, .fal, .far, .fas {
+	display: inline-block;
+}
