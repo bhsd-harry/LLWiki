@@ -61,20 +61,19 @@ const $helpPage = $('<a>', {target: '_blank', text: mw.msg('gadget-sd-helptext')
     (arr || []).forEach(function(ele) { ele.widget.setValue( settings ? settings[ele.key] || '' : '' ); });
 },
     getValues = function(arr) { // 获取一组OOUI widget的值
-    const settings = {};
-    (arr || []).filter(function(ele) { return !ele.widget.isDisabled(); })
-        .forEach(function(ele) { settings[ ele.key ] = ele.widget.getValue() || undefined; });
-    return $.extend({}, settings); // 移除undefined
+    return Object.fromEntries( (arr || []).map(function(ele) {
+        return [ele.key, !ele.widget.isDisabled() && ele.widget.getValue()];
+    }).filter(function(ele) { return ele[1]; }) );
 },
     buildForm = function(params, $element) {
     if (!params.ready) { // 生成表单，只需要执行一次，不用写成SettingsDialog的内置方法
-        (params.items || []).forEach(function(ele) { $element.append( buildWidget(ele).$element ); });
-        (params.fields || []).forEach(function(ele) {
+        $element.append( (params.items || []).map(function(ele) { return buildWidget(ele).$element; }) );
+        $element.append( (params.fields || []).map(function(ele) {
             const field = new OO.ui.FieldsetLayout({label: mw.msg( ele.label ), help: ele.help, helpInline: true});
             deleteKeys(['label', 'help'], ele);
             field.addItems( (ele.items || []).map( buildWidget ) );
-            $element.append( field.$element );
-        });
+            return field.$element;
+        }) );
         params.ready = true;
         mw.hook( 'settings.dialog' ).fire( params ); // 生成一个Hook
     }
@@ -164,13 +163,11 @@ SettingsDialog.prototype.getPanel = function(arg) {
  * @Return {Object} 小工具設置
  */
 SettingsDialog.prototype.generateOptions = function(arg, flag) {
-    const gadget = this.getObject(arg),
-        settings = getValues( gadget.items );
-    (gadget.fields || []).forEach(function(ele) {
+    const gadget = this.getObject(arg);
+    return $.extend( getValues( gadget.items ), Object.fromEntries( (gadget.fields || []).map(function(ele) {
         const obj = getValues( ele.items );
-        settings[ ele.key ] = flag && $.isEmptyObject( obj ) ? undefined : obj;
-    });
-    return settings;
+        return [ele.key, flag && $.isEmptyObject( obj ) ? undefined : obj];
+    }) ) );
 };
 /**
  * @Description: 保存设置
