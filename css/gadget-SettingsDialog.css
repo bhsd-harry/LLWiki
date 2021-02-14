@@ -1,7 +1,8 @@
 #settingsDialog .oo-ui-window-frame {
 	height: 100vh !important;
 }
-.skin-minerva #settingsDialog input, .skin-minerva #settingsDialog .oo-ui-numberInputWidget-field {
+.skin-minerva #settingsDialog input, .skin-minerva #settingsDialog select,
+.skin-minerva #settingsDialog .oo-ui-numberInputWidget-field {
 	font-size: 16px;
 }
 #settingsDialog .oo-ui-numberInputWidget {
@@ -32,6 +33,11 @@
 }
 #settingsDialog-code pre {
 	margin-top: 0.28571429em;
+	background-color: #f8f9fa;
+	border: 1px solid #eaecf0;
+	padding: 1em;
+	white-space: pre-wrap;
+	word-wrap: break-word;
 }
 .skin-minerva #settingsDialog .oo-ui-processDialog-location {
 	text-align: center;

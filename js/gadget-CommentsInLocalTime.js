@@ -30,24 +30,22 @@ if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "s
         'gadget-lc-label': '以本地时区显示签名时间戳', 'gadget-lc-time': '时间格式', 'gadget-lc-help': '请参考$1文档。',
         'gadget-lc-lang': '使用预定义的时间格式', 'gadget-lc-en': '英语格式', 'gadget-lc-locale': '语言',
         'gadget-lc-plural': '英语单复数请使用PLURAL魔术字，如$1。', 'gadget-lc-tz': '显示时区',
-        'gadget-lc-bracket': '请使用$1防止字母转换为时间。', 'gadget-lc-tzhelp': '请使用IANA时区名称。',
-        'gadget-lc-tzerror': '错误的时区名称！当前显示为本地时区。', 'gadget-lc-offsetHelp': '优先级低于时区名称。',
-        'gadget-lc-tzerror-offset': '错误的时区名称！改为由UTC偏移量设置时区。'
+        'gadget-lc-tzhelp': '请使用IANA时区名称。', 'gadget-lc-tzerror': '错误的时区名称！当前显示为本地时区。',
+        'gadget-lc-offsetHelp': '优先级低于时区名称。', 'gadget-lc-tzerror-offset': '错误的时区名称！改为由UTC偏移量设置时区。'
     }, {
         'gadget-lc-label': '以本地時區顯示簽名時間戳', 'gadget-lc-time': '時間格式', 'gadget-lc-help': '請參考$1文檔。',
         'gadget-lc-lang': '使用預定義的時間格式', 'gadget-lc-en': '英語格式', 'gadget-lc-locale': '語言',
         'gadget-lc-plural': '英語單複數請使用PLURAL魔術字，如$1。', 'gadget-lc-tz': '顯示時區',
-        'gadget-lc-bracket': '請使用$1防止字母轉換為時間。', 'gadget-lc-tzhelp': '請使用IANA時區名稱。',
-        'gadget-lc-tzerror': '錯誤的時區名稱！當前顯示為本地時區。', 'gadget-lc-offsetHelp': '優先級低於時區名稱。',
-        'gadget-lc-tzerror-offset': '錯誤的時區名稱！改為由UTC偏移量設置時區。'
+        'gadget-lc-tzhelp': '請使用IANA時區名稱。', 'gadget-lc-tzerror': '錯誤的時區名稱！當前顯示為本地時區。',
+        'gadget-lc-offsetHelp': '優先級低於時區名稱。', 'gadget-lc-tzerror-offset': '錯誤的時區名稱！改為由UTC偏移量設置時區。'
     }), wgUCS( // 这些消息用于页面内容
         {'gadget-lc-error': '错误的签名时间！', 'gadget-lc-m': '$1个月前', 'gadget-lc-tip': "原始时间戳："},
         {'gadget-lc-error': '錯誤的簽名時間！', 'gadget-lc-m': '$1個月前', 'gadget-lc-tip': "原始時間戳："}
-    ), {'gadget-lc-date': '日期格式', 'gadget-lc-y': '$1年前', 'gadget-lc-d': "$1天前", 'gadget-lc-today': '今天',
-        'gadget-lc-yesterday': '昨天', 'gadget-lc-i18n': '本地化文字消息', 'gadget-lc-yy': '若干年前',
-        'gadget-lc-mm': '若干月前', 'gadget-lc-dd': '若干天前', 'gadget-lc-td': '今天', 'gadget-lc-yd': '昨天',
-        'gadget-lc-offset': 'UTC偏移量'
-    }, isEn ? { 'gadget-lc-today': '[Today]', 'gadget-lc-yesterday': '[Yesterday]',
+    ), { 'gadget-lc-offset': 'UTC偏移量', 'gadget-lc-date': '日期格式', 'gadget-lc-y': '$1年前', 'gadget-lc-d': "$1天前",
+        'gadget-lc-today': '今天', 'gadget-lc-yesterday': '昨天', 'gadget-lc-i18n': '本地化文字消息',
+        'gadget-lc-yy': '若干年前', 'gadget-lc-mm': '若干月前', 'gadget-lc-dd': '若干天前', 'gadget-lc-td': '今天',
+        'gadget-lc-yd': '昨天'
+    }, isEn ? { 'gadget-lc-today': 'Today', 'gadget-lc-yesterday': 'Yesterday',
         'gadget-lc-y': '$1 year{{PLURAL:$1||s}} ago', 'gadget-lc-m': '$1 month{{PLURAL:$1||s}} ago',
         'gadget-lc-d': '$1 day{{PLURAL:$1||s}} ago'
     } : i18n) );
@@ -60,18 +58,20 @@ if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "s
     // 4. 小工具设置
     const helpInfo = new OO.ui.HtmlSnippet( mw.msg('gadget-lc-help', $('<a>', { target: "_blank", text: 'moment.js',
         href: "//momentjscom.readthedocs.io/en/latest/moment/04-displaying/01-format/" }).prop( 'outerHTML' )) ),
-        helpI18n = new OO.ui.HtmlSnippet( mw.msg('gadget-lc-bracket', '<code>[]</code>') ),
-        helpPlural = new OO.ui.HtmlSnippet( mw.msg('gadget-lc-plural', '<br><code>{{PLURAL:$1|day|days}}</code>') );
+        helpPlural = new OO.ui.HtmlSnippet( mw.msg('gadget-lc-plural', '<br><code>{{PLURAL:$1|day|days}}</code>') ),
+        locales = moment.locales();
     mw.settingsDialog.addTab({name: 'CommentsInLocalTime', label: 'gadget-lc-label', items: [
         {key: 'timezone', type: 'Text', label: 'gadget-lc-tz', help: mw.msg('gadget-lc-tzhelp'), config: {value: tz}},
         {key: 'utcoffset', type: 'Number', label: 'gadget-lc-offset', help: mw.msg('gadget-lc-offsetHelp'), config:
-            {value: offset, max: 12, min: -12, step: 1, inputFilter: function(num) { return num.replace('+', ''); }}},
-        {key: 'lang', type: 'CheckboxMultiselect', label: 'gadget-lc-lang', config: {value: lang,
-            options: [{data: 'en', label: mw.msg('gadget-lc-en')}]}},
-        {key: 'locale', type: 'Text', label: 'gadget-lc-locale', config: {value: settings.locale, disabled: isEn}},
-        {key: 'date', type: 'Text', label: 'gadget-lc-date', help: helpInfo,
-            config: {value: settings.date, disabled: isEn}},
-        {key: 'time', type: 'Text', label: 'gadget-lc-time', help: helpInfo,
+            {value: offset, max: 12, min: -12, step: 1, inputFilter: function(num) { return num.replace('+', ''); }}
+        }, {key: 'lang', type: 'CheckboxMultiselect', label: 'gadget-lc-lang',
+            config: {value: lang, options: [{data: 'en', label: mw.msg('gadget-lc-en')}]}
+        }, {key: 'locale', type: 'Dropdown', label: 'gadget-lc-locale', config: {
+            options: locales.map(function(ele) { return {data: ele}; }), value: settings.locale || '', disabled: isEn,
+            inputFilter: function(locale) { return locales.includes( locale ) ? locale : moment.locale(); }}
+        }, {key: 'date', type: 'Text', label: 'gadget-lc-date', help: helpInfo,
+            config: {value: settings.date, disabled: isEn}
+        }, {key: 'time', type: 'Text', label: 'gadget-lc-time', help: helpInfo,
             config: {value: settings.time, disabled: isEn}}
     ], fields: [{key: 'i18n', label: 'gadget-lc-i18n', items: [
         {key: 'gadget-lc-y', type: 'Text', label: 'gadget-lc-yy', help: helpPlural,
@@ -80,9 +80,9 @@ if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "s
             config: {value: i18n['gadget-lc-m'], disabled: isEn}
         }, {key: 'gadget-lc-d', type: 'Text', label: 'gadget-lc-dd', help: helpPlural,
             config: {value: i18n['gadget-lc-d'], disabled: isEn}
-        }, {key: 'gadget-lc-today', type: 'Text', label: 'gadget-lc-td', help: helpI18n,
+        }, {key: 'gadget-lc-today', type: 'Text', label: 'gadget-lc-td',
             config: {value: i18n['gadget-lc-today'], disabled: isEn}
-        }, {key: 'gadget-lc-yesterday', type: 'Text', label: 'gadget-lc-yd', help: helpI18n,
+        }, {key: 'gadget-lc-yesterday', type: 'Text', label: 'gadget-lc-yd',
             config: {value: i18n['gadget-lc-yesterday'], disabled: isEn}
         }
     ]}], help: '以本地时区显示签名时间戳'});
@@ -112,7 +112,8 @@ if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "s
     },
         display = function(then, withTime, now) { // 不使用moment.js自带的模糊时间方法fromNow
         const thenTz = mw.convertTimezone(then, tz || offset);
-        return then.calendar(null, { sameDay: mw.msg('gadget-lc-today'), lastDay: mw.msg('gadget-lc-yesterday'),
+        return then.calendar(null, {
+            sameDay: '[' + mw.msg('gadget-lc-today') + ']', lastDay: '[' + mw.msg('gadget-lc-yesterday') + ']',
             lastWeek: formatDate(thenTz[0]) + fromNow(then, now), sameElse: formatDate(thenTz[0]) + fromNow(then, now)
         }) + (withTime ? ' ' + thenTz[0].format(time || 'HH:mm') : '') + ' (' + thenTz[1] + ')';
     };

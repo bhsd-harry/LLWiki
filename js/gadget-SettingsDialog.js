@@ -270,7 +270,7 @@ SettingsDialog.prototype.export = function(arg) {
 SettingsDialog.prototype.standardExport = function(arg) {
     const name = this.getName(arg),
         settings = this.standardSaveOptions(arg);
-    return 'mw.gadgets = $.extend(mw.gadgets, {' + name + ': ' + JSON.stringify( settings ) + ' });';
+    return 'mw.gadgets = $.extend(mw.gadgets, {' + name + ': ' + JSON.stringify(settings, null, '\t') + ' });';
 };
 SettingsDialog.static = {name: 'settingsDialog', tagName: 'div', title: mw.msg('gadget-sd-title'), escapable: true,
     actions: [{action: 'save', label: mw.msg('gadget-sd-save'), flags: ['primary', 'progressive']},
