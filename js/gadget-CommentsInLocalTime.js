@@ -23,7 +23,7 @@ if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "s
         time = isEn ? 'LT' : settings.time,
         locale = isEn ? 'en' : settings.locale || '',
         i18n = settings.i18n || {},
-        offset = settings.utcoffset || '';
+        offset = settings.utcoffset;
     var tz = settings.timezone;
     // 2. 设置本地化消息
     mw.messages.set( $.extend( wgULS({ // 这些消息用于小工具设置
@@ -119,7 +119,7 @@ if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "s
     };
     mw.hook( 'wikipage.content' ).add(function($content) {
         const now = moment(), // 固定以页面内容生成的时间作为“当前”时点
-            $comments = $content.find('p, dd').contents().filter(function() {
+            $comments = $content.find('p, dd, div').contents().filter(function() {
             return this.nodeType == 3 && regExp.test( this.textContent ); // 合法的时间戳总是text节点
         });
         if ($comments.length === 0) { return; }

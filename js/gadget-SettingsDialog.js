@@ -15,62 +15,63 @@
  */
 "use strict";
 /* global OO, hljs, wgULS */
-//避免使用API加载消息，直接手动添加
+// 1. 设置繁简文字信息
 mw.messages.set( wgULS({
-    'gadget-sd-title': '小工具设置', 'gadget-sd-notify': '您的设置已保存！新设置将于刷新页面后生效。',
-    'gadget-sd-tooltip': '为当前浏览器设置小工具偏好', 'gadget-sd-back': '还原', 'gadget-sd-save': '保存',
+    'gadget-sd-copy': '请将以下代码添加至您的', 'gadget-sd-notify': '您的设置已保存！新设置将于刷新页面后生效。',
     'gadget-sd-help': '您可以在这里修改小工具偏好，修改仅对当前浏览器有效。如果想要修改设置对所有浏览器生效，请查阅',
-    'gadget-sd-helptext': '帮助页面', 'gadget-sd-export': '导出', 'gadget-sd-exporthelp': '导出代码',
-    'gadget-sd-copy': '请将以下代码添加至您的', 'gadget-sd-js': '用户JS'
+    'gadget-sd-helptext': '帮助页面', 'gadget-sd-exporthelp': '导出代码', 'gadget-sd-js': '用户JS',
+    'gadget-sd-title': '小工具设置', 'gadget-sd-back': '还原', 'gadget-sd-save': '保存', 'gadget-sd-export': '导出'
 }, {
-    'gadget-sd-title': '小工具偏好設定', 'gadget-sd-notify': '您的偏好設定已儲存！新設定將於重新載入頁面後生效。',
-    'gadget-sd-tooltip': '為當前瀏覽器設定小工具偏好', 'gadget-sd-back': '復原', 'gadget-sd-save': '儲存',
+    'gadget-sd-copy': '請將以下代碼添加至您的', 'gadget-sd-notify': '您的偏好設定已儲存！新設定將於重新載入頁面後生效。',
     'gadget-sd-help': '您可以在這裡修改小工具偏好，修改僅對當前瀏覽器有效。如果想要修改設定對所有瀏覽器生效，請查閱',
-    'gadget-sd-helptext': '說明頁面', 'gadget-sd-export': '導出', 'gadget-sd-exporthelp': '導出代碼',
-    'gadget-sd-copy': '請將以下代碼添加至您的', 'gadget-sd-js': '使用者JS'
+    'gadget-sd-helptext': '說明頁面', 'gadget-sd-exporthelp': '導出代碼', 'gadget-sd-js': '使用者JS',
+    'gadget-sd-title': '小工具偏好設定', 'gadget-sd-back': '復原', 'gadget-sd-save': '儲存', 'gadget-sd-export': '導出'
 }) );
-var ready = false; // 是否是第一次打开对话框
+// 2. 准备HTML元素
+var ready = false, dialog; // 是否是第一次打开对话框
 const $helpPage = $('<a>', {target: '_blank', text: mw.msg('gadget-sd-helptext')}), // 需要动态设置href
-    $help = $('<div>', {html: [
-    mw.msg('gadget-sd-help'), $helpPage, '，或',
+    $help = $('<div>', {html: [ mw.msg('gadget-sd-help'), $helpPage, '，或',
     $('<a>', {href: '#settingsDialog-btns', text: mw.msg('gadget-sd-exporthelp')}), '。' // 链接跳转到“导出”按钮
 ]}),
-    $code = $('<div>', {id: 'settingsDialog-code', html: [
-    mw.msg('gadget-sd-copy'),
+    $block = $('<pre>', {class: 'javascript'}),
+    $code = $('<div>', {id: 'settingsDialog-code', html: [ mw.msg('gadget-sd-copy'),
     $('<a>', {href: '/zh/special:mypage/common.js', target: '_blank', text: mw.msg('gadget-sd-js')}),
-    '：',
-    $('<pre>', {class: 'javascript'})
+    '：', $block
 ]}),
     $btns = $('<div>', {id: 'settingsDialog-btns', html: [
     new OO.ui.ButtonWidget({label: mw.msg('gadget-sd-back'), flags: 'destructive'}).on('click', function() {
-        const dialog = mw.settingsDialog,
-            name = dialog.content.getCurrentTabPanelName();
-        dialog.clearOptions( name );
-    }).$element,
+        dialog.clearOptions(); }).$element,
     new OO.ui.ButtonWidget({label: mw.msg('gadget-sd-export'), flags: 'progressive'}).on('click', function() {
-        const dialog = mw.settingsDialog,
-            name = dialog.content.getCurrentTabPanelName(),
-            $panel = $btns.parent(),
-            $block = $code.children( 'pre' );
-        $block.text( dialog.export( name ) );
+        const $panel = $btns.parent();
+        $block.text( dialog.export() );
         if (window.hljs) { hljs.highlightBlock( $block[0] ); }
         $code.show();
         $panel.animate({scrollTop: $panel.prop( 'scrollHeight' )}, 'slow');
-    }).$element,
-    $code
+    }).$element, $code
 ]}),
+    // 3. 准备私有工具函数
+    deleteKeys = function(arr, obj) { arr.forEach(function(ele) { delete obj[ele]; }); },
     buildWidget = function(obj) { // 生成单个OOUI widget
     obj.widget = new OO.ui[obj.type + 'InputWidget']( obj.config );
     const layout = new OO.ui.FieldLayout(obj.widget, {label: mw.msg( obj.label ), help: obj.help});
-    ['config', 'label', 'help'].forEach(function(ele) { delete obj[ele]; });
+    deleteKeys(['config', 'label', 'help'], obj);
     return layout;
+},
+    clearWidgets = function(arr, settings) { // 还原一组OOUI widget
+    (arr || []).forEach(function(ele) { ele.widget.setValue( settings ? settings[ele.key] || '' : '' ); });
+},
+    getValues = function(arr) { // 获取一组OOUI widget的值
+    const settings = {};
+    (arr || []).filter(function(ele) { return !ele.widget.isDisabled(); })
+        .forEach(function(ele) { settings[ ele.key ] = ele.widget.getValue() || undefined; });
+    return $.extend({}, settings); // 移除undefined
 },
     buildForm = function(params, $element) {
     if (!params.ready) { // 生成表单，只需要执行一次，不用写成SettingsDialog的内置方法
         (params.items || []).forEach(function(ele) { $element.append( buildWidget(ele).$element ); });
         (params.fields || []).forEach(function(ele) {
             const field = new OO.ui.FieldsetLayout({label: mw.msg( ele.label ), help: ele.help, helpInline: true});
-            delete ele.label;
+            deleteKeys(['label', 'help'], ele);
             field.addItems( (ele.items || []).map( buildWidget ) );
             $element.append( field.$element );
         });
@@ -78,19 +79,15 @@ const $helpPage = $('<a>', {target: '_blank', text: mw.msg('gadget-sd-helptext')
         mw.hook( 'settings.dialog' ).fire( params ); // 生成一个Hook
     }
     // 切换标签时添加帮助和按钮，不用写成SettingsDialog的内置方法
-    $helpPage.attr('href', mw.util.getUrl('Help:小工具/' + params.help));
+    $helpPage.attr('href', mw.util.getUrl( 'Help:小工具/' + params.help ));
     $element.prepend( $help ).append( $btns );
     $code.hide();
 },
     openDialog = function(e) {
     e.preventDefault();
-    const dialog = mw.settingsDialog,
-        content = dialog.content,
-        name = content.getCurrentTabPanelName(),
-        $element = content.getCurrentTabPanel().$element,
-        params = dialog.getObject( name );
-    dialog.open().opening.then(function() { buildForm(params, $element); });
+    dialog.open().opening.then(function() { buildForm(dialog.getObject(), dialog.getPanel().$element); });
 };
+// 4. 定义SettingsDialog类
 function SettingsDialog() { // constructor只添加一个id，剩下的交给addTab方法逐一添加小工具
     SettingsDialog.super.call(this, {id: 'settingsDialog'});
     this.gadgets = [];
@@ -102,10 +99,10 @@ SettingsDialog.prototype.initialize = function() { // 只创建一个OO.ui.Index
     this.$body.append( this.content.$element );
 };
 SettingsDialog.prototype.getActionProcess = function(action) {
-    const dialog = this,
+    const dialog = this, // ES5不允许箭头函数，无法直接使用this关键字
         gadgets = this.gadgets.filter(function(ele) { return ele.ready; }); // 忽略未加载的小工具
-    if (action == 'save') { gadgets.forEach(function(ele) { dialog.saveOptions(ele); }); }
-    else { gadgets.forEach(function(ele) { dialog.clearOptions(ele); }); }
+    if (action == 'save') { gadgets.forEach(function(ele) { dialog.saveOptions( ele ); }); }
+    else { gadgets.forEach(function(ele) { dialog.clearOptions( ele ); }); }
     this.close();
     return new OO.ui.Process();
 };
@@ -128,158 +125,93 @@ SettingsDialog.prototype.addTab = function(params) {
             $(mw.addMobileLinks( [{icon: 'user-cog', msg: 'gadget-sd-title'}] )).click( openDialog )
                 .appendTo( $menu.find('ul:not(.hlist)').last() );
         });
-    } else {
-        mw.util.addPortletLink('p-cactions', '#', mw.msg('gadget-sd-title'), 'ca-settingsDialog',
-            mw.msg('gadget-sd-tooltip'));
-        $('#ca-settingsDialog').click( openDialog );
     }
+    else { $( mw.util.addPortletLink('p-cactions', '#', mw.msg('gadget-sd-title')) ).click( openDialog ); }
     ready = true;
 };
 /**
- * @Description: 获取小工具序号
- * @Param {String} 小工具名称
- * @Param {Object} 小工具数据
- * @Return {Number} 小工具序号
- */
-SettingsDialog.prototype.getIndex = function(arg) {
-    if (typeof arg == 'string') { return this.gadgets.findIndex(function(ele) { return ele.name == arg; }); }
-    else if (typeof arg == 'number') { return arg; }
-    else { return this.gadgets.indexOf( arg ); }
-};
-/**
  * @Description: 获取小工具名称
- * @Param {Number} 小工具序号
- * @Param {Object} 小工具数据
+ * @Param {Object} 小工具数据（可选），默认为当前小工具
  * @Return {String} 小工具名称
  */
 SettingsDialog.prototype.getName = function(arg) {
-    if (typeof arg == 'string') { return arg; }
-    else if (typeof arg == 'number') { return this.gadgets[ arg ].name; }
-    else { return arg.name; }
+    return arg ? arg.name || arg : this.content.getCurrentTabPanelName();
 };
 /**
  * @Description: 获取小工具数据
- * @Param {String} 小工具名称
- * @Param {Number} 小工具序号
+ * @Param {String} 小工具名称（可选），默认为当前小工具
  * @Return {Object} 小工具数据
  */
 SettingsDialog.prototype.getObject = function(arg) {
-    if (typeof arg == 'string') { return this.gadgets.find(function(ele) { return ele.name == arg; }); }
-    else if (typeof arg == 'number') { return this.gadgets[ arg ]; }
-    else { return arg; }
+    if (typeof arg == 'object') { return arg; }
+    const name = arg || this.getName();
+    return this.gadgets.find(function(ele) { return ele.name == name; });
 };
 /**
- * @Description: 移除小工具
- * @Param {String} 小工具名称
- * @Param {Number} 小工具序号
- * @Param {Object} 小工具数据
+ * @Description: 获取小工具标签页
+ * @Param {String} 小工具名称（可选），默认为当前小工具
+ * @Param {Object} 小工具数据（可选），默认为当前小工具
+ * @Return {OO.ui.TabPanelLayout} 小工具标签页
  */
-SettingsDialog.prototype.removeTab = function(arg) {
-    const name = this.getName(arg),
-        index = this.getIndex(arg);
-    if (index == -1) {
-        console.warn( '无法删除不存在的小工具设置！' );
-        return;
-    }
-    // 需要同时移除数据和对应的HTML元素
-    this.gadgets.splice(index, 1);
-    this.content.removeTabPanels( this.content.getTabPanel( name ) );
+SettingsDialog.prototype.getPanel = function(arg) {
+    return arg ? this.content.getTabPanel( arg.name || arg ) : this.content.getCurrentTabPanel();
+};
+/**
+ * @Description: 生成设置对象
+ * @Param {String} 小工具名称（可选），默认为当前小工具
+ * @Param {Object} 小工具数据（可选），默认为当前小工具
+ * @Param {Boolean} 是否用于导出
+ * @Return {Object} 小工具設置
+ */
+SettingsDialog.prototype.generateOptions = function(arg, flag) {
+    const gadget = this.getObject(arg),
+        settings = getValues( gadget.items );
+    (gadget.fields || []).forEach(function(ele) {
+        const obj = getValues( ele.items );
+        settings[ ele.key ] = flag && $.isEmptyObject( obj ) ? undefined : obj;
+    });
+    return settings;
 };
 /**
  * @Description: 保存设置
- * @Param {String} 小工具名称
- * @Param {Number} 小工具序号
- * @Param {Object} 小工具数据
+ * @Param {String} 小工具名称（可选），默认为当前小工具
+ * @Param {Object} 小工具数据（可选），默认为当前小工具
  */
 SettingsDialog.prototype.saveOptions = function(arg) {
-    const gadget = this.getObject(arg),
-        name = this.getName(arg);
-    var settings;
-    if (gadget.saveOptions) { settings = gadget.saveOptions(); }
-    else { settings = this.standardSaveOptions( gadget ); }
+    const name = this.getName(arg),
+        settings = this.generateOptions( name );
     mw.gadgets[ name ] = settings;
     mw.storage.setObject('gadget-' + name, settings);
     mw.notify(mw.msg( 'gadget-sd-notify' ), {type: 'success', tag: 'gadget-settings'});
 };
 /**
- * @Description: 默认的saveOptions函数
- * @Param {String} 小工具名称
- * @Param {Number} 小工具序号
- * @Param {Object} 小工具数据
- * @Return {Object} 小工具設置
- */
-SettingsDialog.prototype.standardSaveOptions = function(arg) {
-    const gadget = this.getObject(arg),
-        settings = {};
-    (gadget.items || []).filter(function(ele) { return !ele.widget.isDisabled(); })
-        .forEach(function(ele) { settings[ ele.key ] = ele.widget.getValue() || undefined; });
-    (gadget.fields || []).forEach(function(ele) {
-        settings[ ele.key ] = settings[ ele.key ] || {};
-        const obj = settings[ ele.key ]; // 已经是一个对象了
-        ele.items.filter(function(e) { return !e.widget.isDisabled(); })
-            .forEach(function(e) { obj[ e.key ] = e.widget.getValue() || undefined; });
-    });
-    return settings;
-};
-/**
  * @Description: 还原选项
- * @Param {String} 小工具名称
- * @Param {Number} 小工具序号
- * @Param {Object} 小工具数据
+ * @Param {String} 小工具名称（可选），默认为当前小工具
+ * @Param {Object} 小工具数据（可选），默认为当前小工具
  */
 SettingsDialog.prototype.clearOptions = function(arg) {
-    const gadget = this.getObject(arg);
-    if (gadget.clearOptions) { gadget.clearOptions(); }
-    else { this.standardClearOptions( gadget ); }
-};
-/**
- * @Description: 默认的clearOptions函数
- * @Param {String} 小工具名称
- * @Param {Number} 小工具序号
- * @Param {Object} 小工具数据
- */
-SettingsDialog.prototype.standardClearOptions = function(arg) {
     const gadget = this.getObject(arg),
-        name = this.getName(arg),
-        settings = mw.gadgets[ name ];
-    (gadget.items || []).forEach(function(ele) { ele.widget.setValue( settings[ ele.key ] ); });
-    (gadget.fields || []).forEach(function(ele) {
-        const obj = settings[ ele.key ] || {};
-        ele.items.forEach(function(e) { e.widget.setValue( obj[ e.key ] ); });
-    });
+        settings = mw.gadgets[ gadget.name ];
+    clearWidgets(gadget.items, settings);
+    (gadget.fields || []).forEach(function(ele) { clearWidgets(ele.items, settings[ ele.key ]); });
 };
 /**
  * @Description: 导出JS格式的设置
- * @Param {String} 小工具名称
- * @Param {Number} 小工具序号
- * @Param {Object} 小工具数据
+ * @Param {String} 小工具名称（可选），默认为当前小工具
  * @Return {String} JS格式的设置
  */
-SettingsDialog.prototype.export = function(arg) {
-    const gadget = this.getObject(arg);
-    if (gadget.export) { return gadget.export(); }
-    else { return this.standardExport( gadget ); }
-};
-/**
- * @Description: 默认的export函数
- * @Param {String} 小工具名称
- * @Param {Number} 小工具序号
- * @Param {Object} 小工具数据
- * @Return {String} JS格式的设置
- */
-SettingsDialog.prototype.standardExport = function(arg) {
-    const name = this.getName(arg),
-        settings = this.standardSaveOptions(arg);
-    return 'mw.gadgets = $.extend(mw.gadgets, {' + name + ': ' + JSON.stringify(settings, null, '\t') + ' });';
+SettingsDialog.prototype.export = function(name) {
+    name = name || this.getName();
+    return 'mw.gadgets = $.extend(mw.gadgets, {' + name + ': ' +
+        JSON.stringify( this.generateOptions(name, true), null, '\t' ) + ' });';
 };
 SettingsDialog.static = {name: 'settingsDialog', tagName: 'div', title: mw.msg('gadget-sd-title'), escapable: true,
     actions: [{action: 'save', label: mw.msg('gadget-sd-save'), flags: ['primary', 'progressive']},
         {action: 'cancel', label: mw.msg('ooui-dialog-message-reject'), flags: 'safe'}]
 };
-mw.settingsDialog = new SettingsDialog();
-const $body = $(document.body);
-if (!mw.windowManager) {
-    mw.windowManager = mw.windowmanager || new OO.ui.WindowManager();
-    mw.windowManager.$element.appendTo( $body );
-}
-mw.windowManager.addWindows( [mw.settingsDialog] ); // 此时已经初始化
+// 5. 生成SettingsDialog并保存为全局对象
+dialog = new SettingsDialog();
+const manager = new OO.ui.WindowManager();
+manager.$element.appendTo( document.body );
+manager.addWindows( [dialog] ); // 此时已经初始化
+mw.settingsDialog = dialog; // 创造一个全局对象
