@@ -63,7 +63,7 @@ if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "s
     mw.settingsDialog.addTab({name: 'CommentsInLocalTime', label: 'gadget-lc-label', items: [
         {key: 'timezone', type: 'Text', label: 'gadget-lc-tz', help: mw.msg('gadget-lc-tzhelp'), config: {value: tz}},
         {key: 'utcoffset', type: 'Number', label: 'gadget-lc-offset', help: mw.msg('gadget-lc-offsetHelp'), config:
-            {value: offset, max: 12, min: -12, step: 1, inputFilter: function(num) { return num.replace('+', ''); }}
+            {value: offset, max: 14, min: -12, step: 1, inputFilter: function(num) { return num.replace('+', ''); }}
         }, {key: 'lang', type: 'CheckboxMultiselect', label: 'gadget-lc-lang',
             config: {value: lang, options: [{data: 'en', label: mw.msg('gadget-lc-en')}]}
         }, {key: 'locale', type: 'Dropdown', label: 'gadget-lc-locale', config: {

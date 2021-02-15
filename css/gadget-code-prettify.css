@@ -17,9 +17,11 @@
 .hljs-meta { /* JS的strict模式和CSS的!important */
 	color: #cb4b16;
 }
-.hljs-type { /* JS文档的参数类型 */
+.hljs-type,
+.hljs-variable { /* JS文档的参数类型和名称 */
 	color: #b58900;
 	font-weight: normal;
+	font-style: normal;
 }
 .hljs-attribute { /* CSS属性 */
 	color: #b58900;
@@ -34,9 +36,9 @@
 .hljs-name { /* HTML的tag名称 */
 	color: #008000;
 	font-weight: bold;
+	font-style: normal;
 }
-.hljs-comment,
-.hljs-variable { /* JS文档参数名，与注释不作区分 */
+.hljs-comment {
 	color: #408080;
 	font-style: italic;
 	font-weight: normal;
