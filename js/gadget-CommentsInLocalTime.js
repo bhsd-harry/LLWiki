@@ -4,7 +4,7 @@
  * @Source: https://zh.moegirl.org.cn/User:AnnAngela/js/CommentsInLocalTime.js
  * @OriginalVersion: https://en.wikipedia.org/wiki/User:Mxn/CommentsInLocalTime.js
  * @Author: https://en.wikipedia.org/wiki/User:Mxn
- * @EditedBy: https://zh.moegirl.org.nc/User:AnnAngela、https://llwiki.org/zh/User:Bhsd
+ * @EditedBy: https://zh.moegirl.org.cn/User:AnnAngela、https://llwiki.org/zh/User:Bhsd
  */
 "use strict";
 /* global moment, OO, wgULS, wgUCS */

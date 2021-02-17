@@ -14,7 +14,7 @@
         console.log('Hook: wikipage.content, 开始折叠SIF歌曲列表的下拉选单');
         // 手机版的下拉菜单解析有误
         if (isMobile) { $dropdown.append(function() { return $(this).next(); }); }
-        $dropdown.parent().one(isMobile ? 'click' : 'mouseenter', function() {
+        $dropdown.parent().one('mouseenter', function() {
             const $this = $(this),
                 $menu = $this.children( '.tabs-content' );
             $this.css('width', $this.children( '.tabs-content' ).width());
@@ -34,9 +34,7 @@
                 lvl = formatData( option );
             $(this).css('left', '-1000000px').prev().text( option.textContent ).closest( '.sif-song-table' )
                 .find( '.sif-song-option' ).text(function() { return this.dataset[lvl] || '/'; });
-        }).on(isMobile ? 'click' : 'mouseenter', '.sif-song-table .tabs-label', function() {
-            $(this).next().css('left', '');
-        });
+        }).on('mouseenter', '.sif-song-table .tabs-label', function() { $(this).next().css('left', ''); });
         mw.widget.sifSongTable = true;
     };
     if (window.jQuery) { handler(); }

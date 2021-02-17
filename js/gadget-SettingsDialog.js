@@ -121,7 +121,7 @@ SettingsDialog.prototype.addTab = function(params) {
     if (mw.config.get('skin') == 'minerva') {
         mw.hook( 'mobile.menu' ).add(function($menu) {
             console.log('Hook: mobile.menu, 开始添加小工具设置按钮');
-            $(mw.addMobileLinks( [{icon: 'user-cog', msg: 'gadget-sd-title'}] )).click( openDialog )
+            $(mw.addMobileLinks( {icon: 'user-cog', msg: 'gadget-sd-title'} )).click( openDialog )
                 .appendTo( $menu.find('ul:not(.hlist)').last() );
         });
     }
