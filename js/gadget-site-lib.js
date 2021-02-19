@@ -1,9 +1,9 @@
 /**
  * @Description: LLWiki定义的常用函数，桌面版、手机版均可用，部分函数可能需要额外的JS库
  * @Functions: 1. 繁简转换函数（wgULS, wgUCS）
- *             2. 杂项（pagenamee, addMobileLinks, apiFailure）
+ *             2. 杂项（pagenamee, addMobileLinks, isModule, apiFailure）
  *             3. API标准方法（timedQuery, timedParse, standardQuery, sectionQuery, safeEdit, safeRedirect）
- *             4. OOUI标准方法（confirm, prompt, dialog, tipsy）
+ *             4. OOUI标准方法（confirm, prompt, dialog, tipsy, menu）
  *             5. moment标准方法（convertTimezone）
  * @Document: https://llwiki.org/zh/LLWiki:管理员技术手册
  * @Author: 无特殊说明时均为https://llwiki.org/zh/User:Bhsd
@@ -62,6 +62,16 @@ const mobileLink = function(ele) {
     ]}).wrap( '<li>' ).parent().attr( ele.attr || {} )[0];
 };
 mw.addMobileLinks = function(link) { return Array.isArray( link ) ? link.map( mobileLink ) : mobileLink( link ); };
+/**
+ * @Function: 检查一个模块是否加载
+ * @Param {String} name, 模块或小工具名称
+ * @Param {Boolean} flag, 是否是小工具
+ * @Return {Boolean}
+ */
+mw.isModule = function(name, flag) {
+    const fullname = (flag ? 'ext.gadget.' : '') + name;
+    return ['loading', 'loaded', 'executing', 'ready'].includes( mw.loader.getState( fullname ) );
+};
 /**
  * @Function: API请求失败时通知错误信息
  * @Param {String} reason, API返回的错误信息
@@ -260,11 +270,11 @@ mw.dialog = function(dialog, actions, $message, $title) {
 mw.tipsy = function($container, target, params, $content) {
     const $label = $('<span>'),
         // 这里不用PopupWidget自带的autoClose功能，因为效果很奇怪；默认样式见mediawiki:gadget-site-styles.css
-        popup = new OO.ui.PopupWidget( $.extend({$content: $content.length ? $content.append( $label ) : $label,
+        popup = new OO.ui.PopupWidget( $.extend({$content: $content ? $content.append( $label ) : $label,
         padded: true, width: null, classes: ['mw-tipsy']}, params) );
     popup.$element.appendTo( document.body );
     // jQuery的mouseenter和mouseleave实际上是mouseover和mouseout
-    // 手机浏览器支持见https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+    // 手机浏览器支持见https://patrickhlauke.github.io/touch/tests/results/
     // $container不能是body，否则iOS无效（https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html）
     $container.on('mouseenter', target, function() {
         const $this = $(this);
@@ -275,6 +285,24 @@ mw.tipsy = function($container, target, params, $content) {
         $label.text( title );
         popup.toggle( true ).setFloatableContainer( $this );
     }).on('mouseleave', target, function() { popup.toggle( false ); });
+};
+/**
+ * @Function: 生成一个仿OOUI样式的下拉菜单
+ * @Dependencies: ext.gadget.site-styles
+ * @Param {Object[]} options, 形如{text, msg, icon, href, target, click}的菜单项
+ * @Param {Object} attr, 菜单外层容器属性
+ * @Return {jQuery} 菜单外层容器
+ */
+mw.menu = function(options, attr) {
+    const hasIcon = options.some(function(ele) { return ele.icon; });
+    return $('<div>', $.extend({html: options.map(function(ele) {
+        return $('<a>', {href: ele.href, target: ele.target, html: [
+            hasIcon ? $('<i>', {class: 'fa' + (ele.icon ? 'fa-' + ele.icon : '')}) : null,
+            ele.msg ? mw.msg( ele.msg ) : ele.text
+        ]}).click( ele.click );
+    }), class: 'site-menu', tabindex: -1}, attr)).extend({open: function() { this.slideDown( 'fast' ).focus(); }})
+        .blur(function() { $(this).slideUp( 'fast' ); })
+        .on('click', 'a', function(e) { $(e.delegateTarget).slideUp( 'fast' ); });
 };
 /**
  * @Function: 更改moment对象的时区
