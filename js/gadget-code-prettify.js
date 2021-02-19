@@ -9,7 +9,6 @@
 const acceptLangs = {js: "javascript", javascript: "javascript", json: "json", css: "css", html: "xml",
     scribunto: "lua", lua: "lua"},
     contentModel = mw.config.get( "wgPageContentModel" ).toLowerCase();
-
 mw.hook( 'wikipage.content' ).add(function($content) {
     if (contentModel in acceptLangs) {
         $content.find( '.mw-code' ).addClass('hljs linenums ' + acceptLangs[contentModel]);
@@ -47,17 +46,20 @@ mw.hook( 'wikipage.content' ).add(function($content) {
         if ($cssblock.length === 0) { return; }
         const $color = $('<span>', {class: 'hljs-color'});
         $cssblock.find( '.hljs-number:contains(#)' ).before(function() { // 16进制颜色
-            return $color.clone().css('color', this.textContent);
+            const color = this.textContent,
+                n = color.length,
+                alpha = n == 5 ? color[4].repeat(2) : color.slice(7);
+            return $color.clone().css({ color: color.slice(0, n > 5 ? 7 : 4),
+                opacity: alpha ? parseInt(alpha, 16) / 255 : undefined });
         });
-        $cssblock.find( '.hljs-built_in:contains(rgb)' ).before(function() { // RGB颜色
+        $cssblock.find( '.hljs-built_in:contains(rgb), .hljs-built_in:contains(hsl)' ).before(function() { // RGB颜色
             const $siblings = $(this).parent().contents(), // 标点符号都是text节点，所以需要使用contents
                 index = $siblings.index( this ),
-                n = $siblings.slice( index ).toArray().findIndex(function(ele) {
-                return ele.nodeType == 3 && ele.textContent.startsWith( ')' );
-            });
-            return $color.clone().css('color', $siblings.slice(index, index + n) // 右半括号那一项可能有分号
-                .map(function() { return this.textContent; }).toArray().join('') + ')');
+                n = this.textContent.length == 4 ? 9 : 7, // rgba/hsla或rgb/hsl
+                // 右半括号那一项可能有分号
+                color = $siblings.slice(index, index + n).map(function() { return this.textContent; }).toArray();
+            return $color.clone().css({ color: color[0].slice(0, 3) + color.slice(1, 7).join('') + ')'
+                opacity: color[8] });
         });
     }, function(reason) { mw.apiFailure(reason, 'highlight.js'); });
 });
-
