@@ -35,3 +35,10 @@ div#mw-indicator-colorMod { /* 只作用于桌面版 */
 #colorMod-wrapper span, [style*="color:#fee155"], [style*="color:#a0fff9"] {
 	transition: all linear 0.2s;
 }
+.colorMod-tip {
+	font-size: 0.9em;
+}
+.colorMod-tip a {
+	display: block;
+	text-align: center;
+}

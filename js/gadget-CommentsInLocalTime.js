@@ -75,15 +75,15 @@ if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "s
             config: {value: settings.time, disabled: isEn}}
     ], fields: [{key: 'i18n', label: 'gadget-lc-i18n', items: [
         {key: 'gadget-lc-y', type: 'Text', label: 'gadget-lc-yy', help: helpPlural,
-            config: {value: i18n['gadget-lc-y'], disabled: isEn}
+            config: {value: i18n['gadget-lc-y'], disabled: isEn, validate: /^[^[]*$/}
         }, {key: 'gadget-lc-m', type: 'Text', label: 'gadget-lc-mm', help: helpPlural,
-            config: {value: i18n['gadget-lc-m'], disabled: isEn}
+            config: {value: i18n['gadget-lc-m'], disabled: isEn, validate: /^[^[]*$/}
         }, {key: 'gadget-lc-d', type: 'Text', label: 'gadget-lc-dd', help: helpPlural,
-            config: {value: i18n['gadget-lc-d'], disabled: isEn}
+            config: {value: i18n['gadget-lc-d'], disabled: isEn, validate: /^[^[]*$/}
         }, {key: 'gadget-lc-today', type: 'Text', label: 'gadget-lc-td',
-            config: {value: i18n['gadget-lc-today'], disabled: isEn}
+            config: {value: i18n['gadget-lc-today'], disabled: isEn, validate: /^[^[]*$/}
         }, {key: 'gadget-lc-yesterday', type: 'Text', label: 'gadget-lc-yd',
-            config: {value: i18n['gadget-lc-yesterday'], disabled: isEn}
+            config: {value: i18n['gadget-lc-yesterday'], disabled: isEn, validate: /^[^[]*$/}
         }
     ]}], help: '以本地时区显示签名时间戳'});
     mw.hook( 'settings.dialog' ).add(function(params) {
@@ -138,5 +138,5 @@ if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "s
         });
         mw.hook( 'local.comments' ).fire( $content );
     });
-    mw.tipsy($('#bodyContent'), '.LocalComments', {anchor: false}); // 尽量采取delegate的形式处理交互事件
+    mw.tipsy('#bodyContent', '.LocalComments', {anchor: false}); // 尽量采取delegate的形式处理交互事件
 }

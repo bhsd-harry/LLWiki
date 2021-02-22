@@ -10,11 +10,13 @@
         // 1. 在开头统一处理繁简文字信息
         mw.messages.set( $.extend( wgULS({
             'widget-cm-intro': '本页面使用了亮度较高的应援色，您可以在这里调节对应颜色的亮度：', 'widget-cm-rin': '星空凛',
-             'widget-cm-dialog': '调节应援色亮度'
+            'widget-cm-dialog': '调节应援色亮度',
+            'widget-cm-popup': '本页面使用了亮度较高的角色应援色。为了便于阅读，您可以点击调色板按钮自行调节对应颜色的亮度。'
         }, {
             'widget-cm-intro': '此頁面使用了亮度較高的應援色，您可以在這裡調節對應顏色的亮度：', 'widget-cm-rin': '星空凜',
-            'widget-cm-dialog': '調節應援色亮度'
-        }), {'widget-cm-keke': '唐可可', 'widget-cm-label': '：亮度降低'}) );
+            'widget-cm-dialog': '調節應援色亮度',
+            'widget-cm-popup': '本頁面使用了亮度較高的角色應援色。為了便於閱讀，您可以點擊調色板按鈕自行調節對應顏色的亮度。'
+        }), {'widget-cm-keke': '唐可可', 'widget-cm-label': '：亮度降低', 'widget-cm-stop': '不再提示'}) );
         let mkeys, mvals, dialog; // 只在必要时生成一次dialog
         // 必须保留rgb中的空格
         const colors = { rin: ["rgb(254, 225, 85)", "rgb(253, 220, 59)", "rgb(253, 216, 34)", "rgb(253, 211, 8)",
@@ -68,7 +70,14 @@
                 });
             }
             mw.dialog(dialog, actions, [$intro, $wrapper], mw.msg( 'widget-cm-dialog' ));
-        };
+        },
+            popup = mw.tipsy('#content', '#mw-indicator-colorMod', {width: 260, classes: ['colorMod-tip']},
+            $('<div>', {html: [ $('<p>', {text: mw.msg( 'widget-cm-popup' )}),
+                $('<a>', {text: mw.msg( 'widget-cm-stop' ), href: '#'}).click(e => {
+                    e.preventDefault();
+                    mw.storage.setObject( 'colorMod-popup', true );
+                })
+            ]}));
         $('.mw-indicators').on('click', '#mw-indicator-colorMod', openDialog); // 桌面版比较麻烦，采用delegate
         // 3. 更新数据
         mw.hook( 'wikipage.content' ).add($content => {
@@ -91,6 +100,10 @@
                 });
             });
             $wrapper.html( mkeys.map( generateWrapper ) ); // 事件全都绑定在$wrapper上
+            // 4. 首次訪問時顯示提示
+            if (mw.storage.getObject( 'colorMod-popup' )) { return; }
+            popup.toggle( true ).setFloatableContainer( $('#mw-indicator-colorMod') );
+            popup.$element.one('click', () => { popup.toggle( false ); });
         });
     },
         handler = () => {

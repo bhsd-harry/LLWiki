@@ -266,8 +266,9 @@ mw.dialog = function(dialog, actions, $message, $title) {
  * @Param {String} target, 目标选择器（可选）
  * @Param {Object} params, 参数（可选）
  * @Param {jQuery} $content, 标签对象（可选）
+ * @Return {OO.ui.PopupWidget}
  */
-mw.tipsy = function($container, target, params, $content) {
+mw.tipsy = function(container, target, params, $content) {
     const $label = $('<span>'),
         // 这里不用PopupWidget自带的autoClose功能，因为效果很奇怪；默认样式见mediawiki:gadget-site-styles.css
         popup = new OO.ui.PopupWidget( $.extend({$content: $content ? $content.append( $label ) : $label,
@@ -275,8 +276,8 @@ mw.tipsy = function($container, target, params, $content) {
     popup.$element.appendTo( document.body );
     // jQuery的mouseenter和mouseleave实际上是mouseover和mouseout
     // 手机浏览器支持见https://patrickhlauke.github.io/touch/tests/results/
-    // $container不能是body，否则iOS无效（https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html）
-    $container.on('mouseenter', target, function() {
+    // container不能是body，否则iOS无效（https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html）
+    $(container).on('mouseenter', target, function() {
         const $this = $(this);
         var title = this.title;
         // 不能寫成$this.data('title', title)
@@ -285,24 +286,45 @@ mw.tipsy = function($container, target, params, $content) {
         $label.text( title );
         popup.toggle( true ).setFloatableContainer( $this );
     }).on('mouseleave', target, function() { popup.toggle( false ); });
+    return popup;
 };
 /**
  * @Function: 生成一个仿OOUI样式的下拉菜单
  * @Dependencies: ext.gadget.site-styles
- * @Param {Object[]} options, 形如{text, msg, icon, href, target, click}的菜单项
- * @Param {Object} attr, 菜单外层容器属性
- * @Return {jQuery} 菜单外层容器
+ * @Param {Object[]} options, 形如{text, msg, icon, href, target, click, data}的菜单项
+ * @Param {String} text, 文本
+ * @Param {String} msg, mw.messages的键值
+ * @Param {String} icon, FontAwesome的图标名称（仅限fas类，可选）
+ * @Param {String} href, 链接（可选）
+ * @Param {String} target（可选）
+ * @Param {Function} click, 单击事件（可选）
+ * @Param {Object} data, 数据（可选）
+ * @Param {Object} attr, 菜单外层容器属性（可选）
+ * @Param {Number} multiSelect, 允许的选择数（可选）
+ * @Return {jQuery} 菜单外层容器，注意初始化时不可连锁
  */
-mw.menu = function(options, attr) {
-    const hasIcon = options.some(function(ele) { return ele.icon; });
-    return $('<div>', $.extend({html: options.map(function(ele) {
-        return $('<a>', {href: ele.href, target: ele.target, html: [
+mw.menu = function(options, attr, multiSelect) {
+    const hasIcon = options.some(function(ele) { return ele.icon; }),
+        $menu = $('<div>', $.extend({html: options.map(function(ele) {
+        return $('<a>', {href: ele.href, target: ele.target, class: ele.selected ? 'site-menu-selected' : '', html: [
             hasIcon ? $('<i>', {class: 'fa' + (ele.icon ? 'fa-' + ele.icon : '')}) : null,
             ele.msg ? mw.msg( ele.msg ) : ele.text
-        ]}).click( ele.click );
+        ]}).data('data', ele.data).click( ele.click );
     }), class: 'site-menu', tabindex: -1}, attr)).extend({open: function() { this.slideDown( 'fast' ).focus(); }})
-        .blur(function() { $(this).slideUp( 'fast' ); })
-        .on('click', 'a', function(e) { $(e.delegateTarget).slideUp( 'fast' ); });
+        .extend(multiSelect && { getSelected: function() { return this.children( '.site-menu-selected' ); },
+        clearSelected: function() { this.getSelected().removeClass( 'site-menu-selected' ); },
+        setSelected: function(child) {
+            const $child = $(child); // child已经是jQuery了也没关系
+            if (this[0] != $child.parent()[0]) { return; }
+            if (multiSelect == 1) { this.clearSelected(); } // 单选
+            $child.addClass( 'site-menu-selected' );
+        },
+        getData: function() { return this.getSelected().map(function() { return $(this).data( 'data' ); }).toArray(); }
+    }).blur(function() { $(this).slideUp( 'fast' ); }).on('click', 'a', function() {
+        $menu.slideUp( 'fast' );
+        if (multiSelect) { $menu.setSelected( this ); }
+    });
+    return $menu;
 };
 /**
  * @Function: 更改moment对象的时区

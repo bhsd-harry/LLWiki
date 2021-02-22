@@ -12,9 +12,12 @@
 	cursor: pointer;
 	line-height: 2; /* 更容易点击 */
 }
+.as-song-container .oo-ui-menuOptionWidget {
+	padding-left: 0.85714286em;
+}
 .as-song-container > div {
 	display: inline-block; /* 居中 */
 }
-.as-song-container .as-song {
+.as-song-container .as-song, .as-song .zh, .as-song .en {
 	display: none;
 }
