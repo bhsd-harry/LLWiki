@@ -17,7 +17,7 @@
             'widget-cm-dialog': '調節應援色亮度',
             'widget-cm-popup': '本頁面使用了亮度較高的角色應援色。為了便於閱讀，您可以點擊調色板按鈕自行調節對應顏色的亮度。'
         }), {'widget-cm-keke': '唐可可', 'widget-cm-label': '：亮度降低', 'widget-cm-stop': '不再提示'}) );
-        let mkeys, mvals, dialog; // 只在必要时生成一次dialog
+        let mkeys, mvals, dialog, popup; // 只在必要时生成一次dialog
         // 必须保留rgb中的空格
         const colors = { rin: ["rgb(254, 225, 85)", "rgb(253, 220, 59)", "rgb(253, 216, 34)", "rgb(253, 211, 8)",
             "rgb(235, 195, 1)", "rgb(210, 174, 1)"],
@@ -70,16 +70,19 @@
                 });
             }
             mw.dialog(dialog, actions, [$intro, $wrapper], mw.msg( 'widget-cm-dialog' ));
-        },
-            popup = mw.tipsy('#content', '#mw-indicator-colorMod', {width: 260, classes: ['colorMod-tip']},
-            $('<div>', {html: [ $('<p>', {text: mw.msg( 'widget-cm-popup' )}),
-                $('<a>', {text: mw.msg( 'widget-cm-stop' ), href: '#'}).click(e => {
-                    e.preventDefault();
-                    mw.storage.setObject( 'colorMod-popup', true );
-                })
-            ]}));
+        };
         $('.mw-indicators').on('click', '#mw-indicator-colorMod', openDialog); // 桌面版比较麻烦，采用delegate
-        // 3. 更新数据
+        // 3. 首次訪問時顯示提示
+        if (!mw.storage.getObject( 'colorMod-popup' )) {
+            popup = new OO.ui.PopupWidget({$content: $('<div>', {html: [ $('<p>', {text: mw.msg( 'widget-cm-popup' )}),
+                $('<a>', {text: mw.msg( 'widget-cm-stop' ), href: '#'}).click(e => { e.preventDefault(); })
+            ]}), padded: true, width: 260, classes: ['colorMod-tip']});
+            popup.$element.appendTo( document.body ).one('click', () => {
+                popup.toggle( false );
+                mw.storage.setObject( 'colorMod-popup', true );
+            });
+        }
+        // 4. 更新数据
         mw.hook( 'wikipage.content' ).add($content => {
             const $indicator = $content.find( '.mw-parser-output .page-actions-menu__list-item' );
             if ($indicator.length === 0) { return; }
@@ -100,10 +103,8 @@
                 });
             });
             $wrapper.html( mkeys.map( generateWrapper ) ); // 事件全都绑定在$wrapper上
-            // 4. 首次訪問時顯示提示
             if (mw.storage.getObject( 'colorMod-popup' )) { return; }
             popup.toggle( true ).setFloatableContainer( $('#mw-indicator-colorMod') );
-            popup.$element.one('click', () => { popup.toggle( false ); });
         });
     },
         handler = () => {

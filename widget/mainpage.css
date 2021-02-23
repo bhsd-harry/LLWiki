@@ -51,14 +51,15 @@ h4.mainpage-section {
 }
 .skin-vector .mainpage-flex {
 	display: inline-block;
-	width: 32%;
+	width: 49%;
+	margin-bottom: 40px;
 }
 .skin-minerva .mainpage-flex {
 	width: 100%;
 	margin-bottom: 20px;
 }
 .skin-minerva .mainpage-flex:last-child {
-	margin-bottom: 0;
+	margin-bottom: 40px;
 }
 .mainpage-flex-title {
 	font-size: large;

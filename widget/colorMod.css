@@ -41,4 +41,5 @@ div#mw-indicator-colorMod { /* 只作用于桌面版 */
 .colorMod-tip a {
 	display: block;
 	text-align: center;
+	margin-top: 0.5em;
 }

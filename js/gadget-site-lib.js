@@ -289,42 +289,37 @@ mw.tipsy = function(container, target, params, $content) {
     return popup;
 };
 /**
- * @Function: 生成一个仿OOUI样式的下拉菜单
- * @Dependencies: ext.gadget.site-styles
- * @Param {Object[]} options, 形如{text, msg, icon, href, target, click, data}的菜单项
- * @Param {String} text, 文本
- * @Param {String} msg, mw.messages的键值
+ * @Function: 生成一个标准化的下拉菜单
+ * @Dependencies: oojs-ui-core, ext.gadget.site-styles
+ * @Param {Object[]} options, 形如{text, icon, data, href, click}的菜单项
+ * @Param {String} text, 文本，必须独一无二
  * @Param {String} icon, FontAwesome的图标名称（仅限fas类，可选）
+ * @Param {Object} data, 数据（可选，默认为text）
  * @Param {String} href, 链接（可选）
- * @Param {String} target（可选）
  * @Param {Function} click, 单击事件（可选）
- * @Param {Object} data, 数据（可选）
- * @Param {Object} attr, 菜单外层容器属性（可选）
- * @Param {Number} multiSelect, 允许的选择数（可选）
- * @Return {jQuery} 菜单外层容器，注意初始化时不可连锁
+ * @Param {Object} config, 菜单设置（可选）
+ * @Return {OO.ui.MenuSelectWidget}
  */
-mw.menu = function(options, attr, multiSelect) {
-    const hasIcon = options.some(function(ele) { return ele.icon; }),
-        $menu = $('<div>', $.extend({html: options.map(function(ele) {
-        return $('<a>', {href: ele.href, target: ele.target, class: ele.selected ? 'site-menu-selected' : '', html: [
-            hasIcon ? $('<i>', {class: 'fa' + (ele.icon ? 'fa-' + ele.icon : '')}) : null,
-            ele.msg ? mw.msg( ele.msg ) : ele.text
-        ]}).data('data', ele.data).click( ele.click );
-    }), class: 'site-menu', tabindex: -1}, attr)).extend({open: function() { this.slideDown( 'fast' ).focus(); }})
-        .extend(multiSelect && { getSelected: function() { return this.children( '.site-menu-selected' ); },
-        clearSelected: function() { this.getSelected().removeClass( 'site-menu-selected' ); },
-        setSelected: function(child) {
-            const $child = $(child); // child已经是jQuery了也没关系
-            if (this[0] != $child.parent()[0]) { return; }
-            if (multiSelect == 1) { this.clearSelected(); } // 单选
-            $child.addClass( 'site-menu-selected' );
-        },
-        getData: function() { return this.getSelected().map(function() { return $(this).data( 'data' ); }).toArray(); }
-    }).blur(function() { $(this).slideUp( 'fast' ); }).on('click', 'a', function() {
-        $menu.slideUp( 'fast' );
-        if (multiSelect) { $menu.setSelected( this ); }
+mw.menu = function(options, config) {
+    const hasIcon = options.some(function(e) { return e.icon; }),
+        hasClick = options.some(function(e) { return e.href || e.click; }),
+        menu = new OO.ui.MenuSelectWidget( $.extend({ classes: ['site-menu'], hideWhenOutOfView: false,
+        items: options.map(function(e) {
+            const widget = new OO.ui.MenuOptionWidget({label: e.text, data: e.data || e.text});
+            // 不使用OO.ui.HtmlSnippet，防止污染label属性
+            if (hasIcon) { widget.$label.prepend( $('<i>', {class: 'fa' + (e.icon ? ' fa-' + e.icon : '')}) ); }
+            return widget;
+        })
+    }, config) );
+    options.filter(function(e) { return e.selected; }).forEach(function(e) { menu.selectItemByLabel( e.text ); });
+    if (!hasClick) { return menu; }
+    menu.on('choose', function(item, selected) {
+        if (!selected) { return; }
+        const option = options.find(function(e) { e.text == item.getLabel(); });
+        if (option.click) { option.click(); }
+        if (option.href) { location.href = option.href; }
     });
-    return $menu;
+    return menu;
 };
 /**
  * @Function: 更改moment对象的时区
