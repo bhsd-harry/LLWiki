@@ -298,9 +298,10 @@ mw.tipsy = function(container, target, params, $content) {
  * @Param {String} href, 链接（可选）
  * @Param {Function} click, 单击事件（可选）
  * @Param {Object} config, 菜单设置（可选）
+ * @Param {Boolean} unselectable, 是否不可选中（可选）
  * @Return {OO.ui.MenuSelectWidget}
  */
-mw.menu = function(options, config) {
+mw.menu = function(options, config, unselectable) {
     const hasIcon = options.some(function(e) { return e.icon; }),
         hasClick = options.some(function(e) { return e.href || e.click; }),
         menu = new OO.ui.MenuSelectWidget( $.extend({ classes: ['site-menu'], hideWhenOutOfView: false,
@@ -312,14 +313,16 @@ mw.menu = function(options, config) {
         })
     }, config) );
     options.filter(function(e) { return e.selected; }).forEach(function(e) { menu.selectItemByLabel( e.text ); });
+    menu.$element.appendTo( document.body );
+    // 有时完全不需要记录选项的功能
+    if (unselectable) { menu.on('toggle', function(visible) { if (visible) { menu.unselectItem(); } }); }
     if (!hasClick) { return menu; }
-    menu.on('choose', function(item, selected) {
+    return menu.on('choose', function(item, selected) {
         if (!selected) { return; }
-        const option = options.find(function(e) { e.text == item.getLabel(); });
+        const option = options.find(function(e) { return e.text == item.getLabel(); });
         if (option.click) { option.click(); }
         if (option.href) { location.href = option.href; }
     });
-    return menu;
 };
 /**
  * @Function: 更改moment对象的时区

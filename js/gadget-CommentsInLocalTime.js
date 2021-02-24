@@ -90,8 +90,7 @@ if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "s
         if (params.name != 'CommentsInLocalTime') { return; }
         console.log('Hook: settings.dialog, 开始调整小工具设置 - CommentsInLocalTime');
         const items = params.items,
-            checkbox = items[2].widget;
-        checkbox.on('change', function() { // 使用英语的设置组合
+            checkbox = items[2].widget.on('change', function() { // 使用英语的设置组合
             const disabled = checkbox.value.length;
             items.slice(3).forEach(function(ele) { ele.widget.setDisabled( disabled ); });
             params.fields[0].items.forEach(function(ele) { ele.widget.setDisabled( disabled ); });

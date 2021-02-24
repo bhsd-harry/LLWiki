@@ -69,9 +69,9 @@ const $helpPage = $('<a>', {target: '_blank', text: mw.msg('gadget-sd-helptext')
     if (!params.ready) { // 生成表单，只需要执行一次，不用写成SettingsDialog的内置方法
         $element.append( (params.items || []).map(function(ele) { return buildWidget(ele).$element; }) );
         $element.append( (params.fields || []).map(function(ele) {
-            const field = new OO.ui.FieldsetLayout({label: mw.msg( ele.label ), help: ele.help, helpInline: true});
+            const field = new OO.ui.FieldsetLayout({ label: mw.msg( ele.label ), help: ele.help, helpInline: true,
+                items: (ele.items || []).map( buildWidget ) });
             deleteKeys(['label', 'help'], ele);
-            field.addItems( (ele.items || []).map( buildWidget ) );
             return field.$element;
         }) );
         params.ready = true;
