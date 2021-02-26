@@ -1,8 +1,7 @@
-// 由ResourceLoader直接调用，不可使用ES6语法
 /**
  * @Function: 高亮JavaScript、CSS、HTML和Lua，并添加行号和指示色块
- * @Source: https://zh.moegirl.org.cn/mediawiki:gadget-code-prettify.js和https://zh.moegirl.org.cn/user:机智的小鱼君/gadget/Highlight.js
- * @EditedBy: https://llwiki.org/zh/user:bhsd
+ * @Source: https://zh.moegirl.org.cn/mediawiki:gadget-code-prettify.js和https://zh.moegirl.org.cn/User:机智的小鱼君/gadget/Highlight.js
+ * @EditedBy: https://llwiki.org/zh/User:Bhsd
  */
 "use strict";
 /*global hljs */
@@ -58,7 +57,7 @@ mw.hook( 'wikipage.content' ).add(function($content) {
                 n = this.textContent.length == 4 ? 9 : 7, // rgba/hsla或rgb/hsl
                 // 右半括号那一项可能有分号
                 color = $siblings.slice(index, index + n).map(function() { return this.textContent; }).toArray();
-            return $color.clone().css({ color: color[0].slice(0, 3) + color.slice(1, 7).join('') + ')'
+            return $color.clone().css({ color: color[0].slice(0, 3) + color.slice(1, 7).join('') + ')',
                 opacity: color[8] });
         });
     }, function(reason) { mw.apiFailure(reason, 'highlight.js'); });
