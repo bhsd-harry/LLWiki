@@ -1,17 +1,15 @@
 /**
  * @Description: 这里是桌面版和手机版通用的全局JS
- * @Functions: 1. 除Special:前缀索引外移除页面名称最后的"/"
- *             2. MediaWiki:Edittools可定制的快速插入工具
- *             3. 嵌入外部站点时通知并建议跳转
- *             4. 防止错误创建其他用户的用户页
- *             5. 正确显示特殊:前缀索引/LLWiki:首页/当年今日/
- *             6. 特殊:链入页面检索正确的繁简转换页面
- *             7. 分类栏正确显示小写标题
- * @Dependencies: mediawiki.api, mediawiki.Uri, mediawiki.Title, oojs-ui-windows, ext.gadget.site-lib
+ * @Functions: 1. 除[[Special:前缀索引]]外移除页面名称最后的"/"
+ *             2. [[MediaWiki:Edittools]]可定制的快速插入工具
+ *             3. 防止错误创建其他用户的用户页
+ *             4. 正确显示[[特殊:前缀索引/LLWiki:首页/当年今日/]]
+ *             5. [[特殊:链入页面]]检索正确的繁简转换页面
+ *             6. 分类栏正确显示小写标题
+ * @Dependencies: mediawiki.api, mediawiki.Uri, mediawiki.Title, ext.gadget.site-lib
  * @Author: 如无特殊说明，均为https://llwiki.org/zh/User:Bhsd
  */
 "use strict";
-/* global OO, wgULS */
 const pagename = mw.config.get( 'wgPageName' ),
     action = mw.config.get( 'wgAction' ),
     specialPage = mw.config.get( 'wgCanonicalSpecialPageName' );
@@ -40,28 +38,6 @@ if (['edit', 'submit'].includes( action ) && mw.config.get( 'wgIsProbablyEditabl
             post: $this.data( 'mw-charinsert-end' ) || $this.data( 'end' )
         } );
     });
-}
-/**
- * @Function: 嵌入外部站点时进行提示
- * @Dependencies: oojs-ui-windows, ext.gadget.site-lib
- * @Source: https://zh.moegirl.org.cn/mediawiki:common.js
- * @EditedBy: https://llwiki.org/zh/User:Bhsd
- */
-if (top !== window || location.host != 'llwiki.org') { // 不一定是嵌入
-    mw.messages.set( $.extend( wgULS({
-        'gadget-ss-title': '<p>LLWiki提醒您</p><p>您正在非LLWiki域名访问</p>',
-        'gadget-ss-label': '<p>请注意不要在此域名下输入您的用户名或密码，以策安全！</p>' +
-            '<p>LLWiki的域名为 <a href="#" onclick="return false;">llwiki.org</a></p>'
-    }, {
-        'gadget-ss-title': '<p>LLWiki提醒您</p><p>您正在非LLWiki域名訪問</p>',
-        'gadget-ss-label': '<p>請注意不要在此域名下輸入您的用戶名或密碼，以策安全！</p>' +
-            '<p>LLWiki的域名為 <a href="#" onclick="return false;">llwiki.org</a></p>'
-    }), {'gadget-ss-jump': '前往LLWiki', 'gadget-ss-continue': '我知道了'}) ); // 不需要繁简转换的文字
-    const dialog = new OO.ui.MessageDialog();
-    mw.dialog(dialog, [ {label: mw.msg('gadget-ss-continue'), flags: ['primary', 'destructive']},
-        {label: mw.msg('gadget-ss-jump'), flags: ['primary', 'progressive'], target: '_blank', // 必须打开新标签页
-        href: top === window ? 'https://llwiki.org' : location.href}
-    ], mw.msg('gadget-ss-label'), mw.msg('gadget-ss-title'));
 }
 /**
  * @Function: 点击其他用户主页面的红链不会进入创建页面
@@ -96,7 +72,7 @@ if (pagename.startsWith( 'LLWiki:首页/当年今日/' ) && action == 'view') {
 }
 /**
  * @Function: 链入页面自动繁简转换
- * @Dependencies: mediawiki.api, mediawiki.Uri
+ * @Dependencies: mediawiki.api, mediawiki.Uri, ext.gadget.site-lib
  */
 if (specialPage == 'Whatlinkshere' && $('#contentSub > .new, .minerva__subtitle > .new').length &&
     $('#mw-whatlinkshere-list').length === 0) { // 不存在的页面且不存在链入
