@@ -5,9 +5,6 @@
 .skin-minerva #settingsDialog .oo-ui-numberInputWidget-field {
 	font-size: 16px;
 }
-#settingsDialog .oo-ui-numberInputWidget {
-	font-family: monospace;
-}
 #settingsDialog .oo-ui-checkboxMultiselectInputWidget, #settingsDialog .oo-ui-fieldLayout-help {
 	padding-top: 0.28571429em;
 }

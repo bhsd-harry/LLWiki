@@ -1,15 +1,13 @@
 /**
  * @Function: 定义小工具设置对话框
- * @Methods: constructor：构建mw.SettingsDialog对象
- *           initialize：初始化html
- *           getActionProcess：点击按钮时执行动作
- *           getIndex：获取小工具编号
- *           getName：获取小工具名称
- *           getObject：获取小工具对象
- *           addTab：添加小工具
- *           removeTab：移除小工具
- *           saveOptions：将设置保存到localStorage
- *           clearOptions：还原设置
+ * @Methods: getName: 获取小工具名称
+ *           getObject: 获取小工具对象
+ *           getPanel: 获取小工具标签页
+ *           addTab: 添加小工具
+ *           generateOptions: 生成设置对象
+ *           saveOptions: 将设置保存到localStorage
+ *           clearOptions: 还原设置
+ *           export: 导出设置
  * @Dependencies: mediawiki.util, mediawiki.storage, oojs-ui-windows, oojs-ui-widgets, ext.gadget.site-lib, user
  * @Author: https://llwiki.org/zh/User:Bhsd
  */

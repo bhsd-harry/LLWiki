@@ -66,7 +66,7 @@ if (pagename.startsWith( 'LLWiki:首页/当年今日/' ) && action == 'view') {
         // 避免不必要的下载。注意:contains选择器里不能有多余的空格。
         if ($output.find( 'style:contains(mainpage)' ).length || downloaded) { return; }
         console.log('Hook: wikipage.content, 开始下载主页样式表');
-        mw.loader.load( '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@1.2/widget/mainpage.min.css', 'text/css' );
+        mw.loader.load( '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@1.4/widget/mainpage.min.css', 'text/css' );
         downloaded = true;
     });
 }
@@ -74,9 +74,10 @@ if (pagename.startsWith( 'LLWiki:首页/当年今日/' ) && action == 'view') {
  * @Function: 链入页面自动繁简转换
  * @Dependencies: mediawiki.api, mediawiki.Uri, ext.gadget.site-lib
  */
-if (specialPage == 'Whatlinkshere' && $('#contentSub > .new, .minerva__subtitle > .new').length &&
-    $('#mw-whatlinkshere-list').length === 0) { // 不存在的页面且不存在链入
-    const target = $('#mw-whatlinkshere-target').val();
+const $newpage = $('#contentSub > .new, .minerva__subtitle > .new');
+// 不存在的页面且不存在链入
+if (specialPage == 'Whatlinkshere' && $newpage.length && $('#mw-whatlinkshere-list').length === 0) {
+    const target = $newpage.text();
     if (/[\u4E00-\u9FCC\u3400-\u4DB5]/.test( target )) { // 不含中文字符不需要繁简转换
         mw.timedQuery(new mw.Api(), {titles: target, converttitles: 1}, '繁简页面标题').then(function(data) {
             const converted = data.query.pages[0];
