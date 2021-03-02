@@ -1,6 +1,6 @@
 /**
  * @Function: 用户可以自行调低某几位角色的应援色亮度。
- * @Dependencies: mediawiki.storage, oojs-ui-core, oojs-ui-windows, ext.gadget.site-lib
+ * @Dependencies: mediawiki.storage, oojs-ui-windows, ext.gadget.site-lib
  * @Author: https://llwiki.org/zh/User:Bhsd
  */
 "use strict";

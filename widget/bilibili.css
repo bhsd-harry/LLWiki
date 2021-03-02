@@ -1,7 +1,7 @@
 table.BiliTable {
 	display: table;
 }
-@media only screen and (max-width:720px) {
+@media screen and (max-width:720px) {
 	.BiliTable div {
 		width: 100% !important; /* 不能用max-width替代 */
 	}

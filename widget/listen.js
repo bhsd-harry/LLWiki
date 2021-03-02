@@ -1,7 +1,7 @@
 /**
  * @Function: 借鉴Chrome和Edge设计的小型音乐播放元件，并提供音量调节（除iOS）和下载功能
  * @Dependencies: jquery.client, oojs-ui-core, ext.gadget.site-lib
- * @Author: User:Bhsd
+ * @Author: https://llwiki.org/zh/User:Bhsd
  */
 "use strict";
 /* global mw, $, wgULS */
@@ -49,7 +49,7 @@
                 initialize();
             }} ], $.extend( {text: mw.msg( 'widget-li-download' ), icon: 'download', data: 3},
                 browser == 'firefox' ? {click: () => { menu.toggle(); }} : null)
-            ], {id: 'listen-menu', hideOnChoose: false}, true).off( 'ready' ).on('ready', () => {
+            ], {id: 'listen-menu', hideOnChoose: false}, true).on('ready', () => {
                 // 有自制icon时，OO.ui自带的isClipped处理不正确
                 if (menu.$element.width() > 45 + (skin ? 14 : 16) * (browser == 'iphone' ? 2 : 4)) { return; }
                 menu.setHorizontalPosition( menu.horizontalPosition == 'start' ? 'end' : 'start' );

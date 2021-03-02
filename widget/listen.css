@@ -6,9 +6,9 @@
 	border-radius: 30px;
 	background-color: #f1f3f4;
 	margin: 5px 0;
-	padding: 0 10px;
+	padding: 0 10px; /* 调节按钮水平位置 */
 	font-size: 12px;
-	line-height: 2;
+	line-height: 2; /* 调节按钮垂直位置 */
 }
 .skin-minerva .listen {
 	transform: scale(1.2);
@@ -17,11 +17,11 @@
 .listen > audio {
 	display: none;
 }
-.listen i {
+.listen > i {
 	cursor: pointer;
 }
 .listen .fa-ellipsis-v {
-	padding-left: 14px;
+	padding-left: 14px; /* 增大点击区域 */
 }
 #listen-menu {
 	margin-top: 5px;
@@ -32,5 +32,5 @@
 }
 #listen-menu a {
 	color: #222;
-	display: block;
+	display: block; /* 增大点击区域 */
 }

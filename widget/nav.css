@@ -17,6 +17,31 @@
 	width: auto !important;
 }
 
+.ll-nav, .ll-nav span {
+	display: inline-block;
+}
+.ll-nav {
+	background-color: #f6f6f6;
+	margin: 4px 1px;
+	padding: 4px;
+	border: solid #cdcdcd;
+	border-width: 1px 3px 3px 1px;
+	border-radius: 19px 9px;
+}
+.ll-nav > span {
+	background-color: #fff;
+	padding: 0px 10px;
+	line-height: 24px;
+	border: 1px solid #ababab;
+	border-radius: 15px 5px;
+	text-align: center;
+}
+.ll-nav > span > span {
+	height: 24px;
+	width: 24px;
+	margin-right: 5px;
+	color: #fff;
+}
 /* 提前加载FontAwesome部分CSS */
 .fa, .fab, .fad, .fal, .far, .fas {
 	display: inline-block;

@@ -5,7 +5,7 @@
 	display: none;
 }
 .isBefore > :first-child {
-	display: initial;
+	display: inline;
 }
 .isBefore > :last-child {
 	display: none;

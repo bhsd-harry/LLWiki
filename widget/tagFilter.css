@@ -1,5 +1,5 @@
 .chronology, .filter {
-	display: inline-block; /* Safari */
+	display: inline-block !important; /* Safari */
 	white-space: nowrap;
 	line-height: 1.2;
 	color: #676767;
@@ -11,6 +11,5 @@
 	transition: background-color ease-out 0.5s;
 }
 .filter.mw-collapsed {
-	display: initial !important;
 	background-color: #ccc !important;
 }

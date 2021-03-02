@@ -4,7 +4,7 @@
  * @Author: https://llwiki.org/zh/User:Bhsd
  */
 "use strict";
-/* global mw, $ */
+/* global mw */
 (() => {
     const main = () => {
         mw.widget = mw.widget || {};
