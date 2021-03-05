@@ -2,6 +2,11 @@
 	width: 20px !important;
 	height: auto !important;
 }
+@media screen and (min-width:720px) {
+	.member-symbol-10 img {
+		width: 18px !important;
+	}
+}
 .member-symbol-image {
 	display: none;
 }

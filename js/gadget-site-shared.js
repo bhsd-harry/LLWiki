@@ -93,10 +93,12 @@ if (specialPage == 'Whatlinkshere' && $newpage.length && $('#mw-whatlinkshere-li
 /**
  * @Function: 分类栏显示小写标题
  */
+const lcCats = ["Μ's", 'Lily white', 'JQuery'];
 mw.hook( 'wikipage.categories' ).add(function($content) {
     console.log('Hook: wikipage.categories, 开始替换小写分类');
-    $content.find( "a:contains(Μ's)" ).text(function(i, text) { return text.replace(/^Μ's/, "μ's"); });
-    $content.find( 'a:contains(Lily white)' ).text(function(i, text) {
-        return text.replace(/^Lily white/, 'lily white');
+    lcCats.forEach(function(ele) {
+        $content.find( 'a:contains(' + ele + ')' ).text(function(i, text) {
+            return text.replace( new RegExp('^' + ele), ele[0].toLowerCase() + ele.slice(1) );
+        });
     });
 });
