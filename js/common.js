@@ -28,12 +28,14 @@ if (mw.config.get( 'wgNamespaceNumber' ) >= 0) {
 // 2. 重定向气泡提示，预览时不需要重复生成
 if (mw.config.get( 'wgRedirectedFrom' )) { mw.notify( $('.mw-redirectedfrom').clone() ); }
 if (['edit', 'submit'].includes( mw.config.get('wgAction') )) {
-    // 3. 调整.mw-editTools的位置
-    const $tools = $('.mw-editTools').insertBefore( '#wpTextbox1' );
-    // 启用WikiEditor时，需要等待WikiEditor加载完毕
-    $('#wpTextbox1').on( 'wikiEditor-toolbar-doneInitialSections', function() {
-        // 这个插入位置可以用CSS检查是否是CodeEditor，CodeEditor不可使用快速插入工具
-        $tools.insertAfter( '#wikiEditor-ui-toolbar' );
+    // 3. 调整.mw-editTools的位置，只能执行一次
+    $(function() {
+        const $tools = $('.mw-editTools').insertBefore( '#wpTextbox1' );
+        // 启用WikiEditor时，需要等待WikiEditor加载完毕
+        $('#wpTextbox1').on( 'wikiEditor-toolbar-doneInitialSections', function() {
+            // 这个插入位置可以用CSS检查是否是CodeEditor，CodeEditor不可使用快速插入工具
+            $tools.insertAfter( '#wikiEditor-ui-toolbar' );
+        });
     });
     // 4. 设置CodeEditor的JSHint
     if (mw.config.get( 'wgPageContentModel' ) == 'javascript') {

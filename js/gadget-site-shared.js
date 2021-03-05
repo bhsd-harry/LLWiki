@@ -31,7 +31,8 @@ if (pagename.endsWith( '/' ) && specialPage != 'Prefixindex') {
  * @Dependencies: jquery.textSelection（已由CharInsert扩展加载）
  */
 if (['edit', 'submit'].includes( action ) && mw.config.get( 'wgIsProbablyEditable' )) {
-    $('#editform').on('click', 'span.mw-charinsert-item', function() {
+    // 这个事件不能重复添加，但#editform可能会重建
+    $('#bodyContent').on('click', 'span.mw-charinsert-item', function() {
         const $this = $(this);
         $('#wpTextbox1').textSelection( 'encapsulateSelection', {
             pre: $this.data( 'mw-charinsert-start' ) || $this.data( 'start' ), // undefined也没关系
