@@ -5,10 +5,10 @@
 }
 /* 仅用于拉丁字母的注音 */
 .Lyrics_monospace {
-	font-family: Monaco, Menlo, Consolas, 'Liberation Mono', 'Courier New', sans-serif;
+	font-family: Monaco, Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
 .Lyrics_monospace .reference {
-	font-family: Tahoma, Helvetica, Arial, sans-serif;
+	font-family: Helvetica, Arial, sans-serif;
 	-webkit-text-fill-color: initial;
 	text-fill-color: initial;
 }
