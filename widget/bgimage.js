@@ -15,7 +15,7 @@
         $ele.closest('body, #Wikiplus-Quickedit-Preview-Output').append( $ele )
             .find( '#p-logo' ).css('visibility', $ele.data('logo') == 'off' ? 'hidden' : ''); // Wikiplus预览不隐藏logo
         $img.on('load', () => { $ele.fadeIn( 'slow' ); });
-        if ($img.prop( 'complete' )) { $img.trigger( 'load' ); }
+        if ($img.prop( 'complete' )) { $img.triggerHandler( 'load' ); }
     },
         handler = () => {
         mw.widget = mw.widget || {};

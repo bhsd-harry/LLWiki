@@ -1,6 +1,6 @@
 /**
  * @Function: 高亮JavaScript、CSS、HTML和Lua，按行号跳转，并添加行号和指示色块
- * @Dependencies: mediawiki.Uri, ext.gadget.site-lib
+ * @Dependencies: ext.gadget.site-lib
  * @Source: https://zh.moegirl.org.cn/mediawiki:gadget-code-prettify.js和https://zh.moegirl.org.cn/User:机智的小鱼君/gadget/Highlight.js
  * @EditedBy: https://llwiki.org/zh/User:Bhsd
  */
@@ -62,8 +62,8 @@ mw.hook( 'wikipage.content' ).add(function($content) {
                 opacity: color[8] });
         });
         // 手动跳转
-        const fragment = new mw.Uri().fragment,
-            $line = $('#' + fragment);
-        if (/^L\d+$/.test( fragment ) && $line.length) { $line[0].scrollIntoView({ behavior: 'smooth' }); }
+        const fragment = decodeURIComponent( location.hash.slice(1) ),
+            target = document.getElementById( fragment ); // 用户输入内容，禁止使用$()
+        if (/^L\d+$/.test( fragment ) && target) { target.scrollIntoView({ behavior: 'smooth' }); }
     }, function(reason) { mw.apiFailure(reason, 'highlight.js'); });
 });
