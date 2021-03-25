@@ -19,8 +19,15 @@
                 .toggleClass('fa-volume-down', volume > 0.05).toggleClass('fa-volume-mute', volume < 0.05);
         };
         $('#bodyContent').on('click', '.listen > i:first-of-type', function() {
-            const ad = $(this).toggleClass( 'fa-play fa-pause' ).prev( 'audio' )[0];
+            const $this = $(this).toggleClass( 'fa-play fa-pause' ),
+                $ad = $this.prev( 'audio' ),
+                ad = $ad[0];
             ad[ad.paused ? 'play' : 'pause']();
+            if ($ad.data( 'event' )) { return; }
+            $ad.data('event', true).on('ended', () => {
+                ad.currentTime = 0;
+                $this.toggleClass( 'fa-play fa-pause' );
+            });
         }).on('click', '.listen > .fa-ellipsis-v', function() {
             const $this = $(this),
                 $audio = $this.prevAll( 'audio' ),
