@@ -11,7 +11,7 @@
 const ns = mw.config.get( 'wgNamespaceNumber' ),
     pagename = mw.config.get( 'wgPageName' ),
     action = mw.config.get('wgAction');
-if ((ns >= 0 && ns % 2 == 1 || pagename == "LLWiki:互助客棧") && ["view", "submit"].includes(action)) {
+if ((ns >= 0 && ns % 2 == 1 || pagename == "Help:互助客棧") && ["view", "submit"].includes(action)) {
     // 1. 更新设置
     mw.gadgets = mw.gadgets || {};
     mw.gadgets.CommentsInLocalTime = $.extend( mw.storage.getObject( 'gadget-CommentsInLocalTime' ),
