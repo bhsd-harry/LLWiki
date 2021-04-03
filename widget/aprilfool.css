@@ -1,0 +1,25 @@
+h1 { /* 手机版首页会自动处理.pre-content */
+	display: none;
+}
+.floatnone img {
+	max-width: 100%;
+	height: auto;
+}
+.skin-minerva ul.gallery,
+.skin-minerva .gallery .thumb,
+.skin-minerva .mw-gallery-packed-hover > .gallerybox.mw-gallery-focused .gallerytextwrapper,
+.skin-minerva .mw-gallery-packed-hover > .gallerybox:hover .gallerytextwrapper {
+	padding: 0;
+	margin: 2px 0;
+}
+.skin-minerva .gallery img {
+	width: 100% !important;
+}
+@media screen and (min-width:720px) and (max-width:1000px) {
+	.skin-minerva .gallerybox {
+		width: calc(48.5vw - 3.35em) !important;
+	}
+	.skin-minerva .gallerybox > div, .skin-minerva .gallerybox .thumb {
+		width: auto !important;
+	}
+}

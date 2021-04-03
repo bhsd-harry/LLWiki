@@ -6,7 +6,9 @@
  *             4. 正确显示[[特殊:前缀索引/LLWiki:首页/当年今日/]]
  *             5. [[特殊:链入页面]]检索正确的繁简转换页面
  *             6. 分类栏正确显示小写标题
- *             7. 禁止使用InPageEdit快速编辑和快速重定向
+ *             7. 触摸屏将packed-hover模式的gallery替换为packed
+ *             8. 章节标题hash繁简转换
+ *             9. 禁止使用InPageEdit快速编辑和快速重定向
  * @Dependencies: mediawiki.api, mediawiki.Uri, mediawiki.Title, ext.gadget.site-lib
  * @Author: 如无特殊说明，均为https://llwiki.org/zh/User:Bhsd
  */
@@ -106,6 +108,30 @@ mw.hook( 'wikipage.categories' ).add(function($content) {
     });
 });
 /**
+ * @Function: 触摸屏代替gallery的hover效果
+ */
+if (matchMedia( 'screen and (hover: none)' ).matches) {
+    mw.hook( 'wikipage.content' ).add(function($content) {
+        console.log('Hook: wikipage.content, 开始移除gallery的hover效果');
+        $content.find( '.mw-gallery-packed-hover ' ).toggleClass( 'mw-gallery-packed-hover mw-gallery-packed' );
+    });
+}
+/**
+ * @Function: 自动实现hash繁简转换
+ * @Bug: 由于MediaWiki的hash转义算法有缺陷，可能无法识别转义前的“.”字符
+ */
+const hashConvert = function() {
+    const hash = location.hash.slice(1);
+    if (!hash || document.getElementById( hash )) { return; }
+    const header = $('.mw-headline').filter(function() {
+        const text = this.textContent;
+        return text == hash || text == decodeURIComponent( hash.replace(/\.(?=[\dA-Z]{2})/g, '%') );
+    })[0];
+    if (header) { header.scrollIntoView({ behavior: 'smooth' }); }
+};
+hashConvert();
+$(window).on('hashchange', hashConvert);
+/**
  * @Function: 禁止使用InPageEdit快速编辑和快速重定向
  * @Dependecies: ext.gadget.site-lib
  */
@@ -116,13 +142,13 @@ mw.messages.set( wgULS({
     'gadget-ipe-warn': '由於InPageEdit小工具$1，LLWiki暫時限制該小工具的使用。', 'gadget-ipe-edit': '易造成編輯衝突',
     'gadget-ipe-redirect': '無法正確判別頁面是否已存在'
 }) );
-const noRedirect = function(msg) {
+const noIPE = function(msg) {
     mw.notify( mw.msg( 'gadget-ipe-warn', mw.msg( 'gadget-ipe-' + (msg || 'redirect') ) ),
         {type: 'warn', autoHide: false, tag: 'InPageEdit'} );
 };
 mw.hook( 'InPageEdit.quickEdit' ).add(function(data) {
     data.$modalWindow.find( '.save-btn' ).prop('disabled', true);
-    noRedirect( 'edit' );
+    noIPE( 'edit' );
 });
-mw.hook( 'InPageEdit.quickRedirect' ).add( noRedirect );
-mw.hook( 'InPageEdit.quickRename' ).add( noRedirect );
+mw.hook( 'InPageEdit.quickRedirect' ).add( noIPE );
+mw.hook( 'InPageEdit.quickRename' ).add( noIPE );
