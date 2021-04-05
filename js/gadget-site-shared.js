@@ -127,7 +127,7 @@ const hashConvert = function() {
         const text = this.textContent;
         return text == hash || text == decodeURIComponent( hash.replace(/\.(?=[\dA-Z]{2})/g, '%') );
     })[0];
-    if (header) { header.scrollIntoView({ behavior: 'smooth' }); }
+    if (header) { location.hash = '#' + header.id; }
 };
 hashConvert();
 $(window).on('hashchange', hashConvert);
