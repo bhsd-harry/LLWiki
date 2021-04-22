@@ -29,3 +29,13 @@
 .sif-song-table .tabs-dropdown li:last-child {
 	border-radius: 0 0 8px 8px;
 }
+
+.attrib-s {
+	background-color: #ffc1c1;
+}
+.attrib-p {
+	background-color: #c0ffbb;
+}
+.attrib-c {
+	background-color: #b0e2ff;
+}
