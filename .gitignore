@@ -1,6 +1,6 @@
 *~
 */*~
-*/.swp
 *.swp
-*.html
+*/*.swp
 .DS_Store
+/node
