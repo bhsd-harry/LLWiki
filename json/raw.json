@@ -1,13 +1,11 @@
 {
 	"1": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 1,
 		"jpname": "僕らのLIVE 君とのLIFE",
-		"muse": 1,
 		"name": "我们的演唱会与你的生活",
 		"settings": {
 			"1": {
@@ -677,18 +675,15 @@
 				"time": "118.664"
 			}
 		},
-		"totaltime": "122.0",
-		"type": ""
+		"totaltime": "122.0"
 	},
 	"2": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 2,
 		"jpname": "友情ノーチェンジ",
-		"muse": 1,
 		"name": "友情永不变",
 		"settings": {
 			"4": {
@@ -1358,18 +1353,15 @@
 				"time": "117.042"
 			}
 		},
-		"totaltime": "120.74",
-		"type": ""
+		"totaltime": "120.74"
 	},
 	"3": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 3,
 		"jpname": "Snow halation",
-		"muse": 1,
 		"name": "雪色光晕",
 		"settings": {
 			"7": {
@@ -1965,18 +1957,15 @@
 				"time": "106.463"
 			}
 		},
-		"totaltime": "118.98",
-		"type": ""
+		"totaltime": "118.98"
 	},
 	"4": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 4,
 		"jpname": "baby maybe 恋のボタン",
-		"muse": 1,
 		"name": "宝贝 或许 恋之按钮",
 		"settings": {
 			"10": {
@@ -2424,18 +2413,15 @@
 				"time": "120.846"
 			}
 		},
-		"totaltime": "121.97",
-		"type": ""
+		"totaltime": "121.97"
 	},
 	"5": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 5,
 		"jpname": "夏色えがおで1,2,Jump!",
-		"muse": 1,
 		"name": "夏色笑容 1，2，跳！",
 		"settings": {
 			"13": {
@@ -2883,18 +2869,15 @@
 				"time": "113.064"
 			}
 		},
-		"totaltime": "121.79",
-		"type": ""
+		"totaltime": "121.79"
 	},
 	"6": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 6,
 		"jpname": "Mermaid festa vol.1",
-		"muse": 1,
 		"name": "人鱼狂欢节.1",
 		"settings": {
 			"16": {
@@ -3342,18 +3325,15 @@
 				"time": "112.58"
 			}
 		},
-		"totaltime": "117.0",
-		"type": ""
+		"totaltime": "117.0"
 	},
 	"7": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 7,
 		"jpname": "もぎゅっと“love”で接近中！",
-		"muse": 1,
 		"name": "满怀“爱意”接近你！",
 		"settings": {
 			"19": {
@@ -3801,18 +3781,15 @@
 				"time": "119.453"
 			}
 		},
-		"totaltime": "122.04",
-		"type": ""
+		"totaltime": "122.04"
 	},
 	"8": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 8,
 		"jpname": "愛してるばんざーい！",
-		"muse": 1,
 		"name": "爱上你万ー岁！",
 		"settings": {
 			"22": {
@@ -4260,18 +4237,15 @@
 				"time": "103.55"
 			}
 		},
-		"totaltime": "108.9",
-		"type": ""
+		"totaltime": "108.9"
 	},
 	"9": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 9,
 		"jpname": "Wonderful Rush",
-		"muse": 1,
 		"name": "精彩高峰",
 		"settings": {
 			"25": {
@@ -4719,18 +4693,15 @@
 				"time": "101.107"
 			}
 		},
-		"totaltime": "108.68",
-		"type": ""
+		"totaltime": "108.68"
 	},
 	"10": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 10,
 		"jpname": "Oh,Love＆Peace!",
-		"muse": 1,
 		"name": "哦，爱与和平！",
 		"settings": {
 			"28": {
@@ -5178,18 +5149,15 @@
 				"time": "114.792"
 			}
 		},
-		"totaltime": "121.86",
-		"type": ""
+		"totaltime": "121.86"
 	},
 	"11": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 11,
 		"jpname": "Love marginal",
-		"muse": 1,
 		"name": "爱的边缘",
 		"settings": {
 			"31": {
@@ -5637,18 +5605,15 @@
 				"time": "108.581"
 			}
 		},
-		"totaltime": "115.09",
-		"type": ""
+		"totaltime": "115.09"
 	},
 	"12": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 12,
 		"jpname": "sweet&sweet holiday",
-		"muse": 1,
 		"name": "甜&甜假期",
 		"settings": {
 			"34": {
@@ -6096,18 +6061,15 @@
 				"time": "112.916"
 			}
 		},
-		"totaltime": "120.6",
-		"type": ""
+		"totaltime": "120.6"
 	},
 	"13": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 13,
 		"jpname": "僕らは今のなかで",
-		"muse": 1,
 		"name": "如今的我们",
 		"settings": {
 			"37": {
@@ -6629,18 +6591,15 @@
 				"time": "106.149"
 			}
 		},
-		"totaltime": "118.44",
-		"type": ""
+		"totaltime": "118.44"
 	},
 	"14": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 14,
 		"jpname": "WILD STARS",
-		"muse": 1,
 		"name": "狂野之星",
 		"settings": {
 			"40": {
@@ -7088,18 +7047,15 @@
 				"time": "120.721"
 			}
 		},
-		"totaltime": "122.04",
-		"type": ""
+		"totaltime": "122.04"
 	},
 	"15": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 15,
 		"jpname": "知らないLove＊教えてLove",
-		"muse": 1,
 		"name": "不知道的爱*告诉我吧",
 		"settings": {
 			"43": {
@@ -7547,18 +7503,15 @@
 				"time": "114.359"
 			}
 		},
-		"totaltime": "121.79",
-		"type": ""
+		"totaltime": "121.79"
 	},
 	"16": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 16,
 		"jpname": "Mermaid festa vol.2",
-		"muse": 1,
 		"name": "人鱼狂欢节.2",
 		"settings": {
 			"46": {
@@ -8006,18 +7959,15 @@
 				"time": "111.716"
 			}
 		},
-		"totaltime": "118.58",
-		"type": ""
+		"totaltime": "118.58"
 	},
 	"17": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 17,
 		"jpname": "乙女式れんあい塾",
-		"muse": 1,
 		"name": "乙女式恋爱塾",
 		"settings": {
 			"49": {
@@ -8465,18 +8415,15 @@
 				"time": "100.296"
 			}
 		},
-		"totaltime": "103.43",
-		"type": ""
+		"totaltime": "103.43"
 	},
 	"18": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 18,
 		"jpname": "告白日和、です！",
-		"muse": 1,
 		"name": "告白日和、是也！",
 		"settings": {
 			"52": {
@@ -8924,18 +8871,15 @@
 				"time": "95.605"
 			}
 		},
-		"totaltime": "101.16",
-		"type": ""
+		"totaltime": "101.16"
 	},
 	"19": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 19,
 		"jpname": "soldier game",
-		"muse": 1,
 		"name": "士兵游戏",
 		"settings": {
 			"55": {
@@ -9383,18 +9327,15 @@
 				"time": "90.928"
 			}
 		},
-		"totaltime": "97.308",
-		"type": ""
+		"totaltime": "97.308"
 	},
 	"20": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 20,
 		"jpname": "きっと青春が聞こえる",
-		"muse": 1,
 		"name": "终将听到青春的声音",
 		"settings": {
 			"58": {
@@ -9842,18 +9783,15 @@
 				"time": "101.785"
 			}
 		},
-		"totaltime": "110.81",
-		"type": ""
+		"totaltime": "110.81"
 	},
 	"21": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 21,
 		"jpname": "輝夜の城で踊りたい",
-		"muse": 1,
 		"name": "欲于辉夜城起舞",
 		"settings": {
 			"61": {
@@ -10301,18 +10239,15 @@
 				"time": "117.391"
 			}
 		},
-		"totaltime": "122.04",
-		"type": ""
+		"totaltime": "122.04"
 	},
 	"23": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 23,
 		"jpname": "ラブノベルス",
-		"muse": 1,
 		"name": "恋爱小说",
 		"settings": {
 			"65": {
@@ -10760,18 +10695,15 @@
 				"time": "97.641"
 			}
 		},
-		"totaltime": "104.08",
-		"type": ""
+		"totaltime": "104.08"
 	},
 	"25": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 25,
 		"jpname": "ススメ→トゥモロウ",
-		"muse": 1,
 		"name": "继续前进→明天",
 		"settings": {
 			"69": {
@@ -11219,18 +11151,15 @@
 				"time": "117.087"
 			}
 		},
-		"totaltime": "124.42",
-		"type": ""
+		"totaltime": "124.42"
 	},
 	"26": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 26,
 		"jpname": "No brand girls",
-		"muse": 1,
 		"name": "无牌女孩",
 		"settings": {
 			"72": {
@@ -11678,18 +11607,15 @@
 				"time": "97.086"
 			}
 		},
-		"totaltime": "101.99",
-		"type": ""
+		"totaltime": "101.99"
 	},
 	"32": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 32,
 		"jpname": "Wonder zone",
-		"muse": 1,
 		"name": "奇妙地带",
 		"settings": {
 			"80": {
@@ -12137,18 +12063,15 @@
 				"time": "110.518"
 			}
 		},
-		"totaltime": "119.05",
-		"type": ""
+		"totaltime": "119.05"
 	},
 	"35": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 35,
 		"jpname": "ダイヤモンドプリンセスの憂鬱",
-		"muse": 1,
 		"name": "钻石公主的忧郁",
 		"settings": {
 			"85": {
@@ -12596,18 +12519,15 @@
 				"time": "88.776"
 			}
 		},
-		"totaltime": "96.228",
-		"type": ""
+		"totaltime": "96.228"
 	},
 	"39": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 39,
 		"jpname": "Listen to my heart!!",
-		"muse": 1,
 		"name": "倾听我的心！！",
 		"settings": {
 			"90": {
@@ -13055,18 +12975,15 @@
 				"time": "117.942"
 			}
 		},
-		"totaltime": "121.72",
-		"type": ""
+		"totaltime": "121.72"
 	},
 	"40": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 40,
 		"jpname": "これからのSomeday",
-		"muse": 1,
 		"name": "未来的某一天",
 		"settings": {
 			"93": {
@@ -13440,18 +13357,15 @@
 				"time": "99.147"
 			}
 		},
-		"totaltime": "103.07",
-		"type": ""
+		"totaltime": "103.07"
 	},
 	"45": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 45,
 		"jpname": "あ・の・ね・が・ん・ば・れ！",
-		"muse": 1,
 		"name": "我·说·啊·请·你·加·油！",
 		"settings": {
 			"99": {
@@ -13899,18 +13813,15 @@
 				"time": "101.127"
 			}
 		},
-		"totaltime": "105.12",
-		"type": ""
+		"totaltime": "105.12"
 	},
 	"51": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 51,
 		"jpname": "after school NAVIGATORS",
-		"muse": 1,
 		"name": "放学后的航海家",
 		"settings": {
 			"105": {
@@ -14432,18 +14343,15 @@
 				"time": "114.86"
 			}
 		},
-		"totaltime": "122.08",
-		"type": ""
+		"totaltime": "122.08"
 	},
 	"55": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 55,
 		"jpname": "START:DASH!!",
-		"muse": 1,
 		"name": "开始：前进！！",
 		"settings": {
 			"110": {
@@ -14891,18 +14799,15 @@
 				"time": "106.326"
 			}
 		},
-		"totaltime": "116.17",
-		"type": ""
+		"totaltime": "116.17"
 	},
 	"67": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 67,
 		"jpname": "Cutie Panther",
-		"muse": 1,
 		"name": "可爱的美洲豹",
 		"settings": {
 			"117": {
@@ -15424,18 +15329,15 @@
 				"time": "117.821"
 			}
 		},
-		"totaltime": "123.84",
-		"type": ""
+		"totaltime": "123.84"
 	},
 	"79": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 79,
 		"jpname": "愛は太陽じゃない？",
-		"muse": 1,
 		"name": "爱如太阳？",
 		"settings": {
 			"121": {
@@ -15883,18 +15785,15 @@
 				"time": "88.646"
 			}
 		},
-		"totaltime": "95.04",
-		"type": ""
+		"totaltime": "95.04"
 	},
 	"123": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 123,
 		"jpname": "Pure girls project",
-		"muse": 1,
 		"name": "清纯女孩计划",
 		"settings": {
 			"125": {
@@ -16342,18 +16241,15 @@
 				"time": "104.46"
 			}
 		},
-		"totaltime": "111.67",
-		"type": ""
+		"totaltime": "111.67"
 	},
 	"141": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 141,
 		"jpname": "タカラモノズ",
-		"muse": 1,
 		"name": "宝物缤纷",
 		"settings": {
 			"129": {
@@ -16801,18 +16697,15 @@
 				"time": "107.226"
 			}
 		},
-		"totaltime": "111.42",
-		"type": ""
+		"totaltime": "111.42"
 	},
 	"143": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 143,
 		"jpname": "キミのくせに！",
-		"muse": 1,
 		"name": "分明就是你！",
 		"settings": {
 			"133": {
@@ -17260,18 +17153,15 @@
 				"time": "107.91"
 			}
 		},
-		"totaltime": "113.44",
-		"type": ""
+		"totaltime": "113.44"
 	},
 	"146": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 146,
 		"jpname": "Paradise Live",
-		"muse": 1,
 		"name": "演唱会天堂",
 		"settings": {
 			"137": {
@@ -17719,18 +17609,15 @@
 				"time": "114.819"
 			}
 		},
-		"totaltime": "121.1",
-		"type": ""
+		"totaltime": "121.1"
 	},
 	"163": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 163,
 		"jpname": "微熱からMystery",
-		"muse": 1,
 		"name": "来自微热的神秘",
 		"settings": {
 			"141": {
@@ -18178,18 +18065,15 @@
 				"time": "119.793"
 			}
 		},
-		"totaltime": "121.39",
-		"type": ""
+		"totaltime": "121.39"
 	},
 	"166": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 166,
 		"jpname": "Music S.T.A.R.T!!",
-		"muse": 1,
 		"name": "音乐开始！！",
 		"settings": {
 			"145": {
@@ -18711,18 +18595,15 @@
 				"time": "120.501"
 			}
 		},
-		"totaltime": "121.1",
-		"type": ""
+		"totaltime": "121.1"
 	},
 	"182": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 182,
 		"jpname": "夏、終わらないで。",
-		"muse": 1,
 		"name": "夏天，请不要结束。",
 		"settings": {
 			"149": {
@@ -19170,18 +19051,15 @@
 				"time": "105.576"
 			}
 		},
-		"totaltime": "107.53",
-		"type": ""
+		"totaltime": "107.53"
 	},
 	"186": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 186,
 		"jpname": "LOVELESS WORLD",
-		"muse": 1,
 		"name": "无爱世界",
 		"settings": {
 			"153": {
@@ -19629,18 +19507,15 @@
 				"time": "118.423"
 			}
 		},
-		"totaltime": "121.1",
-		"type": ""
+		"totaltime": "121.1"
 	},
 	"193": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 193,
 		"jpname": "UNBALANCED LOVE",
-		"muse": 1,
 		"name": "不平衡的爱情",
 		"settings": {
 			"157": {
@@ -20088,18 +19963,15 @@
 				"time": "119.135"
 			}
 		},
-		"totaltime": "121.61",
-		"type": ""
+		"totaltime": "121.61"
 	},
 	"197": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 197,
 		"jpname": "LONELIEST BABY",
-		"muse": 1,
 		"name": "最孤独的孩子",
 		"settings": {
 			"161": {
@@ -20547,18 +20419,15 @@
 				"time": "117.27"
 			}
 		},
-		"totaltime": "121.97",
-		"type": ""
+		"totaltime": "121.97"
 	},
 	"204": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 204,
 		"jpname": "夢なき夢は夢じゃない",
-		"muse": 1,
 		"name": "没有梦的梦想不是梦想",
 		"settings": {
 			"165": {
@@ -21006,18 +20875,15 @@
 				"time": "107.262"
 			}
 		},
-		"totaltime": "111.46",
-		"type": ""
+		"totaltime": "111.46"
 	},
 	"205": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 205,
 		"jpname": "Anemone heart",
-		"muse": 1,
 		"name": "银莲花之心",
 		"settings": {
 			"168": {
@@ -21465,18 +21331,15 @@
 				"time": "99.696"
 			}
 		},
-		"totaltime": "104.11",
-		"type": ""
+		"totaltime": "104.11"
 	},
 	"207": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 207,
 		"jpname": "孤独なHeaven",
-		"muse": 1,
 		"name": "孤独天堂",
 		"settings": {
 			"172": {
@@ -21922,20 +21785,91 @@
 				"swing": "151",
 				"swingslider": "7",
 				"time": "111.875"
+			},
+			"1491": {
+				"ascore": 412716,
+				"bscore": 344256,
+				"combo": 652,
+				"cscore": 137572,
+				"difficulty": 6,
+				"isac": 0,
+				"isswing": 0,
+				"jsonpath": "Live_s1491.json",
+				"liveid": "1491",
+				"positionnote": [
+					"0",
+					"0",
+					"114",
+					"151",
+					"80",
+					"150",
+					"119",
+					"0",
+					"0"
+				],
+				"positionslider": [
+					"0",
+					"0",
+					"8",
+					"8",
+					"5",
+					"8",
+					"9",
+					"0",
+					"0"
+				],
+				"positionswing": [
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0"
+				],
+				"positionswingslider": [
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0"
+				],
+				"positionweight": [
+					"0.0",
+					"0.0",
+					"124.0",
+					"161.0",
+					"86.25",
+					"160.0",
+					"130.25",
+					"0.0",
+					"0.0"
+				],
+				"slider": "38",
+				"songkeys": 5,
+				"sscore": 481828,
+				"star": "70",
+				"stardifficulty": 11,
+				"swing": "0",
+				"swingslider": "0",
+				"time": "111.875"
 			}
 		},
-		"totaltime": "120.24",
-		"type": ""
+		"totaltime": "120.24"
 	},
 	"211": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 211,
 		"jpname": "なわとび",
-		"muse": 1,
 		"name": "跳绳",
 		"settings": {
 			"176": {
@@ -22309,18 +22243,15 @@
 				"time": "120.481"
 			}
 		},
-		"totaltime": "122.04",
-		"type": ""
+		"totaltime": "122.04"
 	},
 	"214": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 214,
 		"jpname": "それは僕たちの奇跡",
-		"muse": 1,
 		"name": "我们的奇迹",
 		"settings": {
 			"181": {
@@ -22768,18 +22699,15 @@
 				"time": "92.363"
 			}
 		},
-		"totaltime": "94.104",
-		"type": ""
+		"totaltime": "94.104"
 	},
 	"223": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 223,
 		"jpname": "Beat in Angel",
-		"muse": 1,
 		"name": "天使的心跳",
 		"settings": {
 			"186": {
@@ -23227,18 +23155,15 @@
 				"time": "100.925"
 			}
 		},
-		"totaltime": "107.71",
-		"type": ""
+		"totaltime": "107.71"
 	},
 	"224": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 224,
 		"jpname": "にこぷり♡女子道",
-		"muse": 1,
 		"name": "日香风♡女子之道",
 		"settings": {
 			"189": {
@@ -23686,18 +23611,15 @@
 				"time": "118.358"
 			}
 		},
-		"totaltime": "121.9",
-		"type": ""
+		"totaltime": "121.9"
 	},
 	"225": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 225,
 		"jpname": "硝子の花園",
-		"muse": 1,
 		"name": "玻璃花园",
 		"settings": {
 			"192": {
@@ -24145,18 +24067,15 @@
 				"time": "111.48"
 			}
 		},
-		"totaltime": "117.36",
-		"type": ""
+		"totaltime": "117.36"
 	},
 	"226": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 226,
 		"jpname": "Someday of my life",
-		"muse": 1,
 		"name": "我生命中的某一天",
 		"settings": {
 			"195": {
@@ -24530,18 +24449,15 @@
 				"time": "107.482"
 			}
 		},
-		"totaltime": "112.25",
-		"type": ""
+		"totaltime": "112.25"
 	},
 	"230": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 230,
 		"jpname": "どんなときもずっと",
-		"muse": 1,
 		"name": "无论何时",
 		"settings": {
 			"199": {
@@ -24989,18 +24905,15 @@
 				"time": "88.073"
 			}
 		},
-		"totaltime": "94.104",
-		"type": ""
+		"totaltime": "94.104"
 	},
 	"238": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 238,
 		"jpname": "ありふれた悲しみの果て",
-		"muse": 1,
 		"name": "寻常悲伤的尽头",
 		"settings": {
 			"203": {
@@ -25448,18 +25361,15 @@
 				"time": "86.437"
 			}
 		},
-		"totaltime": "97.38",
-		"type": ""
+		"totaltime": "97.38"
 	},
 	"242": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 242,
 		"jpname": "ユメノトビラ",
-		"muse": 1,
 		"name": "梦想之门",
 		"settings": {
 			"207": {
@@ -26055,18 +25965,15 @@
 				"time": "115.321"
 			}
 		},
-		"totaltime": "122.08",
-		"type": ""
+		"totaltime": "122.08"
 	},
 	"243": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 243,
 		"jpname": "愛してるばんざーい！（Piano Mix）",
-		"muse": 1,
 		"name": "爱上你万ー岁！（钢琴版）",
 		"settings": {
 			"210": {
@@ -26292,18 +26199,15 @@
 				"time": "87.963"
 			}
 		},
-		"totaltime": "98.1",
-		"type": ""
+		"totaltime": "98.1"
 	},
 	"251": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 251,
 		"jpname": "ぶる〜べりぃ♡とれいん",
-		"muse": 1,
 		"name": "蓝～莓♡列车",
 		"settings": {
 			"214": {
@@ -26751,18 +26655,15 @@
 				"time": "97.614"
 			}
 		},
-		"totaltime": "103.07",
-		"type": ""
+		"totaltime": "103.07"
 	},
 	"256": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 256,
 		"jpname": "Love wing bell",
-		"muse": 1,
 		"name": "爱 翅膀 钟",
 		"settings": {
 			"218": {
@@ -27210,18 +27111,15 @@
 				"time": "98.636"
 			}
 		},
-		"totaltime": "104.04",
-		"type": ""
+		"totaltime": "104.04"
 	},
 	"268": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 268,
 		"jpname": "Daring!!",
-		"muse": 1,
 		"name": "勇敢些！！",
 		"settings": {
 			"226": {
@@ -27669,18 +27567,15 @@
 				"time": "90.576"
 			}
 		},
-		"totaltime": "95.76",
-		"type": ""
+		"totaltime": "95.76"
 	},
 	"272": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 272,
 		"jpname": "Dancing stars on me!",
-		"muse": 1,
 		"name": "跳舞的星星",
 		"settings": {
 			"230": {
@@ -28128,18 +28023,15 @@
 				"time": "103.254"
 			}
 		},
-		"totaltime": "107.64",
-		"type": ""
+		"totaltime": "107.64"
 	},
 	"281": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 281,
 		"jpname": "勇気のReason",
-		"muse": 1,
 		"name": "勇气的理由",
 		"settings": {
 			"236": {
@@ -28587,18 +28479,15 @@
 				"time": "90.045"
 			}
 		},
-		"totaltime": "97.632",
-		"type": ""
+		"totaltime": "97.632"
 	},
 	"286": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 286,
 		"jpname": "KiRa-KiRa Sensation!",
-		"muse": 1,
 		"name": "闪耀-闪耀感觉！",
 		"settings": {
 			"240": {
@@ -29120,18 +29009,15 @@
 				"time": "109.459"
 			}
 		},
-		"totaltime": "114.41",
-		"type": ""
+		"totaltime": "114.41"
 	},
 	"291": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 291,
 		"jpname": "永遠フレンズ",
-		"muse": 1,
 		"name": "永远的朋友们",
 		"settings": {
 			"243": {
@@ -29505,18 +29391,15 @@
 				"time": "121.076"
 			}
 		},
-		"totaltime": "124.34",
-		"type": ""
+		"totaltime": "124.34"
 	},
 	"294": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 294,
 		"jpname": "恋のシグナルRin rin rin!",
-		"muse": 1,
 		"name": "恋爱的信号凛 凛 凛！",
 		"settings": {
 			"247": {
@@ -29964,18 +29847,15 @@
 				"time": "120.43"
 			}
 		},
-		"totaltime": "122.08",
-		"type": ""
+		"totaltime": "122.08"
 	},
 	"299": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 299,
 		"jpname": "Happy maker!",
-		"muse": 1,
 		"name": "欢乐制造者！",
 		"settings": {
 			"251": {
@@ -30423,18 +30303,15 @@
 				"time": "116.743"
 			}
 		},
-		"totaltime": "122.08",
-		"type": ""
+		"totaltime": "122.08"
 	},
 	"300": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 300,
 		"jpname": "秋のあなたの空遠く",
-		"muse": 1,
 		"name": "秋之彼端路遥远",
 		"settings": {
 			"254": {
@@ -30808,18 +30685,15 @@
 				"time": "87.255"
 			}
 		},
-		"totaltime": "95.94",
-		"type": ""
+		"totaltime": "95.94"
 	},
 	"309": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 309,
 		"jpname": "純愛レンズ",
-		"muse": 1,
 		"name": "纯爱镜头",
 		"settings": {
 			"258": {
@@ -31267,18 +31141,15 @@
 				"time": "116.021"
 			}
 		},
-		"totaltime": "121.36",
-		"type": ""
+		"totaltime": "121.36"
 	},
 	"313": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 313,
 		"jpname": "だってだって噫無情",
-		"muse": 1,
 		"name": "可是可是太无情",
 		"settings": {
 			"262": {
@@ -31726,18 +31597,15 @@
 				"time": "115.133"
 			}
 		},
-		"totaltime": "122.08",
-		"type": ""
+		"totaltime": "122.08"
 	},
 	"314": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 314,
 		"jpname": "冬がくれた予感",
-		"muse": 1,
 		"name": "冬天所给的预感",
 		"settings": {
 			"265": {
@@ -32111,18 +31979,15 @@
 				"time": "120.963"
 			}
 		},
-		"totaltime": "122.69",
-		"type": ""
+		"totaltime": "122.69"
 	},
 	"322": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 322,
 		"jpname": "まほうつかいはじめました！",
-		"muse": 1,
 		"name": "开始当魔法使了！",
 		"settings": {
 			"269": {
@@ -32570,18 +32435,15 @@
 				"time": "98.257"
 			}
 		},
-		"totaltime": "107.93",
-		"type": ""
+		"totaltime": "107.93"
 	},
 	"327": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 327,
 		"jpname": "COLORFUL VOICE",
-		"muse": 1,
 		"name": "多彩声音",
 		"settings": {
 			"273": {
@@ -33029,18 +32891,15 @@
 				"time": "114.914"
 			}
 		},
-		"totaltime": "119.48",
-		"type": ""
+		"totaltime": "119.48"
 	},
 	"334": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 334,
 		"jpname": "SENTIMENTAL StepS",
-		"muse": 1,
 		"name": "伤感的步调",
 		"settings": {
 			"277": {
@@ -33488,18 +33347,15 @@
 				"time": "117.436"
 			}
 		},
-		"totaltime": "122.08",
-		"type": ""
+		"totaltime": "122.08"
 	},
 	"336": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 336,
 		"jpname": "小夜啼鳥恋詩",
-		"muse": 1,
 		"name": "小夜啼鸟恋诗",
 		"settings": {
 			"280": {
@@ -33947,18 +33803,15 @@
 				"time": "120.566"
 			}
 		},
-		"totaltime": "121.57",
-		"type": ""
+		"totaltime": "121.57"
 	},
 	"365": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 365,
 		"jpname": "もうひとりじゃないよ",
-		"muse": 1,
 		"name": "不再孤独",
 		"settings": {
 			"303": {
@@ -34406,18 +34259,15 @@
 				"time": "113.588"
 			}
 		},
-		"totaltime": "120.74",
-		"type": ""
+		"totaltime": "120.74"
 	},
 	"369": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 369,
 		"jpname": "ふたりハピネス",
-		"muse": 1,
 		"name": "两个人的幸福",
 		"settings": {
 			"307": {
@@ -34865,18 +34715,15 @@
 				"time": "117.973"
 			}
 		},
-		"totaltime": "122.62",
-		"type": ""
+		"totaltime": "122.62"
 	},
 	"374": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 374,
 		"jpname": "私たちは未来の花",
-		"muse": 1,
 		"name": "我们是未来之花",
 		"settings": {
 			"311": {
@@ -35398,18 +35245,15 @@
 				"time": "116.397"
 			}
 		},
-		"totaltime": "121.86",
-		"type": ""
+		"totaltime": "121.86"
 	},
 	"395": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 395,
 		"jpname": "スピカテリブル",
-		"muse": 1,
 		"name": "畏惧的乙女",
 		"settings": {
 			"325": {
@@ -35857,18 +35701,15 @@
 				"time": "111.551"
 			}
 		},
-		"totaltime": "120.2",
-		"type": ""
+		"totaltime": "120.2"
 	},
 	"396": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 396,
 		"jpname": "Trouble Busters",
-		"muse": 1,
 		"name": "麻烦克星",
 		"settings": {
 			"328": {
@@ -36316,18 +36157,15 @@
 				"time": "109.823"
 			}
 		},
-		"totaltime": "119.23",
-		"type": ""
+		"totaltime": "119.23"
 	},
 	"419": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 419,
 		"jpname": "Angelic Angel",
-		"muse": 1,
 		"name": "纯真天使",
 		"settings": {
 			"341": {
@@ -36923,18 +36761,15 @@
 				"time": "121.967"
 			}
 		},
-		"totaltime": "125.21",
-		"type": ""
+		"totaltime": "125.21"
 	},
 	"421": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 421,
 		"jpname": "シアワセ行きのSMILING!",
-		"muse": 1,
 		"name": "向幸福前行的微笑！",
 		"settings": {
 			"345": {
@@ -37382,18 +37217,15 @@
 				"time": "93.922"
 			}
 		},
-		"totaltime": "96.948",
-		"type": ""
+		"totaltime": "96.948"
 	},
 	"427": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 427,
 		"jpname": "Private Wars",
-		"muse": 1,
 		"name": "心灵之战",
 		"settings": {
 			"349": {
@@ -37841,18 +37673,15 @@
 				"time": "83.435"
 			}
 		},
-		"totaltime": "86.148",
-		"type": ""
+		"totaltime": "86.148"
 	},
 	"442": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 442,
 		"jpname": "SUNNY DAY SONG",
-		"muse": 1,
 		"name": "晴天的歌",
 		"settings": {
 			"358": {
@@ -38300,18 +38129,15 @@
 				"time": "115.467"
 			}
 		},
-		"totaltime": "122.76",
-		"type": ""
+		"totaltime": "122.76"
 	},
 	"443": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 443,
 		"jpname": "もしもからきっと",
-		"muse": 1,
 		"name": "如果从那时一定",
 		"settings": {
 			"361": {
@@ -38759,18 +38585,15 @@
 				"time": "105.823"
 			}
 		},
-		"totaltime": "114.84",
-		"type": ""
+		"totaltime": "114.84"
 	},
 	"444": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 444,
 		"jpname": "僕たちはひとつの光",
-		"muse": 1,
 		"name": "我们是合而为一的光芒",
 		"settings": {
 			"371": {
@@ -39292,18 +39115,15 @@
 				"time": "119.638"
 			}
 		},
-		"totaltime": "122.04",
-		"type": ""
+		"totaltime": "122.04"
 	},
 	"445": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 445,
 		"jpname": "好きですが好きですか？",
-		"muse": 1,
 		"name": "我喜欢你你喜欢我吗",
 		"settings": {
 			"375": {
@@ -39751,18 +39571,15 @@
 				"time": "118.15"
 			}
 		},
-		"totaltime": "121.97",
-		"type": ""
+		"totaltime": "121.97"
 	},
 	"446": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 446,
 		"jpname": "君のこころは輝いてるかい？",
-		"muse": 0,
 		"name": "你的心灵是否光芒闪耀？",
 		"settings": {
 			"385": {
@@ -40284,18 +40101,15 @@
 				"time": "112.053"
 			}
 		},
-		"totaltime": "122.08",
-		"type": ""
+		"totaltime": "122.08"
 	},
 	"447": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 447,
 		"jpname": "HEART to HEART!",
-		"muse": 1,
 		"name": "心心相印",
 		"settings": {
 			"388": {
@@ -40743,18 +40557,15 @@
 				"time": "112.021"
 			}
 		},
-		"totaltime": "123.34",
-		"type": ""
+		"totaltime": "123.34"
 	},
 	"448": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 448,
 		"jpname": "嵐のなかの恋だから",
-		"muse": 1,
 		"name": "正因为是暴风雨中的爱恋",
 		"settings": {
 			"392": {
@@ -41202,18 +41013,15 @@
 				"time": "119.716"
 			}
 		},
-		"totaltime": "122.9",
-		"type": ""
+		"totaltime": "122.9"
 	},
 	"449": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 449,
 		"jpname": "ずるいよMagnetic today",
-		"muse": 1,
 		"name": "狡猾的磁力日",
 		"settings": {
 			"395": {
@@ -41735,18 +41543,15 @@
 				"time": "111.658"
 			}
 		},
-		"totaltime": "116.53",
-		"type": ""
+		"totaltime": "116.53"
 	},
 	"450": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 450,
 		"jpname": "WAO-WAO Powerful day!",
-		"muse": 1,
 		"name": "哇~哇强大的一天！",
 		"settings": {
 			"399": {
@@ -42194,18 +41999,15 @@
 				"time": "119.166"
 			}
 		},
-		"totaltime": "121.43",
-		"type": ""
+		"totaltime": "121.43"
 	},
 	"451": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 451,
 		"jpname": "Shocking Party",
-		"muse": 1,
 		"name": "震撼派对",
 		"settings": {
 			"405": {
@@ -42653,18 +42455,15 @@
 				"time": "71.996"
 			}
 		},
-		"totaltime": "74.88",
-		"type": ""
+		"totaltime": "74.88"
 	},
 	"452": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 452,
 		"jpname": "Step! ZERO to ONE",
-		"muse": 0,
 		"name": "前进！从零到一",
 		"settings": {
 			"408": {
@@ -43112,18 +42911,15 @@
 				"time": "115.684"
 			}
 		},
-		"totaltime": "119.52",
-		"type": ""
+		"totaltime": "119.52"
 	},
 	"453": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 453,
 		"jpname": "思い出以上になりたくて",
-		"muse": 1,
 		"name": "想成为回忆以上的存在",
 		"settings": {
 			"412": {
@@ -43497,18 +43293,15 @@
 				"time": "103.38"
 			}
 		},
-		"totaltime": "108.76",
-		"type": ""
+		"totaltime": "108.76"
 	},
 	"454": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 454,
 		"jpname": "くるりんMIRACLE",
-		"muse": 1,
 		"name": "转一圈出奇迹",
 		"settings": {
 			"415": {
@@ -43882,18 +43675,15 @@
 				"time": "118.808"
 			}
 		},
-		"totaltime": "122.36",
-		"type": ""
+		"totaltime": "122.36"
 	},
 	"455": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 455,
 		"jpname": "ミはμ'sicのミ",
-		"muse": 1,
 		"name": "缪斯音乐的缪",
 		"settings": {
 			"419": {
@@ -44341,18 +44131,15 @@
 				"time": "107.896"
 			}
 		},
-		"totaltime": "115.13",
-		"type": ""
+		"totaltime": "115.13"
 	},
 	"456": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 456,
 		"jpname": "Aqours☆HEROES",
-		"muse": 0,
 		"name": "爱克娅☆英雄",
 		"settings": {
 			"433": {
@@ -44800,18 +44587,15 @@
 				"time": "106.225"
 			}
 		},
-		"totaltime": "111.96",
-		"type": ""
+		"totaltime": "111.96"
 	},
 	"457": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 457,
 		"jpname": "錯覚CROSSROADS",
-		"muse": 1,
 		"name": "错觉十字路口",
 		"settings": {
 			"436": {
@@ -45259,18 +45043,15 @@
 				"time": "122.215"
 			}
 		},
-		"totaltime": "124.7",
-		"type": ""
+		"totaltime": "124.7"
 	},
 	"458": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 458,
 		"jpname": "Super LOVE=Super LIVE!",
-		"muse": 1,
 		"name": "超级爱=超级演唱会！",
 		"settings": {
 			"439": {
@@ -45644,18 +45425,15 @@
 				"time": "120.777"
 			}
 		},
-		"totaltime": "122.08",
-		"type": ""
+		"totaltime": "122.08"
 	},
 	"459": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 459,
 		"jpname": "Storm in Lover",
-		"muse": 1,
 		"name": "恋人间的狂岚",
 		"settings": {
 			"442": {
@@ -46029,18 +45807,15 @@
 				"time": "112.125"
 			}
 		},
-		"totaltime": "117.65",
-		"type": ""
+		"totaltime": "117.65"
 	},
 	"460": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 460,
 		"jpname": "MOMENT RING",
-		"muse": 1,
 		"name": "时光之戒",
 		"settings": {
 			"453": {
@@ -46488,18 +46263,15 @@
 				"time": "121.472"
 			}
 		},
-		"totaltime": "123.3",
-		"type": ""
+		"totaltime": "123.3"
 	},
 	"461": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 461,
 		"jpname": "さようならへさよなら！",
-		"muse": 1,
 		"name": "再会了再见！",
 		"settings": {
 			"457": {
@@ -46873,18 +46645,15 @@
 				"time": "112.629"
 			}
 		},
-		"totaltime": "123.95",
-		"type": ""
+		"totaltime": "123.95"
 	},
 	"462": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 462,
 		"jpname": "ぷわぷわーお！",
-		"muse": 1,
 		"name": "软绵绵的哦",
 		"settings": {
 			"460": {
@@ -47258,18 +47027,15 @@
 				"time": "119.535"
 			}
 		},
-		"totaltime": "122.83",
-		"type": ""
+		"totaltime": "122.83"
 	},
 	"463": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 463,
 		"jpname": "恋になりたいAQUARIUM",
-		"muse": 0,
 		"name": "想在水族馆恋爱",
 		"settings": {
 			"464": {
@@ -47791,18 +47557,15 @@
 				"time": "118.433"
 			}
 		},
-		"totaltime": "121.64",
-		"type": ""
+		"totaltime": "121.64"
 	},
 	"464": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 464,
 		"jpname": "NO EXIT ORION",
-		"muse": 1,
 		"name": "没有出口的猎户座",
 		"settings": {
 			"467": {
@@ -48176,18 +47939,15 @@
 				"time": "117.728"
 			}
 		},
-		"totaltime": "121.18",
-		"type": ""
+		"totaltime": "121.18"
 	},
 	"465": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 465,
 		"jpname": "Shangri-La Shower",
-		"muse": 1,
 		"name": "香格里拉的淋浴",
 		"settings": {
 			"471": {
@@ -48561,18 +48321,15 @@
 				"time": "117.36"
 			}
 		},
-		"totaltime": "124.81",
-		"type": ""
+		"totaltime": "124.81"
 	},
 	"466": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 466,
 		"jpname": "春情ロマンティック",
-		"muse": 1,
 		"name": "春情浪漫",
 		"settings": {
 			"482": {
@@ -49020,18 +48777,15 @@
 				"time": "108.916"
 			}
 		},
-		"totaltime": "115.63",
-		"type": ""
+		"totaltime": "115.63"
 	},
 	"467": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 467,
 		"jpname": "待ってて愛のうた",
-		"muse": 0,
 		"name": "等待我的恋爱之歌",
 		"settings": {
 			"485": {
@@ -49479,18 +49233,15 @@
 				"time": "120.331"
 			}
 		},
-		"totaltime": "122.65",
-		"type": ""
+		"totaltime": "122.65"
 	},
 	"468": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 468,
 		"jpname": "元気全開DAY!DAY!DAY!",
-		"muse": 0,
 		"name": "元气全开天！天！天！",
 		"settings": {
 			"489": {
@@ -50012,18 +49763,15 @@
 				"time": "118.2"
 			}
 		},
-		"totaltime": "123.26",
-		"type": ""
+		"totaltime": "123.26"
 	},
 	"469": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 469,
 		"jpname": "るてしキスキしてる",
-		"muse": 1,
 		"name": "你着欢喜我喜欢着你",
 		"settings": {
 			"493": {
@@ -50397,18 +50145,15 @@
 				"time": "120.209"
 			}
 		},
-		"totaltime": "123.98",
-		"type": ""
+		"totaltime": "123.98"
 	},
 	"470": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 470,
 		"jpname": "トリコリコPLEASE!!",
-		"muse": 0,
 		"name": "拜托让我俘虏你的心！！",
 		"settings": {
 			"496": {
@@ -50856,18 +50601,15 @@
 				"time": "96.228"
 			}
 		},
-		"totaltime": "100.58",
-		"type": ""
+		"totaltime": "100.58"
 	},
 	"471": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 471,
 		"jpname": "夜空はなんでも知ってるの？",
-		"muse": 0,
 		"name": "夜空似乎知晓一切？",
 		"settings": {
 			"499": {
@@ -51315,18 +51057,15 @@
 				"time": "118.584"
 			}
 		},
-		"totaltime": "122.08",
-		"type": ""
+		"totaltime": "122.08"
 	},
 	"472": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 472,
 		"jpname": "PSYCHIC FIRE",
-		"muse": 1,
 		"name": "心灵之焰",
 		"settings": {
 			"503": {
@@ -51922,18 +51661,15 @@
 				"time": "108.978"
 			}
 		},
-		"totaltime": "118.3",
-		"type": ""
+		"totaltime": "118.3"
 	},
 	"473": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 473,
 		"jpname": "届かない星だとしても",
-		"muse": 0,
 		"name": "哪怕是望尘莫及的繁星",
 		"settings": {
 			"506": {
@@ -52381,18 +52117,15 @@
 				"time": "118.158"
 			}
 		},
-		"totaltime": "121.46",
-		"type": ""
+		"totaltime": "121.46"
 	},
 	"474": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 474,
 		"jpname": "Strawberry Trapper",
-		"muse": 0,
 		"name": "草莓猎人",
 		"settings": {
 			"509": {
@@ -52988,18 +52721,15 @@
 				"time": "94.886"
 			}
 		},
-		"totaltime": "96.552",
-		"type": ""
+		"totaltime": "96.552"
 	},
 	"475": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 475,
 		"jpname": "そして最後のページには",
-		"muse": 1,
 		"name": "然后是最后一页",
 		"settings": {
 			"513": {
@@ -53447,18 +53177,15 @@
 				"time": "117.204"
 			}
 		},
-		"totaltime": "119.45",
-		"type": ""
+		"totaltime": "119.45"
 	},
 	"476": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 476,
 		"jpname": "決めたよHand in Hand",
-		"muse": 0,
 		"name": "下定決心手拉手",
 		"settings": {
 			"516": {
@@ -53906,18 +53633,15 @@
 				"time": "99.473"
 			}
 		},
-		"totaltime": "106.09",
-		"type": ""
+		"totaltime": "106.09"
 	},
 	"477": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 477,
 		"jpname": "青空Jumping Heart",
-		"muse": 0,
 		"name": "青空中跳动的心脏",
 		"settings": {
 			"554": {
@@ -54439,18 +54163,15 @@
 				"time": "92.704"
 			}
 		},
-		"totaltime": "94.176",
-		"type": ""
+		"totaltime": "94.176"
 	},
 	"478": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 478,
 		"jpname": "ダイスキだったらダイジョウブ！",
-		"muse": 0,
 		"name": "最喜欢的话就没问题！",
 		"settings": {
 			"559": {
@@ -54898,18 +54619,15 @@
 				"time": "94.427"
 			}
 		},
-		"totaltime": "98.46",
-		"type": ""
+		"totaltime": "98.46"
 	},
 	"479": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 479,
 		"jpname": "ユメ語るよりユメ歌おう",
-		"muse": 0,
 		"name": "与其诉说梦想，不如高歌梦想",
 		"settings": {
 			"564": {
@@ -55357,18 +55075,15 @@
 				"time": "98.878"
 			}
 		},
-		"totaltime": "102.85",
-		"type": ""
+		"totaltime": "102.85"
 	},
 	"480": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 480,
 		"jpname": "ときめき分類学",
-		"muse": 0,
 		"name": "悸动分类学",
 		"settings": {
 			"569": {
@@ -55816,18 +55531,15 @@
 				"time": "114.299"
 			}
 		},
-		"totaltime": "118.87",
-		"type": ""
+		"totaltime": "118.87"
 	},
 	"481": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 481,
 		"jpname": "夢で夜空を照らしたい",
-		"muse": 0,
 		"name": "想用梦想照亮夜空",
 		"settings": {
 			"573": {
@@ -56275,18 +55987,15 @@
 				"time": "117.982"
 			}
 		},
-		"totaltime": "121.79",
-		"type": ""
+		"totaltime": "121.79"
 	},
 	"482": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 482,
 		"jpname": "Hello,星を数えて",
-		"muse": 1,
 		"name": "哈喽，数星星吧",
 		"settings": {
 			"578": {
@@ -56734,18 +56443,15 @@
 				"time": "91.572"
 			}
 		},
-		"totaltime": "97.10933333",
-		"type": ""
+		"totaltime": "97.10933333"
 	},
 	"483": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 483,
 		"jpname": "未熟DREAMER",
-		"muse": 0,
 		"name": "不成熟的梦想家",
 		"settings": {
 			"584": {
@@ -57193,18 +56899,15 @@
 				"time": "108.959"
 			}
 		},
-		"totaltime": "116.5",
-		"type": ""
+		"totaltime": "116.5"
 	},
 	"484": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 484,
 		"jpname": "？←HEARTBEAT",
-		"muse": 1,
 		"name": "？←心脏跳动",
 		"settings": {
 			"596": {
@@ -57726,18 +57429,15 @@
 				"time": "80.066"
 			}
 		},
-		"totaltime": "87.21066667",
-		"type": ""
+		"totaltime": "87.21066667"
 	},
 	"485": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 485,
 		"jpname": "Pops heartで踊るんだもん！",
-		"muse": 0,
 		"name": "心动雀跃，就是要跳舞！",
 		"settings": {
 			"600": {
@@ -58185,18 +57885,15 @@
 				"time": "114.822"
 			}
 		},
-		"totaltime": "121.18",
-		"type": ""
+		"totaltime": "121.18"
 	},
 	"486": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 486,
 		"jpname": "想いよひとつになれ",
-		"muse": 0,
 		"name": "思念合而为一吧",
 		"settings": {
 			"604": {
@@ -58644,18 +58341,15 @@
 				"time": "108.522"
 			}
 		},
-		"totaltime": "118.19",
-		"type": ""
+		"totaltime": "118.19"
 	},
 	"487": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 487,
 		"jpname": "MIRAI TICKET",
-		"muse": 0,
 		"name": "未来车票",
 		"settings": {
 			"610": {
@@ -59177,18 +58871,15 @@
 				"time": "113.492"
 			}
 		},
-		"totaltime": "116.75",
-		"type": ""
+		"totaltime": "116.75"
 	},
 	"488": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 488,
 		"jpname": "Guilty Night, Guilty Kiss!",
-		"muse": 0,
 		"name": "罪恶夜晚，罪恶的吻！",
 		"settings": {
 			"615": {
@@ -59636,18 +59327,15 @@
 				"time": "95.051"
 			}
 		},
-		"totaltime": "99.144",
-		"type": ""
+		"totaltime": "99.144"
 	},
 	"489": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 489,
 		"jpname": "Future style",
-		"muse": 1,
 		"name": "未来样子",
 		"settings": {
 			"620": {
@@ -60021,18 +59709,15 @@
 				"time": "91.229"
 			}
 		},
-		"totaltime": "95.364",
-		"type": ""
+		"totaltime": "95.364"
 	},
 	"490": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 490,
 		"jpname": "空も心も晴れるから",
-		"muse": 0,
 		"name": "天空与心灵放晴",
 		"settings": {
 			"624": {
@@ -60480,18 +60165,15 @@
 				"time": "117.621"
 			}
 		},
-		"totaltime": "120.31",
-		"type": ""
+		"totaltime": "120.31"
 	},
 	"491": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 491,
 		"jpname": "ジングルベルがとまらない",
-		"muse": 0,
 		"name": "不会停止的铃儿响叮当",
 		"settings": {
 			"630": {
@@ -61013,18 +60695,15 @@
 				"time": "117.476"
 			}
 		},
-		"totaltime": "122.0",
-		"type": ""
+		"totaltime": "122.0"
 	},
 	"492": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 492,
 		"jpname": "Waku-Waku-Week!",
-		"muse": 0,
 		"name": "心-跳-周！",
 		"settings": {
 			"646": {
@@ -61472,18 +61151,15 @@
 				"time": "95.958"
 			}
 		},
-		"totaltime": "100.33",
-		"type": ""
+		"totaltime": "100.33"
 	},
 	"493": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 493,
 		"jpname": "聖なる日の祈り",
-		"muse": 0,
 		"name": "神圣之日的祈祷",
 		"settings": {
 			"642": {
@@ -61931,18 +61607,15 @@
 				"time": "113.138"
 			}
 		},
-		"totaltime": "121.32",
-		"type": ""
+		"totaltime": "121.32"
 	},
 	"494": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 494,
 		"jpname": "CheerDay CheerGirl!",
-		"muse": 1,
 		"name": "拉拉队之日 拉拉队女孩！",
 		"settings": {
 			"651": {
@@ -62390,18 +62063,15 @@
 				"time": "103.135"
 			}
 		},
-		"totaltime": "107.89",
-		"type": ""
+		"totaltime": "107.89"
 	},
 	"495": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 495,
 		"jpname": "MUSEUMでどうしたい？",
-		"muse": 1,
 		"name": "想在博物馆中做什么？",
 		"settings": {
 			"656": {
@@ -62775,18 +62445,15 @@
 				"time": "102.289"
 			}
 		},
-		"totaltime": "107.64",
-		"type": ""
+		"totaltime": "107.64"
 	},
 	"496": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 496,
 		"jpname": "乙姫心で恋宮殿",
-		"muse": 1,
 		"name": "少女心中恋爱宫殿",
 		"settings": {
 			"662": {
@@ -63234,18 +62901,15 @@
 				"time": "112.869"
 			}
 		},
-		"totaltime": "118.78",
-		"type": ""
+		"totaltime": "118.78"
 	},
 	"497": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 497,
 		"jpname": "Daydream Warrior",
-		"muse": 0,
 		"name": "白日梦勇士",
 		"settings": {
 			"666": {
@@ -63693,18 +63357,15 @@
 				"time": "105.634"
 			}
 		},
-		"totaltime": "111.02",
-		"type": ""
+		"totaltime": "111.02"
 	},
 	"498": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 498,
 		"jpname": "最低で最高のParadiso",
-		"muse": 1,
 		"name": "最好又最坏的天堂",
 		"settings": {
 			"677": {
@@ -64078,18 +63739,15 @@
 				"time": "115.84"
 			}
 		},
-		"totaltime": "120.15",
-		"type": ""
+		"totaltime": "120.15"
 	},
 	"499": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 499,
 		"jpname": "G線上のシンデレラ",
-		"muse": 0,
 		"name": "G弦上的灰姑娘",
 		"settings": {
 			"682": {
@@ -64611,18 +64269,15 @@
 				"time": "106.969"
 			}
 		},
-		"totaltime": "111.02",
-		"type": ""
+		"totaltime": "111.02"
 	},
 	"500": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 500,
 		"jpname": "スリリング・ワンウェイ",
-		"muse": 0,
 		"name": "惊险・单程",
 		"settings": {
 			"689": {
@@ -65070,18 +64725,15 @@
 				"time": "114.936"
 			}
 		},
-		"totaltime": "119.04",
-		"type": ""
+		"totaltime": "119.04"
 	},
 	"501": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 501,
 		"jpname": "同じ星が見たい",
-		"muse": 1,
 		"name": "想要仰望同一片星星",
 		"settings": {
 			"694": {
@@ -65529,18 +65181,15 @@
 				"time": "114.92"
 			}
 		},
-		"totaltime": "121.43",
-		"type": ""
+		"totaltime": "121.43"
 	},
 	"502": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 502,
 		"jpname": "ENDLESS PARADE",
-		"muse": 1,
 		"name": "无尽游行",
 		"settings": {
 			"703": {
@@ -65914,18 +65563,15 @@
 				"time": "118.28"
 			}
 		},
-		"totaltime": "122.88",
-		"type": ""
+		"totaltime": "122.88"
 	},
 	"503": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 503,
 		"jpname": "HAPPY PARTY TRAIN",
-		"muse": 0,
 		"name": "欢乐派对列车",
 		"settings": {
 			"707": {
@@ -66521,18 +66167,15 @@
 				"time": "112.23"
 			}
 		},
-		"totaltime": "115.8",
-		"type": ""
+		"totaltime": "115.8"
 	},
 	"504": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 504,
 		"jpname": "太陽を追いかけろ！",
-		"muse": 0,
 		"name": "追逐太阳吧！",
 		"settings": {
 			"711": {
@@ -66980,18 +66623,15 @@
 				"time": "117.209"
 			}
 		},
-		"totaltime": "121.09",
-		"type": ""
+		"totaltime": "121.09"
 	},
 	"505": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 505,
 		"jpname": "Dreamin’ Go! Go!!",
-		"muse": 1,
 		"name": "梦想' 冲! 冲!",
 		"settings": {
 			"726": {
@@ -67439,18 +67079,15 @@
 				"time": "116.743"
 			}
 		},
-		"totaltime": "120.49",
-		"type": ""
+		"totaltime": "120.49"
 	},
 	"506": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 506,
 		"jpname": "Silent tonight",
-		"muse": 1,
 		"name": "今夜静悄悄",
 		"settings": {
 			"733": {
@@ -67898,18 +67535,15 @@
 				"time": "119.276"
 			}
 		},
-		"totaltime": "126.38",
-		"type": ""
+		"totaltime": "126.38"
 	},
 	"507": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 507,
 		"jpname": "ハミングフレンド",
-		"muse": 0,
 		"name": "哼唱的朋友",
 		"settings": {
 			"739": {
@@ -68357,18 +67991,15 @@
 				"time": "115.496"
 			}
 		},
-		"totaltime": "119.04",
-		"type": ""
+		"totaltime": "119.04"
 	},
 	"508": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 508,
 		"jpname": "サンシャインぴっかぴか音頭",
-		"muse": 0,
 		"name": "阳光的领唱",
 		"settings": {
 			"764": {
@@ -68816,18 +68447,15 @@
 				"time": "118.202"
 			}
 		},
-		"totaltime": "121.26",
-		"type": ""
+		"totaltime": "121.26"
 	},
 	"509": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 509,
 		"jpname": "Landing action Yeah!!",
-		"muse": 0,
 		"name": "着地动作 耶!!",
 		"settings": {
 			"769": {
@@ -69275,18 +68903,15 @@
 				"time": "116.403"
 			}
 		},
-		"totaltime": "121.34",
-		"type": ""
+		"totaltime": "121.34"
 	},
 	"510": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 510,
 		"jpname": "近未来ハッピーエンド",
-		"muse": 0,
 		"name": "近未来快乐结局",
 		"settings": {
 			"776": {
@@ -69882,18 +69507,15 @@
 				"time": "113.966"
 			}
 		},
-		"totaltime": "117.07",
-		"type": ""
+		"totaltime": "117.07"
 	},
 	"511": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 511,
 		"jpname": "これから",
-		"muse": 1,
 		"name": "从今以后",
 		"settings": {
 			"780": {
@@ -70267,18 +69889,15 @@
 				"time": "115.059"
 			}
 		},
-		"totaltime": "118.61",
-		"type": ""
+		"totaltime": "118.61"
 	},
 	"512": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 512,
 		"jpname": "コワレヤスキ",
-		"muse": 0,
 		"name": "脆弱易碎",
 		"settings": {
 			"784": {
@@ -70800,18 +70419,15 @@
 				"time": "102.884"
 			}
 		},
-		"totaltime": "106.33",
-		"type": ""
+		"totaltime": "106.33"
 	},
 	"513": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 513,
 		"jpname": "SKY JOURNEY",
-		"muse": 0,
 		"name": "天空之旅",
 		"settings": {
 			"790": {
@@ -71259,18 +70875,15 @@
 				"time": "96.316"
 			}
 		},
-		"totaltime": "102.4",
-		"type": ""
+		"totaltime": "102.4"
 	},
 	"514": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 514,
 		"jpname": "少女以上の恋がしたい",
-		"muse": 0,
 		"name": "来场轻熟少女的恋爱",
 		"settings": {
 			"802": {
@@ -71644,18 +71257,15 @@
 				"time": "112.74"
 			}
 		},
-		"totaltime": "115.63",
-		"type": ""
+		"totaltime": "115.63"
 	},
 	"515": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 515,
 		"jpname": "GALAXY HidE and SeeK",
-		"muse": 0,
 		"name": "银河系躲猫猫",
 		"settings": {
 			"813": {
@@ -72029,18 +71639,15 @@
 				"time": "98.088"
 			}
 		},
-		"totaltime": "109.22",
-		"type": ""
+		"totaltime": "109.22"
 	},
 	"516": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 516,
 		"jpname": "未来の僕らは知ってるよ",
-		"muse": 0,
 		"name": "未来的我们早已知晓",
 		"settings": {
 			"818": {
@@ -72488,18 +72095,15 @@
 				"time": "89.165"
 			}
 		},
-		"totaltime": "92.16",
-		"type": ""
+		"totaltime": "92.16"
 	},
 	"517": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 517,
 		"jpname": "勇気はどこに？君の胸に！",
-		"muse": 0,
 		"name": "勇气在哪？在你心中！",
 		"settings": {
 			"824": {
@@ -72947,18 +72551,15 @@
 				"time": "97.004"
 			}
 		},
-		"totaltime": "101.8",
-		"type": ""
+		"totaltime": "101.8"
 	},
 	"518": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 518,
 		"jpname": "MY舞☆TONIGHT",
-		"muse": 0,
 		"name": "我的舞蹈☆今夜",
 		"settings": {
 			"828": {
@@ -73332,18 +72933,15 @@
 				"time": "97.635"
 			}
 		},
-		"totaltime": "101.72",
-		"type": ""
+		"totaltime": "101.72"
 	},
 	"519": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 519,
 		"jpname": "Shadow gate to love",
-		"muse": 0,
 		"name": "通向爱的影之门",
 		"settings": {
 			"834": {
@@ -73717,18 +73315,15 @@
 				"time": "104.608"
 			}
 		},
-		"totaltime": "107.01",
-		"type": ""
+		"totaltime": "107.01"
 	},
 	"520": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 520,
 		"jpname": "夏への扉 Never end ver.",
-		"muse": 0,
 		"name": "通向夏日的门扉 永无止境版.",
 		"settings": {
 			"838": {
@@ -74028,18 +73623,15 @@
 				"time": "99.542"
 			}
 		},
-		"totaltime": "104.79",
-		"type": ""
+		"totaltime": "104.79"
 	},
 	"521": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 521,
 		"jpname": "真夏は誰のモノ？",
-		"muse": 0,
 		"name": "盛夏属于谁？",
 		"settings": {
 			"842": {
@@ -74339,18 +73931,15 @@
 				"time": "118.611"
 			}
 		},
-		"totaltime": "120.92",
-		"type": ""
+		"totaltime": "120.92"
 	},
 	"522": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 522,
 		"jpname": "地元愛♡満タン☆サマーライフ",
-		"muse": 0,
 		"name": "家乡之爱♡满满☆夏日时光",
 		"settings": {
 			"846": {
@@ -74650,18 +74239,15 @@
 				"time": "119.327"
 			}
 		},
-		"totaltime": "122.37",
-		"type": ""
+		"totaltime": "122.37"
 	},
 	"523": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 523,
 		"jpname": "夏の終わりの雨音が",
-		"muse": 0,
 		"name": "终夏的雨声",
 		"settings": {
 			"850": {
@@ -74961,18 +74547,15 @@
 				"time": "111.518"
 			}
 		},
-		"totaltime": "117.76",
-		"type": ""
+		"totaltime": "117.76"
 	},
 	"524": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 524,
 		"jpname": "MIRACLE WAVE",
-		"muse": 0,
 		"name": "奇迹波浪",
 		"settings": {
 			"855": {
@@ -75346,18 +74929,15 @@
 				"time": "100.133"
 			}
 		},
-		"totaltime": "103.51",
-		"type": ""
+		"totaltime": "103.51"
 	},
 	"525": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 525,
 		"jpname": "Awaken the power",
-		"muse": 0,
 		"name": "唤醒力量",
 		"settings": {
 			"864": {
@@ -75731,18 +75311,15 @@
 				"time": "101.652"
 			}
 		},
-		"totaltime": "106.07",
-		"type": ""
+		"totaltime": "106.07"
 	},
 	"526": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 526,
 		"jpname": "One More Sunshine Story",
-		"muse": 0,
 		"name": "再一次的阳光物语",
 		"settings": {
 			"869": {
@@ -76116,18 +75693,15 @@
 				"time": "103.827"
 			}
 		},
-		"totaltime": "113.15",
-		"type": ""
+		"totaltime": "113.15"
 	},
 	"527": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 527,
 		"jpname": "WATER BLUE NEW WORLD",
-		"muse": 0,
 		"name": "湛蓝新世界",
 		"settings": {
 			"875": {
@@ -76575,18 +76149,15 @@
 				"time": "104.277"
 			}
 		},
-		"totaltime": "109.23",
-		"type": ""
+		"totaltime": "109.23"
 	},
 	"528": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 528,
 		"jpname": "WONDERFUL STORIES",
-		"muse": 0,
 		"name": "奇妙物语",
 		"settings": {
 			"879": {
@@ -76960,18 +76531,15 @@
 				"time": "97.824"
 			}
 		},
-		"totaltime": "101.63",
-		"type": ""
+		"totaltime": "101.63"
 	},
 	"529": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 529,
 		"jpname": "おやすみなさん！",
-		"muse": 0,
 		"name": "大家晚安！",
 		"settings": {
 			"884": {
@@ -77345,18 +76913,15 @@
 				"time": "103.766"
 			}
 		},
-		"totaltime": "108.97",
-		"type": ""
+		"totaltime": "108.97"
 	},
 	"530": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 530,
 		"jpname": "海岸通りで待ってるよ",
-		"muse": 0,
 		"name": "在海滨大道等你哦",
 		"settings": {
 			"890": {
@@ -77730,18 +77295,15 @@
 				"time": "92.594"
 			}
 		},
-		"totaltime": "95.40266667",
-		"type": ""
+		"totaltime": "95.40266667"
 	},
 	"531": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 531,
 		"jpname": "Pianoforte Monologue",
-		"muse": 0,
 		"name": "钢琴独白",
 		"settings": {
 			"897": {
@@ -78115,18 +77677,15 @@
 				"time": "113.572"
 			}
 		},
-		"totaltime": "118.94",
-		"type": ""
+		"totaltime": "118.94"
 	},
 	"532": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 532,
 		"jpname": "in this unstable world",
-		"muse": 0,
 		"name": "在这变幻的世界",
 		"settings": {
 			"901": {
@@ -78500,18 +78059,15 @@
 				"time": "103.826"
 			}
 		},
-		"totaltime": "109.14",
-		"type": ""
+		"totaltime": "109.14"
 	},
 	"533": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 533,
 		"jpname": "君の瞳を巡る冒険",
-		"muse": 0,
 		"name": "在你双眸中围绕冒险",
 		"settings": {
 			"906": {
@@ -78885,18 +78441,15 @@
 				"time": "111.904"
 			}
 		},
-		"totaltime": "116.57",
-		"type": ""
+		"totaltime": "116.57"
 	},
 	"534": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 534,
 		"jpname": "Beginner's Sailing",
-		"muse": 0,
 		"name": "初次起航",
 		"settings": {
 			"912": {
@@ -79344,18 +78897,15 @@
 				"time": "118.575"
 			}
 		},
-		"totaltime": "123.48",
-		"type": ""
+		"totaltime": "123.48"
 	},
 	"535": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 535,
 		"jpname": "WHITE FIRST LOVE",
-		"muse": 0,
 		"name": "白色初恋",
 		"settings": {
 			"920": {
@@ -79729,18 +79279,15 @@
 				"time": "113.623"
 			}
 		},
-		"totaltime": "121.51",
-		"type": ""
+		"totaltime": "121.51"
 	},
 	"536": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 536,
 		"jpname": "RED GEM WINK",
-		"muse": 0,
 		"name": "红宝石之光",
 		"settings": {
 			"924": {
@@ -80114,18 +79661,15 @@
 				"time": "118.74"
 			}
 		},
-		"totaltime": "123.14",
-		"type": ""
+		"totaltime": "123.14"
 	},
 	"537": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 537,
 		"jpname": "INNOCENT BIRD",
-		"muse": 0,
 		"name": "无辜的小鸟",
 		"settings": {
 			"929": {
@@ -80499,18 +80043,15 @@
 				"time": "99.774"
 			}
 		},
-		"totaltime": "103.51",
-		"type": ""
+		"totaltime": "103.51"
 	},
 	"538": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 538,
 		"jpname": "さかなかなんだか？",
-		"muse": 0,
 		"name": "是鱼还是果南?",
 		"settings": {
 			"936": {
@@ -80884,18 +80425,15 @@
 				"time": "114.011"
 			}
 		},
-		"totaltime": "122.08",
-		"type": ""
+		"totaltime": "122.08"
 	},
 	"539": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 539,
 		"jpname": "New winding road",
-		"muse": 0,
 		"name": "新曲折之路",
 		"settings": {
 			"940": {
@@ -81269,18 +80807,15 @@
 				"time": "116.852"
 			}
 		},
-		"totaltime": "121.46",
-		"type": ""
+		"totaltime": "121.46"
 	},
 	"540": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 540,
 		"jpname": "キセキヒカル",
-		"muse": 0,
 		"name": "奇迹闪耀",
 		"settings": {
 			"949": {
@@ -81654,18 +81189,15 @@
 				"time": "119.676"
 			}
 		},
-		"totaltime": "122.51",
-		"type": ""
+		"totaltime": "122.51"
 	},
 	"541": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 541,
 		"jpname": "ホップ・ステップ・ワーイ！",
-		"muse": 0,
 		"name": "跳·跃·欢呼！",
 		"settings": {
 			"954": {
@@ -82039,18 +81571,15 @@
 				"time": "117.063"
 			}
 		},
-		"totaltime": "120.64",
-		"type": ""
+		"totaltime": "120.64"
 	},
 	"542": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 542,
 		"jpname": "Guilty Eyes Fever",
-		"muse": 0,
 		"name": "罪恶双瞳狂热",
 		"settings": {
 			"961": {
@@ -82424,18 +81953,15 @@
 				"time": "103.77"
 			}
 		},
-		"totaltime": "108.76",
-		"type": ""
+		"totaltime": "108.76"
 	},
 	"543": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 543,
 		"jpname": "SELF CONTROL!!",
-		"muse": 0,
 		"name": "自我控制!!",
 		"settings": {
 			"966": {
@@ -82809,18 +82335,15 @@
 				"time": "88.598"
 			}
 		},
-		"totaltime": "94.248",
-		"type": ""
+		"totaltime": "94.248"
 	},
 	"544": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 544,
 		"jpname": "Thank you, FRIENDS!!",
-		"muse": 0,
 		"name": "谢谢你们，伙伴！！",
 		"settings": {
 			"971": {
@@ -83194,18 +82717,15 @@
 				"time": "117.201"
 			}
 		},
-		"totaltime": "122.69",
-		"type": ""
+		"totaltime": "122.69"
 	},
 	"545": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 545,
 		"jpname": "CRASH MIND",
-		"muse": 0,
 		"name": "思维碰撞",
 		"settings": {
 			"978": {
@@ -83579,18 +83099,15 @@
 				"time": "114.268"
 			}
 		},
-		"totaltime": "118.3",
-		"type": ""
+		"totaltime": "118.3"
 	},
 	"546": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 546,
 		"jpname": "DROPOUT!?",
-		"muse": 0,
 		"name": "脱离!?",
 		"settings": {
 			"984": {
@@ -83964,18 +83481,15 @@
 				"time": "111.552"
 			}
 		},
-		"totaltime": "113.87",
-		"type": ""
+		"totaltime": "113.87"
 	},
 	"547": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 547,
 		"jpname": "P.S.の向こう側",
-		"muse": 0,
 		"name": "附言的对面",
 		"settings": {
 			"991": {
@@ -84349,18 +83863,15 @@
 				"time": "109.553"
 			}
 		},
-		"totaltime": "114.44",
-		"type": ""
+		"totaltime": "114.44"
 	},
 	"548": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 548,
 		"jpname": "“MY LIST” to you!",
-		"muse": 0,
 		"name": "“我的名单”给你！",
 		"settings": {
 			"998": {
@@ -84734,8 +84245,7 @@
 				"time": "82.502"
 			}
 		},
-		"totaltime": "88.632",
-		"type": ""
+		"totaltime": "88.632"
 	},
 	"549": {
 		"attribute": "pure",
@@ -84745,7 +84255,6 @@
 		"id": 549,
 		"jpname": "夢への一歩",
 		"name": "逐梦的一步",
-		"niji": 1,
 		"settings": {
 			"1005": {
 				"ascore": 24900,
@@ -85044,8 +84553,7 @@
 				"time": "121.219"
 			}
 		},
-		"totaltime": "125.1",
-		"type": ""
+		"totaltime": "125.1"
 	},
 	"550": {
 		"attribute": "pure",
@@ -85055,7 +84563,6 @@
 		"id": 550,
 		"jpname": "ダイアモンド",
 		"name": "钻石",
-		"niji": 1,
 		"settings": {
 			"1010": {
 				"ascore": 21000,
@@ -85354,8 +84861,7 @@
 				"time": "101.534"
 			}
 		},
-		"totaltime": "107.03",
-		"type": ""
+		"totaltime": "107.03"
 	},
 	"551": {
 		"attribute": "cool",
@@ -85365,7 +84871,6 @@
 		"id": 551,
 		"jpname": "あなたの理想のヒロイン",
 		"name": "你理想的女主角",
-		"niji": 1,
 		"settings": {
 			"1015": {
 				"ascore": 23100,
@@ -85664,8 +85169,7 @@
 				"time": "118.059"
 			}
 		},
-		"totaltime": "124.78",
-		"type": ""
+		"totaltime": "124.78"
 	},
 	"552": {
 		"attribute": "cool",
@@ -85675,7 +85179,6 @@
 		"id": 552,
 		"jpname": "Starlight",
 		"name": "星光闪耀",
-		"niji": 1,
 		"settings": {
 			"1020": {
 				"ascore": 22500,
@@ -85974,8 +85477,7 @@
 				"time": "88.832"
 			}
 		},
-		"totaltime": "96.336",
-		"type": ""
+		"totaltime": "96.336"
 	},
 	"553": {
 		"attribute": "smile",
@@ -85985,7 +85487,6 @@
 		"id": 553,
 		"jpname": "めっちゃGoing!!",
 		"name": "特别前行!!",
-		"niji": 1,
 		"settings": {
 			"1025": {
 				"ascore": 26400,
@@ -86284,8 +85785,7 @@
 				"time": "119.826"
 			}
 		},
-		"totaltime": "127.55",
-		"type": ""
+		"totaltime": "127.55"
 	},
 	"554": {
 		"attribute": "smile",
@@ -86295,7 +85795,6 @@
 		"id": 554,
 		"jpname": "眠れる森に行きたいな",
 		"name": "想去沉睡的森林啊",
-		"niji": 1,
 		"settings": {
 			"1030": {
 				"ascore": 21600,
@@ -86594,18 +86093,15 @@
 				"time": "108.472"
 			}
 		},
-		"totaltime": "112.75",
-		"type": ""
+		"totaltime": "112.75"
 	},
 	"555": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 555,
 		"jpname": "ハジマリロード",
-		"muse": 0,
 		"name": "起始之路",
 		"settings": {
 			"1034": {
@@ -86979,18 +86475,15 @@
 				"time": "118.676"
 			}
 		},
-		"totaltime": "121.1",
-		"type": ""
+		"totaltime": "121.1"
 	},
 	"556": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 556,
 		"jpname": "Marine Border Parasol",
-		"muse": 0,
 		"name": "海蓝色条纹遮阳伞",
 		"settings": {
 			"1038": {
@@ -87364,18 +86857,15 @@
 				"time": "118.37"
 			}
 		},
-		"totaltime": "121.64",
-		"type": ""
+		"totaltime": "121.64"
 	},
 	"557": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 557,
 		"jpname": "予測不可能Driving!",
-		"muse": 0,
 		"name": "预测不可能的前行！",
 		"settings": {
 			"1047": {
@@ -87749,18 +87239,15 @@
 				"time": "90.597"
 			}
 		},
-		"totaltime": "96.552",
-		"type": ""
+		"totaltime": "96.552"
 	},
 	"558": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 558,
 		"jpname": "LONELY TUNING",
-		"muse": 0,
 		"name": "孤独调音",
 		"settings": {
 			"1043": {
@@ -88134,8 +87621,7 @@
 				"time": "111.021"
 			}
 		},
-		"totaltime": "115.85",
-		"type": ""
+		"totaltime": "115.85"
 	},
 	"559": {
 		"attribute": "cool",
@@ -88145,7 +87631,6 @@
 		"id": 559,
 		"jpname": "CHASE!",
 		"name": "追逐！",
-		"niji": 1,
 		"settings": {
 			"1055": {
 				"ascore": 24900,
@@ -88444,8 +87929,7 @@
 				"time": "96.342"
 			}
 		},
-		"totaltime": "101.99",
-		"type": ""
+		"totaltime": "101.99"
 	},
 	"560": {
 		"attribute": "pure",
@@ -88455,7 +87939,6 @@
 		"id": 560,
 		"jpname": "Evergreen",
 		"name": "常绿",
-		"niji": 1,
 		"settings": {
 			"1060": {
 				"ascore": 23100,
@@ -88754,8 +88237,7 @@
 				"time": "93.095"
 			}
 		},
-		"totaltime": "99.108",
-		"type": ""
+		"totaltime": "99.108"
 	},
 	"561": {
 		"attribute": "smile",
@@ -88765,7 +88247,6 @@
 		"id": 561,
 		"jpname": "ドキピポ☆エモーション",
 		"name": "心跳☆加速",
-		"niji": 1,
 		"settings": {
 			"1065": {
 				"ascore": 24900,
@@ -89064,18 +88545,15 @@
 				"time": "92.458"
 			}
 		},
-		"totaltime": "98.532",
-		"type": ""
+		"totaltime": "98.532"
 	},
 	"562": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 562,
 		"jpname": "Hop? Stop? Nonstop!",
-		"muse": 0,
 		"name": "舞动？停止？永不停歇！",
 		"settings": {
 			"1069": {
@@ -89449,18 +88927,15 @@
 				"time": "105.15"
 			}
 		},
-		"totaltime": "108.04",
-		"type": ""
+		"totaltime": "108.04"
 	},
 	"563": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 563,
 		"jpname": "逃走迷走メビウスループ",
-		"muse": 0,
 		"name": "逃离迷途莫比乌斯环",
 		"settings": {
 			"1074": {
@@ -89834,18 +89309,15 @@
 				"time": "117.858"
 			}
 		},
-		"totaltime": "123.3",
-		"type": ""
+		"totaltime": "123.3"
 	},
 	"564": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 564,
 		"jpname": "僕らの走ってきた道は…",
-		"muse": 0,
 		"name": "我们奔跑而来的道路…",
 		"settings": {
 			"1080": {
@@ -90219,18 +89691,15 @@
 				"time": "117.919"
 			}
 		},
-		"totaltime": "121.79",
-		"type": ""
+		"totaltime": "121.79"
 	},
 	"565": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 565,
 		"jpname": "Next SPARKLING!!",
-		"muse": 0,
 		"name": "下一次 闪闪发光!!",
 		"settings": {
 			"1085": {
@@ -90604,18 +90073,15 @@
 				"time": "115.08"
 			}
 		},
-		"totaltime": "122.08",
-		"type": ""
+		"totaltime": "122.08"
 	},
 	"566": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 566,
 		"jpname": "Brightest Melody",
-		"muse": 0,
 		"name": "最闪耀的旋律",
 		"settings": {
 			"1090": {
@@ -90989,18 +90455,15 @@
 				"time": "105.632"
 			}
 		},
-		"totaltime": "115.06",
-		"type": ""
+		"totaltime": "115.06"
 	},
 	"567": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 567,
 		"jpname": "Believe again",
-		"muse": 0,
 		"name": "再次相信",
 		"settings": {
 			"1096": {
@@ -91374,18 +90837,15 @@
 				"time": "117.814"
 			}
 		},
-		"totaltime": "120.89",
-		"type": ""
+		"totaltime": "120.89"
 	},
 	"568": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 568,
 		"jpname": "Over The Next Rainbow",
-		"muse": 0,
 		"name": "越过下一道彩虹",
 		"settings": {
 			"1101": {
@@ -91759,18 +91219,15 @@
 				"time": "110.931"
 			}
 		},
-		"totaltime": "117.18",
-		"type": ""
+		"totaltime": "117.18"
 	},
 	"569": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 569,
 		"jpname": "サクラバイバイ",
-		"muse": 0,
 		"name": "樱花拜拜",
 		"settings": {
 			"1116": {
@@ -92218,18 +91675,15 @@
 				"time": "119.989"
 			}
 		},
-		"totaltime": "124.272",
-		"type": ""
+		"totaltime": "124.272"
 	},
 	"570": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 570,
 		"jpname": "No.10",
-		"muse": 0,
 		"name": "第十人",
 		"settings": {
 			"1120": {
@@ -92603,18 +92057,15 @@
 				"time": "119.375"
 			}
 		},
-		"totaltime": "124.092",
-		"type": ""
+		"totaltime": "124.092"
 	},
 	"571": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 571,
 		"jpname": "Jump up HIGH!!",
-		"muse": 0,
 		"name": "高高跃起",
 		"settings": {
 			"1128": {
@@ -92988,18 +92439,15 @@
 				"time": "105.228"
 			}
 		},
-		"totaltime": "109.872",
-		"type": ""
+		"totaltime": "109.872"
 	},
 	"572": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 572,
 		"jpname": "冒険Type A, B, C!!",
-		"muse": 0,
 		"name": "冒险类型A, B, C!!",
 		"settings": {
 			"1134": {
@@ -93373,18 +92821,15 @@
 				"time": "102.401"
 			}
 		},
-		"totaltime": "114.696",
-		"type": ""
+		"totaltime": "114.696"
 	},
 	"573": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 573,
 		"jpname": "Deep Resonance",
-		"muse": 0,
 		"name": "深度共鸣",
 		"settings": {
 			"1140": {
@@ -93758,18 +93203,15 @@
 				"time": "116.942"
 			}
 		},
-		"totaltime": "122.58",
-		"type": ""
+		"totaltime": "122.58"
 	},
 	"574": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 574,
 		"jpname": "卒業ですね",
-		"muse": 0,
 		"name": "毕业了",
 		"settings": {
 			"1144": {
@@ -94143,18 +93585,15 @@
 				"time": "116.572"
 			}
 		},
-		"totaltime": "121.68",
-		"type": ""
+		"totaltime": "121.68"
 	},
 	"575": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 575,
 		"jpname": "未体験HORIZON",
-		"muse": 0,
 		"name": "未体验地平线",
 		"settings": {
 			"1152": {
@@ -94528,18 +93967,15 @@
 				"time": "112.628"
 			}
 		},
-		"totaltime": "115.668",
-		"type": ""
+		"totaltime": "115.668"
 	},
 	"576": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 0,
 		"group": 2,
 		"id": 576,
 		"jpname": "大いなる決闘",
-		"muse": 0,
 		"name": "大いなる決闘",
 		"settings": {
 			"1156": {
@@ -94839,18 +94275,15 @@
 				"time": "158.753"
 			}
 		},
-		"totaltime": "165.852",
-		"type": ""
+		"totaltime": "165.852"
 	},
 	"577": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 577,
 		"jpname": "Guilty!? Farewell party",
-		"muse": 0,
 		"name": "罪恶!?欢送会",
 		"settings": {
 			"1168": {
@@ -95224,18 +94657,15 @@
 				"time": "112.618"
 			}
 		},
-		"totaltime": "117.108",
-		"type": ""
+		"totaltime": "117.108"
 	},
 	"578": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 578,
 		"jpname": "Angelic Angel [ELI Mix]",
-		"muse": 1,
 		"name": "纯真天使 [绘里 混音版]",
 		"settings": {
 			"1175": {
@@ -95535,18 +94965,15 @@
 				"time": "121.966"
 			}
 		},
-		"totaltime": "125.172",
-		"type": ""
+		"totaltime": "125.172"
 	},
 	"579": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 579,
 		"jpname": "Dancing stars on me! [NOZOMI Mix]",
-		"muse": 1,
 		"name": "跳舞的星星! [希 混音版]",
 		"settings": {
 			"1179": {
@@ -95846,18 +95273,15 @@
 				"time": "98.874"
 			}
 		},
-		"totaltime": "107.676",
-		"type": ""
+		"totaltime": "107.676"
 	},
 	"580": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 580,
 		"jpname": "？←HEARTBEAT [NICO Mix]",
-		"muse": 1,
 		"name": "？←心脏跳动 [日香 混音版]",
 		"settings": {
 			"1183": {
@@ -96157,18 +95581,15 @@
 				"time": "80.066"
 			}
 		},
-		"totaltime": "87.156",
-		"type": ""
+		"totaltime": "87.156"
 	},
 	"581": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 581,
 		"jpname": "New Romantic Sailors",
-		"muse": 0,
 		"name": "新浪漫水手",
 		"settings": {
 			"1188": {
@@ -96542,18 +95963,15 @@
 				"time": "115.905"
 			}
 		},
-		"totaltime": "120.96",
-		"type": ""
+		"totaltime": "120.96"
 	},
 	"582": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 582,
 		"jpname": "Braveheart Coaster",
-		"muse": 0,
 		"name": "勇敢心灵的飞车",
 		"settings": {
 			"1192": {
@@ -96927,18 +96345,15 @@
 				"time": "116.373"
 			}
 		},
-		"totaltime": "120.744",
-		"type": ""
+		"totaltime": "120.744"
 	},
 	"583": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 583,
 		"jpname": "Love wing bell [RIN Mix]",
-		"muse": 1,
 		"name": "爱 翅膀 钟 [凛 混音版]",
 		"settings": {
 			"1196": {
@@ -97238,18 +96653,15 @@
 				"time": "98.635"
 			}
 		},
-		"totaltime": "104.04",
-		"type": ""
+		"totaltime": "104.04"
 	},
 	"584": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 584,
 		"jpname": "Music S.T.A.R.T!! [MAKI Mix]",
-		"muse": 1,
 		"name": "音乐开始！！ [真姬 混音版]",
 		"settings": {
 			"1200": {
@@ -97549,18 +96961,15 @@
 				"time": "119.073"
 			}
 		},
-		"totaltime": "121.104",
-		"type": ""
+		"totaltime": "121.104"
 	},
 	"585": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 585,
 		"jpname": "嵐のなかの恋だから [HANAYO Mix]",
-		"muse": 1,
 		"name": "正因为是暴风雨中的爱恋 [花阳 混音版]",
 		"settings": {
 			"1204": {
@@ -97860,18 +97269,15 @@
 				"time": "119.705"
 			}
 		},
-		"totaltime": "122.904",
-		"type": ""
+		"totaltime": "122.904"
 	},
 	"586": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 586,
 		"jpname": "Amazing Travel DNA",
-		"muse": 0,
 		"name": "绝赞旅行基因",
 		"settings": {
 			"1209": {
@@ -98245,18 +97651,15 @@
 				"time": "102.915"
 			}
 		},
-		"totaltime": "109.404",
-		"type": ""
+		"totaltime": "109.404"
 	},
 	"587": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 587,
 		"jpname": "それは僕たちの奇跡 [HONOKA Mix]",
-		"muse": 1,
 		"name": "我们的奇迹[穗乃果 混音版]",
 		"settings": {
 			"1214": {
@@ -98556,18 +97959,15 @@
 				"time": "92.362"
 			}
 		},
-		"totaltime": "94.104",
-		"type": ""
+		"totaltime": "94.104"
 	},
 	"588": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 588,
 		"jpname": "どんなときもずっと [KOTORI Mix]",
-		"muse": 1,
 		"name": "无论何时 [琴梨 混音版]",
 		"settings": {
 			"1218": {
@@ -98867,18 +98267,15 @@
 				"time": "88.073"
 			}
 		},
-		"totaltime": "94.104",
-		"type": ""
+		"totaltime": "94.104"
 	},
 	"589": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 589,
 		"jpname": "だってだって噫無情 [UMI Mix]",
-		"muse": 1,
 		"name": "可是可是太无情 [海未 混音版]",
 		"settings": {
 			"1222": {
@@ -99178,18 +98575,15 @@
 				"time": "115.132"
 			}
 		},
-		"totaltime": "122.076",
-		"type": ""
+		"totaltime": "122.076"
 	},
 	"590": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 590,
 		"jpname": "冬がくれた予感 [ELI Mix]",
-		"muse": 1,
 		"name": "冬天所给的预感[绘里 混音版]",
 		"settings": {
 			"1228": {
@@ -99489,18 +98883,15 @@
 				"time": "120.847"
 			}
 		},
-		"totaltime": "122.69",
-		"type": ""
+		"totaltime": "122.69"
 	},
 	"591": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 591,
 		"jpname": "ふたりハピネス [NOZOMI Mix]",
-		"muse": 1,
 		"name": "两个人的幸福 [希 混音版]",
 		"settings": {
 			"1232": {
@@ -99800,18 +99191,15 @@
 				"time": "117.974"
 			}
 		},
-		"totaltime": "122.62",
-		"type": ""
+		"totaltime": "122.62"
 	},
 	"592": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 592,
 		"jpname": "Trouble Busters [NICO Mix]",
-		"muse": 1,
 		"name": "麻烦克星 [日香 混音版]",
 		"settings": {
 			"1236": {
@@ -100111,18 +99499,15 @@
 				"time": "109.823"
 			}
 		},
-		"totaltime": "119.23",
-		"type": ""
+		"totaltime": "119.23"
 	},
 	"593": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 593,
 		"jpname": "Hello,星を数えて [RIN Mix]",
-		"muse": 1,
 		"name": "哈喽，数星星吧 [凛 混音版]",
 		"settings": {
 			"1243": {
@@ -100422,18 +99807,15 @@
 				"time": "91.572"
 			}
 		},
-		"totaltime": "97.056",
-		"type": ""
+		"totaltime": "97.056"
 	},
 	"594": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 594,
 		"jpname": "ユメノトビラ [MAKI Mix]",
-		"muse": 1,
 		"name": "梦想之门 [真姬 混音版]",
 		"settings": {
 			"1247": {
@@ -100733,18 +100115,15 @@
 				"time": "112.321"
 			}
 		},
-		"totaltime": "122.08",
-		"type": ""
+		"totaltime": "122.08"
 	},
 	"595": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 595,
 		"jpname": "Pure girls project [HANAYO Mix]",
-		"muse": 1,
 		"name": "清纯女孩计划 [花阳 混音版]",
 		"settings": {
 			"1251": {
@@ -101044,18 +100423,15 @@
 				"time": "104.346"
 			}
 		},
-		"totaltime": "111.67",
-		"type": ""
+		"totaltime": "111.67"
 	},
 	"596": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 596,
 		"jpname": "HEART to HEART! [HONOKA Mix]",
-		"muse": 1,
 		"name": "心心相印 [穗乃果 混音版]",
 		"settings": {
 			"1256": {
@@ -101355,18 +100731,15 @@
 				"time": "112.047"
 			}
 		},
-		"totaltime": "123.34",
-		"type": ""
+		"totaltime": "123.34"
 	},
 	"597": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 597,
 		"jpname": "Wonderful Rush [KOTORI Mix]",
-		"muse": 1,
 		"name": "精彩高峰 [琴梨 混音版]",
 		"settings": {
 			"1260": {
@@ -101666,18 +101039,15 @@
 				"time": "101.11"
 			}
 		},
-		"totaltime": "108.68",
-		"type": ""
+		"totaltime": "108.68"
 	},
 	"598": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 598,
 		"jpname": "LOVELESS WORLD [UMI Mix]",
-		"muse": 1,
 		"name": "无爱世界 [海未 混音版]",
 		"settings": {
 			"1264": {
@@ -101977,18 +101347,15 @@
 				"time": "118.423"
 			}
 		},
-		"totaltime": "121.1",
-		"type": ""
+		"totaltime": "121.1"
 	},
 	"599": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 599,
 		"jpname": "Cutie Panther [ELI Mix]",
-		"muse": 1,
 		"name": "可爱的美洲豹 [绘里 混音版]",
 		"settings": {
 			"1271": {
@@ -102288,18 +101655,15 @@
 				"time": "117.821"
 			}
 		},
-		"totaltime": "123.84",
-		"type": ""
+		"totaltime": "123.84"
 	},
 	"600": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 600,
 		"jpname": "るてしキスキしてる [NOZOMI Mix]",
-		"muse": 1,
 		"name": "你着欢喜我喜欢着你 [希 混音版]",
 		"settings": {
 			"1275": {
@@ -102599,18 +101963,15 @@
 				"time": "120.208"
 			}
 		},
-		"totaltime": "123.98",
-		"type": ""
+		"totaltime": "123.98"
 	},
 	"601": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 601,
 		"jpname": "PSYCHIC FIRE [NICO Mix]",
-		"muse": 1,
 		"name": "心灵之焰 [日香 混音版]",
 		"settings": {
 			"1279": {
@@ -102910,18 +102271,15 @@
 				"time": "108.978"
 			}
 		},
-		"totaltime": "118.3",
-		"type": ""
+		"totaltime": "118.3"
 	},
 	"602": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 602,
 		"jpname": "タカラモノズ [RIN Mix]",
-		"muse": 1,
 		"name": "宝物缤纷 [凛 混音版]",
 		"settings": {
 			"1285": {
@@ -103221,18 +102579,15 @@
 				"time": "107.23"
 			}
 		},
-		"totaltime": "111.42",
-		"type": ""
+		"totaltime": "111.42"
 	},
 	"603": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 603,
 		"jpname": "愛してるばんざーい！[MAKI Mix]",
-		"muse": 1,
 		"name": "爱上你万ー岁！[真姬 混音版]",
 		"settings": {
 			"1289": {
@@ -103532,18 +102887,15 @@
 				"time": "103.55"
 			}
 		},
-		"totaltime": "108.9",
-		"type": ""
+		"totaltime": "108.9"
 	},
 	"604": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 604,
 		"jpname": "UNBALANCED LOVE [HANAYO Mix]",
-		"muse": 1,
 		"name": "不平衡的爱情 [花阳 混音版]",
 		"settings": {
 			"1293": {
@@ -103843,18 +103195,15 @@
 				"time": "119.134"
 			}
 		},
-		"totaltime": "121.61",
-		"type": ""
+		"totaltime": "121.61"
 	},
 	"605": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 605,
 		"jpname": "Happy maker! [HONOKA Mix]",
-		"muse": 1,
 		"name": "欢乐制造者！[穗乃果 混音版]",
 		"settings": {
 			"1298": {
@@ -104154,18 +103503,15 @@
 				"time": "116.743"
 			}
 		},
-		"totaltime": "122.08",
-		"type": ""
+		"totaltime": "122.08"
 	},
 	"606": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 606,
 		"jpname": "Wonder zone [KOTORI Mix]",
-		"muse": 1,
 		"name": "奇妙地带 [琴梨 混音版]",
 		"settings": {
 			"1302": {
@@ -104465,18 +103811,15 @@
 				"time": "110.521"
 			}
 		},
-		"totaltime": "119.05",
-		"type": ""
+		"totaltime": "119.05"
 	},
 	"607": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 607,
 		"jpname": "微熱からMystery [UMI Mix]",
-		"muse": 1,
 		"name": "来自微热的神秘 [海未 混音版]",
 		"settings": {
 			"1306": {
@@ -104776,18 +104119,15 @@
 				"time": "119.793"
 			}
 		},
-		"totaltime": "121.39",
-		"type": ""
+		"totaltime": "121.39"
 	},
 	"608": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 608,
 		"jpname": "A song for You! You? You!!",
-		"muse": 1,
 		"name": "一首给你!你?你!!的歌",
 		"settings": {
 			"1310": {
@@ -105161,18 +104501,15 @@
 				"time": "111.77"
 			}
 		},
-		"totaltime": "120.996",
-		"type": ""
+		"totaltime": "120.996"
 	},
 	"609": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 609,
 		"jpname": "Dance with Minotaurus",
-		"muse": 0,
 		"name": "与米诺陶洛斯共舞",
 		"settings": {
 			"1316": {
@@ -105546,18 +104883,15 @@
 				"time": "115.952"
 			}
 		},
-		"totaltime": "121.392",
-		"type": ""
+		"totaltime": "121.392"
 	},
 	"610": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 610,
 		"jpname": "i-n-g, I TRY!!",
-		"muse": 0,
 		"name": "我的尝试，进-行-中！！",
 		"settings": {
 			"1322": {
@@ -105931,18 +105265,15 @@
 				"time": "111.645"
 			}
 		},
-		"totaltime": "116.568",
-		"type": ""
+		"totaltime": "116.568"
 	},
 	"611": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 611,
 		"jpname": "Love Pulsar",
-		"muse": 0,
 		"name": "爱的脉冲星",
 		"settings": {
 			"1328": {
@@ -106316,18 +105647,15 @@
 				"time": "110.727"
 			}
 		},
-		"totaltime": "119.7",
-		"type": ""
+		"totaltime": "119.7"
 	},
 	"612": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 612,
 		"jpname": "CHANGELESS",
-		"muse": 0,
 		"name": "永恒不变",
 		"settings": {
 			"1336": {
@@ -106701,18 +106029,15 @@
 				"time": "114.101"
 			}
 		},
-		"totaltime": "122.076",
-		"type": ""
+		"totaltime": "122.076"
 	},
 	"613": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 613,
 		"jpname": "空中恋愛論",
-		"muse": 0,
 		"name": "空中恋爱论",
 		"settings": {
 			"1341": {
@@ -107086,18 +106411,15 @@
 				"time": "86.102"
 			}
 		},
-		"totaltime": "99.036",
-		"type": ""
+		"totaltime": "99.036"
 	},
 	"614": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 614,
 		"jpname": "シャゼリア☆キッス☆ダダンダーン",
-		"muse": 0,
 		"name": "夏杜鹃☆之吻☆哒哒哒",
 		"settings": {
 			"1346": {
@@ -107471,18 +106793,15 @@
 				"time": "112.11"
 			}
 		},
-		"totaltime": "116.172",
-		"type": ""
+		"totaltime": "116.172"
 	},
 	"615": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 615,
 		"jpname": "Phantom Rocket Adventure",
-		"muse": 0,
 		"name": "幻影火箭冒险",
 		"settings": {
 			"1350": {
@@ -107782,18 +107101,15 @@
 				"time": "95.258"
 			}
 		},
-		"totaltime": "98.676",
-		"type": ""
+		"totaltime": "98.676"
 	},
 	"616": {
-		"aqours": 1,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 616,
 		"jpname": "コドク・テレポート",
-		"muse": 0,
 		"name": "孤独・转移",
 		"settings": {
 			"1355": {
@@ -108167,18 +107483,15 @@
 				"time": "88.01"
 			}
 		},
-		"totaltime": "93.708",
-		"type": ""
+		"totaltime": "93.708"
 	},
 	"617": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 617,
 		"jpname": "Fantastic Departure!",
-		"muse": 0,
 		"name": "最棒的旅程！",
 		"settings": {
 			"1360": {
@@ -108478,18 +107791,15 @@
 				"time": "107.566"
 			}
 		},
-		"totaltime": "114.192",
-		"type": ""
+		"totaltime": "114.192"
 	},
 	"618": {
-		"aqours": 1,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 618,
 		"jpname": "メイズセカイ",
-		"muse": 0,
 		"name": "迷宫世界\r\n",
 		"settings": {
 			"1365": {
@@ -108863,18 +108173,15 @@
 				"time": "102.862"
 			}
 		},
-		"totaltime": "109.26",
-		"type": ""
+		"totaltime": "109.26"
 	},
 	"619": {
-		"aqours": 1,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 2,
 		"id": 619,
 		"jpname": "Dazzling White Town",
-		"muse": 0,
 		"name": "耀眼的纯白之乡",
 		"settings": {
 			"1371": {
@@ -109174,18 +108481,15 @@
 				"time": "121.196"
 			}
 		},
-		"totaltime": "125.028",
-		"type": ""
+		"totaltime": "125.028"
 	},
 	"620": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 620,
 		"jpname": "なってしまった！",
-		"muse": 1,
 		"name": "由衷喜欢你！",
 		"settings": {
 			"1376": {
@@ -109559,8 +108863,7 @@
 				"time": "113.662"
 			}
 		},
-		"totaltime": "117.864",
-		"type": ""
+		"totaltime": "117.864"
 	},
 	"621": {
 		"attribute": "smile",
@@ -109570,7 +108873,6 @@
 		"id": 621,
 		"jpname": "NEO SKY, NEO MAP!",
 		"name": "NEO SKY, NEO MAP!",
-		"niji": 1,
 		"settings": {
 			"1384": {
 				"ascore": 21900,
@@ -109869,18 +109171,15 @@
 				"time": "88.513"
 			}
 		},
-		"totaltime": "92.484",
-		"type": ""
+		"totaltime": "92.484"
 	},
 	"622": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 622,
 		"jpname": "僕らは今のなかで（LittleMore-Rock Mix）",
-		"muse": 1,
 		"name": "僕らは今のなかで（LittleMore-Rock Mix）",
 		"settings": {
 			"1388": {
@@ -110180,18 +109479,15 @@
 				"time": "108.463"
 			}
 		},
-		"totaltime": "117.828",
-		"type": ""
+		"totaltime": "117.828"
 	},
 	"623": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 623,
 		"jpname": "No brand girls（GRP-Explosion Mix）",
-		"muse": 1,
 		"name": "No brand girls（GRP-Explosion Mix）",
 		"settings": {
 			"1394": {
@@ -110491,18 +109787,15 @@
 				"time": "88.595"
 			}
 		},
-		"totaltime": "94.14",
-		"type": ""
+		"totaltime": "94.14"
 	},
 	"624": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 624,
 		"jpname": "START:DASH!!（Bitter-Sweet Mix）",
-		"muse": 1,
 		"name": "START:DASH!!（Bitter-Sweet Mix）",
 		"settings": {
 			"1399": {
@@ -110802,18 +110095,15 @@
 				"time": "107.7"
 			}
 		},
-		"totaltime": "115.704",
-		"type": ""
+		"totaltime": "115.704"
 	},
 	"625": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 625,
 		"jpname": "Wonderful Rush（Heavy-Rush Mix）",
-		"muse": 1,
 		"name": "Wonderful Rush（Heavy-Rush Mix）",
 		"settings": {
 			"1406": {
@@ -111113,18 +110403,15 @@
 				"time": "102.557"
 			}
 		},
-		"totaltime": "109.656",
-		"type": ""
+		"totaltime": "109.656"
 	},
 	"626": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 626,
 		"jpname": "Music S.T.A.R.T!!（SKA-Feel Mix）",
-		"muse": 1,
 		"name": "Music S.T.A.R.T!!（SKA-Feel Mix）",
 		"settings": {
 			"1411": {
@@ -111424,18 +110711,15 @@
 				"time": "103.53"
 			}
 		},
-		"totaltime": "110.772",
-		"type": ""
+		"totaltime": "110.772"
 	},
 	"627": {
-		"aqours": 0,
 		"attribute": "pure",
 		"bpm": 0,
 		"cnhave": 1,
 		"group": 1,
 		"id": 627,
 		"jpname": "Pure girls project（Super-Mondo Mix）",
-		"muse": 1,
 		"name": "Pure girls project（Super-Mondo Mix）",
 		"settings": {
 			"1417": {
@@ -111735,18 +111019,15 @@
 				"time": "105.027"
 			}
 		},
-		"totaltime": "110.988",
-		"type": ""
+		"totaltime": "110.988"
 	},
 	"628": {
-		"aqours": 0,
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 0,
 		"group": 1,
 		"id": 628,
 		"jpname": "Cutie Panther (Metal-Panther Mix)",
-		"muse": 1,
 		"name": "Cutie Panther (Metal-Panther Mix)",
 		"settings": {
 			"1426": {
@@ -112046,18 +111327,15 @@
 				"time": "119.28"
 			}
 		},
-		"totaltime": "122.04",
-		"type": ""
+		"totaltime": "122.04"
 	},
 	"629": {
-		"aqours": 0,
 		"attribute": "cool",
 		"bpm": 0,
 		"cnhave": 0,
 		"group": 1,
 		"id": 629,
 		"jpname": "微熱からMystery（TeKe-TeKe ELEKI Mix）",
-		"muse": 1,
 		"name": "微熱からMystery（TeKe-TeKe ELEKI Mix）",
 		"settings": {
 			"1432": {
@@ -112357,8 +111635,7 @@
 				"time": "119.486"
 			}
 		},
-		"totaltime": "122.076",
-		"type": ""
+		"totaltime": "122.076"
 	},
 	"630": {
 		"attribute": "pure",
@@ -112368,7 +111645,6 @@
 		"id": 630,
 		"jpname": "TOKIMEKI Runners",
 		"name": "TOKIMEKI Runners",
-		"niji": 1,
 		"settings": {
 			"1439": {
 				"ascore": 16576,
@@ -112667,8 +111943,7 @@
 				"time": "93.594"
 			}
 		},
-		"totaltime": "97.776",
-		"type": ""
+		"totaltime": "97.776"
 	},
 	"631": {
 		"attribute": "smile",
@@ -112976,8 +112251,7 @@
 				"time": "113.671"
 			}
 		},
-		"totaltime": "119.16",
-		"type": ""
+		"totaltime": "119.16"
 	},
 	"632": {
 		"attribute": "pure",
@@ -112987,7 +112261,6 @@
 		"id": 632,
 		"jpname": "虹色Passions！",
 		"name": "虹色Passions！",
-		"niji": 1,
 		"settings": {
 			"1448": {
 				"ascore": 16800,
@@ -113286,8 +112559,7 @@
 				"time": "89.432"
 			}
 		},
-		"totaltime": "94.932",
-		"type": ""
+		"totaltime": "94.932"
 	},
 	"633": {
 		"attribute": "cool",
@@ -113297,7 +112569,6 @@
 		"id": 633,
 		"jpname": "Wish",
 		"name": "Wish",
-		"niji": 1,
 		"settings": {
 			"1452": {
 				"ascore": 18368,
@@ -113596,8 +112867,7 @@
 				"time": "111.972"
 			}
 		},
-		"totaltime": "122.904",
-		"type": ""
+		"totaltime": "122.904"
 	},
 	"634": {
 		"attribute": "smile",
@@ -113607,7 +112877,6 @@
 		"id": 634,
 		"jpname": "Love U my friends",
 		"name": "Love U my friends",
-		"niji": 1,
 		"settings": {
 			"1457": {
 				"ascore": 16352,
@@ -113906,14 +113175,13 @@
 				"time": "100.379"
 			}
 		},
-		"totaltime": "104.148",
-		"type": ""
+		"totaltime": "104.148"
 	},
 	"635": {
 		"attribute": "smile",
 		"bpm": 0,
 		"cnhave": 0,
-		"group": 4,
+		"group": 0,
 		"id": 635,
 		"jpname": "オラはにんきもの 2019MIX",
 		"name": "オラはにんきもの 2019MIX",
@@ -114289,8 +113557,7 @@
 				"time": "35.405"
 			}
 		},
-		"totaltime": "39.096",
-		"type": ""
+		"totaltime": "39.096"
 	},
 	"636": {
 		"attribute": "pure",
@@ -114598,8 +113865,7 @@
 				"time": "90.634"
 			}
 		},
-		"totaltime": "94.284",
-		"type": ""
+		"totaltime": "94.284"
 	},
 	"637": {
 		"attribute": "pure",
@@ -114609,7 +113875,6 @@
 		"id": 637,
 		"jpname": "Dream with You",
 		"name": "Dream with You",
-		"niji": 1,
 		"settings": {
 			"1473": {
 				"ascore": 18816,
@@ -114908,8 +114173,7 @@
 				"time": "108.2"
 			}
 		},
-		"totaltime": "111.744",
-		"type": ""
+		"totaltime": "111.744"
 	},
 	"638": {
 		"attribute": "cool",
@@ -114919,7 +114183,6 @@
 		"id": 638,
 		"jpname": "MELODY",
 		"name": "MELODY",
-		"niji": 1,
 		"settings": {
 			"1477": {
 				"ascore": 18816,
@@ -115218,8 +114481,7 @@
 				"time": "109.313"
 			}
 		},
-		"totaltime": "112.392",
-		"type": ""
+		"totaltime": "112.392"
 	},
 	"639": {
 		"attribute": "smile",
@@ -115229,7 +114491,6 @@
 		"id": 639,
 		"jpname": "Sing & Smile!!",
 		"name": "Sing & Smile!!",
-		"niji": 1,
 		"settings": {
 			"1483": {
 				"ascore": 15008,
@@ -115241,9 +114502,69 @@
 				"isswing": 0,
 				"jsonpath": "Live_s1483.json",
 				"liveid": "1483",
+				"positionnote": [
+					"8",
+					"8",
+					"7",
+					"4",
+					"4",
+					"4",
+					"7",
+					"9",
+					"8"
+				],
+				"positionslider": [
+					"0",
+					"2",
+					"1",
+					"1",
+					"0",
+					"1",
+					"1",
+					"2",
+					"0"
+				],
+				"positionswing": [
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0"
+				],
+				"positionswingslider": [
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0"
+				],
+				"positionweight": [
+					"8.0",
+					"10.5",
+					"8.25",
+					"5.25",
+					"4.0",
+					"5.25",
+					"8.25",
+					"11.5",
+					"8.0"
+				],
+				"slider": "8",
 				"songkeys": 9,
 				"sscore": 18760,
-				"stardifficulty": 1
+				"star": "0",
+				"stardifficulty": 1,
+				"swing": "0",
+				"swingslider": "0",
+				"time": "108.76"
 			},
 			"1484": {
 				"ascore": 58982,
@@ -115255,9 +114576,69 @@
 				"isswing": 0,
 				"jsonpath": "Live_s1484.json",
 				"liveid": "1484",
+				"positionnote": [
+					"15",
+					"19",
+					"18",
+					"14",
+					"4",
+					"14",
+					"18",
+					"20",
+					"15"
+				],
+				"positionslider": [
+					"1",
+					"3",
+					"4",
+					"1",
+					"0",
+					"1",
+					"3",
+					"3",
+					"1"
+				],
+				"positionswing": [
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0"
+				],
+				"positionswingslider": [
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0"
+				],
+				"positionweight": [
+					"16.25",
+					"22.75",
+					"23.0",
+					"15.25",
+					"4.0",
+					"15.25",
+					"21.75",
+					"23.75",
+					"16.25"
+				],
+				"slider": "17",
 				"songkeys": 9,
 				"sscore": 70686,
-				"stardifficulty": 4
+				"star": "14",
+				"stardifficulty": 4,
+				"swing": "0",
+				"swingslider": "0",
+				"time": "108.76"
 			},
 			"1485": {
 				"ascore": 148410,
@@ -115269,9 +114650,69 @@
 				"isswing": 0,
 				"jsonpath": "Live_s1485.json",
 				"liveid": "1485",
+				"positionnote": [
+					"16",
+					"27",
+					"30",
+					"28",
+					"10",
+					"26",
+					"35",
+					"23",
+					"16"
+				],
+				"positionslider": [
+					"5",
+					"6",
+					"8",
+					"3",
+					"0",
+					"4",
+					"7",
+					"6",
+					"5"
+				],
+				"positionswing": [
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0"
+				],
+				"positionswingslider": [
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0"
+				],
+				"positionweight": [
+					"22.25",
+					"34.5",
+					"40.0",
+					"31.75",
+					"10.0",
+					"31.0",
+					"43.75",
+					"30.5",
+					"22.25"
+				],
+				"slider": "44",
 				"songkeys": 9,
 				"sscore": 173145,
-				"stardifficulty": 6
+				"star": "50",
+				"stardifficulty": 6,
+				"swing": "0",
+				"swingslider": "0",
+				"time": "108.76"
 			},
 			"1486": {
 				"ascore": 253200,
@@ -115283,12 +114724,379 @@
 				"isswing": 0,
 				"jsonpath": "Live_s1486.json",
 				"liveid": "1486",
+				"positionnote": [
+					"34",
+					"36",
+					"44",
+					"42",
+					"10",
+					"42",
+					"47",
+					"36",
+					"33"
+				],
+				"positionslider": [
+					"9",
+					"11",
+					"8",
+					"10",
+					"1",
+					"9",
+					"7",
+					"12",
+					"9"
+				],
+				"positionswing": [
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0"
+				],
+				"positionswingslider": [
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0"
+				],
+				"positionweight": [
+					"45.25",
+					"49.75",
+					"54.0",
+					"54.5",
+					"11.25",
+					"53.25",
+					"55.75",
+					"51.0",
+					"44.25"
+				],
+				"slider": "76",
 				"songkeys": 9,
 				"sscore": 274400,
-				"stardifficulty": 9
+				"star": "65",
+				"stardifficulty": 9,
+				"swing": "0",
+				"swingslider": "0",
+				"time": "113.205"
 			}
 		},
-		"totaltime": "119.448",
-		"type": ""
+		"totaltime": "119.448"
+	},
+	"640": {
+		"attribute": "cool",
+		"bpm": 0,
+		"cnhave": 0,
+		"group": 4,
+		"id": 640,
+		"jpname": "Dreaming Energy",
+		"name": "Dreaming Energy",
+		"settings": {
+			"1487": {
+				"ascore": 22176,
+				"bscore": 16632,
+				"combo": 99,
+				"cscore": 11088,
+				"difficulty": 1,
+				"isac": 0,
+				"isswing": 0,
+				"jsonpath": "Live_s1487.json",
+				"liveid": "1487",
+				"positionnote": [
+					"10",
+					"12",
+					"10",
+					"7",
+					"10",
+					"7",
+					"11",
+					"14",
+					"10"
+				],
+				"positionslider": [
+					"0",
+					"2",
+					"2",
+					"1",
+					"1",
+					"1",
+					"0",
+					"1",
+					"0"
+				],
+				"positionswing": [
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0"
+				],
+				"positionswingslider": [
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0"
+				],
+				"positionweight": [
+					"10.0",
+					"14.5",
+					"12.5",
+					"8.25",
+					"11.25",
+					"8.25",
+					"11.0",
+					"15.25",
+					"10.0"
+				],
+				"slider": "8",
+				"songkeys": 9,
+				"sscore": 27720,
+				"star": "0",
+				"stardifficulty": 2,
+				"swing": "0",
+				"swingslider": "0",
+				"time": "98.916"
+			},
+			"1488": {
+				"ascore": 80047,
+				"bscore": 63954,
+				"combo": 209,
+				"cscore": 31977,
+				"difficulty": 2,
+				"isac": 0,
+				"isswing": 0,
+				"jsonpath": "Live_s1488.json",
+				"liveid": "1488",
+				"positionnote": [
+					"18",
+					"25",
+					"23",
+					"18",
+					"29",
+					"14",
+					"23",
+					"26",
+					"20"
+				],
+				"positionslider": [
+					"0",
+					"3",
+					"3",
+					"0",
+					"1",
+					"1",
+					"2",
+					"3",
+					"0"
+				],
+				"positionswing": [
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0"
+				],
+				"positionswingslider": [
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0"
+				],
+				"positionweight": [
+					"18.0",
+					"28.75",
+					"26.75",
+					"18.0",
+					"30.25",
+					"15.25",
+					"25.5",
+					"29.75",
+					"20.0"
+				],
+				"slider": "13",
+				"songkeys": 9,
+				"sscore": 95931,
+				"star": "14",
+				"stardifficulty": 6,
+				"swing": "0",
+				"swingslider": "0",
+				"time": "98.916"
+			},
+			"1489": {
+				"ascore": 183912,
+				"bscore": 153260,
+				"combo": 316,
+				"cscore": 61304,
+				"difficulty": 3,
+				"isac": 0,
+				"isswing": 0,
+				"jsonpath": "Live_s1489.json",
+				"liveid": "1489",
+				"positionnote": [
+					"30",
+					"30",
+					"36",
+					"17",
+					"26",
+					"18",
+					"33",
+					"29",
+					"29"
+				],
+				"positionslider": [
+					"9",
+					"5",
+					"10",
+					"9",
+					"1",
+					"10",
+					"9",
+					"8",
+					"7"
+				],
+				"positionswing": [
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0"
+				],
+				"positionswingslider": [
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0"
+				],
+				"positionweight": [
+					"41.25",
+					"36.25",
+					"48.5",
+					"28.25",
+					"27.25",
+					"30.5",
+					"44.25",
+					"39.0",
+					"37.75"
+				],
+				"slider": "68",
+				"songkeys": 9,
+				"sscore": 214564,
+				"star": "50",
+				"stardifficulty": 7,
+				"swing": "0",
+				"swingslider": "0",
+				"time": "98.916"
+			},
+			"1490": {
+				"ascore": 310803,
+				"bscore": 285271,
+				"combo": 491,
+				"cscore": 103601,
+				"difficulty": 4,
+				"isac": 0,
+				"isswing": 0,
+				"jsonpath": "Live_s1490.json",
+				"liveid": "1490",
+				"positionnote": [
+					"31",
+					"54",
+					"65",
+					"48",
+					"41",
+					"48",
+					"64",
+					"54",
+					"32"
+				],
+				"positionslider": [
+					"1",
+					"4",
+					"12",
+					"10",
+					"1",
+					"9",
+					"10",
+					"6",
+					"1"
+				],
+				"positionswing": [
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0"
+				],
+				"positionswingslider": [
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0",
+					"0"
+				],
+				"positionweight": [
+					"32.25",
+					"59.0",
+					"80.0",
+					"60.5",
+					"42.25",
+					"59.25",
+					"76.5",
+					"61.5",
+					"33.25"
+				],
+				"slider": "54",
+				"songkeys": 9,
+				"sscore": 336826,
+				"star": "65",
+				"stardifficulty": 10,
+				"swing": "0",
+				"swingslider": "0",
+				"time": "98.916"
+			}
+		},
+		"totaltime": "103.176"
 	}
 }
