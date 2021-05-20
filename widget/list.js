@@ -41,7 +41,7 @@
         mw.widget = mw.widget || {};
         if (mw.widget.list) { return; }
         Promise.all([ $.ajax({ dataType: 'json', cache: true,
-            url: '/zh?title=user:bhsd/widget/list.json&action=raw&ctype=application/json'
+            url: '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@latest/json/list.json'
         }), mw.loader.using( 'oojs-ui-core' ) ]).then( main );
         mw.widget.list = true;
     };
