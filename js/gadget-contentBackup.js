@@ -59,7 +59,7 @@ if (isEditable && (["edit", "submit"].includes(action) || action == 'view' && is
         $(function() { btn.$element.insertAfter( '#wpDiffWidget' ); }); // 只添加一次按钮
     }
     // 3. 保存备份
-    $('body').on('mousedown', btns, function() {
+    $(document.body).on('mousedown', btns, function() {
         saveBackup();
         if (action == 'view') { btn.prop('disabled', false); }
         else { btn.setDisabled( false ); }
