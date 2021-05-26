@@ -1,0 +1,67 @@
+/**
+ * @Source: https://zh.moegirl.org.cn/mediawiki:gadget-sidebarHidden.css
+ * @OriginalVersion: https://zh.wikipedia.org/wiki/mediawiki:gadget-CollapsibleSidebar.js
+ * @EditedBy: https://llwiki.org/zh/User:Bhsd
+ */
+#left-navigation > .mw-wiki-logo {
+	display: block;
+	width: 9em;
+	height: 5em;
+	position: absolute;
+	top: 0;
+	left: 1em;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+#sidebarHidden-arrow {
+	width: 1.4em;
+	height: 1.4em;
+	box-sizing: border-box;
+	border-radius: 50%;
+	border: 1px solid #a7d7f9;
+	background-color: #fff;
+	position: fixed;
+	top: 6em;
+	left: 9.3em;
+	color: #77c1f6;
+	cursor: pointer;
+	transition: all ease-in-out 0.4s;
+}
+#sidebarHidden-arrow:hover {
+	background-color: #e8f2f8;
+}
+.sidebarHidden > #sidebarHidden-arrow {
+	left: 0.3em;
+}
+#sidebarHidden-arrow::before {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+#content, #footer {
+	transition: margin-left ease-in-out 0.4s;
+}
+.sidebarHidden #content, .sidebarHidden #footer {
+	margin-left: 1em;
+}
+/* Vector皮肤本就会随屏幕宽度变化 */
+@media screen and (min-width: 982px) {
+	#sidebarHidden-arrow {
+		left: 10.3em;
+	}
+	#left-navigation > .mw-wiki-logo {
+		width: 10em;
+	}
+}
+@media screen and (max-width: 720px) {
+	#sidebarHidden-arrow, #left-navigation > .mw-wiki-logo {
+		display: none !important;
+	}
+	#mw-panel {
+		display: table !important;
+	}
+	.sidebarHidden #content, .sidebarHidden #footer {
+		margin-left: 0;
+	}
+}
