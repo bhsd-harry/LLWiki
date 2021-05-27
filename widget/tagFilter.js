@@ -7,9 +7,7 @@
 (() => {
     const detectCollapse = (mutations) => {
         mutations.forEach(ele => {
-            const $target = $(ele.target),
-                $dl = $target.closest( 'dl' );
-            if (!$target.is( 'dd > .mw-collapsible:has( .chronology )' )) { return; }
+            const $dl = $(ele.target).closest( 'dl' );
             $dl.toggle( $dl.find( 'dd > :not(.mw-collapsed)' ).length > 0 );
         });
     },
@@ -18,7 +16,13 @@
         if (mw.widget.tagFilter) { return; }
         // 因为dl折叠需要在jquery.makeCollapsible执行完毕之后，这里借助MutationObserver判断正确时机
         const observer = new MutationObserver( detectCollapse );
-        observer.observe( document.body, {attributes: true, subtree: true, attributeFilter: ['class']} );
+        mw.hook( 'wikipage.content' ).add($content => {
+            observer.disconnect();
+            console.log('Hook: wikipage.content, 更新对年表标签的监视');
+            $content.find( 'dd > .mw-collapsible:has( .chronology )' ).each(function() {
+                observer.observe(this, {attributes: true, attributeFilter: ['class']});
+            });
+        });
         mw.widget.tagFilter = true;
     };
     if (window.jQuery) { main(); }

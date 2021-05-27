@@ -5,6 +5,14 @@
 	width: auto !important;
 	white-space: nowrap;
 }
+/* 涉及JS的高度计算，提前加载tabs扩展的部分样式 */
+.sif-song-table.tsticky .tabs-dropdown {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.sif-song-table.tsticky .tabs-container {
+	z-index: 1;
+}
 .sif-song-table .tabs-label {
 	transition-delay: 0.3s;
 }

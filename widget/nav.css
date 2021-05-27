@@ -6,6 +6,7 @@
 	overflow-x: auto;
 	-webkit-overflow-scrolling: touch; /* mobile Safari */
 	scroll-snap-type: x mandatory; /* Safari无效 */
+	z-index: 60;
 }
 .start-screen a {
 	scroll-snap-align: start;

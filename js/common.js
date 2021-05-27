@@ -4,6 +4,7 @@
  *             2. 重定向时生成气泡提示
  *             3. 编辑页面调整.mw-editTools的位置
  *             4. 编辑页面设置CodeEditor的JSHint
+ *             5. 固定表头
  * @Author: https://llwiki.org/zh/User:Bhsd
  */
 // 避免全局变量
@@ -51,3 +52,31 @@ if (['edit', 'submit'].includes( mw.config.get('wgAction') )) {
         });
     }
 }
+mw.loader.using( 'mediawiki.util' ).then(function() {
+    // 5. 固定表头
+    var $thead = {};
+    const tsticky = function() {
+        if (!$thead.length) { return; }
+        $thead.each(function() {
+            $(this).children( 'tr' ).toArray().reduce(function(height, ele, i) {
+                const $tr = $(ele);
+                if (i) { $tr.children( 'th' ).css('top', height); }
+                return height + $tr.height();
+            }, 0);
+        });
+    },
+        resize = mw.util.debounce(500, tsticky); // 降低不必要的执行频率
+    $(window).resize( resize );
+    mw.hook( 'wikipage.content' ).add(function($content) {
+        $thead = {}; // 立即清空$thead，防止出错
+        const $table = $content.find( '.wikitable.tsticky.sortable' ),
+            updateThead = function() {
+            if ($table.not( '.jquery-tablesorter' ).length) { return; } // 还需要继续等待jquery.tablesorter执行
+            observer.disconnect();
+            $thead = $table.children( 'thead' ).filter(function() { return this.childNodes.length > 1; });
+            tsticky();
+        },
+            observer = new MutationObserver( updateThead ); // jshint ignore: line
+        $table.each(function() { observer.observe(this, {attributes: true, attributeFilter: ['class']}); })
+            .filter( '.sif-song-table' ).find( 'th:has(.tabs-dropdown)' ).css('z-index', 2);
+        updateThead(); // 立即尝试更新需要固定的表头
