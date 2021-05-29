@@ -6,7 +6,7 @@
 /* global mw, $ */
 (() => {
     let isMobile;
-    const formatData = (ele) => ele.textContent.toLowerCase().replace(/[^a-z]/g, ''),
+    const formatData = (ele) => ele.textContent.toLowerCase().replace(/[^a-z0-9]/g, ''),
         main = ($content) => {
         const $dropdown = $content.find( '.sif-song-table .tabs-content' )
             .attr({lang: 'ja', style: 'height: auto !important; left: -1000000px;'});
