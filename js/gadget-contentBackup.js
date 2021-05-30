@@ -7,13 +7,12 @@
 "use strict";
 /* global OO, wgULS */
 const action = mw.config.get('wgAction'),
-    isEditable = mw.config.get( 'wgIsProbablyEditable' ), // 所有新建页面共用备份
-    isLoaded = function(gadget) { return ['ready', 'loaded', 'loading'].includes( mw.loader.getState( gadget ) ); },
-    isWikiplus = isLoaded( 'ext.gadget.Wikiplus' ) || isLoaded( 'ext.gadget.mobile-Wikiplus' );
+    isEditable = mw.config.get( 'wgIsProbablyEditable' ),
+    isWikiplus = mw.isModule('Wikiplus', true) || mw.isModule('mobile-Wikiplus', true);
 if (isEditable && (["edit", "submit"].includes(action) || action == 'view' && isWikiplus)) {
     mw.messages.set('gadget-cb-text', wgULS("还原备份", "還原備份"));
     var backup, codeEditor, btn;
-    const id = mw.config.get('wgArticleId'),
+    const id = mw.config.get('wgArticleId'), // 所有新建页面共用备份
         btns = '#wpSaveWidget, #wpPreviewWidget, #wpDiffWidget, #wpTemplateSandboxPreview,' + // 编辑页面
         '#Wikiplus-Quickedit-Submit, #Wikiplus-Quickedit-Preview-Submit', // Wikiplus
         editor = '#wpTextbox1, #Wikiplus-Quickedit', // Wikiplus编辑区需动态生成，所以这里只保存选择器

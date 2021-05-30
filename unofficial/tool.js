@@ -3,6 +3,7 @@
  * @Author: https://llwiki.org/zh/User:Bhsd
  */
 "use strict";
+// jshint varstmt: true
 /**
  * @Function: 批量添加文件授权协议，只能处理不超过500个文件的分类
  * @Dependencies: mediawiki.api, ext.gadget.site-lib

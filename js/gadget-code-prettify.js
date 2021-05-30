@@ -27,9 +27,11 @@ mw.hook( 'wikipage.content' ).add(function($content) {
         mw.loader.getScript = (url) => $.get({url, dataType: 'script', cache: true});
     }
     (window.hljs ? Promise.resolve() : mw.loader.getScript( path )).then(function() { // 不重复下载脚本
+        // 1. 语法高亮
         $block.each(function() { hljs.highlightBlock( this ); }).addClass( 'highlighted' ).filter( '.linenums' )
             .html(function() { // 添加行号。这里不使用<table>排版，而是使用<ol>
-            const $this = $(this);
+            const $this = $(this),
+                start = $this.data( 'start' ) || 1;
             $this.children( ':contains(\n)' ).replaceWith(function() { // 先处理跨行元素
                 const $self = $(this);
                 return $self.html().split( '\n' ).map(function(ele) {
@@ -38,11 +40,17 @@ mw.hook( 'wikipage.content' ).add(function($content) {
             });
             var lines = $this.html().replace(/\n$/, '').split('\n');
             if (mw.config.get( 'wgNamespaceNumber' ) == 274) { lines = lines.slice(1, -1); } // 扔掉首尾的Wikitext注释
-            return $('<ol>', {html: lines.map(function(ele, i) { return $('<li>', {html: ele, id: 'L' + (i + 1)}); })})
-                .css('padding-left', lines.length.toString().length + 2.5 + 'ch');
+            return $('<ol>', { start: start,
+                html: lines.map(function(ele, i) { return $('<li>', {html: ele, id: 'L' + (i + start)}); })
+            }).css('padding-left', (lines.length + start - 1).toString().length + 2.5 + 'ch');
         });
         mw.hook( 'code.prettify' ).fire( $block );
-        const $cssblock = $block.filter( '.css' ); // 对CSS代码添加指示色块
+        // 2. 手动跳转
+        const fragment = decodeURIComponent( location.hash.slice(1) ),
+            target = document.getElementById( fragment ); // 用户输入内容，禁止使用$()
+        if (/^L\d+$/.test( fragment ) && target) { target.scrollIntoView({ behavior: 'smooth' }); }
+        // 3. 对CSS代码添加指示色块
+        const $cssblock = $block.filter( '.css' );
         if ($cssblock.length === 0) { return; }
         const $color = $('<span>', {class: 'hljs-color'});
         $cssblock.find( '.hljs-number:contains(#)' ).before(function() { // 16进制颜色
@@ -61,9 +69,5 @@ mw.hook( 'wikipage.content' ).add(function($content) {
             return $color.clone().css({ color: color[0].slice(0, 3) + color.slice(1, 7).join('') + ')',
                 opacity: color[8] });
         });
-        // 手动跳转
-        const fragment = decodeURIComponent( location.hash.slice(1) ),
-            target = document.getElementById( fragment ); // 用户输入内容，禁止使用$()
-        if (/^L\d+$/.test( fragment ) && target) { target.scrollIntoView({ behavior: 'smooth' }); }
     }, function(reason) { mw.apiFailure(reason, 'highlight.js'); });
 });
