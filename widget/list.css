@@ -1,0 +1,23 @@
+#mw-content-text .oo-ui-comboBoxInputWidget {
+	width: 500px;
+	max-width: 100%;
+	margin-right: 0;
+	text-align: center;
+}
+#mw-content-text .oo-ui-comboBoxInputWidget > .fa-backspace {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 3em;
+	cursor: pointer;
+	line-height: 2; /* 更容易点击 */
+}
+#mw-content-text .oo-ui-comboBoxInputWidget > .oo-ui-menuSelectWidget {
+	z-index: 60;
+}
+#mw-content-text .oo-ui-comboBoxInputWidget .oo-ui-menuOptionWidget {
+	padding-left: 0.85714286em;
+}
+#mw-content-text pre:empty {
+	display: none;
+}

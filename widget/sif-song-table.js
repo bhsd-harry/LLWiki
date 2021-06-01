@@ -33,7 +33,10 @@
             const option = e.target,
                 lvl = formatData( option );
             $(this).css('left', '-1000000px').prev().text( option.textContent ).closest( '.sif-song-table' )
-                .find( '.sif-song-option' ).text(function() { return this.dataset[lvl] || '/'; });
+                .find( '.sif-song-option' ).html(function() {
+                const data = this.dataset[ lvl ] || '';
+                return [data.replace(/\D/g, '') || '/', data.endsWith( 'swing' ) ? $('<i>', {class: 'swing'}) : null ];
+            });
         }).on('mouseenter', '.sif-song-table .tabs-label', function() { $(this).next().css('left', ''); });
         mw.widget.sifSongTable = true;
     };

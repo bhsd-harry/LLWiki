@@ -282,7 +282,8 @@ mw.tipsy = function(container, target, params, $content) {
         var title = this.title;
         // 不能寫成$this.data('title', title)
         if (title) { $this.attr('data-title', title).removeAttr( 'title' ); }
-        else { title = $this.data('title') || ''; }
+        else { title = $this.data('title'); }
+        if (!title) { return; }
         $label.text( title );
         popup.toggle( true ).setFloatableContainer( $this );
     }).on('mouseleave', target, function() { popup.toggle( false ); });

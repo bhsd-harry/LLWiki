@@ -31,9 +31,6 @@
 	height: 0 !important;
 	border-bottom: none;
 }
-.sif-song-table .tabs-dropdown ul {
-	padding: 0;
-}
 .sif-song-table .tabs-dropdown li:last-child {
 	border-radius: 0 0 8px 8px;
 }
@@ -46,4 +43,12 @@
 }
 .attrib-c {
 	background-color: #b0e2ff;
+}
+.swing {
+	display: inline-block;
+	width: 1.25em;
+	height: 1.25em;
+	background-image: url(/mediawiki/img_auth.php/6/65/SIF_Swing_Key.png);
+	background-size: 1.25em;
+	vertical-align: text-bottom;
 }
