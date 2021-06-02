@@ -259,6 +259,13 @@ mw.dialog = function(dialog, actions, $message, $title) {
             ele.$button.off( 'click' ).click(function() { dialog.close(); });
         });
     });
+    // 防止再次打開時丟失事件
+    if ($message instanceof jQuery) { open.closing.then(function() { $message.detach(); }); }
+    else if (Array.isArray( $message )) {
+        open.closing.then(function() {
+            $message.forEach(function($ele) { if ($ele instanceof jQuery) { $ele.detach(); } });
+        });
+    }
     return open.closed.then(function(data) {
         if (data) { return data.action; }
         throw 'noAction';

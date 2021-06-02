@@ -55,7 +55,7 @@
             openDialog = () => {
             if (!dialog) { dialog = new OO.ui.MessageDialog(); }
             mw.dialog(dialog, actions, [$intro, $wrapper], mw.msg( 'widget-cm-dialog' )).then(action => {
-                const $select = $wrapper.detach().find( 'select' ); // 防止再次打開時丟失事件
+                const $select = $wrapper.find( 'select' );
                 if (action == 'reject') {
                     $select.val(i => mvals[i]).change(); // 还原选项
                     return;
@@ -66,7 +66,6 @@
                 });
                 generateStyle();
             });
-            mw.dialog(dialog, actions, [$intro, $wrapper], mw.msg( 'widget-cm-dialog' ));
         };
         $('.mw-indicators').on('click', '#mw-indicator-colorMod', openDialog); // 桌面版比较麻烦，采用delegate
         // 3. 首次訪問時顯示提示
