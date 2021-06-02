@@ -241,7 +241,7 @@ mw.prompt = function(text, flags, config) {
  * @Param {Object[]} actions, 按钮
  * @Param {jQuery} $message, 文字（可选）
  * @Param {jQuery} $title, 标题（可选）
- * @Return {Promise} Promise对象
+ * @Return {Promise} Promise对象，resolve返回的action或是reject字符串"noAction"
  */
 mw.dialog = function(dialog, actions, $message, $title) {
     // 一个WindowManager只能打开一个MessageDialog
@@ -252,11 +252,16 @@ mw.dialog = function(dialog, actions, $message, $title) {
     }
     dialog.message.$label.html( $message ); // undefined不更新message
     dialog.title.$label.html( $title ); // undefined不更新title
-    return dialog.open({actions: actions}).opening.then(function() {
+    const open = dialog.open({actions: actions});
+    open.opening.then(function() {
         // 使href生效
-        dialog.attachedActions.forEach(function(ele) {
+        actions.filter(function(ele) { return ele.href; }).forEach(function(ele) {
             ele.$button.off( 'click' ).click(function() { dialog.close(); });
         });
+    });
+    return open.closed.then(function(data) {
+        if (data) { return data.action; }
+        throw 'noAction';
     });
 };
 /**

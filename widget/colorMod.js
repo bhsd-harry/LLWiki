@@ -49,26 +49,23 @@
                 mkeys.map((key, i) => `--${key}-color: ${colors[key][ mvals[i] ]}`).join(';') + ';}';
         },
             isMobile = mw.config.get('skin') == 'minerva',
-            actions = [ {label: mw.msg( "ooui-dialog-message-reject" )},
-            {label: mw.msg( "ooui-dialog-message-accept" ), flags: 'progressive'}
+            actions = [ {action: 'reject', label: mw.msg( "ooui-dialog-message-reject" )},
+            {action: 'accept', label: mw.msg( "ooui-dialog-message-accept" ), flags: 'progressive'}
         ],
             openDialog = () => {
-            if (!dialog) {
-                dialog = new OO.ui.MessageDialog();
-                dialog.$element.on('click', '.oo-ui-actionWidget', function() { // 采用delegate，避免反复添加事件
-                    const $select = $wrapper.detach().find( 'select' ); // 防止再次打開時丟失事件
-                    if (!$(this).hasClass( 'oo-ui-flaggedElement-progressive' )) { // 取消键
-                        $select.val(i => mvals[i]).change(); // 还原选项
-                        return;
-                    }
-                    // 确认键
-                    $select.each(function(i) {
-                        mvals[i] = this.value;
-                        mw.storage.set(`${ mkeys[i] }-color`, this.value);
-                    });
-                    generateStyle();
+            if (!dialog) { dialog = new OO.ui.MessageDialog(); }
+            mw.dialog(dialog, actions, [$intro, $wrapper], mw.msg( 'widget-cm-dialog' )).then(action => {
+                const $select = $wrapper.detach().find( 'select' ); // 防止再次打開時丟失事件
+                if (action == 'reject') {
+                    $select.val(i => mvals[i]).change(); // 还原选项
+                    return;
+                }
+                $select.each(function(i) {
+                    mvals[i] = this.value;
+                    mw.storage.set(`${ mkeys[i] }-color`, this.value);
                 });
-            }
+                generateStyle();
+            });
             mw.dialog(dialog, actions, [$intro, $wrapper], mw.msg( 'widget-cm-dialog' ));
         };
         $('.mw-indicators').on('click', '#mw-indicator-colorMod', openDialog); // 桌面版比较麻烦，采用delegate
