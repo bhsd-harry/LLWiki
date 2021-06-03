@@ -11,7 +11,7 @@
 "use strict";
 /* global wgULS */
 // 1. 添加按钮“快速重定向到當前頁面”
-if (mw.config.get( 'wgNamespaceNumber' ) >= 0) {
+if (mw.config.get( 'wgArticleId' )) {
     mw.loader.using( ['mediawiki.api', 'oojs-ui-windows', 'ext.gadget.site-lib'] ).then(function() {
         mw.messages.set({'cm-redirect-prompt': wgULS('请输入重定向页名称:', '請輸入重定向頁名稱:'),
             'cm-redirect': '重定向至此', 'cm-redirect-summary': '快速重定向'});
