@@ -6,18 +6,23 @@
  */
 "use strict";
 /*global hljs */
-const acceptLangs = {js: "javascript", javascript: "javascript", json: "json", css: "css", html: "xml",
-    scribunto: "lua", lua: "lua"},
-    contentModel = mw.config.get( "wgPageContentModel" ).toLowerCase();
+const acceptLangs = {js: 'javascript', javascript: 'javascript', json: 'json', css: 'css', html: 'xml',
+    scribunto: 'lua', lua: 'lua', 'sanitized-css': 'css'},
+    contentModel = mw.config.get( 'wgPageContentModel' ).toLowerCase();
 mw.hook( 'wikipage.content' ).add(function($content) {
     if (contentModel in acceptLangs) {
         $content.find( '.mw-code' ).addClass('hljs linenums ' + acceptLangs[contentModel]);
     }
     $content.find('pre[lang], code[lang]').addClass(function() {
         const $self = $(this),
-            lang = $self.attr( "lang" ).toLowerCase();
-        if (lang in acceptLangs) { return "hljs " + acceptLangs[lang] + ($self.is('pre') ? " linenums" : ""); }
+            lang = $self.attr( 'lang' ).toLowerCase();
+        if (lang in acceptLangs) { return 'hljs ' + acceptLangs[lang] + ($self.is('pre') ? ' linenums' : ''); }
     });
+    $content.find( '.prettyprint' ).addClass( 'hljs' );
+    $content.find( '.lang-js' ).addClass( 'javascript' );
+    $content.find( '.lang-css' ).addClass( 'css' );
+    $content.find( '.lang-lua' ).addClass( 'lua' );
+    $content.find( '.lang-html' ).addClass( 'xml' );
     const $block = $content.find( '.hljs:not(.highlighted)' ); // 不重复高亮
     if ($block.length === 0) { return; }
     console.log('Hook: wikipage.content, 开始执行语法高亮');
