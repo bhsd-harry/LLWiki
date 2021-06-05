@@ -18,7 +18,6 @@ settings.range = settings.range || ['vector']; // 默认只用于桌面版
 if (isEditable && settings.range.includes( skin ) && (['edit', 'submit'].includes(action) || isWikiplus || isMobile)) {
     var codeEditor, // 实时更新的Ace Editor Session
         btn, // 需要等待localforage才能移除disabled
-        update, // 延时更新函数，因为存在循环调用这里先预定义
         backup = '', // 因为localforage提取backup是个Promise，这里先初始化
         expList = mw.storage.getObject( 'LLWiki-contentBackup-exp' ) || {}; // 单独存储备份过期时间，这是个Object
     const id = mw.config.get( 'wgArticleId' ), // 所有新建页面共用备份
@@ -62,12 +61,16 @@ if (isEditable && settings.range.includes( skin ) && (['edit', 'submit'].include
         else { backup = $(editor).val(); }
         expList[id] = mw.now();
         mw.storage.setObject('LLWiki-contentBackup-exp', expList);
-        localforage.setItem(id, backup);
+        localforage.setItem(id.toString(), backup);
         update();
     },
-        stay = settings.stay * 1000 * 60; // 通过设置改动stay时若立即生效会造成bug
-    // 自动更新函数，不支持Wikiplus
-    update = action == 'view' || stay === 0 ? function() {} : mw.util.debounce(stay, saveBackup);
+        stay = settings.stay * 1000 * 60, // 通过设置改动stay时若立即生效会造成bug
+        // 自动更新函数，不支持Wikiplus
+        update = action == 'view' || stay === 0 ? function() {} : mw.util.debounce(stay, function() {
+        saveBackup();
+        console.log('备份自动更新于' + new Date().toLocaleTimeString( 'zh' ));
+    });
+
     mw.storage.remove( 'LLWiki-contentBackup' ); // 移除旧版小工具的备份存档
     mw.loader.getScript( 'https://cdn.jsdelivr.net/npm/localforage/dist/localforage.min.js' ).then(function() {
         localforage.config({name: 'LLWiki-contentBackup'});
