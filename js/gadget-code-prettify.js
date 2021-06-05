@@ -52,7 +52,7 @@ mw.hook( 'wikipage.content' ).add(function($content) {
         mw.hook( 'code.prettify' ).fire( $block );
         // 2. 手动跳转
         const fragment = decodeURIComponent( location.hash.slice(1) ),
-            target = document.getElementById( fragment ); // 用户输入内容，禁止使用$()
+            target = document.getElementById( fragment || null ); // 用户输入内容，禁止使用$()
         if (/^L\d+$/.test( fragment ) && target) { target.scrollIntoView({ behavior: 'smooth' }); }
         // 3. 对CSS代码添加指示色块
         const $cssblock = $block.filter( '.css' );
