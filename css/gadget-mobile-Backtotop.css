@@ -1,0 +1,49 @@
+div.backtotop {
+	transition: opacity linear 0.4s;
+	visibility: visible;
+}
+.skin-minerva .backtotop {
+	bottom: 40px;
+}
+.skin-vector .backtotop {
+	position: fixed;
+	bottom: 20px;
+	right: 0;
+	width: 2.5em;
+	height: 2.5em;
+	border-radius: 50%;
+	box-shadow: 0.1em 0.2em 0.3em #c8ccd1;
+	background-color: #36c;
+	opacity: 0;
+	cursor: pointer;
+}
+div.backtotop.visible {
+	opacity: 0.5;
+}
+div.backtotop:hover {
+	opacity: 1;
+}
+.backtobottom {
+	top: 40px;
+}
+.skin-vector .backtobottom {
+	top: 80px;
+}
+.skin-vector .backtotop > .arrow-up {
+	width: 0;
+	height: 0;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-bottom: 7px solid #fff;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+.backtotop.backtobottom > .arrow-up {
+	border-bottom: none;
+	border-top: 7px solid #fff;
+}
+.skin-minerva .media-viewer {
+	z-index: 4;
+}
