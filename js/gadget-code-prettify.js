@@ -74,5 +74,8 @@ mw.hook( 'wikipage.content' ).add(function($content) {
             return $color.clone().css({ color: color[0].slice(0, 3) + color.slice(1, 7).join('') + ')',
                 opacity: color[8] });
         });
-    }, function(reason) { mw.apiFailure(reason, 'highlight.js'); });
+    }, function(reason) {
+        if (mw.apiFailure) { mw.apiFailure(reason, 'highlight.js'); }
+        else { mw.notify('无法下载highlight.js，代码高亮失败！', {type: 'error'}); }
+    });
 });
