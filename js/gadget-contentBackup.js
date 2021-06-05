@@ -67,7 +67,7 @@ if (isEditable && settings.range.includes( skin ) && (['edit', 'submit'].include
     },
         stay = settings.stay * 1000 * 60; // 通过设置改动stay时若立即生效会造成bug
     // 自动更新函数，不支持Wikiplus
-    update = action == 'view' || stay === 0 ? function() {} : function() { mw.util.debounce(stay, saveBackup); };
+    update = action == 'view' || stay === 0 ? function() {} : mw.util.debounce(stay, saveBackup);
     mw.storage.remove( 'LLWiki-contentBackup' ); // 移除旧版小工具的备份存档
     mw.loader.getScript( 'https://cdn.jsdelivr.net/npm/localforage/dist/localforage.min.js' ).then(function() {
         localforage.config({name: 'LLWiki-contentBackup'});
