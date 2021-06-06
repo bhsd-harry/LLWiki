@@ -13,7 +13,7 @@ const settings = mw.gadgets.mobileBacktotop,
 settings.mode = settings.mode || ['vector', 'minerva'];
 settings.func = settings.func || ['top'];
 // 1. 设置本地化消息
-if (mw.settingsDialog) {
+if (mw.config.get('wgServer') == '//llwiki.org') {
     mw.messages.set( $.extend( wgULS({
         'gadget-mb-label': '前往页面顶部或底部', 'gadget-cb-range': '使用范围', 'gadget-cb-d': '桌面版', 'gadget-cb-m': '手机版',
         'gadget-mb-f': '启用功能', 'gadget-mb-top': '回到顶部'
@@ -27,7 +27,7 @@ $(function() {
     if (!settings.mode.includes( skin )) { return; }
     
     // 2. 小工具设置
-    if (mw.settingsDialog) {
+    if (mw.config.get('wgServer') == '//llwiki.org') {
         mw.settingsDialog.addTab({name: 'mobileBacktotop', label: 'gadget-mb-label', items: [
             {key: 'mode', type: 'CheckboxMultiselect', label: 'gadget-cb-range', config: {value: settings.mode, options: [
                 {data: 'vector', label: mw.msg( 'gadget-cb-d' )}, {data: 'minerva', label: mw.msg( 'gadget-cb-m' )}
