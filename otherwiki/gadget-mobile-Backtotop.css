@@ -1,13 +1,6 @@
-div.backtotop {
-	transition: opacity linear 0.4s;
-	visibility: visible;
-}
-.skin-minerva .backtotop {
-	bottom: 40px;
-}
-.skin-vector .backtotop {
+.backtotop {
 	position: fixed;
-	bottom: 20px;
+	bottom: 40px;
 	right: 0;
 	width: 2.5em;
 	height: 2.5em;
@@ -16,20 +9,26 @@ div.backtotop {
 	background-color: #36c;
 	opacity: 0;
 	cursor: pointer;
+	transition: opacity linear 0.4s;
 }
-div.backtotop.visible {
+.skin-vector .backtotop {
+        bottom: 20px;
+	right: 30px;
+	z-index: 8;
+}
+.backtotop.visible {
 	opacity: 0.5;
 }
-div.backtotop:hover {
+.backtotop:hover {
 	opacity: 1;
 }
 .backtobottom {
 	top: 40px;
 }
 .skin-vector .backtobottom {
-	top: 80px;
+	top: 100px;
 }
-.skin-vector .backtotop > .arrow-up {
+.backtotop > .arrow-up {
 	width: 0;
 	height: 0;
 	border-left: 7px solid transparent;
@@ -43,7 +42,4 @@ div.backtotop:hover {
 .backtotop.backtobottom > .arrow-up {
 	border-bottom: none;
 	border-top: 7px solid #fff;
-}
-.skin-minerva .media-viewer {
-	z-index: 4;
 }

@@ -13,36 +13,29 @@ const settings = mw.gadgets.mobileBacktotop,
 settings.mode = settings.mode || ['vector', 'minerva'];
 settings.func = settings.func || ['top'];
 // 1. 设置本地化消息
-if (mw.config.get('wgServer') == '//llwiki.org') {
-    mw.messages.set( $.extend( wgULS({
-        'gadget-mb-label': '前往页面顶部或底部', 'gadget-cb-range': '使用范围', 'gadget-cb-d': '桌面版', 'gadget-cb-m': '手机版',
-        'gadget-mb-f': '启用功能', 'gadget-mb-top': '回到顶部'
-    }, {
-        'gadget-mb-label': '前往頁面頂部或底部', 'gadget-cb-range': '使用範圍', 'gadget-cb-d': '桌面版', 'gadget-cb-m': '手機版',
-        'gadget-mb-f': '啟用功能', 'gadget-mb-top': '回到頂部'
-    }), {'gadget-mb-bottom': '前往底部'}) );
-}
+mw.messages.set( $.extend( wgULS({
+    'gadget-mb-label': '前往页面顶部或底部', 'gadget-cb-range': '使用范围', 'gadget-cb-d': '桌面版', 'gadget-cb-m': '手机版',
+    'gadget-mb-f': '启用功能', 'gadget-mb-top': '回到顶部'
+}, {
+    'gadget-mb-label': '前往頁面頂部或底部', 'gadget-cb-range': '使用範圍', 'gadget-cb-d': '桌面版', 'gadget-cb-m': '手機版',
+    'gadget-mb-f': '啟用功能', 'gadget-mb-top': '回到頂部'
+}), {'gadget-mb-bottom': '前往底部'}) );
 // 一个页面只需要执行一次
 $(function() {
     if (!settings.mode.includes( skin )) { return; }
     
     // 2. 小工具设置
-    if (mw.config.get('wgServer') == '//llwiki.org') {
-        mw.settingsDialog.addTab({name: 'mobileBacktotop', label: 'gadget-mb-label', items: [
-            {key: 'mode', type: 'CheckboxMultiselect', label: 'gadget-cb-range', config: {value: settings.mode, options: [
-                {data: 'vector', label: mw.msg( 'gadget-cb-d' )}, {data: 'minerva', label: mw.msg( 'gadget-cb-m' )}
-            ]} }, {key: 'func', type: 'CheckboxMultiselect', label: 'gadget-mb-f', config: {value: settings.func, options: [
-                {data: 'top', label: mw.msg( 'gadget-mb-top' )}, {data: 'bottom', label: mw.msg( 'gadget-mb-bottom' )}
-            ]} }
-        ], help: '回到顶部'});
-    }
+    mw.settingsDialog.addTab({name: 'mobileBacktotop', label: 'gadget-mb-label', items: [
+        {key: 'mode', type: 'CheckboxMultiselect', label: 'gadget-cb-range', config: {value: settings.mode, options: [
+            {data: 'vector', label: mw.msg( 'gadget-cb-d' )}, {data: 'minerva', label: mw.msg( 'gadget-cb-m' )}
+        ]} }, {key: 'func', type: 'CheckboxMultiselect', label: 'gadget-mb-f', config: {value: settings.func, options: [
+            {data: 'top', label: mw.msg( 'gadget-mb-top' )}, {data: 'bottom', label: mw.msg( 'gadget-mb-bottom' )}
+        ]} }
+    ], help: '回到顶部'});
     const $body = $(document.scrollingElement),
         $win = $(window),
         $doc = $(document);
     // 3. 回到顶部
-    if (!mw.util.debounce) {
-        mw.util.debounce = (delay, callback) => OO.ui.debounce(callback, delay);
-    }
     if (settings.func.includes( 'top' )) {
         const $toTop = $('<div>', {class: "backtotop view-border-box", html: $('<div>', {class: "arrow-up"})})
             .click(function() { $body.animate({scrollTop: 0}); }).appendTo( document.body ),
