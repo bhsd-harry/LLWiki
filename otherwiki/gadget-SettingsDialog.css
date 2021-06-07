@@ -1,12 +1,30 @@
-#settingsDialog .oo-ui-window-frame {
+#settingsDialog > .oo-ui-window-frame {
 	height: 100vh !important;
+	font-size: 14px;
+}
+#settingsDialog .oo-ui-processDialog-navigation .oo-ui-actionWidget {
+	margin: 0;
+}
+#settingsDialog .oo-ui-processDialog-navigation .oo-ui-labelElement-label {
+	line-height: 3.14285714em;
+}
+#settingsDialog .oo-ui-processDialog-navigation .oo-ui-buttonElement-button {
+	padding-top: 0;
+	padding-bottom: 0;
+	border: none;
+}
+#settingsDialog .oo-ui-processDialog-actions-safe .oo-ui-buttonElement-button {
+	border-right: 1px solid #c8ccd1;
+	background-color: #f8f9fa;
+}
+#settingsDialog .oo-ui-processDialog-actions-primary .oo-ui-buttonElement-button {
+	border-left: 1px solid #447ff5;
+	background-color: #447ff5;
+	color: #fff;
 }
 .skin-minerva #settingsDialog input, .skin-minerva #settingsDialog select,
 .skin-minerva #settingsDialog .oo-ui-numberInputWidget-field {
 	font-size: 16px;
-}
-#settingsDialog .oo-ui-checkboxMultiselectInputWidget, #settingsDialog .oo-ui-fieldLayout-help {
-	padding-top: 0.28571429em;
 }
 /* popup形式的帮助信息 */
 #settingsDialog  .oo-ui-popupWidget-popup {
@@ -17,24 +35,15 @@
 	margin: 0.2em 0.5em;
 	font-size: small;
 }
-#settingsDialog .oo-ui-fieldsetLayout {
+#settingsDialog .oo-ui-popupWidget-anchor {
+	left: calc(50% - 1px) !important;
+}
+#settingsDialog .oo-ui-fieldsetLayout,
+#settingsDialog-btns, #settingsDialog-code {
 	margin-top: 0.85714286em;
 }
 #settingsDialog-btns {
 	text-align: center;
-	margin-top: 0.85714286em;
-}
-#settingsDialog-code {
-	text-align: left;
-	margin-top: 0.85714286em;
-}
-#settingsDialog-code pre {
-	margin-top: 0.28571429em;
-	background-color: #f8f9fa;
-	border: 1px solid #eaecf0;
-	padding: 1em;
-	white-space: pre-wrap;
-	word-wrap: break-word;
 }
 .skin-minerva #settingsDialog .oo-ui-processDialog-location {
 	text-align: center;
