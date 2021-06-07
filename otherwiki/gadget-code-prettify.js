@@ -28,7 +28,7 @@ mw.hook( 'wikipage.content' ).add(function($content) {
     if ($block.length === 0) { return; }
     console.log('Hook: wikipage.content, 开始执行语法高亮');
     const path = '//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js';
-    (window.hljs ? Promise.resolve() : $.ajax(path, {dataType: 'script', cache: true}).then(() => { // 不重复下载脚本
+    (window.hljs ? Promise.resolve() : $.ajax(path, {dataType: 'script', cache: true})).then(() => { // 不重复下载脚本
         // 1. 语法高亮
         $block.each(function() { hljs.highlightBlock( this ); }).addClass( 'highlighted' ).filter( '.linenums' )
             .html(function() { // 添加行号。这里不使用<table>排版，而是使用<ol>
@@ -69,6 +69,6 @@ mw.hook( 'wikipage.content' ).add(function($content) {
             return $color.clone().css({ color: color[0].slice(0, 3) + color.slice(1, 7).join('') + ')',
                 opacity: color[8] });
         });
-    }, reason => { mw.notify('无法下载highlight.js，代码高亮失败！', {type: 'error'}); });
+    }, () => { mw.notify('无法下载highlight.js，代码高亮失败！', {type: 'error'}); });
 });
 }) ();
