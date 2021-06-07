@@ -1,0 +1,42 @@
+#settingsDialog .oo-ui-window-frame {
+	height: 100vh !important;
+}
+.skin-minerva #settingsDialog input, .skin-minerva #settingsDialog select,
+.skin-minerva #settingsDialog .oo-ui-numberInputWidget-field {
+	font-size: 16px;
+}
+#settingsDialog .oo-ui-checkboxMultiselectInputWidget, #settingsDialog .oo-ui-fieldLayout-help {
+	padding-top: 0.28571429em;
+}
+/* popup形式的帮助信息 */
+#settingsDialog  .oo-ui-popupWidget-popup {
+	width: max-content !important;
+	max-width: 320px;
+}
+#settingsDialog .oo-ui-popupWidget-body-padded {
+	margin: 0.2em 0.5em;
+	font-size: small;
+}
+#settingsDialog .oo-ui-fieldsetLayout {
+	margin-top: 0.85714286em;
+}
+#settingsDialog-btns {
+	text-align: center;
+	margin-top: 0.85714286em;
+}
+#settingsDialog-code {
+	text-align: left;
+	margin-top: 0.85714286em;
+}
+#settingsDialog-code pre {
+	margin-top: 0.28571429em;
+	background-color: #f8f9fa;
+	border: 1px solid #eaecf0;
+	padding: 1em;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+.skin-minerva #settingsDialog .oo-ui-processDialog-location {
+	text-align: center;
+	margin-left: 0;
+}

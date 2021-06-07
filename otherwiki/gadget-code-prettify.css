@@ -1,0 +1,98 @@
+/* 1. 语法高亮，参考自https://mediawiki.org/wiki/Extension:SyntaxHighlight，以下按色调排序 */
+.hljs-literal,
+.hljs-number {
+	color: #a2f;
+}
+.hljs-regexp,
+.hljs-selector-pseudo {
+	color: #b68;
+}
+.hljs-subst { /* JS模板字符串 */
+	color: #b68;
+	font-weight: bold;
+}
+.hljs-string {
+	color: #ba2121;
+}
+.hljs-meta { /* JS的strict模式和CSS的!important */
+	color: #cb4b16;
+}
+.hljs-type,
+.hljs-variable { /* JS文档的参数类型和名称 */
+	color: #b58900;
+	font-weight: normal;
+	font-style: normal;
+}
+.hljs-attribute { /* CSS属性 */
+	color: #b58900;
+	font-weight: bold;
+}
+.hljs-attr { /* JS对象键值 */
+	color: #7d9029;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-doctag,
+.hljs-name { /* HTML的tag名称 */
+	color: #008000;
+	font-weight: bold;
+	font-style: normal;
+}
+.hljs-comment {
+	color: #408080;
+	font-style: italic;
+	font-weight: normal;
+}
+.hljs-title, /* 声明的JS函数名 */
+.hljs-selector-attr {
+	color: #268bd2;
+}
+.hljs-selector-class,
+.hljs-built_in { /* JS内置变量、CSS内置函数 */
+	color: #00f;
+}
+.hljs-selector-id {
+	color: #00f;
+	font-weight: bold;
+}
+/* 2. 标注颜色，仅支持16进制和rgb/rgba */
+.hljs-color {
+	vertical-align: text-bottom;
+}
+.hljs-color::after {
+	content: "⬤ "; /* Safari */
+	font-size: 0.75em;
+	text-shadow: 0 0 1px #000;
+}
+/* 3. 代码块 */
+.highlighted {
+	padding: 1px 4px; /* 同<code> */
+}
+.skin-minerva .highlighted {
+	padding: 0.2em 0.5em; /* 同<code> */
+}
+.highlighted.linenums {
+	padding: 0;
+	border-color: #c8ccd1; /* 桌面版略微加深边框颜色以适应底色 */
+}
+.linenums ol {
+	margin: 0; /* 仿照手机版移除margin，并由JS指定padding-left */
+}
+@media only screen and (max-width:720px) { /* 窄屏隐藏行号 */
+	.linenums ol {
+		padding-left: 0 !important;
+		list-style-type: none; /* 仅供参考：萌百选择了list-style-position: inside; */
+	}
+}
+.linenums li {
+	padding: 0 4px;
+	margin-bottom: 0; /* 保证交错底色等宽 */
+	line-height: 1.5;
+}
+.linenums li:nth-child(2n) {
+	background-color: #eee;
+}
+.linenums li:empty::before {
+	content: ""; /* 撑行高 */
+	display: inline-block;
+}
