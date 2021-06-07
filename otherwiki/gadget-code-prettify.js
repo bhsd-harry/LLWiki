@@ -6,6 +6,7 @@
  */
 "use strict";
 /*global hljs */
+(() => {
 const acceptLangs = {js: 'javascript', javascript: 'javascript', json: 'json', css: 'css', html: 'xml',
     scribunto: 'lua', lua: 'lua', 'sanitized-css': 'css'},
     contentModel = mw.config.get( 'wgPageContentModel' ).toLowerCase();
@@ -27,11 +28,7 @@ mw.hook( 'wikipage.content' ).add(function($content) {
     if ($block.length === 0) { return; }
     console.log('Hook: wikipage.content, 开始执行语法高亮');
     const path = '//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js';
-    // polyfill，用于低版本维基站点，这里用了ES6语法
-    if (!mw.loader.getScript) {
-        mw.loader.getScript = (url) => $.get({url, dataType: 'script', cache: true});
-    }
-    (window.hljs ? Promise.resolve() : mw.loader.getScript( path )).then(function() { // 不重复下载脚本
+    (window.hljs ? Promise.resolve() : $.ajax(path, {dataType: 'script', cache: true}).then(() => { // 不重复下载脚本
         // 1. 语法高亮
         $block.each(function() { hljs.highlightBlock( this ); }).addClass( 'highlighted' ).filter( '.linenums' )
             .html(function() { // 添加行号。这里不使用<table>排版，而是使用<ol>
@@ -39,14 +36,12 @@ mw.hook( 'wikipage.content' ).add(function($content) {
                 start = $this.data( 'start' ) || 1;
             $this.children( ':contains(\n)' ).replaceWith(function() { // 先处理跨行元素
                 const $self = $(this);
-                return $self.html().split( '\n' ).map(function(ele) {
-                    return $self.clone().html( ele ).prop( 'outerHTML' );
-                }).join('\n');
+                return $self.html().split( '\n' )
+                    .map(ele => $self.clone().html( ele ).prop( 'outerHTML' )).join('\n');
             });
             var lines = $this.html().replace(/\n$/, '').split('\n');
-            if (mw.config.get( 'wgNamespaceNumber' ) == 274) { lines = lines.slice(1, -1); } // 扔掉首尾的Wikitext注释
             return $('<ol>', { start: start,
-                html: lines.map(function(ele, i) { return $('<li>', {html: ele, id: 'L' + (i + start)}); })
+                html: lines.map((ele, i) => $('<li>', {html: ele, id: 'L' + (i + start)}))
             }).css('padding-left', (lines.length + start - 1).toString().length + 2.5 + 'ch');
         });
         mw.hook( 'code.prettify' ).fire( $block );
@@ -74,8 +69,6 @@ mw.hook( 'wikipage.content' ).add(function($content) {
             return $color.clone().css({ color: color[0].slice(0, 3) + color.slice(1, 7).join('') + ')',
                 opacity: color[8] });
         });
-    }, function(reason) {
-        if (mw.apiFailure) { mw.apiFailure(reason, 'highlight.js'); }
-        else { mw.notify('无法下载highlight.js，代码高亮失败！', {type: 'error'}); }
-    });
+    }, reason => { mw.notify('无法下载highlight.js，代码高亮失败！', {type: 'error'}); });
 });
+}) ();
