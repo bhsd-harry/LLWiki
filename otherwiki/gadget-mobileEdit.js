@@ -14,7 +14,7 @@ $(() => { // Ajax小工具一般不会生成新的.edit-page，所以只需执�
     // 不能用startsWith，因为data-section可能未定义
     $('a.edit-page').filter(function() { return /^T-/.test( this.dataset.section ); }).remove();
     // 这里希望在MobileFrontEnd的JS加载之前执行，但如果晚了也没问题
-    $('a.edit-page').off( 'click' ).click(e => {
+    $('a.edit-page').off( 'click' ).click(function(e) {
         e.stopImmediatePropagation();
         location.href = mw.util.getUrl(null, $.extend( {}, // 移除无效的query parameter
             {action: 'submit', oldid: id == cid ? undefined : id, section: this.dataset.section}
