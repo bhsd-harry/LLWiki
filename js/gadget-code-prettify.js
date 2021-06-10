@@ -1,14 +1,24 @@
 /**
  * @Function: 高亮JavaScript、CSS、HTML和Lua，按行号跳转，并添加行号和指示色块
- * @Dependencies: ext.gadget.site-lib
+ * @Dependencies: ext.gadget.SettingsDialog
  * @Source: https://zh.moegirl.org.cn/mediawiki:gadget-code-prettify.js和https://zh.moegirl.org.cn/User:机智的小鱼君/gadget/Highlight.js
  * @EditedBy: https://llwiki.org/zh/User:Bhsd
  */
 "use strict";
-/*global hljs */
+/*global wgULS, hljs */
+mw.gadgets = mw.gadgets || {};
+mw.gadgets.codePrettify = $.extend( mw.storage.getObject( 'gadget-codePrettify' ), mw.gadgets.codePrettify );
 const acceptLangs = {js: 'javascript', javascript: 'javascript', json: 'json', css: 'css', html: 'xml',
     scribunto: 'lua', lua: 'lua'},
-    contentModel = mw.config.get( 'wgPageContentModel' ).toLowerCase();
+    contentModel = mw.config.get( 'wgPageContentModel' ).toLowerCase(),
+    wrap = mw.gadgets.codePrettify.wrap || ['on'];
+mw.messages.set( wgULS({'gadget-cp-label': '代码高亮显示', 'gadget-cp-wrap': '自动换行', 'gadget-cp-on': '开启（默认）'},
+    {'gadget-cp-label': '代碼高亮顯示', 'gadget-cp-wrap': '自動換行', 'gadget-cp-on': '開啟（預設）'}) );
+mw.settingsDialog.addTab({name: 'codePrettify', label: 'gadget-cp-label', items: [
+    {key: 'wrap', type: 'CheckboxMultiselect', label: 'gadget-cp-wrap',
+        config: {value: wrap, options: [{data: 'on', label: mw.msg( 'gadget-cp-on' )}]}
+    }
+]});
 mw.hook( 'wikipage.content' ).add(function($content) {
     if (contentModel in acceptLangs) {
         $content.find( '.mw-code' ).addClass('hljs linenums ' + acceptLangs[contentModel]);
@@ -39,7 +49,7 @@ mw.hook( 'wikipage.content' ).add(function($content) {
             return $('<ol>', { start: start,
                 html: lines.map(function(ele, i) { return $('<li>', {html: ele, id: 'L' + (i + start)}); })
             }).css('padding-left', (lines.length + start - 1).toString().length + 2.5 + 'ch');
-        });
+        }).toggleClass('scroll', wrap.length === 0);
         mw.hook( 'code.prettify' ).fire( $block );
         // 2. 手动跳转
         const fragment = decodeURIComponent( location.hash.slice(1) ),
