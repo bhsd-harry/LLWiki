@@ -74,16 +74,14 @@
 .highlighted.linenums {
 	padding: 0;
 	border-color: #c8ccd1; /* 桌面版略微加深边框颜色以适应底色 */
+	overflow-x: auto;
 }
 .linenums ol {
 	margin: 0 !important; /* 仿照手机版移除margin，并由JS指定padding-left */
 	list-style-position: outside;
-}
-@media only screen and (max-width:720px) { /* 窄屏隐藏行号 */
-	.linenums ol {
-		padding-left: 0 !important;
-		list-style-type: none; /* 仅供参考：萌百选择了list-style-position: inside; */
-	}
+	width: max-content;
+	min-width: 100%;
+	box-sizing: border-box;
 }
 pre.linenums li {
 	padding: 0 4px;
