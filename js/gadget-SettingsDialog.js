@@ -13,6 +13,7 @@
  */
 "use strict";
 /* global OO, hljs, wgULS */
+mw.gadgets = mw.gadgets || {};
 // 1. 设置繁简文字信息
 mw.messages.set( wgULS({
     'gadget-sd-copy': '请将以下代码添加至您的', 'gadget-sd-notify': '您的设置已保存！新设置将于刷新页面后生效。',
@@ -28,6 +29,7 @@ mw.messages.set( wgULS({
 // 2. 准备HTML元素
 var ready = false, dialog; // 是否是第一次打开对话框
 const isUser = mw.config.get( 'wgUserGroups' ).includes( 'user' ),
+    gadgets = mw.gadgets,
     $helpPage = $('<a>', {target: '_blank', text: mw.msg('gadget-sd-helptext')}), // 需要动态设置href
     $help = $('<div>', {html: [ mw.msg('gadget-sd-help'), $helpPage, '，或',
     $('<a>', {href: '#settingsDialog-btns', text: mw.msg('gadget-sd-exporthelp')}), '。' // 链接跳转到“导出”按钮
@@ -51,8 +53,8 @@ const isUser = mw.config.get( 'wgUserGroups' ).includes( 'user' ),
 ]}),
     // 3. 准备私有工具函数
     deleteKeys = function(arr, obj) { arr.forEach(function(ele) { delete obj[ele]; }); },
-    buildWidget = function(obj) { // 生成单个OOUI widget
-    obj.widget = new OO.ui[obj.type + 'InputWidget']( obj.config );
+    buildWidget = function(obj, settings) { // 生成单个OOUI widget
+    obj.widget = new OO.ui[obj.type + 'InputWidget']( $.extend({value: (settings || {})[ obj.key ]}, obj.config) );
     const layout = new OO.ui.FieldLayout(obj.widget, {label: mw.msg( obj.label ), help: obj.help});
     deleteKeys(['config', 'label', 'help'], obj);
     return layout;
@@ -67,10 +69,11 @@ const isUser = mw.config.get( 'wgUserGroups' ).includes( 'user' ),
 },
     buildForm = function(params, $element) {
     if (!params.ready) { // 生成表单，只需要执行一次，不用写成SettingsDialog的内置方法
-        $element.append( (params.items || []).map(function(ele) { return buildWidget(ele).$element; }) );
+        const settings = gadgets[ params.name ];
+        $element.append( (params.items || []).map(function(ele) { return buildWidget(ele, settings).$element; }) );
         $element.append( (params.fields || []).map(function(ele) {
             const field = new OO.ui.FieldsetLayout({ label: mw.msg( ele.label ), help: ele.help, helpInline: true,
-                items: (ele.items || []).map( buildWidget ) });
+                items: (ele.items || []).map(function(e) { return buildWidget(e, settings[ ele.key ]); }) });
             deleteKeys(['label', 'help'], ele);
             return field.$element;
         }) );
@@ -100,9 +103,9 @@ SettingsDialog.prototype.initialize = function() { // 只创建一个OO.ui.Index
 };
 SettingsDialog.prototype.getActionProcess = function(action) {
     const dialog = this, // ES5不允许箭头函数，无法直接使用this关键字
-        gadgets = this.gadgets.filter(function(ele) { return ele.ready; }); // 忽略未加载的小工具
-    if (action == 'save') { gadgets.forEach(function(ele) { dialog.saveOptions( ele ); }); }
-    else { gadgets.forEach(function(ele) { dialog.clearOptions( ele ); }); }
+        gadget = this.gadgets.filter(function(ele) { return ele.ready; }); // 忽略未加载的小工具
+    if (action == 'save') { gadget.forEach(function(ele) { dialog.saveOptions( ele ); }); }
+    else { gadget.forEach(function(ele) { dialog.clearOptions( ele ); }); }
     this.close();
     return new OO.ui.Process();
 };
@@ -178,7 +181,7 @@ SettingsDialog.prototype.generateOptions = function(arg, flag) {
 SettingsDialog.prototype.saveOptions = function(arg) {
     const name = this.getName(arg),
         settings = this.generateOptions( name );
-    mw.gadgets[ name ] = settings;
+    gadgets[ name ] = settings;
     mw.storage.setObject('gadget-' + name, settings);
     mw.notify(mw.msg( 'gadget-sd-notify' ), {type: 'success', tag: 'gadget-settings'});
 };
@@ -189,7 +192,7 @@ SettingsDialog.prototype.saveOptions = function(arg) {
  */
 SettingsDialog.prototype.clearOptions = function(arg) {
     const gadget = this.getObject(arg),
-        settings = mw.gadgets[ gadget.name ];
+        settings = gadgets[ gadget.name ];
     clearWidgets(gadget.items, settings);
     (gadget.fields || []).forEach(function(ele) { clearWidgets(ele.items, settings[ ele.key ]); });
 };

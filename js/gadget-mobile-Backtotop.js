@@ -6,7 +6,6 @@
  */
 "use strict";
 /* global wgULS */
-mw.gadgets = mw.gadgets || {};
 mw.gadgets.mobileBacktotop = $.extend( mw.storage.getObject( 'gadget-mobileBacktotop' ), mw.gadgets.mobileBacktotop );
 const settings = mw.gadgets.mobileBacktotop,
     skin = mw.config.get( 'skin' );
@@ -20,18 +19,19 @@ mw.messages.set( $.extend( wgULS({
     'gadget-mb-label': '前往頁面頂部或底部', 'gadget-cb-range': '使用範圍', 'gadget-cb-d': '桌面版', 'gadget-cb-m': '手機版',
     'gadget-mb-f': '啟用功能', 'gadget-mb-top': '回到頂部'
 }), {'gadget-mb-bottom': '前往底部'}) );
+
+// 2. 小工具设置
+mw.settingsDialog.addTab({name: 'mobileBacktotop', label: 'gadget-mb-label', items: [
+    {key: 'mode', type: 'CheckboxMultiselect', label: 'gadget-cb-range', config: {options: [
+        {data: 'vector', label: mw.msg( 'gadget-cb-d' )}, {data: 'minerva', label: mw.msg( 'gadget-cb-m' )}
+    ]} }, {key: 'func', type: 'CheckboxMultiselect', label: 'gadget-mb-f', config: {options: [
+        {data: 'top', label: mw.msg( 'gadget-mb-top' )}, {data: 'bottom', label: mw.msg( 'gadget-mb-bottom' )}
+    ]} }
+], help: '回到顶部'});
+
 // 一个页面只需要执行一次
 $(function() {
     if (!settings.mode.includes( skin )) { return; }
-    
-    // 2. 小工具设置
-    mw.settingsDialog.addTab({name: 'mobileBacktotop', label: 'gadget-mb-label', items: [
-        {key: 'mode', type: 'CheckboxMultiselect', label: 'gadget-cb-range', config: {value: settings.mode, options: [
-            {data: 'vector', label: mw.msg( 'gadget-cb-d' )}, {data: 'minerva', label: mw.msg( 'gadget-cb-m' )}
-        ]} }, {key: 'func', type: 'CheckboxMultiselect', label: 'gadget-mb-f', config: {value: settings.func, options: [
-            {data: 'top', label: mw.msg( 'gadget-mb-top' )}, {data: 'bottom', label: mw.msg( 'gadget-mb-bottom' )}
-        ]} }
-    ], help: '回到顶部'});
     const $body = $(document.scrollingElement),
         $win = $(window),
         $doc = $(document);

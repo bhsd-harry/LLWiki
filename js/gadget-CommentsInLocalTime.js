@@ -13,15 +13,14 @@ const ns = mw.config.get( 'wgNamespaceNumber' ),
     action = mw.config.get('wgAction');
 if ((ns >= 0 && ns % 2 == 1 || pagename == "Help:互助客棧") && ["view", "submit"].includes(action)) {
     // 1. 更新设置
-    mw.gadgets = mw.gadgets || {};
-    mw.gadgets.CommentsInLocalTime = $.extend( mw.storage.getObject( 'gadget-CommentsInLocalTime' ),
-        mw.gadgets.CommentsInLocalTime ); // 注意优先级：用户JS优先
+    mw.gadgets.CommentsInLocalTime = $.extend( {locale: moment.locale()},
+        mw.storage.getObject( 'gadget-CommentsInLocalTime' ), mw.gadgets.CommentsInLocalTime );
     const settings = mw.gadgets.CommentsInLocalTime,
         lang = settings.lang, // 注意这是一个数组！提供一套默认的英文设置
         isEn = lang == 'en', // lang会先自动转化为字符串再比较
         date = isEn ? 'ddd, ll' : settings.date,
         time = isEn ? 'LT' : settings.time,
-        locale = isEn ? 'en' : settings.locale || '',
+        locale = isEn ? 'en' : settings.locale,
         i18n = settings.i18n || {},
         offset = settings.utcoffset;
     var tz = settings.timezone;
@@ -63,27 +62,25 @@ if ((ns >= 0 && ns % 2 == 1 || pagename == "Help:互助客棧") && ["view", "sub
     mw.settingsDialog.addTab({name: 'CommentsInLocalTime', label: 'gadget-lc-label', items: [
         {key: 'timezone', type: 'Text', label: 'gadget-lc-tz', help: mw.msg('gadget-lc-tzhelp'), config: {value: tz}},
         {key: 'utcoffset', type: 'Number', label: 'gadget-lc-offset', help: mw.msg('gadget-lc-offsetHelp'), config:
-            {value: offset, max: 14, min: -12, step: 1, inputFilter: function(num) { return num.replace('+', ''); }}
+            {max: 14, min: -12, step: 1, inputFilter: function(num) { return num.replace('+', ''); }}
         }, {key: 'lang', type: 'CheckboxMultiselect', label: 'gadget-lc-lang',
-            config: {value: lang, options: [{data: 'en', label: mw.msg('gadget-lc-en')}]}
+            config: {options: [{data: 'en', label: mw.msg('gadget-lc-en')}]}
         }, {key: 'locale', type: 'Dropdown', label: 'gadget-lc-locale', config: {
-            options: locales.map(function(ele) { return {data: ele}; }), value: settings.locale || '', disabled: isEn,
+            options: locales.map(function(ele) { return {data: ele}; }), disabled: isEn,
             inputFilter: function(locale) { return locales.includes( locale ) ? locale : moment.locale(); }}
-        }, {key: 'date', type: 'Text', label: 'gadget-lc-date', help: helpInfo,
-            config: {value: settings.date, disabled: isEn}
-        }, {key: 'time', type: 'Text', label: 'gadget-lc-time', help: helpInfo,
-            config: {value: settings.time, disabled: isEn}}
+        }, {key: 'date', type: 'Text', label: 'gadget-lc-date', help: helpInfo, config: {disabled: isEn}},
+            {key: 'time', type: 'Text', label: 'gadget-lc-time', help: helpInfo, config: {disabled: isEn}}
     ], fields: [{key: 'i18n', label: 'gadget-lc-i18n', items: [
         {key: 'gadget-lc-y', type: 'Text', label: 'gadget-lc-yy', help: helpPlural,
-            config: {value: i18n['gadget-lc-y'], disabled: isEn, validate: /^[^[]*$/}
+            config: {disabled: isEn, validate: /^[^[]*$/}
         }, {key: 'gadget-lc-m', type: 'Text', label: 'gadget-lc-mm', help: helpPlural,
-            config: {value: i18n['gadget-lc-m'], disabled: isEn, validate: /^[^[]*$/}
+            config: {disabled: isEn, validate: /^[^[]*$/}
         }, {key: 'gadget-lc-d', type: 'Text', label: 'gadget-lc-dd', help: helpPlural,
-            config: {value: i18n['gadget-lc-d'], disabled: isEn, validate: /^[^[]*$/}
+            config: {disabled: isEn, validate: /^[^[]*$/}
         }, {key: 'gadget-lc-today', type: 'Text', label: 'gadget-lc-td',
-            config: {value: i18n['gadget-lc-today'], disabled: isEn, validate: /^[^[]*$/}
+            config: {disabled: isEn, validate: /^[^[]*$/}
         }, {key: 'gadget-lc-yesterday', type: 'Text', label: 'gadget-lc-yd',
-            config: {value: i18n['gadget-lc-yesterday'], disabled: isEn, validate: /^[^[]*$/}
+            config: {disabled: isEn, validate: /^[^[]*$/}
         }
     ]}], help: '以本地时区显示签名时间戳'});
     mw.hook( 'settings.dialog' ).add(function(params) {

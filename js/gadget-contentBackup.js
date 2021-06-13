@@ -1,12 +1,12 @@
 /**
- * @Function: 点击“提交编辑、显示预览、显示更改”中任意一个按钮，或在编辑页面每隔一段时间自动备份当前的编辑。备份会保存一段时间后自动清除。支持Wikiplus、代码编辑器和MobileFrontEnd的Ajax编辑器。
+ * @Function: 点击“提交编辑、显示预览、显示更改”中任意一个按钮，或在编辑页面每隔一段时间自动备份当前的编辑。
+              备份会保存一段时间后自动清除。支持Wikiplus、代码编辑器和MobileFrontEnd的Ajax编辑器。
  * @Dependencies: ext.gadget.SettingsDialog, localforage
  * @Source: https://zh.moegirl.org.cn/User:东东君/js/contentBackup.js
  * @EditedBy: https://llwiki.org/zh/User:Bhsd
  */
 "use strict";
 /* global OO, wgULS, localforage */
-mw.gadgets = mw.gadgets || {};
 mw.gadgets.contentBackup = $.extend( mw.storage.getObject( 'gadget-contentBackup' ), mw.gadgets.contentBackup );
 const action = mw.config.get( 'wgAction' ),
     isEditable = mw.config.get( 'wgIsProbablyEditable' ),
@@ -40,12 +40,12 @@ if (isEditable && settings.range.includes( skin ) && (['edit', 'submit'].include
     settings.stay = settings.stay || 30; // 默认每隔30分钟自动更新备份
     mw.settingsDialog.addTab({name: 'contentBackup', label: 'gadget-cb-label', items: [
         {key: 'range', type: 'CheckboxMultiselect', label: 'gadget-cb-range', help: mw.msg( 'gadget-cb-rhelp' ),
-            config: {value: settings.range, options: [
+            config: {options: [
                 {data: 'vector', label: mw.msg( 'gadget-cb-d' )}, {data: 'minerva', label: mw.msg( 'gadget-cb-m' )}
             ]}
         }, {key: 'stay', type: 'Number', label: 'gadget-cb-stay', help: mw.msg('gadget-cb-shelp'),
-            config: {value: settings.stay, min: 0, step: 5}
-        }, {key: 'exp', type: 'Number', label: 'gadget-cb-exp', config: {value: settings.exp, min: 1, step: 1}}
+            config: {min: 0, step: 5}
+        }, {key: 'exp', type: 'Number', label: 'gadget-cb-exp', config: {min: 1, step: 1}}
     ], help: '编辑内容备份'});
     // 3. 核心函数
     const loadBackup = function() { // 加载备份函数

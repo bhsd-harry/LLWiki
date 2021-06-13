@@ -6,7 +6,6 @@
  */
 "use strict";
 /*global wgULS, hljs */
-mw.gadgets = mw.gadgets || {};
 mw.gadgets.codePrettify = $.extend( mw.storage.getObject( 'gadget-codePrettify' ), mw.gadgets.codePrettify );
 const acceptLangs = {js: 'javascript', javascript: 'javascript', json: 'json', css: 'css', html: 'xml',
     scribunto: 'lua', lua: 'lua'},
@@ -16,7 +15,7 @@ mw.messages.set( wgULS({'gadget-cp-label': '代码高亮显示', 'gadget-cp-wrap
     {'gadget-cp-label': '代碼高亮顯示', 'gadget-cp-wrap': '自動換行', 'gadget-cp-on': '開啟'}) );
 mw.settingsDialog.addTab({name: 'codePrettify', label: 'gadget-cp-label', items: [
     {key: 'wrap', type: 'CheckboxMultiselect', label: 'gadget-cp-wrap',
-        config: {value: wrap, options: [{data: 'on', label: mw.msg( 'gadget-cp-on' )}]}
+        config: {options: [{data: 'on', label: mw.msg( 'gadget-cp-on' )}]}
     }
 ]});
 mw.hook( 'wikipage.content' ).add(function($content) {
