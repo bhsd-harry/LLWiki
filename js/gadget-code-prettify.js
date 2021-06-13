@@ -17,7 +17,7 @@ mw.settingsDialog.addTab({name: 'codePrettify', label: 'gadget-cp-label', items:
     {key: 'wrap', type: 'CheckboxMultiselect', label: 'gadget-cp-wrap',
         config: {options: [{data: 'on', label: mw.msg( 'gadget-cp-on' )}]}
     }
-]});
+], help: '代码高亮显示'});
 mw.hook( 'wikipage.content' ).add(function($content) {
     if (contentModel in acceptLangs) {
         $content.find( '.mw-code' ).addClass('hljs linenums ' + acceptLangs[contentModel]);
