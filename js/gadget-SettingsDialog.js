@@ -40,8 +40,8 @@ const isUser = mw.config.get( 'wgUserGroups' ).includes( 'user' ),
     '：', $block
 ]}),
     $btns = $('<div>', {id: 'settingsDialog-btns', html: [
-    new OO.ui.ButtonWidget({label: mw.msg('gadget-sd-back'), flags: 'destructive'}).on('click', function() {
-        dialog.clearOptions(); }).$element,
+    new OO.ui.ButtonWidget({label: mw.msg('gadget-sd-back'), flags: 'destructive'})
+    .on('click', function() { dialog.clearOptions(); }).$element,
     new OO.ui.ButtonWidget({label: mw.msg('gadget-sd-export'), flags: 'progressive', disabled: !isUser})
     .on('click', function() {
         const $panel = $btns.parent();
