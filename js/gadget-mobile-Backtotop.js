@@ -11,7 +11,7 @@ mw.gadgets.mobileBacktotop = $.extend( mw.storage.getObject( 'gadget-mobileBackt
 const settings = mw.gadgets.mobileBacktotop,
     skin = mw.config.get( 'skin' );
 settings.mode = settings.mode || ['vector', 'minerva'];
-settings.func = settings.func || ['top'];
+settings.func = settings.func || ['top', 'bottom'];
 // 1. 设置本地化消息
 mw.messages.set( $.extend( wgULS({
     'gadget-mb-label': '前往页面顶部或底部', 'gadget-cb-range': '使用范围', 'gadget-cb-d': '桌面版', 'gadget-cb-m': '手机版',

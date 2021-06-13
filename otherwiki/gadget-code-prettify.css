@@ -76,7 +76,7 @@
 	border-color: #c8ccd1; /* 桌面版略微加深边框颜色以适应底色 */
 	overflow-x: auto;
 }
-.linenums ol {
+.linenums > ol {
 	margin: 0 !important; /* 仿照手机版移除margin，并由JS指定padding-left */
 	list-style-position: outside;
 	width: max-content;

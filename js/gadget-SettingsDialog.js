@@ -27,7 +27,8 @@ mw.messages.set( wgULS({
 }) );
 // 2. 准备HTML元素
 var ready = false, dialog; // 是否是第一次打开对话框
-const $helpPage = $('<a>', {target: '_blank', text: mw.msg('gadget-sd-helptext')}), // 需要动态设置href
+const isUser = mw.config.get( 'wgUserGroups' ).includes( 'user' ),
+    $helpPage = $('<a>', {target: '_blank', text: mw.msg('gadget-sd-helptext')}), // 需要动态设置href
     $help = $('<div>', {html: [ mw.msg('gadget-sd-help'), $helpPage, '，或',
     $('<a>', {href: '#settingsDialog-btns', text: mw.msg('gadget-sd-exporthelp')}), '。' // 链接跳转到“导出”按钮
 ]}),
@@ -39,7 +40,8 @@ const $helpPage = $('<a>', {target: '_blank', text: mw.msg('gadget-sd-helptext')
     $btns = $('<div>', {id: 'settingsDialog-btns', html: [
     new OO.ui.ButtonWidget({label: mw.msg('gadget-sd-back'), flags: 'destructive'}).on('click', function() {
         dialog.clearOptions(); }).$element,
-    new OO.ui.ButtonWidget({label: mw.msg('gadget-sd-export'), flags: 'progressive'}).on('click', function() {
+    new OO.ui.ButtonWidget({label: mw.msg('gadget-sd-export'), flags: 'progressive', disabled: !isUser})
+    .on('click', function() {
         const $panel = $btns.parent();
         $block.text( dialog.export() );
         if (window.hljs) { hljs.highlightBlock( $block[0] ); }
@@ -82,6 +84,7 @@ const $helpPage = $('<a>', {target: '_blank', text: mw.msg('gadget-sd-helptext')
 },
     openDialog = function(e) {
     e.preventDefault();
+    $(document.body).removeClass( 'navigation-enabled primary-navigation-enabled' );
     dialog.open().opening.then(function() { buildForm(dialog.getObject(), dialog.getPanel().$element); });
 };
 // 4. 定义SettingsDialog类

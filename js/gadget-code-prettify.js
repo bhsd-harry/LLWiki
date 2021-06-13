@@ -11,9 +11,9 @@ mw.gadgets.codePrettify = $.extend( mw.storage.getObject( 'gadget-codePrettify' 
 const acceptLangs = {js: 'javascript', javascript: 'javascript', json: 'json', css: 'css', html: 'xml',
     scribunto: 'lua', lua: 'lua'},
     contentModel = mw.config.get( 'wgPageContentModel' ).toLowerCase(),
-    wrap = mw.gadgets.codePrettify.wrap || ['on'];
-mw.messages.set( wgULS({'gadget-cp-label': '代码高亮显示', 'gadget-cp-wrap': '自动换行', 'gadget-cp-on': '开启（默认）'},
-    {'gadget-cp-label': '代碼高亮顯示', 'gadget-cp-wrap': '自動換行', 'gadget-cp-on': '開啟（預設）'}) );
+    wrap = mw.gadgets.codePrettify.wrap || [];
+mw.messages.set( wgULS({'gadget-cp-label': '代码高亮显示', 'gadget-cp-wrap': '自动换行', 'gadget-cp-on': '开启'},
+    {'gadget-cp-label': '代碼高亮顯示', 'gadget-cp-wrap': '自動換行', 'gadget-cp-on': '開啟'}) );
 mw.settingsDialog.addTab({name: 'codePrettify', label: 'gadget-cp-label', items: [
     {key: 'wrap', type: 'CheckboxMultiselect', label: 'gadget-cp-wrap',
         config: {value: wrap, options: [{data: 'on', label: mw.msg( 'gadget-cp-on' )}]}
