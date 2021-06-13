@@ -13,8 +13,8 @@ const ns = mw.config.get( 'wgNamespaceNumber' ),
     action = mw.config.get('wgAction');
 if ((ns >= 0 && ns % 2 == 1 || pagename == "Help:互助客棧") && ["view", "submit"].includes(action)) {
     // 1. 更新设置
-    mw.gadgets.CommentsInLocalTime = $.extend( {locale: moment.locale()},
-        mw.storage.getObject( 'gadget-CommentsInLocalTime' ), mw.gadgets.CommentsInLocalTime );
+    mw.gadgets.CommentsInLocalTime = $.extend(true, {locale: moment.locale()},
+        mw.storage.getObject( 'gadget-CommentsInLocalTime' ), mw.gadgets.CommentsInLocalTime);
     const settings = mw.gadgets.CommentsInLocalTime,
         lang = settings.lang, // 注意这是一个数组！提供一套默认的英文设置
         isEn = lang == 'en', // lang会先自动转化为字符串再比较
