@@ -4,7 +4,7 @@
  * @Author: https://llwiki.org/zh/User:Bhsd
  */
 "use strict";
-$(window).on('load', () => { // Ajax小工具一般不会生成新的.edit-page，所以只需执行一次
+const f = () => { // Ajax小工具一般不会生成新的.edit-page，所以只需执行一次
     const id = mw.config.get( 'wgRevisionId' ),
         cid = mw.config.get( 'wgCurRevisionId' );
     if (['edit', 'submit'].includes( mw.config.get( 'wgAction' ) )) {
@@ -20,4 +20,6 @@ $(window).on('load', () => { // Ajax小工具一般不会生成新的.edit-page�
             {action: 'submit', oldid: id == cid ? undefined : id, section: this.dataset.section}
         ));
     }).removeAttr( 'href' );
-});
+};
+if (document.readyState == 'complete') { f(); }
+else { $(window).on('load', f); }
