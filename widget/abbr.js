@@ -6,13 +6,12 @@
 "use strict";
 /* global mw */
 (() => {
-    const main = () => {
-        mw.widget = mw.widget || {};
+    const main = async () => {
+        mw.widget = mw.widget ?? {};
         if (mw.widget.abbr) { return; }
-        mw.loader.using(['oojs-ui-core', 'ext.gadget.site-lib']).then(() => {
-            mw.tipsy('#bodyContent', '.abbr', {anchor: false});
-        });
         mw.widget.abbr = true;
+        await mw.loader.using(['oojs-ui-core', 'ext.gadget.site-lib']);
+        mw.tipsy('#bodyContent', '.abbr', {anchor: false});
     };
     if (window.jQuery) { main(); }
     else { window.addEventListener('jquery', main); }

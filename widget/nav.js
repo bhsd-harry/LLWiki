@@ -19,15 +19,14 @@
         $nav.appendTo( $content.find( '.mw-parser-output' ) )
             .animate({scrollLeft: ($nav[0].scrollWidth - $nav.outerWidth()) / 2}, 'slow'); // 窄屏上初始滚动一半
     },
-        handler = () => {
-        mw.widget = mw.widget || {};
+        handler = async () => {
+        mw.widget = mw.widget ?? {};
         if (mw.widget.nav) { return; }
         isMobile = mw.config.get('skin') == 'minerva';
-        mw.loader.using( 'mediawiki.util' ).then(() => {
-            href = mw.util.getUrl();
-            mw.hook( 'wikipage.content' ).add( main );
-        });
         mw.widget.nav = true;
+        await mw.loader.using( 'mediawiki.util' );
+        href = mw.util.getUrl();
+        mw.hook( 'wikipage.content' ).add( main );
     };
     if (window.jQuery) { handler(); }
     else { window.addEventListener('jquery', handler); }

@@ -4,6 +4,7 @@
  * @Author: https://llwiki.org/zh/User:Bhsd
  */
 "use strict";
+/* global mw, $ */
 $(() => { // Ajax小工具一般不会生成新的.edit-page，所以只需执行一次
     const id = mw.config.get( 'wgRevisionId' ),
         oldid = mw.config.get( 'wgCurRevisionId' ) == id ? undefined : id;
@@ -26,4 +27,4 @@ $(() => { // Ajax小工具一般不会生成新的.edit-page，所以只需执�
         $target.removeAttr( 'href' );
         location.href = mw.util.getUrl(null, $.extend({action: 'edit'}, {oldid}));
     }, true);
-};
+});

@@ -5,7 +5,7 @@
  * @EditedBy: https://llwiki.org/zh/User:Bhsd
  */
 "use strict";
-/*global hljs */
+/*global mw, $, hljs */
 (() => {
 const acceptLangs = {js: 'javascript', javascript: 'javascript', json: 'json', css: 'css', html: 'xml',
     scribunto: 'lua', lua: 'lua', 'sanitized-css': 'css'},

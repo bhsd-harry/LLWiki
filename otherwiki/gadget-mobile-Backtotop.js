@@ -5,6 +5,7 @@
  * @Author: https://llwiki.org/zh/User:Bhsd
  */
 "use strict";
+/* global $ */
 // 一个页面只需要执行一次
 $(() => {
     const $body = $(document.scrollingElement),

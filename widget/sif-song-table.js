@@ -6,7 +6,7 @@
 /* global mw, $ */
 (() => {
     let isMobile;
-    const formatData = (ele) => ele.textContent.toLowerCase().replace(/[^a-z0-9]/g, ''),
+    const formatData = ({textContent: text}) => text.toLowerCase().replace(/[^a-z0-9]/g, ''),
         main = ($content) => {
         const $dropdown = $content.find( '.sif-song-table .tabs-content' )
             .attr({lang: 'ja', style: 'height: auto !important; left: -1000000px;'});
@@ -25,16 +25,15 @@
         }).remove();
     },
         handler = () => {
-        mw.widget = mw.widget || {};
+        mw.widget = mw.widget ?? {};
         if (mw.widget.sifSongTable) { return; }
         isMobile = mw.config.get('skin') == 'minerva';
         mw.hook( 'wikipage.content' ).add( main );
-        $('#bodyContent').on('click', '.sif-song-table .tabs-content', function(e) {
-            const option = e.target,
-                lvl = formatData( option );
+        $('#bodyContent').on('click', '.sif-song-table .tabs-content', function({target: option}) {
+            const lvl = formatData( option );
             $(this).css('left', '-1000000px').prev().text( option.textContent ).closest( '.sif-song-table' )
                 .find( '.sif-song-option' ).html(function() {
-                const data = this.dataset[ lvl ] || '';
+                const data = this.dataset[ lvl ] ?? '';
                 return [data.replace(/\D/g, '') || '/', data.endsWith( 'swing' ) ? $('<i>', {class: 'swing'}) : null ];
             });
         }).on('mouseenter', '.sif-song-table .tabs-label', function() { $(this).next().css('left', ''); });

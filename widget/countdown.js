@@ -31,33 +31,32 @@
         $ele.toggleClass('isBefore', isBefore).children().eq(isBefore ? 0 : 1).find( '.countdown' ).html( result );
     },
         run = () => { $( '.counting' ).each( fromNow ); }, // 每秒循环一遍所有 .counting 节点
-        main = ($content) => {
+        main = async ($content) => {
         const $nodes = $content.find( '.countdownNode' );
         if ($nodes.length === 0) { return; }
-        mw.loader.using( ['moment', 'ext.gadget.site-lib'] ).then(() => {
-            mw.messages.set( wgUCS({ 'widget-cd-error': "时间格式错误！", 'widget-cd-mm': '个月', 'widget-cd-hh': '小时' },
-               { 'widget-cd-error': "時間格式錯誤！", 'widget-cd-mm': '個月', 'widget-cd-hh': '小時' }) );
-            $nodes.each(function() {
-                const $ele = $(this),
-                    then = moment(this.title, 'YYYY-MM-DD HH:mm Z');
-                if (then.isValid()) {
-                    $ele.data('target', then).addClass( 'counting' )
-                         // 以本地时间替换title，之后交给Widget:Abbr就好
-                        .attr('title', then.format( 'llll ([UTC]Z' ).slice(0, -3) + ')');
-                }
-                else { $ele.toggleClass('error countdownNode').text( mw.msg('widget-cd-error') ); }
-            });
-            const $counting = $nodes.filter( '.counting' );
-            if ($counting.length === 0) { return; }
-            console.log('Hook: wikipage.content，开始添加倒计时');
-            run();
-            $counting.removeClass( 'countdownNode' ); // 新节点至少要执行过一次run()后才能移除countdownNode类
-            counter = counter || setInterval(run, 1000); // 防止重复setInterval
+        await mw.loader.using( ['moment', 'ext.gadget.site-lib'] );
+        mw.messages.set( wgUCS({ 'widget-cd-error': "时间格式错误！", 'widget-cd-mm': '个月', 'widget-cd-hh': '小时' },
+           { 'widget-cd-error': "時間格式錯誤！", 'widget-cd-mm': '個月', 'widget-cd-hh': '小時' }) );
+        $nodes.each(function() {
+            const $ele = $(this),
+                then = moment(this.title, 'YYYY-MM-DD HH:mm Z');
+            if (then.isValid()) {
+                $ele.data('target', then).addClass( 'counting' )
+                     // 以本地时间替换title，之后交给Widget:Abbr就好
+                    .attr('title', then.format( 'llll ([UTC]Z' ).slice(0, -3) + ')');
+            }
+            else { $ele.toggleClass('error countdownNode').text( mw.msg('widget-cd-error') ); }
         });
+        const $counting = $nodes.filter( '.counting' );
+        if ($counting.length === 0) { return; }
+        console.log('Hook: wikipage.content，开始添加倒计时');
+        run();
+        $counting.removeClass( 'countdownNode' ); // 新节点至少要执行过一次run()后才能移除countdownNode类
+        counter = counter ?? setInterval(run, 1000); // 防止重复setInterval
     },
         handler = () => {
         $num = $('<span>', {class: 'countdown-num'});
-        mw.widget = mw.widget || {};
+        mw.widget = mw.widget ?? {};
         if (mw.widget.countdown) { return; } // 不要和mw.countdown搞混
         mw.hook( 'wikipage.content' ).add( main );
         mw.widget.countdown = true;

@@ -6,13 +6,13 @@
 /* global mw, $ */
 (() => {
     const detectCollapse = (mutations) => {
-        mutations.forEach(ele => {
-            const $dl = $(ele.target).closest( 'dl' );
+        mutations.forEach(({target}) => {
+            const $dl = $(target).closest( 'dl' );
             $dl.toggle( $dl.find( 'dd > :not(.mw-collapsed)' ).length > 0 );
         });
     },
         main = () => {
-        mw.widget = mw.widget || {};
+        mw.widget = mw.widget ?? {};
         if (mw.widget.tagFilter) { return; }
         // 因为dl折叠需要在jquery.makeCollapsible执行完毕之后，这里借助MutationObserver判断正确时机
         const observer = new MutationObserver( detectCollapse );

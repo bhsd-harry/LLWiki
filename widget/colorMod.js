@@ -33,10 +33,10 @@
             generateWrapper = (key, i) => {
             const color = colors[key],
                 val = mvals[i];
-            wrapperPool[key] = wrapperPool[key] || $('<div>', {html: [
+            wrapperPool[key] = wrapperPool[key] ?? $('<div>', {html: [
                 mw.msg( `widget-cm-${key}` ), mw.msg('widget-cm-label'),
                 // value不能作为attr
-                $('<select>', {html: color.map((ele, i) => new Option(`${i * 5}%`, i))}).val( val )
+                $('<select>', {html: color.map((_, i) => new Option(`${i * 5}%`, i))}).val( val )
                     .change(function() { $(this).next().css('color', color[ this.value ]); }),
                 $('<span>', {text: '文字'}).css('color', color[val])
             ]});
@@ -53,7 +53,7 @@
             {action: 'accept', label: mw.msg( "ooui-dialog-message-accept" ), flags: 'progressive'}
         ],
             openDialog = () => {
-            if (!dialog) { dialog = new OO.ui.MessageDialog(); }
+            dialog = dialog ?? new OO.ui.MessageDialog();
             mw.dialog(dialog, actions, [$intro, $wrapper], mw.msg( 'widget-cm-dialog' )).then(action => {
                 const $select = $wrapper.find( 'select' );
                 if (action == 'reject') {
@@ -93,7 +93,7 @@
             mvals = mkeys.map(key => mw.storage.get( `${key}-color` ) || 0);
             generateStyle();
             mkeys.forEach(key => { // 处理渐变色
-                $content.find( `.Lyrics_gradient.${key}-lyrics` ).css('background-image', (i, val) => {
+                $content.find( `.Lyrics_gradient.${key}-lyrics` ).css('background-image', (_, val) => {
                     // 如果之前已经替换过了也没有关系
                     return val.replace( colors[key][0], `var(--${key}-color)` );
                 });
@@ -103,11 +103,12 @@
             popup.toggle( true ).setFloatableContainer( $('#mw-indicator-colorMod') );
         });
     },
-        handler = () => {
-        mw.widget = mw.widget || {};
+        handler = async () => {
+        mw.widget = mw.widget ?? {};
         if (mw.widget.colorMod) { return; }
-        mw.loader.using(['mediawiki.storage', 'oojs-ui-windows', 'ext.gadget.site-lib']).then(main);
         mw.widget.colorMod = true;
+        await mw.loader.using(['mediawiki.storage', 'oojs-ui-windows', 'ext.gadget.site-lib']);
+        main();
     };
     if (window.jQuery) { handler(); }
     else { window.addEventListener('jquery', handler); }

@@ -18,7 +18,7 @@
         if ($img.prop( 'complete' )) { $img.triggerHandler( 'load' ); }
     },
         handler = () => {
-        mw.widget = mw.widget || {};
+        mw.widget = mw.widget ?? {};
         if (mw.widget.bgimage || mw.config.get('skin') == 'minerva') { return; }
         mw.hook( 'wikipage.content' ).add(main);
         mw.widget.bgimage = true;
