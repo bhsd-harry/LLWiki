@@ -9,6 +9,7 @@
     const style = `
 .lang-wiki { padding: 0; }
 .lang-wiki > .CodeMirror { height: auto; }
+.skin-vector .lang-wiki > .CodeMirror { font-size: 14px; }
 .skin-minerva .lang-wiki > .CodeMirror { font-size: 16px; }`,
         langs = {js: 'javascript', javascript: 'javascript', json: 'json', css: 'css', html: 'xml',
         scribunto: 'lua', lua: 'lua', 'sanitized-css': 'css'},
