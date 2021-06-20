@@ -19,8 +19,8 @@
         codemirror_path = [ '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/codemirror.min.js',
         '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/codemirror.min.css',
         '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/mediawiki.min.js',
-        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/mediawiki.min.css',
-        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/gadget-CodeMirror.json'
+        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.12/otherwiki/mediawiki.min.css',
+        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.12/otherwiki/gadget-CodeMirror.json'
     ],
         main = async $content => {
         if (contentModel) { $content.find( '.mw-code' ).addClass(`hljs linenums ${contentModel}`); }
