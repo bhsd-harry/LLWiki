@@ -10,6 +10,7 @@ $(() => { // Ajax小工具一般不会生成新的.edit-page，所以只需执�
         oldid = mw.config.get( 'wgCurRevisionId' ) == id ? undefined : id;
     if (['edit', 'submit'].includes( mw.config.get( 'wgAction' ) )) {
         mw.loader.addStyleTag( '.mw-editform span.cancelLink { display: inline-block; }' );
+        $('#mw-editform-cancel').toggleClass( 'oo-ui-buttonElement-frameless oo-ui-buttonElement-framed' );
     }
     if (mw.config.get( 'wgIsArticle' ) === 0) { return; }
     $('.talk').off( 'click' ).click(e => { e.stopImmediatePropagation(); });
