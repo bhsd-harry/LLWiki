@@ -79,6 +79,8 @@
 .linenums > ol {
 	margin: 0 !important; /* 仿照手机版移除margin，并由JS指定padding-left */
 	list-style-position: outside;
+}
+.mw-code > ol {
 	width: max-content;
 	min-width: 100%;
 	box-sizing: border-box;
