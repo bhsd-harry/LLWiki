@@ -12,11 +12,11 @@
         highlight_path = [ '//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js',
         '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.6/otherwiki/gadget-code-prettify.min.css'
     ],
-        codemirror_path = [ '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki/otherwiki/codemirror.min.js',
-        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki/otherwiki/codemirror.min.css',
-        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki/otherwiki/mediawiki.min.js',
-        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki/otherwiki/mediawiki.min.css',
-        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@1.6/json/gadget-CodeMirror.json'
+        codemirror_path = [ '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/codemirror.min.js',
+        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/codemirror.min.css',
+        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/mediawiki.min.js',
+        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/mediawiki.min.css',
+        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/gadget-CodeMirror.json'
     ];
     mw.hook( 'wikipage.content' ).add(async $content => {
         if (contentModel) { $content.find( '.mw-code' ).addClass(`hljs linenums ${contentModel}`); }
