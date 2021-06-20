@@ -17,8 +17,8 @@
         '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/mediawiki.min.js',
         '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/mediawiki.min.css',
         '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/gadget-CodeMirror.json'
-    ];
-    mw.hook( 'wikipage.content' ).add(async $content => {
+    ],
+        main = async ($content) => {
         if (contentModel) { $content.find( '.mw-code' ).addClass(`hljs linenums ${contentModel}`); }
         else {
             $content.find('pre[lang], code[lang]').addClass(function() {
@@ -55,7 +55,6 @@
                         html: lines.map((ele, i) => $('<li>', {html: ele, id: `L${i + start}`}))
                     }).css('padding-left', `${(lines.length + start - 1).toString().length + 2.5}ch`);
                 });
-                mw.hook( 'code.prettify' ).fire( $block );
                 // 2. 手动跳转
                 const fragment = decodeURIComponent( location.hash.slice(1) ),
                     target = document.getElementById( fragment || null ); // 用户输入内容，禁止使用$()
@@ -105,5 +104,6 @@
                 });
             } catch { mw.notify('无法下载CodeMirror扩展，Wikitext高亮失败！', {type: 'error'}); }
         }
-    });
+    };
+    mw.hook( 'wikipage.content' ).add($content => { main($content); });
 })();
