@@ -18,7 +18,7 @@
         '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/mediawiki.min.css',
         '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/gadget-CodeMirror.json'
     ],
-        main = async ($content) => {
+        main = async $content => {
         if (contentModel) { $content.find( '.mw-code' ).addClass(`hljs linenums ${contentModel}`); }
         else {
             $content.find('pre[lang], code[lang]').addClass(function() {
@@ -32,7 +32,7 @@
             $content.find( '.lang-lua' ).addClass( 'lua' );
             $content.find( '.lang-html' ).addClass( 'xml' );
         }
-        const $block = $content.find( '.hljs' );
+        const $block = $content.find( '.hljs:not(.highlighted)' );
         if ($block.length) { // 高亮非Wikitext代码
             console.log('Hook: wikipage.content, 开始执行语法高亮');
             try {
@@ -41,7 +41,7 @@
                     mw.loader.load(highlight_path[1], 'text/css')
                 ]));
                 // 1. 语法高亮
-                $block.each(function() { hljs.highlightBlock( this ); }).filter( '.linenums' )
+                $block.each(function() { hljs.highlightBlock( this ); }).addClass( 'highlighted' ).filter( '.linenums' )
                     .html(function() { // 添加行号。这里不使用<table>排版，而是使用<ol>
                     const $this = $(this),
                         start = $this.data( 'start' ) || $this.data( 'line-from' ) || 1;
