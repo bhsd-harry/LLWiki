@@ -4,9 +4,15 @@
  * @EditedBy: https://llwiki.org/zh/User:Bhsd
  */
 "use strict";
-/* global mw, $, hljs, CodeMirror */
+/* global mw, $, hljs, CodeMirror, mwConfig */
 (() => {
-    const langs = {js: 'javascript', javascript: 'javascript', json: 'json', css: 'css', html: 'xml',
+    const style = `
+.lang-wiki { padding: 0; }
+.lang-wiki > .CodeMirror { height: auto; }
+.cm-mw-tag-b, .cm-mw-tag-strong { font-weight: bold; }
+.cm-mw-tag-i, .cm-mw-tag-em { font-style: italic; }
+.cm-mw-tag-s, .cm-mw-tag-strike, .cm-mw-tag-del { text-decoration: line-through; }`,
+        langs = {js: 'javascript', javascript: 'javascript', json: 'json', css: 'css', html: 'xml',
         scribunto: 'lua', lua: 'lua', 'sanitized-css': 'css'},
         contentModel = langs[ mw.config.get( 'wgPageContentModel' ).toLowerCase() ],
         highlight_path = [ '//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js',
@@ -34,7 +40,6 @@
         }
 
         const $code = $content.find( '.lang-wiki' );
-        let mwConfig;
         if ($code.length) { // 高亮Wikitext
             console.log('Hook: wikipage.content, 开始执行Wikitext高亮');
             try {
@@ -44,9 +49,9 @@
                         $.ajax(codemirror_path[2], {dataType: 'script', cache: true})),
                     mw.loader.load(codemirror_path[1], 'text/css'),
                     mw.loader.load(codemirror_path[3], 'text/css'),
-                    mw.loader.addStyleTag( '.lang-wiki { padding: 0; } .lang-wiki > .CodeMirror { height: auto; }` );' )
+                    mw.loader.addStyleTag( style )
                 ]));
-                mwConfig = mwConfig ?? states[0];
+                window.mwConfig = window.mwConfig ?? states[0];
                 $code.each(function() {
                     const value = this.textContent.trim(),
                         $toggle = $(this).empty().closest( '.mw-collapsed' ).find( '.mw-collapsible-toggle' ).click();
