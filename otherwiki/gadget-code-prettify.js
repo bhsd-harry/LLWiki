@@ -9,9 +9,7 @@
     const style = `
 .lang-wiki { padding: 0; }
 .lang-wiki > .CodeMirror { height: auto; }
-.cm-mw-tag-b, .cm-mw-tag-strong { font-weight: bold; }
-.cm-mw-tag-i, .cm-mw-tag-em { font-style: italic; }
-.cm-mw-tag-s, .cm-mw-tag-strike, .cm-mw-tag-del { text-decoration: line-through; }`,
+.skin-minerva .lang-wiki > .CodeMirror { font-size: 16px; }`,
         langs = {js: 'javascript', javascript: 'javascript', json: 'json', css: 'css', html: 'xml',
         scribunto: 'lua', lua: 'lua', 'sanitized-css': 'css'},
         contentModel = langs[ mw.config.get( 'wgPageContentModel' ).toLowerCase() ],
@@ -42,6 +40,16 @@
         const $code = $content.find( '.lang-wiki' );
         if ($code.length) { // 高亮Wikitext
             console.log('Hook: wikipage.content, 开始执行Wikitext高亮');
+            const callback = (entries) => {
+                entries.filter(({isIntersecting: is}) => is).forEach(({target}) => {
+                    observer.unobserve( target ); // eslint-disable-line
+                    const $ele = $(target),
+                        value = $ele.text().trim();
+                    new CodeMirror($ele.empty()[0], {value, mode: 'text/mediawiki', mwConfig,
+                        lineNumbers: $ele.hasClass( 'linenums' ), lineWrapping: true, readOnly: true});
+                });
+            },
+                observer = new IntersectionObserver(callback, {threshold: 0.01});
             try {
                 const states = await (window.CodeMirror ? Promise.resolve([]) : Promise.all([
                     $.ajax(codemirror_path[4], {dataType: 'json', cache: true}),
@@ -52,12 +60,7 @@
                     mw.loader.addStyleTag( style )
                 ]));
                 window.mwConfig = window.mwConfig ?? states[0];
-                $code.each(function() {
-                    const value = this.textContent.trim(),
-                        $toggle = $(this).empty().closest( '.mw-collapsed' ).find( '.mw-collapsible-toggle' ).click();
-                    new CodeMirror(this, {value, mode: 'text/mediawiki', mwConfig, lineNumbers: this.classList.contains( 'linenums' ), lineWrapping: true, readOnly: true});
-                    $toggle.click();
-                });
+                $code.each(function() { observer.observe( this ); });
             } catch { mw.notify('无法下载CodeMirror扩展，Wikitext高亮失败！', {type: 'error'}); }
         }
 

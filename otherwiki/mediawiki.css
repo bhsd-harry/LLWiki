@@ -14,6 +14,10 @@
 .cm-mw-comment { color: #84a0a0; font-weight: normal; }
 .cm-mw-apostrophes-bold, .cm-mw-apostrophes-italic { color: #08f; }
 
+.cm-mw-tag-b, .cm-mw-tag-strong { font-weight: bold; }
+.cm-mw-tag-i, .cm-mw-tag-em { font-style: italic; }
+.cm-mw-tag-s, .cm-mw-tag-strike, .cm-mw-tag-del { text-decoration: line-through; }
+
 pre.cm-mw-section-1 { font-size: 1.8em; line-height: 1.2em; }
 pre.cm-mw-section-2 { font-size: 1.5em; line-height: 1.2em; }
 pre.cm-mw-section-3 { font-weight: bold; }
@@ -22,7 +26,7 @@ pre.cm-mw-section-5 { font-weight: bold; }
 pre.cm-mw-section-6 { font-weight: bold; }
 .cm-mw-section-header { color: #08f; font-weight: normal; }
 
-.cm-mw-template { color: #80c; font-weight: normal; }
+.cm-mw-template { color: #c0c; font-weight: normal; }
 .cm-mw-template-name { color: #80c; font-weight: bold; }
 .cm-mw-template-name-mnemonic { font-weight: normal; }
 .cm-mw-template-argument-name { color: #80c; font-weight: bold; }
@@ -39,8 +43,6 @@ pre.cm-mw-section-6 { font-weight: bold; }
 .cm-mw-parserfunction-bracket { color: #a11; font-weight: bold; }
 .cm-mw-parserfunction-delimiter { color: #a11; font-weight: bold; }
 
-pre.cm-mw-exttag { background-image: url( img/ext2.png ); }
-.cm-mw-exttag { background-image: url( img/ext4.png ); }
 .cm-mw-exttag-name { color: #290; font-weight: bold; }
 .cm-mw-exttag-bracket { color: #290; font-weight: normal; }
 .cm-mw-exttag-attribute { color: #290; font-weight: normal; }
@@ -48,9 +50,6 @@ pre.cm-mw-exttag { background-image: url( img/ext2.png ); }
 .cm-mw-htmltag-name { color: #290; font-weight: bold; }
 .cm-mw-htmltag-bracket { color: #290; font-weight: normal; }
 .cm-mw-htmltag-attribute { color: #290; font-weight: normal; }
-
-pre.cm-mw-tag-pre, .cm-mw-tag-pre { background-image: url( img/black4.png ); }
-pre.cm-mw-tag-nowiki, .cm-mw-tag-nowiki { background-image: url( img/black4.png ); }
 
 .cm-mw-link { color: #36c; font-weight: normal; }
 .cm-mw-link-pagename { color: #36c; font-weight: normal; }
@@ -68,35 +67,3 @@ pre.cm-mw-tag-nowiki, .cm-mw-tag-nowiki { background-image: url( img/black4.png 
 .cm-mw-table-delimiter { color: #e0e; font-weight: bold; }
 .cm-mw-table-definition { color: #e0e; font-weight: normal; }
 .cm-mw-table-caption { font-weight: bold; }
-
-/* .cm-mw-template-ground {} */
-.cm-mw-template2-ground { background-image: url( img/template4.png ); }
-.cm-mw-template3-ground { background-image: url( img/template8.png ); }
-.cm-mw-template-ext-ground { background-image: url( img/ext4.png ); }
-.cm-mw-template-ext2-ground { background-image: url( img/ext4.png ), url( img/ext4.png ); }
-.cm-mw-template-ext3-ground { background-image: url( img/ext4.png ), url( img/ext4.png ), url( img/ext4.png ); }
-.cm-mw-template-link-ground { background-image: url( img/link4.png ); }
-.cm-mw-template-ext-link-ground { background-image: url( img/ext4.png ), url( img/link4.png ); }
-.cm-mw-template-ext2-link-ground { background-image: url( img/ext4.png ), url( img/ext4.png ), url( img/link4.png ); }
-.cm-mw-template-ext3-link-ground { background-image: url( img/ext4.png ), url( img/ext4.png ), url( img/ext4.png ), url( img/link4.png ); }
-.cm-mw-template2-ext-ground { background-image: url( img/template4.png ), url( img/ext4.png ); }
-.cm-mw-template2-ext2-ground { background-image: url( img/template4.png ), url( img/ext4.png ), url( img/ext4.png ); }
-.cm-mw-template2-ext3-ground { background-image: url( img/template4.png ), url( img/ext4.png ), url( img/ext4.png ), url( img/ext4.png ); }
-.cm-mw-template2-link-ground { background-image: url( img/template4.png ), url( img/link4.png ); }
-.cm-mw-template2-ext-link-ground { background-image: url( img/template4.png ), url( img/ext4.png ), url( img/link4.png ); }
-.cm-mw-template2-ext2-link-ground { background-image: url( img/template4.png ), url( img/ext4.png ), url( img/ext4.png ), url( img/link4.png ); }
-.cm-mw-template2-ext3-link-ground { background-image: url( img/template4.png ), url( img/ext4.png ), url( img/ext4.png ), url( img/ext4.png ), url( img/link4.png ); }
-.cm-mw-template3-ext-ground { background-image: url( img/template8.png ), url( img/ext4.png ); }
-.cm-mw-template3-ext2-ground { background-image: url( img/template8.png ), url( img/ext4.png ), url( img/ext4.png ); }
-.cm-mw-template3-ext3-ground { background-image: url( img/template8.png ), url( img/ext4.png ), url( img/ext4.png ), url( img/ext4.png ); }
-.cm-mw-template3-link-ground { background-image: url( img/template8.png ), url( img/link4.png ); }
-.cm-mw-template3-ext-link-ground { background-image: url( img/template8.png ), url( img/ext4.png ), url( img/link4.png ); }
-.cm-mw-template3-ext2-link-ground { background-image: url( img/template8.png ), url( img/ext4.png ), url( img/ext4.png ), url( img/link4.png ); }
-.cm-mw-template3-ext3-link-ground { background-image: url( img/template8.png ), url( img/ext4.png ), url( img/ext4.png ), url( img/ext4.png ), url( img/link4.png ); }
-.cm-mw-ext-ground { background-image: url( img/ext4.png ); }
-.cm-mw-ext2-ground { background-image: url( img/ext4.png ), url( img/ext4.png ); }
-.cm-mw-ext3-ground { background-image: url( img/ext4.png ), url( img/ext4.png ), url( img/ext4.png ); }
-.cm-mw-ext-link-ground { background-image: url( img/link4.png ); }
-.cm-mw-ext2-link-ground { background-image: url( img/ext4.png ), url( img/link4.png ); }
-.cm-mw-ext3-link-ground { background-image: url( img/ext4.png ), url( img/ext4.png ), url( img/link4.png ); }
-.cm-mw-link-ground { background-image: url( img/link4.png ); }
