@@ -26,10 +26,10 @@ pre.cm-mw-section-5 { font-weight: bold; }
 pre.cm-mw-section-6 { font-weight: bold; }
 .cm-mw-section-header { color: #08f; font-weight: normal; }
 
-.cm-mw-template { color: #c0c; font-weight: normal; }
+.cm-mw-template { color: #80c; font-weight: normal; }
 .cm-mw-template-name { color: #80c; font-weight: bold; }
 .cm-mw-template-name-mnemonic { font-weight: normal; }
-.cm-mw-template-argument-name { color: #80c; font-weight: bold; }
+.cm-mw-template-argument-name { color: #c0c; font-weight: bold; }
 .cm-mw-template-delimiter { color: #80c; font-weight: bold; }
 .cm-mw-template-bracket { color: #80c; font-weight: bold; }
 
