@@ -41,8 +41,7 @@
         "b": true,
         "strong": true,
         "i": true,
-        "em": true,
-        "img": true
+        "em": true
     },
     "doubleUnderscore": [
         {

@@ -47,8 +47,8 @@ if (isEditable && settings.range.includes( skin ) && (['edit', 'submit'].include
                 {data: 'vector', label: mw.msg( 'gadget-cb-d' )}, {data: 'minerva', label: mw.msg( 'gadget-cb-m' )}
             ]}
         }, {key: 'stay', type: 'Number', label: 'gadget-cb-stay', help: mw.msg('gadget-cb-shelp'),
-            config: {min: 0, buttonStep: 5}
-        }, {key: 'exp', type: 'Number', label: 'gadget-cb-exp', config: {min: 1, buttonStep: 1}}
+            config: {min: 0, buttonStep: 5, required: true}
+        }, {key: 'exp', type: 'Number', label: 'gadget-cb-exp', config: {min: 1, buttonStep: 1, required: true}}
     ], help: '编辑内容备份'});
     // 3. 核心函数
     const loadBackup = function() { // 加载备份函数
