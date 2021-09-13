@@ -442,7 +442,7 @@
 
 		function eatExtTagAttribute( name ) {
 			return function ( stream, state ) {
-				if ( stream.match( /[^>/<{&~]+/ ) ) {
+				if ( stream.match( /^(?:"[^"]*"|'[^']*'|[^>/<{&~])+/ ) ) {
 					return makeLocalStyle( 'mw-exttag-attribute mw-ext-' + name, state );
 				}
 				if ( stream.eat( '>' ) ) {
