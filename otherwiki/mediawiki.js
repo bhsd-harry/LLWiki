@@ -989,7 +989,7 @@
 
 	CodeMirror.defineMIME( 'text/mediawiki', 'mediawiki' );
 
-	function eatNowiki( style, lineStyle ) {
+	function eatNowiki( lineStyle ) {
 		return function ( stream, state, ownLine ) {
 			var s;
 			if ( ownLine && stream.sol() ) {
@@ -997,7 +997,7 @@
 			} else if ( ownLine === false && state.ownLine ) {
 				state.ownLine = false;
 			}
-			s = ( state.ownLine ? lineStyle : style );
+			s = ( state.ownLine ? lineStyle : '' );
 			if ( stream.match( /[^&]+/ ) ) {
 				return s;
 			}
@@ -1006,17 +1006,49 @@
 		};
 	}
 
+	function eatPre( lineStyle ) {
+		return function ( stream, state, ownLine ) {
+			var s;
+			if ( ownLine && stream.sol() ) {
+				state.ownLine = true;
+			} else if ( ownLine === false && state.ownLine ) {
+				state.ownLine = false;
+			}
+			s = state.ownLine ? lineStyle : '';
+			if ( stream.match( /[^&<]+/ ) ) {
+				return s;
+			}
+			if ( stream.eat( '&' ) ) {
+				return eatMnemonic( stream, s, s );
+			}
+			if ( !state.nowiki ) {
+				if ( stream.match( '<nowiki>' ) ) {
+					state.nowiki = true;
+					return 'mw-comment mw-ext-nowiki';
+				}
+				stream.skipTo( '<nowiki>' ) || stream.skipToEnd();
+				return s;
+			}
+			if ( stream.match( '</nowiki>' ) ) {
+				state.nowiki = false;
+				return 'mw-comment mw-ext-nowiki';
+			}
+			stream.skipTo( '</nowiki>' ) || stream.skipToEnd();
+			return s;
+		};
+	}
+
 	CodeMirror.defineMode( 'mw-tag-pre', function ( /* config, parserConfig */ ) {
 		return {
 			startState: function () { return {}; },
-			token: eatNowiki( 'mw-tag-pre', 'line-cm-mw-tag-pre' )
+			token: eatPre( 'line-cm-mw-tag-pre' )
 		};
 	} );
 
 	CodeMirror.defineMode( 'mw-tag-nowiki', function ( /* config, parserConfig */ ) {
 		return {
 			startState: function () { return {}; },
-			token: eatNowiki( 'mw-tag-nowiki', 'line-cm-mw-tag-nowiki' )
+			token: eatNowiki( 'line-cm-mw-tag-nowiki' )
 		};
 	} );
 
