@@ -997,7 +997,7 @@
 			} else if ( ownLine === false && state.ownLine ) {
 				state.ownLine = false;
 			}
-			s = ( state.ownLine ? lineStyle : '' );
+			s = state.ownLine ? lineStyle : '';
 			if ( stream.match( /[^&]+/ ) ) {
 				return s;
 			}
@@ -1015,32 +1015,53 @@
 				state.ownLine = false;
 			}
 			s = state.ownLine ? lineStyle : '';
-			if ( stream.match( /[^&<]+/ ) ) {
-				return s;
-			}
 			if ( stream.eat( '&' ) ) {
 				return eatMnemonic( stream, s, s );
 			}
-			if ( !state.nowiki ) {
-				if ( stream.match( '<nowiki>' ) ) {
-					state.nowiki = true;
+			if ( stream.eat( '<' ) ) {
+				if ( !state.nowiki && stream.match( 'nowiki>' ) || state.nowiki && stream.match( '/nowiki>' ) ) {
+					state.nowiki = !state.nowiki;
 					return 'mw-comment mw-ext-nowiki';
 				}
-				stream.skipTo( '<nowiki>' ) || stream.skipToEnd();
+				stream.match( /[^&<}|-]+/ );
 				return s;
 			}
-			if ( stream.match( '</nowiki>' ) ) {
-				state.nowiki = false;
-				return 'mw-comment mw-ext-nowiki';
+			if ( stream.match( '-{' ) ) {
+				state.converter++;
+				if ( stream.match( /^((?!(-{|}-)).)*\|/, false ) ) {
+					state.flags.push( 1 );
+				} else {
+					state.flags.push( 0 );
+				}
+				return 'mw-lang-converter-bracket';
 			}
-			stream.skipTo( '</nowiki>' ) || stream.skipToEnd();
-			return s;
+			if ( state.converter < 0 ) {
+				stream.eat( '-' );
+				stream.match( /[^&<-]+/ );
+				return s;
+			}
+			if ( stream.match( '}-' ) ) {
+				state.converter--;
+				state.flags.pop();
+				return 'mw-lang-converter-bracket';
+			}
+			if ( [ 0, 2 ].includes( state.flags[ state.converter ] ) ) {
+				stream.match( /[^&<}-]+/ ) || stream.next();
+				return s;
+			}
+			if ( stream.eat( '|' ) ) {
+				state.flags[ state.converter ] = 2;
+				return 'mw-lang-converter-delimiter';
+			}
+			stream.next();
+			stream.match( /[^&<|]+/ );
+			return 'mw-lang-converter-flag';
 		};
 	}
 
 	CodeMirror.defineMode( 'mw-tag-pre', function ( /* config, parserConfig */ ) {
 		return {
-			startState: function () { return {}; },
+			startState: function () { return { converter: -1, flags: [] }; },
 			token: eatPre( 'line-cm-mw-tag-pre' )
 		};
 	} );
