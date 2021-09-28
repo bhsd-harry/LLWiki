@@ -1,17 +1,14 @@
 /**
  * @Function: 高亮JavaScript、CSS、HTML、Lua和Wikitext，按行号跳转，并添加行号和指示色块
- * @Source: https://zh.moegirl.org.cn/mediawiki:gadget-code-prettify.js和https://zh.moegirl.org.cn/User:机智的小鱼君/gadget/Highlight.js
+ * @Source: https://zh.moegirl.org.cn/mediawiki:gadget-code-prettify.js
+ *          https://zh.moegirl.org.cn/User:机智的小鱼君/gadget/Highlight.js
+ *          https://codemirror.net/addon/runmode/runmode.js
  * @EditedBy: https://llwiki.org/zh/User:Bhsd
  */
 "use strict";
-/* global mw, $, hljs, CodeMirror, mwConfig */
+/* global mw, $, hljs, CodeMirror */
 (() => {
-    const style = `
-.lang-wiki { padding: 0; }
-.lang-wiki > .CodeMirror { height: auto; }
-.skin-vector .lang-wiki > .CodeMirror { font-size: 14px; }
-.skin-minerva .lang-wiki > .CodeMirror { font-size: 16px; }`,
-        langs = {js: 'javascript', javascript: 'javascript', json: 'json', css: 'css', html: 'xml',
+    const langs = {js: 'javascript', javascript: 'javascript', json: 'json', css: 'css', html: 'xml',
         scribunto: 'lua', lua: 'lua', 'sanitized-css': 'css'},
         contentModel = langs[ mw.config.get( 'wgPageContentModel' ).toLowerCase() ],
         highlight_path = [ '//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js',
@@ -19,9 +16,7 @@
     ],
         codemirror_path = [ '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/codemirror.min.js',
         '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/codemirror.min.css',
-        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@latest/otherwiki/mediawiki.min.js',
-        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.13/otherwiki/mediawiki.min.css',
-        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@latest/otherwiki/gadget-CodeMirror.json'
+        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@latest/otherwiki/gadget.site-lib.codemirror.min.js'
     ],
         main = async $content => {
         if (contentModel) { $content.find( '.mw-code' ).addClass(`hljs linenums ${contentModel}`); }
@@ -40,34 +35,21 @@
 
         const $code = $content.find( '.lang-wiki' );
         if ($code.length) { // 高亮Wikitext
-            console.log('Hook: wikipage.content, 开始执行Wikitext高亮');
-            const callback = (entries) => {
-                entries.filter(({isIntersecting: is}) => is).forEach(({target}) => {
-                    observer.unobserve( target ); // eslint-disable-line
-                    const $ele = $(target),
-                        value = $ele.text().trim();
-                    new CodeMirror($ele.empty()[0], {value, mode: 'text/mediawiki', mwConfig,
-                        lineNumbers: $ele.hasClass( 'linenums' ), lineWrapping: true, readOnly: true});
-                });
-            },
-                observer = new IntersectionObserver(callback, {threshold: 0.01});
+            console.debug('Hook: wikipage.content, 开始执行Wikitext高亮');
             try {
-                const states = await (window.CodeMirror ? Promise.resolve([]) : Promise.all([
-                    $.ajax(codemirror_path[4], {dataType: 'json', cache: true}),
-                    $.ajax(codemirror_path[0], {dataType: 'script', cache: true}).then(() =>
-                        $.ajax(codemirror_path[2], {dataType: 'script', cache: true})),
-                    mw.loader.load(codemirror_path[1], 'text/css'),
-                    mw.loader.load(codemirror_path[3], 'text/css'),
-                    mw.loader.addStyleTag( style )
+                await (window.CodeMirror ? Promise.resolve() : Promise.all([
+                    $.ajax(codemirror_path[0], {dataType: 'script', cache: true}),
+                    mw.loader.load(codemirror_path[1], 'text/css')
                 ]));
-                window.mwConfig = window.mwConfig ?? states[0];
-                $code.each(function() { observer.observe( this ); });
+                await (CodeMirror.runmode ? Promise.resolve() :
+                    $.ajax(codemirror_path[2], {dataType: 'script', cache: true}));
+                $code.each(function() { CodeMirror.runmode( this ); });
             } catch { mw.notify('无法下载CodeMirror扩展，Wikitext高亮失败！', {type: 'error'}); }
         }
 
         const $block = $content.find( '.hljs:not(.highlighted)' );
         if ($block.length === 0) { return; } // 高亮非Wikitext代码
-        console.log('Hook: wikipage.content, 开始执行语法高亮');
+        console.debug('Hook: wikipage.content, 开始执行语法高亮');
         try {
             await (window.hljs ? Promise.resolve() : Promise.all([
                 $.ajax(highlight_path[0], {dataType: 'script', cache: true}),
