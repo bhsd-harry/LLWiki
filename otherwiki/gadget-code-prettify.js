@@ -8,7 +8,12 @@
 "use strict";
 /* global mw, $, hljs, CodeMirror */
 (() => {
-    const langs = {js: 'javascript', javascript: 'javascript', json: 'json', css: 'css', html: 'xml',
+    const style = `.runmode pre { border: 0; padding: 0; margin: 0; background-color: transparent; color: #000; }
+code.runmode, code.runmode pre { display: inline-block; }
+.runmode pre::before { content: ''; display: inline-block; }
+.runmode.linenums { padding: 0; color: #999; background-color: #f7f7f7; border-color: #000; }
+.runmode.linenums > ol > li { background-color: #fff; border-left: 1px solid #ddd; }`,
+        langs = {js: 'javascript', javascript: 'javascript', json: 'json', css: 'css', html: 'xml',
         scribunto: 'lua', lua: 'lua', 'sanitized-css': 'css'},
         contentModel = langs[ mw.config.get( 'wgPageContentModel' ).toLowerCase() ],
         highlight_path = [ '//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js',
@@ -16,7 +21,7 @@
     ],
         codemirror_path = [ '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/codemirror.min.js',
         '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/codemirror.min.css',
-        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@latest/otherwiki/gadget.site-lib.codemirror.min.js'
+        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@latest/otherwiki/gadget-site-lib.codemirror.min.js'
     ],
         main = async $content => {
         if (contentModel) { $content.find( '.mw-code' ).addClass(`hljs linenums ${contentModel}`); }
@@ -41,8 +46,10 @@
                     $.ajax(codemirror_path[0], {dataType: 'script', cache: true}),
                     mw.loader.load(codemirror_path[1], 'text/css')
                 ]));
-                await (CodeMirror.runmode ? Promise.resolve() :
-                    $.ajax(codemirror_path[2], {dataType: 'script', cache: true}));
+                await (CodeMirror.runmode ? Promise.resolve() : Promise.all([
+                    $.ajax(codemirror_path[2], {dataType: 'script', cache: true}),
+                    mw.loader.addStyleTag( style )
+                ]));
                 $code.each(function() { CodeMirror.runmode( this ); });
             } catch { mw.notify('无法下载CodeMirror扩展，Wikitext高亮失败！', {type: 'error'}); }
         }

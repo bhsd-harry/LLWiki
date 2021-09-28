@@ -72,8 +72,8 @@ const render = ({target}) => {
             if (stream.start === 0) {
                 $line.addClass( style.filter(ele => ele.startsWith( 'line-' )).map(ele => ele.slice(5)) );
             }
-            $('<span>', {text: stream.current()}).addClass( style.filter(ele => !ele.startsWith( 'line-' ))
-                .map(ele => `cm-${ ele }`) ).appendTo( $line );
+            $('<span>', { text: stream.current(), class: style.filter(ele => !ele.startsWith( 'line-' ))
+                .map(ele => `cm-${ ele }`).join( ' ' ) }).appendTo( $line );
             stream.start = stream.pos;
         }
         return $line[0];
