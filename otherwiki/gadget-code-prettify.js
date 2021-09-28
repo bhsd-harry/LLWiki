@@ -51,7 +51,7 @@ code.runmode, code.runmode pre { display: inline-block; }
                     $.ajax(codemirror_path[2], {dataType: 'script', cache: true}),
                     mw.loader.addStyleTag( style )
                 ]));
-                $code.each(function() { CodeMirror.runmode( this ); });
+                CodeMirror.runmode( $code );
             } catch { mw.notify('无法下载CodeMirror扩展，Wikitext高亮失败！', {type: 'error'}); }
         }
 

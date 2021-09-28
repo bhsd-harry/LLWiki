@@ -48,11 +48,9 @@ CodeMirror.download = (alias) => {
  * @Function: 高亮页内Wikitext代码
  * @Source: https://codemirror.net/addon/runmode/runmode.js
  * @EditedBy: https://llwiki.org/zh/User:Bhsd
- * @Param {HTMLElement} pre, 含有Wikitext代码的HTML元素，通常为<pre>或<code>
- * @Param {Boolean} force, 是否不执行默认的懒加载
+ * @Param {jQuery} $pre, 写有Wikitext代码的jQuery对象
  */
-const render = ({target}) => {
-    observer.unobserve( target );
+const render = (target) => {
     const mode = CodeMirror.getMode({mwConfig: mw.config.get( 'extCodeMirrorConfig' )}, 'mediawiki'),
         $target = $(target),
         lines = CodeMirror.splitLines( $target.text().trim() ),
@@ -85,12 +83,7 @@ const render = ({target}) => {
             html: content.map((ele, i) => $('<li>', {html: ele, id: `L${ i + start }`}))
         }).css('padding-left', `${ (content.length + start - 1).toString().length + 2.5 }ch`).appendTo( $target );
     } else { $target.append( content ); }
-},
-    callback = (entries) => { entries.filter(({isIntersecting: is}) => is).forEach( render ); },
-    observer = new IntersectionObserver(callback, {threshold: 0.01});
-CodeMirror.runmode = (pre, force) => {
-    CodeMirror.download( 'wiki' ).then(() => {
-        if (force) { render( {target: pre} ); }
-        else { observer.observe( pre ); }
-    });
+};
+CodeMirror.runmode = ($pre) => {
+    CodeMirror.download( 'wiki' ).then(() => { [...$pre].forEach( render ); });
 };
