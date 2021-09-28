@@ -12,7 +12,8 @@
 code.runmode, code.runmode pre { display: inline-block; }
 .runmode pre::before { content: ''; display: inline-block; }
 .runmode.linenums { padding: 0; color: #999; background-color: #f7f7f7; border-color: #000; }
-.runmode.linenums > ol > li { background-color: #fff; border-left: 1px solid #ddd; }`,
+.runmode.linenums > ol { margin-left: 0 !important; }
+.runmode.linenums > ol > li { background-color: #fff; border-left: 1px solid #ddd; padding: 0 4px; margin: 0; }`,
         langs = {js: 'javascript', javascript: 'javascript', json: 'json', css: 'css', html: 'xml',
         scribunto: 'lua', lua: 'lua', 'sanitized-css': 'css'},
         contentModel = langs[ mw.config.get( 'wgPageContentModel' ).toLowerCase() ],
