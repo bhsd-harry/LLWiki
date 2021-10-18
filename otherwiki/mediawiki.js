@@ -302,9 +302,6 @@
 				state.tokenize = state.stack.pop();
 				return makeLocalStyle( 'mw-extlink-bracket', state, 'nLink' );
 			}
-			if ( stream.match( /[^'\]{&~]+/ ) ) {
-				return makeStyle( 'mw-extlink-text', state );
-			}
 			return eatWikiText( 'mw-extlink-text', '' )( stream, state );
 		}
 
