@@ -26,14 +26,14 @@ CodeMirror.download = (alias) => {
         if (name == 'wiki') {
             promise[ name ] = mw.config.get( 'extCodeMirrorConfig' ) ? Promise.resolve() : Promise.all([
                 $.get({ dataType: 'json', cache: true,
-                    url: '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@1.6/json/gadget-CodeMirror.json'
+                    url: '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.16/json/gadget-CodeMirror.json'
                 }).then(config => { mw.config.set( 'extCodeMirrorConfig', config ); },
                     reason => { throw reason; }
                 ),
                 $.get({ dataType: 'script', cache: true,
-                    url: '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.14/otherwiki/mediawiki.min.js'
+                    url: '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.16/otherwiki/mediawiki.min.js'
                 }).then(() => {
-                    mw.loader.load('//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.14/otherwiki/mediawiki.min.css', 'text/css');
+                    mw.loader.load('//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.16/otherwiki/mediawiki.min.css', 'text/css');
                 })
             ]);
         } else {
