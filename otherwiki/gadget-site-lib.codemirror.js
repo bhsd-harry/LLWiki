@@ -26,7 +26,7 @@ CodeMirror.download = (alias) => {
         if (name == 'wiki') {
             promise[ name ] = mw.config.get( 'extCodeMirrorConfig' ) ? Promise.resolve() : Promise.all([
                 $.get({ dataType: 'json', cache: true,
-                    url: '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.16/json/gadget-CodeMirror.json'
+                    url: '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.16/otherwiki/gadget-CodeMirror.json'
                 }).then(config => { mw.config.set( 'extCodeMirrorConfig', config ); },
                     reason => { throw reason; }
                 ),
