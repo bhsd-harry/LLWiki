@@ -1,4 +1,6 @@
-/* eslint-disable no-use-before-define */
+/* eslint-disable no-use-before-define, space-before-function-paren, no-var, prefer-arrow-callback,
+ prefer-destructuring, prefer-template, object-shorthand */
+/* global CodeMirror */
 ( function ( CodeMirror ) {
 	'use strict';
 
@@ -35,17 +37,18 @@
 				wbr: true, hr: true, li: true, dt: true, dd: true, td: true, th: true,
 				tr: true, noinclude: true, includeonly: true, onlyinclude: true, translate: true, img: true },
 			voidHtmlTags = { br: true, hr: true, wbr: true, img: true },
-			isStrike, isBold, isItalic, firstsingleletterword, firstmultiletterword, firstspace, mStrike, mBold, mItalic, mTokens = [],
+			isStrike, isBold, isStrong, isItalic, isEm, firstsingleletterword, firstmultiletterword, firstspace,
+			mStrike, mBold, mStrong, mItalic, mEm, mTokens = [],
 			mStyle;
 
 		function makeStyle( style, state, endGround ) {
 			if ( isStrike ) {
 				style += ' strike';
 			}
-			if ( isBold ) {
+			if ( isBold || isStrong ) {
 				style += ' strong';
 			}
-			if ( isItalic ) {
+			if ( isItalic || isEm ) {
 				style += ' em';
 			}
 			return makeLocalStyle( style, state, endGround );
@@ -359,7 +362,6 @@
 
 		function eatLinkText() {
 			return function ( stream, state ) {
-				var tmpstyle;
 				if ( stream.match( ']]' ) ) {
 					state.tokenize = state.stack.pop();
 					return makeLocalStyle( 'mw-link-bracket', state, 'nLink' );
@@ -373,26 +375,26 @@
 				var name = '';
 				while ( chars > 0 ) {
 					chars--;
-					name = name + stream.next();
+					name += stream.next();
 				}
 				if ( stream.eol() ) {
 					// @todo error message
 					state.tokenize = state.stack.pop();
-					return makeLocalStyle( ( isHtmlTag ? 'mw-htmltag-name' : 'mw-exttag-name' ), state );
+					return makeLocalStyle( isHtmlTag ? 'mw-htmltag-name' : 'mw-exttag-name', state );
 				}
 				stream.eatSpace();
 				if ( stream.eol() ) {
 					// @todo error message
 					state.tokenize = state.stack.pop();
-					return makeLocalStyle( ( isHtmlTag ? 'mw-htmltag-name' : 'mw-exttag-name' ), state );
+					return makeLocalStyle( isHtmlTag ? 'mw-htmltag-name' : 'mw-exttag-name', state );
 				}
 
 				if ( isHtmlTag ) {
 					if ( isCloseTag && !( name in voidHtmlTags ) ) {
 						state.tokenize = eatChar( '>', 'mw-htmltag-bracket' );
 						if ( [ 's', 'del', 'strike' ].includes( name ) ) { isStrike = false; }
-						if ( [ 'b', 'strong' ].includes( name ) ) { isBold = false; }
-						if ( [ 'i', 'em' ].includes( name ) ) { isItalic = false; }
+						if ( [ 'b', 'strong' ].includes( name ) ) { isStrong = false; }
+						if ( [ 'i', 'em' ].includes( name ) ) { isEm = false; }
 					} else {
 						state.tokenize = eatHtmlTagAttribute( name );
 					}
@@ -418,8 +420,8 @@
 					}
 					state.tokenize = state.stack.pop();
 					if ( [ 's', 'del', 'strike' ].includes( name ) ) { isStrike = true; }
-					if ( [ 'b', 'strong' ].includes( name ) ) { isBold = true; }
-					if ( [ 'i', 'em' ].includes( name ) ) { isItalic = true; }
+					if ( [ 'b', 'strong' ].includes( name ) ) { isStrong = true; }
+					if ( [ 'i', 'em' ].includes( name ) ) { isEm = true; }
 					return makeLocalStyle( 'mw-htmltag-bracket', state );
 				}
 				if ( stream.match( '/>' ) ) {
@@ -494,12 +496,13 @@
 			return function ( stream, state ) {
 				var ret;
 				if ( state.extMode === false ) {
-					ret = ( origString === false && stream.sol() ? 'line-cm-mw-exttag' : 'mw-exttag' );
+					ret = origString === false && stream.sol() ? 'line-cm-mw-exttag' : 'mw-exttag';
 					stream.skipToEnd();
 				} else {
 					ret = ( origString === false && stream.sol() ? 'line-cm-mw-tag-' : 'mw-tag-' ) + state.extName;
 					if ( [ 'pre', 'nowiki' ].includes( state.extName ) ) {
-						ret += ( isStrike ? ' strike' : '' ) + ( isBold ? ' strong' : '' ) + ( isItalic ? ' em' : '' );
+						ret += ( isStrike ? ' strike' : '' ) + ( isBold || isStrong ? ' strong' : '' ) +
+							( isItalic || isEm ? ' em' : '' );
 					}
 					ret += ' ' + state.extMode.token( stream, state.extState, origString === false );
 				}
@@ -576,10 +579,9 @@
 					}
 				} else {
 					if ( stream.match( /[^'|{[<&~!]+/ ) ) {
-						return makeStyle( ( isHead ? 'strong' : '' ), state );
+						return makeStyle( isHead ? 'strong' : '', state );
 					}
-					if ( stream.match( '||' ) || isHead && stream.match( '!!' ) || ( isStart && stream.eat( '|' ) ) ) {
-						isStrike = false;
+					if ( stream.match( '||' ) || isHead && stream.match( '!!' ) || isStart && stream.eat( '|' ) ) {
 						isBold = false;
 						isItalic = false;
 						if ( isStart ) {
@@ -588,7 +590,7 @@
 						return makeLocalStyle( 'mw-table-delimiter', state );
 					}
 				}
-				return eatWikiText( ( isHead ? 'strong' : '' ), ( isHead ? 'strong' : '' ) )( stream, state );
+				return eatWikiText( isHead ? 'strong' : '', isHead ? 'strong' : '' )( stream, state );
 			};
 		}
 
@@ -798,7 +800,7 @@
 								stream.backUp( tagname.length );
 								state.stack.push( state.tokenize );
 								// || ( tagname in voidHtmlTags ) because opening void tags should also be treated as the closing tag.
-								state.tokenize = eatTagName( tagname.length, isCloseTag || ( tagname in voidHtmlTags ), true );
+								state.tokenize = eatTagName( tagname.length, isCloseTag || tagname in voidHtmlTags, true );
 								return makeLocalStyle( 'mw-htmltag-bracket', state );
 							}
 							stream.backUp( tagname.length );
@@ -881,7 +883,9 @@
 			}
 			// remember bold and italic state for restore
 			mStrike = isStrike;
+			mStrong = isStrong;
 			mBold = isBold;
+			mEm = isEm;
 			mItalic = isItalic;
 		}
 
@@ -915,7 +919,6 @@
 				}
 
 				if ( stream.sol() ) { // reset bold and italic status in every new line
-					isStrike = false;
 					isBold = false;
 					isItalic = false;
 					firstsingleletterword = undefined;
@@ -949,6 +952,8 @@
 					isItalic = mItalic; // restore status
 					isBold = mBold;
 					isStrike = mStrike;
+					isStrong = mStrong;
+					isEm = mEm;
 					firstsingleletterword = undefined;
 					firstmultiletterword = undefined;
 					firstspace = undefined;
