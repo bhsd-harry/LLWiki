@@ -38,7 +38,7 @@
 				tr: true, noinclude: true, includeonly: true, onlyinclude: true, translate: true, img: true },
 			voidHtmlTags = { br: true, hr: true, wbr: true, img: true },
 			isStrike, isBold, isStrong, isItalic, isEm, firstsingleletterword, firstmultiletterword, firstspace,
-			mStrike, mBold, mStrong, mItalic, mEm, mTokens = [],
+			mBold, mItalic, mTokens = [],
 			mStyle;
 
 		function makeStyle( style, state, endGround ) {
@@ -672,6 +672,9 @@
 								return 'mw-indenting';
 							}
 							break;
+						case ';':
+							isBold = true;
+							return 'mw-indenting';
 						case ' ':
 							if ( stream.match( /[\s\u00a0]*:*{\|/, false ) ) { // Leading spaces is the correct syntax for a table, bug T108454
 								stream.eatSpace();
@@ -879,10 +882,7 @@
 				firstmultiletterword = end;
 			}
 			// remember bold and italic state for restore
-			mStrike = isStrike;
-			mStrong = isStrong;
 			mBold = isBold;
-			mEm = isEm;
 			mItalic = isItalic;
 		}
 
@@ -948,9 +948,6 @@
 				if ( isBold && isItalic ) { // needs to rollback
 					isItalic = mItalic; // restore status
 					isBold = mBold;
-					isStrike = mStrike;
-					isStrong = mStrong;
-					isEm = mEm;
 					firstsingleletterword = undefined;
 					firstmultiletterword = undefined;
 					firstspace = undefined;
