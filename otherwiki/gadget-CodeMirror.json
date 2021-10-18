@@ -6,13 +6,6 @@
         "option": "text/mediawiki",
         "indicator": "text/mediawiki",
         "poem": "text/mediawiki",
-        "s": "text/mediawiki",
-        "strike": "text/mediawiki",
-        "del": "text/mediawiki",
-        "b": "text/mediawiki",
-        "strong": "text/mediawiki",
-        "i": "text/mediawiki",
-        "em": "text/mediawiki",
         "pre": "mw-tag-pre",
         "nowiki": "mw-tag-nowiki"
     },
@@ -35,14 +28,7 @@
         "modernsoundmanager": true,
         "poll": true,
         "sm2": true,
-        "templatestyles": true,
-        "s": true,
-        "strike": true,
-        "del": true,
-        "b": true,
-        "strong": true,
-        "i": true,
-        "em": true
+        "templatestyles": true
     },
     "doubleUnderscore": [
         {
