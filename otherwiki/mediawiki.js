@@ -414,13 +414,13 @@
 				if ( stream.eol() ) {
 					// @todo error message
 					state.tokenize = state.stack.pop();
-					return makeLocalStyle( isHtmlTag ? 'mw-htmltag-name' : 'mw-exttag-name', state );
+					return makeLocalStyle( isHtmlTag ? 'mw-htmltag-name mw-htmltag-' + name : 'mw-exttag-name', state );
 				}
 				stream.eatSpace();
 				if ( stream.eol() ) {
 					// @todo error message
 					state.tokenize = state.stack.pop();
-					return makeLocalStyle( isHtmlTag ? 'mw-htmltag-name' : 'mw-exttag-name', state );
+					return makeLocalStyle( isHtmlTag ? 'mw-htmltag-name mw-htmltag-' + name : 'mw-exttag-name', state );
 				}
 
 				if ( isHtmlTag ) {
@@ -432,7 +432,7 @@
 					} else {
 						state.tokenize = eatHtmlTagAttribute( name );
 					}
-					return makeLocalStyle( 'mw-htmltag-name', state );
+					return makeLocalStyle( 'mw-htmltag-name mw-htmltag-' + name, state );
 				} // it is the extension tag
 				if ( isCloseTag ) {
 					state.tokenize = eatChar( '>', 'mw-exttag-bracket mw-ext-' + name );
@@ -460,7 +460,7 @@
 				}
 				if ( stream.match( '/>' ) ) {
 					state.tokenize = state.stack.pop();
-					return makeLocalStyle( 'mw-htmltag-bracket', state );
+					return makeLocalStyle( name in voidHtmlTags ? 'mw-htmltag-bracket' : 'error', state );
 				}
 				return eatWikiText( 'mw-htmltag-attribute', '' )( stream, state );
 			};
@@ -925,7 +925,8 @@
 
 		return {
 			startState: function () {
-				return { tokenize: eatWikiText( '', '' ), stack: [], InHtmlTag: [], extName: false, extMode: false, extState: false, nTemplate: 0, nLink: 0, nExt: 0 };
+				return { tokenize: eatWikiText( '', '' ), stack: [], InHtmlTag: [], extName: false, extMode: false,
+				extState: false, nTemplate: 0, nLink: 0, nExt: 0 };
 			},
 			copyState: function ( state ) {
 				return {
