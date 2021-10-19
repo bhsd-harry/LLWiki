@@ -42,9 +42,6 @@
 			mStyle;
 
 		function makeStyle( style, state, endGround ) {
-			if ( state.isStrike ) {
-				style += ' strike';
-			}
 			if ( isBold || state.isStrong ) {
 				style += ' strong';
 			}
@@ -90,6 +87,9 @@
 			}
 			if ( endGround ) {
 				state[ endGround ]--;
+			}
+			if ( state.isStrike ) {
+				style += ' strike';
 			}
 			return style;
 		}
@@ -236,9 +236,9 @@
 					state.tokenize = eatTemplateArgument;
 					return makeLocalStyle( 'mw-template-argument-name', state );
 				}
-				return makeLocalStyle( 'mw-template', state );
+				return makeStyle( 'mw-template', state );
 			} else if ( stream.eatWhile( /[^|}{[<&~]/ ) ) {
-				return makeLocalStyle( 'mw-template', state );
+				return makeStyle( 'mw-template', state );
 			} else if ( stream.eat( '|' ) ) {
 					state.expectArgName = true;
 				state.tokenize = eatTemplateArgument;
