@@ -40,7 +40,7 @@ pre.cm-mw-section-3, pre.cm-mw-section-4, pre.cm-mw-section-5, pre.cm-mw-section
 .cm-mw-extlink-protocol, .cm-mw-free-extlink-protocol, .cm-mw-extlink-bracket { color: #36c; font-weight: bold; }
 
 .cm-mw-table-bracket, .cm-mw-table-delimiter { color: #e0e; font-weight: bold; }
-.cm-mw-table-definition { color: #e0e; font-weight: normal; }
+.cm-mw-table-definition, .cm-mw-table-delimiter2 { color: #e0e; font-weight: normal; }
 .cm-mw-table-caption { font-weight: bold; }
 
 .cm-mw-lang-converter-bracket, .cm-mw-lang-converter-delimiter { color: #b68; font-weight: normal; }
