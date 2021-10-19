@@ -18,7 +18,7 @@ code.runmode, code.runmode pre { display: inline-block; }
         scribunto: 'lua', lua: 'lua', 'sanitized-css': 'css'},
         contentModel = langs[ mw.config.get( 'wgPageContentModel' ).toLowerCase() ],
         highlight_path = [ '//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js',
-        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.11/otherwiki/gadget-code-prettify.min.css'
+        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.12/otherwiki/gadget-code-prettify.min.css'
     ],
         codemirror_path = [ '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/codemirror.min.js',
         '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/codemirror.min.css',
