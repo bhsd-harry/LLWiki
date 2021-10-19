@@ -20,8 +20,8 @@ code.runmode, code.runmode pre { display: inline-block; }
         highlight_path = [ '//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js',
         '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.12/otherwiki/gadget-code-prettify.min.css'
     ],
-        codemirror_path = [ '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/codemirror.min.js',
-        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.9/otherwiki/codemirror.min.css',
+        codemirror_path = [ '//cdn.jsdelivr.net/npm/codemirror@5.35.0/lib/codemirror.min.js',
+        '//cdn.jsdelivr.net/npm/codemirror@5.35.0/lib/codemirror.min.css',
         '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.17/otherwiki/gadget-site-lib.codemirror.min.js'
     ],
         main = async $content => {
