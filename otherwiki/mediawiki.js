@@ -540,12 +540,14 @@
 
 		function eatExtTokens( origString ) {
 			return function ( stream, state ) {
-				var ret;
+				var ret,
+					ownLine = origString === false &&
+					(stream.sol() || typeof state.extState === 'object' && state.extState.ownLine);
 				if ( state.extMode === false ) {
-					ret = origString === false && stream.sol() ? 'line-cm-mw-exttag' : 'mw-exttag';
+					ret = ownLine ? 'line-cm-mw-exttag' : 'mw-exttag';
 					stream.skipToEnd();
 				} else {
-					ret = ( origString === false && stream.sol() ? 'line-cm-mw-tag-' : 'mw-tag-' ) + state.extName;
+					ret = ( ownLine ? 'line-cm-mw-tag-' : 'mw-tag-' ) + state.extName;
 					if ( [ 'pre', 'nowiki' ].includes( state.extName ) ) {
 						ret += ( state.isStrike ? ' strike' : '' ) + ( isBold || state.isStrong ? ' strong' : '' ) +
 							( isItalic || state.isEm ? ' em' : '' );
@@ -960,7 +962,12 @@
 					isEm: state.isEm
 				};
 			},
-			token: function ( stream, state ) {
+			token: function ( stream, state, ownLine ) {
+				if ( ownLine && stream.sol() ) {
+					state.ownLine = true;
+				} else if ( ownLine === false && state.ownLine ) {
+					state.ownLine = false;
+				}
 				var style, p, t, f,
 					readyTokens = [],
 					tmpTokens = [];
