@@ -454,7 +454,7 @@
 			return function ( stream, state ) {
 				if ( state.expectArgName && stream.match( /^[^>/<{&~=]+/ ) ||
 					!state.expectArgName && stream.match( /^[^>/<{&~]+/ ) ) {
-					return makeLocalStyle( 'mw-htmltag-attribute', state );
+					return makeLocalStyle( 'mw-htmltag-attribute mw-html-' + name, state );
 				}
 				if ( state.expectArgName && stream.eat( '=' ) ) {
 					state.expectArgName = false;
@@ -474,7 +474,7 @@
 					state.tokenize = state.stack.pop();
 					return makeLocalStyle( name in voidHtmlTags ? 'mw-htmltag-bracket mw-html-' + name : 'error', state );
 				}
-				return eatWikiText( 'mw-htmltag-attribute', '', true )( stream, state );
+				return eatWikiText( 'mw-htmltag-attribute mw-html-' + name, '', true )( stream, state );
 			};
 		}
 
