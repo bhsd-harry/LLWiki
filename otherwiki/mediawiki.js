@@ -421,25 +421,25 @@
 				if ( stream.eol() ) {
 					// @todo error message
 					state.tokenize = state.stack.pop();
-					return makeLocalStyle( isHtmlTag ? 'mw-htmltag-name mw-htmltag-' + name : 'mw-exttag-name', state );
+					return makeLocalStyle( isHtmlTag ? 'mw-htmltag-name' : 'mw-exttag-name', state );
 				}
 				stream.eatSpace();
 				if ( stream.eol() ) {
 					// @todo error message
 					state.tokenize = state.stack.pop();
-					return makeLocalStyle( isHtmlTag ? 'mw-htmltag-name mw-htmltag-' + name : 'mw-exttag-name', state );
+					return makeLocalStyle( isHtmlTag ? 'mw-htmltag-name' : 'mw-exttag-name', state );
 				}
 
 				if ( isHtmlTag ) {
 					if ( isCloseTag && !( name in voidHtmlTags ) ) {
-						state.tokenize = eatChar( '>', 'mw-htmltag-bracket' );
+						state.tokenize = eatChar( '>', 'mw-htmltag-bracket mw-htmltag-' + name );
 						if ( [ 's', 'del', 'strike' ].includes( name ) ) { state.isStrike = false; }
 						if ( [ 'b', 'strong' ].includes( name ) ) { state.isStrong = false; }
 						if ( [ 'i', 'em' ].includes( name ) ) { state.isEm = false; }
 					} else {
 						state.tokenize = eatHtmlTagAttribute( name );
 					}
-					return makeLocalStyle( 'mw-htmltag-name mw-htmltag-' + name, state );
+					return makeLocalStyle( 'mw-htmltag-name', state );
 				} // it is the extension tag
 				if ( isCloseTag ) {
 					state.tokenize = eatChar( '>', 'mw-exttag-bracket mw-ext-' + name );
@@ -468,11 +468,11 @@
 					if ( [ 's', 'del', 'strike' ].includes( name ) ) { state.isStrike = true; }
 					if ( [ 'b', 'strong' ].includes( name ) ) { state.isStrong = true; }
 					if ( [ 'i', 'em' ].includes( name ) ) { state.isEm = true; }
-					return makeLocalStyle( 'mw-htmltag-bracket', state );
+					return makeLocalStyle( 'mw-htmltag-bracket mw-htmltag-' + name, state );
 				}
 				if ( stream.match( '/>' ) ) {
 					state.tokenize = state.stack.pop();
-					return makeLocalStyle( name in voidHtmlTags ? 'mw-htmltag-bracket' : 'error', state );
+					return makeLocalStyle( name in voidHtmlTags ? 'mw-htmltag-bracket mw-htmltag-' + name : 'error', state );
 				}
 				return eatWikiText( 'mw-htmltag-attribute', '', true )( stream, state );
 			};
@@ -852,7 +852,7 @@
 								state.stack.push( state.tokenize );
 								// || ( tagname in voidHtmlTags ) because opening void tags should also be treated as the closing tag.
 								state.tokenize = eatTagName( tagname.length, isCloseTag || tagname in voidHtmlTags, true );
-								return makeLocalStyle( 'mw-htmltag-bracket', state );
+								return makeLocalStyle( 'mw-htmltag-bracket mw-htmltag-' + tagname, state );
 							}
 							stream.backUp( tagname.length );
 						}
