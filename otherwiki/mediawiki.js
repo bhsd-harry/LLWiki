@@ -432,7 +432,7 @@
 
 				if ( isHtmlTag ) {
 					if ( isCloseTag && !( name in voidHtmlTags ) ) {
-						state.tokenize = eatChar( '>', 'mw-htmltag-bracket mw-htmltag-' + name );
+						state.tokenize = eatChar( '>', 'mw-htmltag-bracket mw-html-' + name );
 						if ( [ 's', 'del', 'strike' ].includes( name ) ) { state.isStrike = false; }
 						if ( [ 'b', 'strong' ].includes( name ) ) { state.isStrong = false; }
 						if ( [ 'i', 'em' ].includes( name ) ) { state.isEm = false; }
@@ -468,11 +468,11 @@
 					if ( [ 's', 'del', 'strike' ].includes( name ) ) { state.isStrike = true; }
 					if ( [ 'b', 'strong' ].includes( name ) ) { state.isStrong = true; }
 					if ( [ 'i', 'em' ].includes( name ) ) { state.isEm = true; }
-					return makeLocalStyle( 'mw-htmltag-bracket mw-htmltag-' + name, state );
+					return makeLocalStyle( 'mw-htmltag-bracket mw-html-' + name, state );
 				}
 				if ( stream.match( '/>' ) ) {
 					state.tokenize = state.stack.pop();
-					return makeLocalStyle( name in voidHtmlTags ? 'mw-htmltag-bracket mw-htmltag-' + name : 'error', state );
+					return makeLocalStyle( name in voidHtmlTags ? 'mw-htmltag-bracket mw-html-' + name : 'error', state );
 				}
 				return eatWikiText( 'mw-htmltag-attribute', '', true )( stream, state );
 			};
@@ -852,7 +852,7 @@
 								state.stack.push( state.tokenize );
 								// || ( tagname in voidHtmlTags ) because opening void tags should also be treated as the closing tag.
 								state.tokenize = eatTagName( tagname.length, isCloseTag || tagname in voidHtmlTags, true );
-								return makeLocalStyle( 'mw-htmltag-bracket mw-htmltag-' + tagname, state );
+								return makeLocalStyle( 'mw-htmltag-bracket mw-html-' + tagname, state );
 							}
 							stream.backUp( tagname.length );
 						}
