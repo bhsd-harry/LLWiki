@@ -6,7 +6,7 @@
  */
 "use strict";
 /* global mw, $, CodeMirror */
-
+(() => {
 /**
  * @Function: 根据内容模型下载需要的CodeMirror模式
  * @Param {String} alias, 内容模型名称或别名
@@ -87,3 +87,4 @@ const render = (target) => {
 CodeMirror.runmode = ($pre) => {
     CodeMirror.download( 'wiki' ).then(() => { [...$pre].forEach( render ); });
 };
+})();

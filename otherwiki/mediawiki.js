@@ -972,7 +972,7 @@
 					return t.style;
 				}
 
-				if ( stream.sol() ) { // reset bold and italic status in every new line
+				if ( stream.sol() && ![ 'pre', 'nowiki' ].includes( state.extName ) ) { // reset bold and italic status in every new line
 					isBold = false;
 					isItalic = false;
 					firstsingleletterword = undefined;
