@@ -31,7 +31,7 @@ CodeMirror.download = (alias) => {
                     reason => { throw reason; }
                 ),
                 $.get({ dataType: 'script', cache: true,
-                    url: '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.17/otherwiki/mediawiki.min.js'
+                    url: '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.18/otherwiki/mediawiki.min.js'
                 }).then(() => {
                     mw.loader.load('//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.17/otherwiki/mediawiki.min.css', 'text/css');
                 })
