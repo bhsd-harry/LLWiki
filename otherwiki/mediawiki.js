@@ -540,19 +540,17 @@
 
 		function eatExtTokens( origString ) {
 			return function ( stream, state ) {
-				var ret,
-					ownLine = origString === false &&
-					(stream.sol() || typeof state.extState === 'object' && state.extState.ownLine);
+				var ret;
 				if ( state.extMode === false ) {
-					ret = ownLine ? 'line-cm-mw-exttag' : 'mw-exttag';
+					ret = 'mw-exttag';
 					stream.skipToEnd();
 				} else {
-					ret = ( ownLine ? 'line-cm-mw-tag-' : 'mw-tag-' ) + state.extName;
+					ret = 'mw-tag-' + state.extName;
 					if ( [ 'pre', 'nowiki' ].includes( state.extName ) ) {
 						ret += ( state.isStrike ? ' strike' : '' ) + ( isBold || state.isStrong ? ' strong' : '' ) +
 							( isItalic || state.isEm ? ' em' : '' );
 					}
-					ret += ' ' + state.extMode.token( stream, state.extState, origString === false );
+					ret += ' ' + state.extMode.token( stream, state.extState );
 				}
 				if ( stream.eol() ) {
 					if ( origString !== false ) {
@@ -962,12 +960,7 @@
 					isEm: state.isEm
 				};
 			},
-			token: function ( stream, state, ownLine ) {
-				if ( ownLine && stream.sol() ) {
-					state.ownLine = true;
-				} else if ( ownLine === false && state.ownLine ) {
-					state.ownLine = false;
-				}
+			token: function ( stream, state ) {
 				var style, p, t, f,
 					readyTokens = [],
 					tmpTokens = [];
@@ -1049,34 +1042,20 @@
 
 	CodeMirror.defineMIME( 'text/mediawiki', 'mediawiki' );
 
-	function eatNowiki( lineStyle ) {
-		return function ( stream, state, ownLine ) {
-			var s;
-			if ( ownLine && stream.sol() ) {
-				state.ownLine = true;
-			} else if ( ownLine === false && state.ownLine ) {
-				state.ownLine = false;
-			}
-			s = state.ownLine ? lineStyle : '';
+	function eatNowiki() {
+		return function ( stream ) {
 			if ( stream.match( /^[^&]+/ ) ) {
-				return s;
+				return '';
 			}
 			stream.next(); // eat &
-			return eatMnemonic( stream, s, s );
+			return eatMnemonic( stream, '', '' );
 		};
 	}
 
-	function eatPre( lineStyle ) {
-		return function ( stream, state, ownLine ) {
-			var s;
-			if ( ownLine && stream.sol() ) {
-				state.ownLine = true;
-			} else if ( ownLine === false && state.ownLine ) {
-				state.ownLine = false;
-			}
-			s = state.ownLine ? lineStyle : '';
+	function eatPre() {
+		return function ( stream, state ) {
 			if ( stream.eat( '&' ) ) {
-				return eatMnemonic( stream, s, s );
+				return eatMnemonic( stream, '', '' );
 			}
 			if ( stream.eat( '<' ) ) {
 				if ( !state.nowiki && stream.match( 'nowiki>' ) || state.nowiki && stream.match( '/nowiki>' ) ) {
@@ -1084,7 +1063,7 @@
 					return 'mw-comment mw-ext-nowiki';
 				}
 				stream.match( /^[^&<}|-]+/ );
-				return s;
+				return '';
 			}
 			if ( stream.match( '-{' ) ) {
 				state.converter++;
@@ -1098,7 +1077,7 @@
 			if ( state.converter < 0 ) {
 				stream.eat( '-' );
 				stream.match( /^[^&<-]+/ );
-				return s;
+				return '';
 			}
 			if ( stream.match( '}-' ) ) {
 				state.converter--;
@@ -1107,7 +1086,7 @@
 			}
 			if ( [ 0, 2 ].includes( state.flags[ state.converter ] ) ) {
 				stream.match( /^[^&<}-]+/ ) || stream.next();
-				return s;
+				return '';
 			}
 			if ( stream.eat( '|' ) ) {
 				state.flags[ state.converter ] = 2;
@@ -1122,14 +1101,14 @@
 	CodeMirror.defineMode( 'mw-tag-pre', function ( /* config, parserConfig */ ) {
 		return {
 			startState: function () { return { converter: -1, flags: [] }; },
-			token: eatPre( 'line-cm-mw-tag-pre' )
+			token: eatPre()
 		};
 	} );
 
 	CodeMirror.defineMode( 'mw-tag-nowiki', function ( /* config, parserConfig */ ) {
 		return {
 			startState: function () { return {}; },
-			token: eatNowiki( 'line-cm-mw-tag-nowiki' )
+			token: eatNowiki()
 		};
 	} );
 
