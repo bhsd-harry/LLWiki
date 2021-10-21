@@ -22,7 +22,7 @@ code.runmode, code.runmode pre { display: inline-block; }
     ],
         codemirror_path = [ '//cdn.jsdelivr.net/npm/codemirror@5.35.0/lib/codemirror.min.js',
         '//cdn.jsdelivr.net/npm/codemirror@5.35.0/lib/codemirror.min.css',
-        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.17/otherwiki/gadget-site-lib.codemirror.min.js'
+        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.18/otherwiki/gadget-site-lib.codemirror.min.js'
     ],
         main = async $content => {
         if (contentModel) { $content.find( '.mw-code' ).addClass(`hljs linenums ${contentModel}`); }
