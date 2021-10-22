@@ -240,10 +240,11 @@
 			} else if ( stream.eatWhile( /[^|}{[<&~]/ ) ) {
 				return makeStyle( 'mw-template', state );
 			} else if ( stream.eat( '|' ) ) {
-					state.expectArgName = true;
+				state.expectArgName = true;
 				state.tokenize = eatTemplateArgument;
 				return makeLocalStyle( 'mw-template-delimiter', state );
 			} else if ( stream.match( '}}' ) ) {
+				state.expectArgName = false;
 				state.tokenize = state.stack.pop();
 				return makeLocalStyle( 'mw-template-bracket', state, 'nTemplate' );
 			}
