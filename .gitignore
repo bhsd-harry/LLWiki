@@ -3,5 +3,3 @@
 *.swp
 */*.swp
 .DS_Store
-/node
-.eslintrc.json
