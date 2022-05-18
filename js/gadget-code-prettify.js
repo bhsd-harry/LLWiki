@@ -30,7 +30,7 @@ mw.hook( 'wikipage.content' ).add(function($content) {
     const $block = $content.find( '.hljs:not(.highlighted)' ); // 不重复高亮
     if ($block.length === 0) { return; }
     console.log('Hook: wikipage.content, 开始执行语法高亮');
-    const path = '//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js';
+    const path = '//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js';
     (window.hljs ? Promise.resolve() : mw.loader.getScript( path )).then(function() { // 不重复下载脚本
         // 1. 语法高亮
         $block.each(function() { hljs.highlightBlock( this ); }).addClass( 'highlighted' ).filter( '.linenums' )

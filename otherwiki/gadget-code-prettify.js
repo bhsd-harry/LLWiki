@@ -17,12 +17,12 @@ code.runmode, code.runmode pre { display: inline-block; }
         langs = {js: 'javascript', javascript: 'javascript', json: 'json', css: 'css', html: 'xml',
         scribunto: 'lua', lua: 'lua', 'sanitized-css': 'css'},
         contentModel = langs[ mw.config.get( 'wgPageContentModel' ).toLowerCase() ],
-        highlight_path = [ '//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js',
-        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.12/otherwiki/gadget-code-prettify.min.css'
+        highlight_path = [ '//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js',
+        '//fastly.jsdelivr.net/gh/bhsd-harry/LLWiki@2.12/otherwiki/gadget-code-prettify.min.css'
     ],
-        codemirror_path = [ '//cdn.jsdelivr.net/npm/codemirror@5.35.0/lib/codemirror.min.js',
-        '//cdn.jsdelivr.net/npm/codemirror@5.35.0/lib/codemirror.min.css',
-        '//cdn.jsdelivr.net/gh/bhsd-harry/LLWiki@2.18/otherwiki/gadget-site-lib.codemirror.min.js'
+        codemirror_path = [ '//fastly.jsdelivr.net/npm/codemirror@5.35.0/lib/codemirror.min.js',
+        '//fastly.jsdelivr.net/npm/codemirror@5.35.0/lib/codemirror.min.css',
+        '//fastly.jsdelivr.net/gh/bhsd-harry/LLWiki@2.19/otherwiki/gadget-site-lib.codemirror.min.js'
     ],
         main = async $content => {
         if (contentModel) { $content.find( '.mw-code' ).addClass(`hljs linenums ${contentModel}`); }
