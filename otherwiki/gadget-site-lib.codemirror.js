@@ -63,7 +63,7 @@
 			state = mode.startState(),
 			content = lines.map(line => {
 				const stream = new CodeMirror.StringStream(line),
-					$line = $('<pre>');
+					$line = $('<pre>', {class: 'CodeMirror-line'});
 				let token, style;
 				if (!stream.string) {
 					token = mode.blankLine(state);
