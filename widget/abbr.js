@@ -3,16 +3,20 @@
  * @Dependencies: oojs-ui-core, ext.gadget.site-lib
  * @Author: https://llwiki.org/zh/User:Bhsd
  */
-"use strict";
-/* global mw */
+'use strict';
 (() => {
     const main = async () => {
         mw.widget = mw.widget ?? {};
-        if (mw.widget.abbr) { return; }
+        if (mw.widget.abbr) {
+            return;
+        }
         mw.widget.abbr = true;
         await mw.loader.using(['oojs-ui-core', 'ext.gadget.site-lib']);
         mw.tipsy('#bodyContent', '.abbr', {anchor: false});
     };
-    if (window.jQuery) { main(); }
-    else { window.addEventListener('jquery', main); }
-}) ();
+    if (window.jQuery) {
+        main();
+    } else {
+        window.addEventListener('jquery', main);
+    }
+})();

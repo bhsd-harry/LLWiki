@@ -5,7 +5,7 @@
 	},
 	"extends": "eslint:recommended",
 	"parserOptions": {
-		"ecmaVersion": 9,
+		"ecmaVersion": 10,
 		"ecmaFeatures": {
 			"impliedStrict": true
 		}
