@@ -3,5 +3,5 @@
  * @Dependencies: mediawiki.util
  * @Author: https://llwiki.org/zh/User:Bhsd
  */
-"use strict";
-$('#ca-edit').attr('href', mw.util.getUrl(null, {action: 'submit'})).removeAttr( 'title' );
+'use strict';
+$('#ca-edit').attr('href', mw.util.getUrl(null, {action: 'submit'})).removeAttr('title');

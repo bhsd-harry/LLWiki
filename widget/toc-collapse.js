@@ -3,13 +3,15 @@
  * @Reference: https://zh.moegirl.org.cn/widget:tochide
  * @Author: https://llwiki.org/zh/User:Bhsd
  */
-"use strict";
-/* global mw, $ */
+'use strict';
 (() => {
-    const main = () => {
-        $('#toctogglecheckbox').prop('checked', mw.config.get('skin') == 'vector');
-        $('#toc').addClass( 'tochide' );
-    };
-    if (window.jQuery) { main(); }
-    else { window.addEventListener('jquery', main); }
-}) ();
+	const main = () => {
+		$('#toctogglecheckbox').prop('checked', mw.config.get('skin') === 'vector');
+		$('#toc').addClass('tochide');
+	};
+	if (window.jQuery) {
+		main();
+	} else {
+		window.addEventListener('jquery', main);
+	}
+})();

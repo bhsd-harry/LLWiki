@@ -16,7 +16,7 @@
 		aliases = { js: 'javascript', javascript: 'javascript', json: 'javascript', css: 'css', 'sanitized-css': 'css',
 			lua: 'lua', scribunto: 'lua', wikitext: 'wiki', mediawiki: 'wiki', wiki: 'wiki',
 		};
-	CodeMirror.download = (alias) => {
+	CodeMirror.download = alias => {
 		const name = aliases[alias.toLowerCase()];
 		if (!(name in promise)) {
 			console.error('无法识别的CodeMirror模式');
@@ -56,7 +56,7 @@
 	 * @EditedBy: https://llwiki.org/zh/User:Bhsd
 	 * @Param {jQuery} $pre, 写有Wikitext代码的jQuery对象
 	 */
-	const render = (target) => {
+	const render = target => {
 		const mode = CodeMirror.getMode({mwConfig: mw.config.get('extCodeMirrorConfig')}, 'mediawiki'),
 			$target = $(target),
 			lines = CodeMirror.splitLines($target.text().trim()),
@@ -92,7 +92,7 @@
 			$target.append(content);
 		}
 	};
-	CodeMirror.runmode = ($pre) => {
+	CodeMirror.runmode = $pre => {
 		CodeMirror.download('wiki').then(() => {
 			[...$pre].forEach(render);
 		});
