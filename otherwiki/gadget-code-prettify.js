@@ -118,7 +118,7 @@ code.runmode, code.runmode pre { display: inline-block; }
 						n = this.textContent.length === 4 ? 9 : 7, // rgba/hsla或rgb/hsl
 						// 右半括号那一项可能有分号
 						color = [...$siblings.slice(index, index + n)].map(({textContent: text}) => text);
-                return $color.clone().css({ color: color[0].slice(0, 3) + color.slice(1, 7).join('') + ')', // eslint-disable-line
+					return $color.clone().css({ color: `${color[0].slice(0, 3)}${color.slice(1, 7).join('')})`,
 						opacity: color[8] });
 				});
 			} catch {

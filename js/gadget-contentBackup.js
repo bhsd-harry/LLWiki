@@ -56,7 +56,7 @@ if (isEditable && settings.range.includes( skin ) && (['edit', 'submit'].include
         if ($( '.codeEditor-ui-toolbar' ).length) { codeEditor.setValue( backup ); }
         else { $(editor).val( backup ); }
         mw.notify( mw.msg('gadget-cb-success'), {type: 'success'} );
-        update(); // eslint-disable-line
+        update();
     },
         saveBackup = function() { // 保存备份函数
         // CodeEditor需特殊处理
@@ -65,7 +65,7 @@ if (isEditable && settings.range.includes( skin ) && (['edit', 'submit'].include
         expList[id] = mw.now();
         mw.storage.setObject('LLWiki-contentBackup-exp', expList);
         localforage.setItem(id, backup);
-        update(); // eslint-disable-line
+        update();
     },
         // 自动更新函数，不支持Wikiplus
         update = isWikiplus || stay === 0 ? function() {} : mw.util.debounce(stay, function() {
