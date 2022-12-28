@@ -1,8 +1,21 @@
-/* eslint-disable no-use-before-define, space-before-function-paren, no-var, prefer-arrow-callback,
- prefer-destructuring, prefer-template, object-shorthand */
-/* global CodeMirror */
+/* eslint-disable */
 ( function ( CodeMirror ) {
 	'use strict';
+
+	var permittedHtmlTags = {
+			b: true, bdi: true, del: true, i: true, ins: true, img: true,
+			u: true, font: true, big: true, small: true, sub: true, sup: true,
+			h1: true, h2: true, h3: true, h4: true, h5: true, h6: true, cite: true,
+			code: true, em: true, s: true, strike: true, strong: true, tt: true,
+			var: true, div: true, center: true, blockquote: true, q: true, ol: true, ul: true,
+			dl: true, table: true, caption: true, pre: true, ruby: true, rb: true,
+			rp: true, rt: true, rtc: true, p: true, span: true, abbr: true, dfn: true,
+			kbd: true, samp: true, data: true, time: true, mark: true, br: true,
+			wbr: true, hr: true, li: true, dt: true, dd: true, td: true, th: true,
+			tr: true, noinclude: true, includeonly: true, onlyinclude: true, translate: true
+		},
+		voidHtmlTags = { br: true, hr: true, wbr: true, img: true },
+		mwConfig, urlProtocols;
 
 	function eatMnemonic( stream, style, mnemonicStyle ) {
 		var ok;
@@ -22,24 +35,85 @@
 		return style;
 	}
 
-	CodeMirror.defineMode( 'mediawiki', function ( config /* , parserConfig */ ) {
+	function makeLocalStyle( style, state, endGround ) {
+		var ground = '';
+		switch ( state.nTemplate ) {
+			case 0:
+				break;
+			case 1:
+				ground += '-template';
+				break;
+			case 2:
+				ground += '-template2';
+				break;
+			default:
+				ground += '-template3';
+				break;
+		}
+		switch ( state.nExt ) {
+			case 0:
+				break;
+			case 1:
+				ground += '-ext';
+				break;
+			case 2:
+				ground += '-ext2';
+				break;
+			default:
+				ground += '-ext3';
+				break;
+		}
+		if ( state.nLink > 0 ) {
+			ground += '-link';
+		}
+		if ( ground !== '' ) {
+			style = 'mw' + ground + '-ground ' + style;
+		}
+		if ( endGround ) {
+			state[ endGround ]--;
+		}
+		if ( state.isStrike ) {
+			style += ' strike';
+		}
+		return style;
+	}
 
-		var mwConfig = config.mwConfig,
-			urlProtocols = new RegExp( '^(?:' + mwConfig.urlProtocols + ')', 'i' ),
-			permittedHtmlTags = { b: true, bdi: true, del: true, i: true, ins: true,
-				u: true, font: true, big: true, small: true, sub: true, sup: true,
-				h1: true, h2: true, h3: true, h4: true, h5: true, h6: true, cite: true,
-				code: true, em: true, s: true, strike: true, strong: true, tt: true,
-				var: true, div: true, center: true, blockquote: true, ol: true, ul: true,
-				dl: true, table: true, caption: true, pre: true, ruby: true, rb: true,
-				rp: true, rt: true, rtc: true, p: true, span: true, abbr: true, dfn: true,
-				kbd: true, samp: true, data: true, time: true, mark: true, br: true,
-				wbr: true, hr: true, li: true, dt: true, dd: true, td: true, th: true,
-				tr: true, noinclude: true, includeonly: true, onlyinclude: true, translate: true, img: true },
-			voidHtmlTags = { br: true, hr: true, wbr: true, img: true },
-			isBold, isItalic, firstsingleletterword, firstmultiletterword, firstspace,
-			mBold, mItalic, mTokens = [],
-			mStyle;
+	function eatBlock( style, terminator ) {
+		return function ( stream, state ) {
+			while ( !stream.eol() ) {
+				if ( stream.match( terminator ) ) {
+					state.tokenize = state.stack.pop();
+					break;
+				}
+				stream.next();
+			}
+			return makeLocalStyle( style, state );
+		};
+	}
+
+	function eatEnd( style ) {
+		return function ( stream, state ) {
+			stream.skipToEnd();
+			state.tokenize = state.stack.pop();
+			return makeLocalStyle( style, state );
+		};
+	}
+
+	function eatChar( char, style ) {
+		return function ( stream, state ) {
+			state.tokenize = state.stack.pop();
+			if ( stream.eat( char ) ) {
+				return makeLocalStyle( style, state );
+			}
+			return makeLocalStyle( 'error', state );
+		};
+	}
+
+	CodeMirror.defineMode( 'mediawiki', function ( config /* , parserConfig */ ) {
+		mwConfig = config.mwConfig;
+		urlProtocols = new RegExp( '^(?:' + mwConfig.urlProtocols + ')', 'i' );
+		var mTokens = [],
+			isBold, isItalic, firstsingleletterword, firstmultiletterword, firstspace, mBold, mItalic, mStyle;
 
 		function makeStyle( style, state, endGround ) {
 			if ( isBold || state.isStrong ) {
@@ -49,80 +123,6 @@
 				style += ' em';
 			}
 			return makeLocalStyle( style, state, endGround );
-		}
-
-		function makeLocalStyle( style, state, endGround ) {
-			var ground = '';
-			switch ( state.nTemplate ) {
-				case 0:
-					break;
-				case 1:
-					ground += '-template';
-					break;
-				case 2:
-					ground += '-template2';
-					break;
-				default:
-					ground += '-template3';
-					break;
-			}
-			switch ( state.nExt ) {
-				case 0:
-					break;
-				case 1:
-					ground += '-ext';
-					break;
-				case 2:
-					ground += '-ext2';
-					break;
-				default:
-					ground += '-ext3';
-					break;
-			}
-			if ( state.nLink > 0 ) {
-				ground += '-link';
-			}
-			if ( ground !== '' ) {
-				style = 'mw' + ground + '-ground ' + style;
-			}
-			if ( endGround ) {
-				state[ endGround ]--;
-			}
-			if ( state.isStrike ) {
-				style += ' strike';
-			}
-			return style;
-		}
-
-		function eatBlock( style, terminator ) {
-			return function ( stream, state ) {
-				while ( !stream.eol() ) {
-					if ( stream.match( terminator ) ) {
-						state.tokenize = state.stack.pop();
-						break;
-					}
-					stream.next();
-				}
-				return makeLocalStyle( style, state );
-			};
-		}
-
-		function eatEnd( style ) {
-			return function ( stream, state ) {
-				stream.skipToEnd();
-				state.tokenize = state.stack.pop();
-				return makeLocalStyle( style, state );
-			};
-		}
-
-		function eatChar( char, style ) {
-			return function ( stream, state ) {
-				state.tokenize = state.stack.pop();
-				if ( stream.eat( char ) ) {
-					return makeLocalStyle( style, state );
-				}
-				return makeLocalStyle( 'error', state );
-			};
 		}
 
 		function eatSectionHeader( count ) {
@@ -160,7 +160,7 @@
 
 		function inVariableDefault( stream, state ) {
 			if ( stream.match( /^[^{}[<&~]+/ ) ) {
-				return makeStyle( 'mw-templatevariable', state );
+				return makeLocalStyle( 'mw-templatevariable', state );
 			}
 			if ( stream.match( '}}}' ) ) {
 				state.tokenize = state.stack.pop();
@@ -186,7 +186,7 @@
 
 		function inParserFunctionArguments( stream, state ) {
 			if ( stream.match( /^[^|}{[<&~]+/ ) ) {
-				return makeStyle( 'mw-parserfunction', state );
+				return makeLocalStyle( 'mw-parserfunction', state );
 			} else if ( stream.eat( '|' ) ) {
 				return makeLocalStyle( 'mw-parserfunction-delimiter', state );
 			} else if ( stream.match( '}}' ) ) {
@@ -199,8 +199,7 @@
 		function eatTemplatePageName( haveAte ) {
 			return function ( stream, state ) {
 				if ( stream.match( /^[\s\u00a0]*\|[\s\u00a0]*/ ) ) {
-					state.expectArgName = true;
-					state.tokenize = eatTemplateArgument;
+					state.tokenize = eatTemplateArgument( true );
 					return makeLocalStyle( 'mw-template-delimiter', state );
 				}
 				if ( stream.match( /^[\s\u00a0]*\}\}/ ) ) {
@@ -229,26 +228,25 @@
 			};
 		}
 
-		function eatTemplateArgument( stream, state ) {
-			if ( state.expectArgName && stream.eatWhile( /[^=|}{[<&~]/ ) ) {
-				if ( stream.eat( '=' ) ) {
-					state.expectArgName = false;
-					state.tokenize = eatTemplateArgument;
-					return makeLocalStyle( 'mw-template-argument-name', state );
+		function eatTemplateArgument( expectArgName ) {
+			return function ( stream, state ) {
+				if ( expectArgName && stream.eatWhile( /[^=|}{[<&~]/ ) ) {
+					if ( stream.eat( '=' ) ) {
+						state.tokenize = eatTemplateArgument( false );
+						return makeLocalStyle( 'mw-template-argument-name', state );
+					}
+					return makeLocalStyle( 'mw-template', state );
+				} else if ( stream.eatWhile( /[^|}{[<&~]/ ) ) {
+					return makeLocalStyle( 'mw-template', state );
+				} else if ( stream.eat( '|' ) ) {
+					state.tokenize = eatTemplateArgument( true );
+					return makeLocalStyle( 'mw-template-delimiter', state );
+				} else if ( stream.match( '}}' ) ) {
+					state.tokenize = state.stack.pop();
+					return makeLocalStyle( 'mw-template-bracket', state, 'nTemplate' );
 				}
-				return makeStyle( 'mw-template', state );
-			} else if ( stream.eatWhile( /[^|}{[<&~]/ ) ) {
-				return makeStyle( 'mw-template', state );
-			} else if ( stream.eat( '|' ) ) {
-				state.expectArgName = true;
-				state.tokenize = eatTemplateArgument;
-				return makeLocalStyle( 'mw-template-delimiter', state );
-			} else if ( stream.match( '}}' ) ) {
-				state.expectArgName = false;
-				state.tokenize = state.stack.pop();
-				return makeLocalStyle( 'mw-template-bracket', state, 'nTemplate' );
-			}
-			return eatWikiText( 'mw-template', '' )( stream, state );
+				return eatWikiText( 'mw-template', '' )( stream, state );
+			};
 		}
 
 		function eatExternalLinkProtocol( chars ) {
@@ -281,7 +279,7 @@
 			}
 			if ( stream.eatSpace() ) {
 				state.tokenize = inExternalLinkText;
-				return makeStyle( '', state );
+				return makeLocalStyle( '', state );
 			}
 			if ( stream.match( /^[^\s\u00a0\]{&~']+/ ) || stream.eatSpace() ) {
 				if ( stream.peek() === '\'' ) {
@@ -307,6 +305,9 @@
 				state.tokenize = state.stack.pop();
 				return makeLocalStyle( 'mw-extlink-bracket', state, 'nLink' );
 			}
+			if ( stream.match( /^[^'\]{&~<]+/ ) ) {
+				return makeStyle( 'mw-extlink-text', state );
+			}
 			return eatWikiText( 'mw-extlink-text', '' )( stream, state );
 		}
 
@@ -317,10 +318,6 @@
 				state.tokenize = state.stack.pop();
 				return;
 			}
-			if ( stream.match( /^[\s\u00a0]*#[\s\u00a0]*/ ) ) {
-				state.tokenize = inLinkToSection( true );
-				return makeLocalStyle( 'error', state );
-			}
 			if ( stream.match( /^[\s\u00a0]*\|[\s\u00a0]*/ ) ) {
 				state.tokenize = eatLinkText( true );
 				return makeLocalStyle( 'mw-link-delimiter', state );
@@ -328,12 +325,9 @@
 			if ( stream.match( /^[\s\u00a0]*\]\]/ ) ) {
 				state.tokenize = state.stack.pop();
 				return makeLocalStyle( 'mw-link-bracket', state, 'nLink' );
-				// if ( !stream.eatSpace() ) {
-				// state.ImInBlock.push( 'LinkTrail' );
-				// }
 			}
 			if ( stream.match( /^[\s\u00a0]*[^\s\u00a0#|\]&~{]+/ ) || stream.eatSpace() ) { // FIXME '{{' brokes Link, sample [[z{{page]]
-				return makeStyle( 'mw-link-pagename mw-pagename', state );
+				return makeLocalStyle( 'mw-link-pagename mw-pagename', state );
 			}
 			return eatWikiText( 'mw-link-pagename mw-pagename', 'mw-pagename' )( stream, state );
 		}
@@ -345,9 +339,10 @@
 				state.tokenize = state.stack.pop();
 				return;
 			}
+			var makeFunc = stream.match( /^[\s\u00a0]*[^\]]+\|/, false ) ? makeLocalStyle : makeStyle;
 			if ( stream.match( /^[\s\u00a0]*#[\s\u00a0]*/ ) ) {
-				state.tokenize = inLinkToSection();
-				return makeLocalStyle( 'mw-link', state );
+				state.tokenize = inLinkToSection( makeFunc );
+				return makeFunc( 'mw-link', state );
 			}
 			if ( stream.match( /^[\s\u00a0]*\|[\s\u00a0]*/ ) ) {
 				state.tokenize = eatLinkText();
@@ -356,43 +351,31 @@
 			if ( stream.match( /^[\s\u00a0]*\]\]/ ) ) {
 				state.tokenize = state.stack.pop();
 				return makeLocalStyle( 'mw-link-bracket', state, 'nLink' );
-				// if ( !stream.eatSpace() ) {
-				// state.ImInBlock.push( 'LinkTrail' );
-				// }
 			}
 			if ( stream.match( /^[\s\u00a0]*[^\s\u00a0#|\]&~{]+/ ) || stream.eatSpace() ) { // FIXME '{{' brokes Link, sample [[z{{page]]
-				return makeStyle( 'mw-link-pagename mw-pagename', state );
+				return makeFunc( 'mw-link-pagename mw-pagename', state );
 			}
 			return eatWikiText( 'mw-link-pagename mw-pagename', 'mw-pagename' )( stream, state );
 		}
 
-		function inLinkToSection( isFile ) {
-			return function( stream, state ) {
+		function inLinkToSection( makeFunc ) {
+			return function ( stream, state ) {
 				if ( stream.sol() ) {
 					// @todo error message
 					state.nLink--;
 					state.tokenize = state.stack.pop();
 					return;
 				}
-				if ( isFile && stream.eatWhile( /[^|\]]/ ) ) {
-					return makeLocalStyle( 'error', state );
-				}
 				if ( stream.match( /^[^|\]&~{}]+/ ) ) { // FIXME '{{' brokes Link, sample [[z{{page]]
-					return makeStyle( 'mw-link-tosection', state );
+					return makeFunc( 'mw-link-tosection', state );
 				}
 				if ( stream.eat( '|' ) ) {
-					state.tokenize = eatLinkText( isFile );
+					state.tokenize = eatLinkText();
 					return makeLocalStyle( 'mw-link-delimiter', state );
 				}
 				if ( stream.match( ']]' ) ) {
 					state.tokenize = state.stack.pop();
 					return makeLocalStyle( 'mw-link-bracket', state, 'nLink' );
-					// if ( !stream.eatSpace() ) {
-					// state.ImInBlock.push( 'LinkTrail' );
-					// }
-				}
-				if ( isFile && stream.eat( ']' ) ) {
-					return makeLocalStyle( 'error', state );
 				}
 				return eatWikiText( 'mw-link-tosection', '' )( stream, state );
 			};
@@ -433,7 +416,7 @@
 
 				if ( isHtmlTag ) {
 					if ( isCloseTag && !( name in voidHtmlTags ) ) {
-						state.tokenize = eatChar( '>', 'mw-htmltag-bracket mw-html-' + name );
+						state.tokenize = eatChar( '>', 'mw-htmltag-bracket' );
 						if ( [ 's', 'del', 'strike' ].includes( name ) ) { state.isStrike = false; }
 						if ( [ 'b', 'strong' ].includes( name ) ) { state.isStrong = false; }
 						if ( [ 'i', 'em' ].includes( name ) ) { state.isEm = false; }
@@ -443,23 +426,18 @@
 					return makeLocalStyle( 'mw-htmltag-name', state );
 				} // it is the extension tag
 				if ( isCloseTag ) {
-					state.tokenize = eatChar( '>', 'mw-exttag-bracket mw-ext-' + name );
+					state.tokenize = eatChar( '>', 'mw-exttag-bracket' );
 				} else {
 					state.tokenize = eatExtTagAttribute( name );
 				}
-				return makeLocalStyle( 'mw-exttag-name mw-ext-' + name, state );
+				return makeLocalStyle( 'mw-exttag-name', state );
 			};
 		}
 
 		function eatHtmlTagAttribute( name ) {
 			return function ( stream, state ) {
-				if ( state.expectArgName && stream.match( /^[^>/<{&~=]+/ ) ||
-					!state.expectArgName && stream.match( /^[^>/<{&~]+/ ) ) {
-					return makeLocalStyle( 'mw-htmltag-attribute mw-html-' + name, state );
-				}
-				if ( state.expectArgName && stream.eat( '=' ) ) {
-					state.expectArgName = false;
-					return makeLocalStyle( 'error', state );
+				if ( stream.match( /^(?:"[^"]*"|'[^']*'|[^>/<{&~])+/ ) ) {
+					return makeLocalStyle( 'mw-htmltag-attribute', state );
 				}
 				if ( stream.eat( '>' ) ) {
 					if ( !( name in voidHtmlTags ) ) {
@@ -469,20 +447,20 @@
 					if ( [ 's', 'del', 'strike' ].includes( name ) ) { state.isStrike = true; }
 					if ( [ 'b', 'strong' ].includes( name ) ) { state.isStrong = true; }
 					if ( [ 'i', 'em' ].includes( name ) ) { state.isEm = true; }
-					return makeLocalStyle( 'mw-htmltag-bracket mw-html-' + name, state );
+					return makeLocalStyle( 'mw-htmltag-bracket', state );
 				}
 				if ( stream.match( '/>' ) ) {
 					state.tokenize = state.stack.pop();
-					return makeLocalStyle( name in voidHtmlTags ? 'mw-htmltag-bracket mw-html-' + name : 'error', state );
+					return makeLocalStyle( name in voidHtmlTags ? 'mw-htmltag-bracket' : 'error', state );
 				}
-				return eatWikiText( 'mw-htmltag-attribute mw-html-' + name, '', true )( stream, state );
+				return eatWikiText( 'mw-htmltag-attribute', '', true )( stream, state );
 			};
 		}
 
 		function eatExtTagAttribute( name ) {
 			return function ( stream, state ) {
 				if ( stream.match( /^(?:"[^"]*"|'[^']*'|[^>/<{&~])+/ ) ) {
-					return makeLocalStyle( 'mw-exttag-attribute mw-ext-' + name, state );
+					return makeLocalStyle( 'mw-exttag-attribute', state );
 				}
 				if ( stream.eat( '>' ) ) {
 					state.extName = name;
@@ -491,13 +469,13 @@
 						state.extState = CodeMirror.startState( state.extMode );
 					}
 					state.tokenize = eatExtTagArea( name );
-					return makeLocalStyle( 'mw-exttag-bracket mw-ext-' + name, state );
+					return makeLocalStyle( 'mw-exttag-bracket', state );
 				}
 				if ( stream.match( '/>' ) ) {
 					state.tokenize = state.stack.pop();
-					return makeLocalStyle( 'mw-exttag-bracket mw-ext-' + name, state );
+					return makeLocalStyle( 'mw-exttag-bracket', state );
 				}
-				return eatWikiText( 'mw-exttag-attribute mw-ext-' + name, '', true )( stream, state );
+				return eatWikiText( 'mw-exttag-attribute', '', true )( stream, state );
 			};
 		}
 
@@ -535,7 +513,7 @@
 				stream.next(); // eat <
 				stream.next(); // eat /
 				state.tokenize = eatTagName( name.length, true, false );
-				return makeLocalStyle( 'mw-exttag-bracket mw-ext-' + name, state );
+				return makeLocalStyle( 'mw-exttag-bracket', state );
 			};
 		}
 
@@ -605,7 +583,7 @@
 						return makeLocalStyle( 'mw-table-bracket', state );
 					}
 					stream.eatSpace();
-					state.tokenize = eatTableRow( false, true );
+					state.tokenize = eatTableRow( true, false );
 					return makeLocalStyle( 'mw-table-delimiter', state );
 				}
 				if ( stream.eat( '!' ) ) {
@@ -617,7 +595,7 @@
 			return eatWikiText( '', '' )( stream, state );
 		}
 
-		function eatTableRow( isHead, expectAttr ) {
+		function eatTableRow( expectAttr, isHead ) {
 			return function ( stream, state ) {
 				if ( stream.sol() ) {
 					if ( stream.match( /^[\s\u00a0]*[|!]/, false ) ) {
@@ -631,11 +609,11 @@
 					if ( stream.match( '||' ) || isHead && stream.match( '!!' ) ) {
 						isBold = false;
 						isItalic = false;
-						state.tokenize = eatTableRow( isHead, true );
+						state.tokenize = eatTableRow( true, isHead );
 						return makeLocalStyle( 'mw-table-delimiter', state );
 					}
 					if ( expectAttr && stream.eat( '|' ) ) {
-						state.tokenize = eatTableRow( isHead, false );
+						state.tokenize = eatTableRow( false, isHead );
 						return makeLocalStyle( 'mw-table-delimiter2', state );
 					}
 				}
@@ -711,22 +689,25 @@
 							break;
 						case '*':
 						case '#':
-							if ( stream.match( /^[*#]*:*/ ) ) {
-								return 'mw-list';
+							mt = stream.match( /^[*#;:]*/ );
+							if ( /;/.test( mt[ 0 ] ) ) {
+								isBold = true;
 							}
-							break;
+							return 'mw-list';
+						case ';':
+							isBold = true;
+							stream.match( /^[*#;:]*/ );
+							return 'mw-list';
 						case ':':
 							if ( stream.match( /^:*{\|/, false ) ) { // Highlight indented tables :{|, bug T108454
 								state.stack.push( state.tokenize );
 								state.tokenize = eatStartTable;
 							}
-							if ( stream.match( /^:*[*#]*/ ) ) {
-								return 'mw-indenting';
+							mt = stream.match( /^[*#;:]*/ );
+							if ( /;/.test( mt[ 0 ] ) ) {
+								isBold = true;
 							}
-							break;
-						case ';':
-							isBold = true;
-							return 'mw-indenting';
+							return 'mw-list';
 						case ' ':
 							if ( stream.match( /^[\s\u00a0]*:*{\|/, false ) ) { // Leading spaces is the correct syntax for a table, bug T108454
 								stream.eatSpace();
@@ -739,8 +720,7 @@
 							} else {
 								return 'mw-skipformatting';
 							}
-							// break is not necessary here
-							// falls through
+							// break is not necessary here, falls through
 						case '{':
 							if ( stream.eat( '|' ) ) {
 								stream.eatSpace();
@@ -777,7 +757,12 @@
 							if ( /[^\]|[]/.test( stream.peek() ) ) {
 								state.nLink++;
 								state.stack.push( state.tokenize );
-								state.tokenize = stream.match( /^[\s\u00a0]*(file|image|文件|[圖图]像|[档檔]案)[\s\u00a0]*:/i, false ) ? inFileLink : inLink;
+								var nsIds = mw.config.get( 'wgNamespaceIds' ),
+									nsFile = Object.keys( nsIds ).filter( function ( ns ) {
+										return nsIds[ ns ] === 6;
+									} ).join( '|' ),
+									nsFileRegex = new RegExp( '^[\\s\\u00a0]*(' + nsFile + ')[\\s\\u00a0]*:', 'i' );
+								state.tokenize = stream.match( nsFileRegex, false ) ? inFileLink : inLink;
 								return makeLocalStyle( 'mw-link-bracket', state );
 							}
 						} else {
@@ -823,7 +808,7 @@
 						}
 						break;
 					case '<':
-						isCloseTag = !!stream.eat( '/' );
+						isCloseTag = Boolean( stream.eat( '/' ) );
 						tagname = stream.match( /^[^>/\s\u00a0.*,[\]{}$^+?|/\\'`~<=!@#%&()-]+/ );
 						if ( stream.match( '!--' ) ) { // comment
 							return chain( eatBlock( 'mw-comment', '-->' ) );
@@ -838,10 +823,10 @@
 								stream.backUp( tagname.length );
 								state.stack.push( state.tokenize );
 								state.tokenize = eatTagName( tagname.length, isCloseTag, false );
-								return makeLocalStyle( 'mw-exttag-bracket mw-ext-' + tagname, state );
+								return makeLocalStyle( 'mw-exttag-bracket', state );
 							}
 							if ( tagname in permittedHtmlTags ) { // Html tag
-								if ( isCloseTag === true && !RegExp( tagname, 'i').test( state.InHtmlTag.pop() ) ) {
+								if ( isCloseTag === true && tagname !== state.InHtmlTag.pop() ) {
 									// @todo message
 									return 'error';
 								}
@@ -853,7 +838,7 @@
 								state.stack.push( state.tokenize );
 								// || ( tagname in voidHtmlTags ) because opening void tags should also be treated as the closing tag.
 								state.tokenize = eatTagName( tagname.length, isCloseTag || tagname in voidHtmlTags, true );
-								return makeLocalStyle( 'mw-htmltag-bracket mw-html-' + tagname, state );
+								return makeLocalStyle( 'mw-htmltag-bracket', state );
 							}
 							stream.backUp( tagname.length );
 						}
@@ -887,19 +872,18 @@
 						}
 						break;
 					default:
-						if ( /[\s\u00a0]/.test( ch ) ) {
-							stream.eatSpace();
-							return ( local ? makeLocalStyle : makeStyle )( style, state );
-						}
-						stream.backUp( 1 );
+						stream.backUp( 1 ); // highlight free external links, bug T108448
 						if ( stream.match( urlProtocols, false ) && !stream.match( '//' ) ) { // highlight free external links, bug T108448
 							state.stack.push( state.tokenize );
 							return eatFreeExternalLinkProtocol( stream, state );
 						}
 						stream.next();
-						break;
 				}
-				stream.match( /^[^\s\u00a0_>}[\]<{'|&:~]+/ );
+				if ( /\w/.test( ch ) ) {
+					stream.match( /^[^_>}[\]<{'|&:~]+/ );
+				} else {
+					stream.match( /^[^\w>}[\]<{'|&:~]+/ );
+				}
 				return ( local ? makeLocalStyle : makeStyle )( style, state );
 			};
 		}
@@ -913,10 +897,12 @@
 		 * @param {Object} stream CodeMirror.StringStream
 		 */
 		function prepareItalicForCorrection( stream ) {
-			// see Parser::doQuotes() in MediaWiki core, it works similar
-			// firstsingleletterword has maximum priority
-			// firstmultiletterword has medium priority
-			// firstspace has low priority
+			/**
+			 * see Parser::doQuotes() in MediaWiki core, it works similar
+			 * firstsingleletterword has maximum priority
+			 * firstmultiletterword has medium priority
+			 * firstspace has low priority
+			 */
 			var end = stream.pos,
 				str = stream.string.substr( 0, end - 3 ),
 				x1 = str.substr( -1, 1 ),
@@ -942,8 +928,9 @@
 
 		return {
 			startState: function () {
-				return { tokenize: eatWikiText( '', '' ), stack: [], InHtmlTag: [], extName: false, extMode: false,
-				extState: false, nTemplate: 0, nLink: 0, nExt: 0 };
+				return {
+					tokenize: eatWikiText( '', '' ), stack: [], InHtmlTag: [], extName: false, extMode: false,
+					extState: false, nTemplate: 0, nLink: 0, nExt: 0 };
 			},
 			copyState: function ( state ) {
 				return {
@@ -1043,73 +1030,73 @@
 
 	CodeMirror.defineMIME( 'text/mediawiki', 'mediawiki' );
 
-	function eatNowiki() {
-		return function ( stream ) {
-			if ( stream.match( /^[^&]+/ ) ) {
-				return '';
-			}
-			stream.next(); // eat &
+	function eatPre( stream, state ) {
+		if ( stream.eat( '&' ) ) {
 			return eatMnemonic( stream, '', '' );
-		};
+		}
+		if ( stream.eat( '<' ) ) {
+			if ( !state.nowiki && stream.match( 'nowiki>' ) || state.nowiki && stream.match( '/nowiki>' ) ) {
+				state.nowiki = !state.nowiki;
+				return 'mw-comment';
+			}
+			stream.match( /^[^&<}|-]+/ );
+			return '';
+		}
+		if ( stream.match( '-{' ) ) {
+			state.converter++;
+			if ( stream.match( /^((?!(-{|}-)).)*\|/, false ) ) {
+				state.flags.push( 1 );
+			} else {
+				state.flags.push( 0 );
+			}
+			return 'mw-lang-converter-bracket';
+		}
+		if ( state.converter < 0 ) {
+			stream.eat( '-' );
+			stream.match( /^[^&<-]+/ );
+			return '';
+		}
+		if ( stream.match( '}-' ) ) {
+			state.converter--;
+			state.flags.pop();
+			return 'mw-lang-converter-bracket';
+		}
+		if ( [ 0, 2 ].includes( state.flags[ state.converter ] ) ) {
+			stream.match( /^[^&<}-]+/ ) || stream.next();
+			return '';
+		}
+		if ( stream.eat( '|' ) ) {
+			state.flags[ state.converter ] = 2;
+			return 'mw-lang-converter-delimiter';
+		}
+		stream.next();
+		stream.match( /^[^&<|]+/ );
+		return 'mw-lang-converter-flag';
 	}
 
-	function eatPre() {
-		return function ( stream, state ) {
-			if ( stream.eat( '&' ) ) {
-				return eatMnemonic( stream, '', '' );
-			}
-			if ( stream.eat( '<' ) ) {
-				if ( !state.nowiki && stream.match( 'nowiki>' ) || state.nowiki && stream.match( '/nowiki>' ) ) {
-					state.nowiki = !state.nowiki;
-					return 'mw-comment mw-ext-nowiki';
-				}
-				stream.match( /^[^&<}|-]+/ );
-				return '';
-			}
-			if ( stream.match( '-{' ) ) {
-				state.converter++;
-				if ( stream.match( /^((?!(-{|}-)).)*\|/, false ) ) {
-					state.flags.push( 1 );
-				} else {
-					state.flags.push( 0 );
-				}
-				return 'mw-lang-converter-bracket';
-			}
-			if ( state.converter < 0 ) {
-				stream.eat( '-' );
-				stream.match( /^[^&<-]+/ );
-				return '';
-			}
-			if ( stream.match( '}-' ) ) {
-				state.converter--;
-				state.flags.pop();
-				return 'mw-lang-converter-bracket';
-			}
-			if ( [ 0, 2 ].includes( state.flags[ state.converter ] ) ) {
-				stream.match( /^[^&<}-]+/ ) || stream.next();
-				return '';
-			}
-			if ( stream.eat( '|' ) ) {
-				state.flags[ state.converter ] = 2;
-				return 'mw-lang-converter-delimiter';
-			}
-			stream.next();
-			stream.match( /^[^&<|]+/ );
-			return 'mw-lang-converter-flag';
-		};
+	function eatNowiki( stream ) {
+		if ( stream.match( /^[^&]+/ ) ) {
+			return '';
+		}
+		stream.next(); // eat &
+		return eatMnemonic( stream, '', '' );
 	}
 
 	CodeMirror.defineMode( 'mw-tag-pre', function ( /* config, parserConfig */ ) {
 		return {
-			startState: function () { return { converter: -1, flags: [] }; },
-			token: eatPre()
+			startState: function () {
+				return { converter: -1, flags: [] };
+			},
+			token: eatPre
 		};
 	} );
 
 	CodeMirror.defineMode( 'mw-tag-nowiki', function ( /* config, parserConfig */ ) {
 		return {
-			startState: function () { return {}; },
-			token: eatNowiki()
+			startState: function () {
+				return {};
+			},
+			token: eatNowiki
 		};
 	} );
 
